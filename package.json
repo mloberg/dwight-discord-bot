@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "tsc",
-    "start": "node dist/index.js",
+    "start": "node -r dotenv/config dist/index.js",
     "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch:ts\" \"npm run watch:node\"",
     "watch:ts": "tsc -w",
     "watch:node": "nodemon --exec \"npm run --silent start\"",
@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "discord.js": "^12.2.0",
+    "dotenv": "^8.2.0",
     "keyv": "^4.0.0",
     "keyv-file": "^0.1.13",
     "yargs-parser": "^18.1.3"
