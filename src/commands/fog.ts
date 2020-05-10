@@ -88,8 +88,9 @@ export default class extends Command {
     }
 
     async run(message, args) {
-        const crit = args._[0].startsWith("!");
-        const roll = Number(args._[0].replace(/^!/, ""));
+        const input = String(args._[0]);
+        const crit = input.startsWith("!");
+        const roll = Number(input.replace(/^!/, ""));
         if (isNaN(roll) || roll < 0) {
             throw new TypeError("please give me a valid number.");
         }
