@@ -2,6 +2,7 @@ import { User } from "discord.js";
 
 import Command from "../command";
 import db from "../db";
+import { rand, roll as _d } from "../utils";
 
 const longTermMaddness = [ // some of these are repeated to make sure some of the bad effects aren't as common
     "You feel compelled to repeat a specific activity over and over, such as washing hands, touching things, praying, or counting coins.",
@@ -71,14 +72,6 @@ const flaws = [
     "I’ve discovered that I really like killing people.",
 ];
 
-const rand = (items: string[]) => {
-    return items[Math.floor(Math.random() * items.length)];
-};
-
-const _d = (dice: number): number => {
-    return Math.floor(Math.random() * (dice - 1 + 1)) + 1;
-};
-
 export default class extends Command {
     constructor(client) {
         super(client, {
@@ -98,7 +91,7 @@ export default class extends Command {
         let count = Number(await db.get(message.author.username) || 0);
 
         if (1 === roll && crit) {
-            this.condition(message.author, `${rand(shortTermMaddness)}\nThis effect lasts for ${_d(10)} minute(s).`);
+            this.condition(message.author, `${rand(shortTermMaddness)}\nThis effect lasts for ${_d("d10")} minute(s).`);
         }
 
         if (roll < 15) {
@@ -108,7 +101,7 @@ export default class extends Command {
         await db.set(message.author.username, count);
 
         if (roll < 13) {
-            message.reply(`You take ${_d(4)} point(s) of posion damage.`);
+            message.reply(`You take ${_d("d4")} point(s) of posion damage.`);
         }
 
         if (20 === count) {
@@ -116,9 +109,9 @@ export default class extends Command {
         } else if (50 === count) {
             this.condition(message.author, `You have developed a new flaw: ${rand(flaws)}`);
         } else if (0 === count % 10) {
-            this.condition(message.author, `${rand(longTermMaddness)}\nThis effect lasts for ${_d(10)} hour(s).`);
+            this.condition(message.author, `${rand(longTermMaddness)}\nThis effect lasts for ${_d("d10")} hour(s).`);
         } else if (0 === count % 5) {
-            this.condition(message.author, `${rand(shortTermMaddness)}\nThis effect lasts for ${_d(10)} minute(s).`);
+            this.condition(message.author, `${rand(shortTermMaddness)}\nThis effect lasts for ${_d("d10")} minute(s).`);
         }
     }
 
