@@ -1,0 +1,1766 @@
+[
+    {
+        "item": "Adamantine Armor",
+        "type": "Armor (medium or heavy, but not hide)",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Alchemy Jug",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Ammunition, +1",
+        "type": "Weapon (any ammunition)",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Ammunition, +2",
+        "type": "Weapon (any ammunition)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Ammunition, +3",
+        "type": "Weapon (any ammunition)",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Amulet of Health",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Amulet of Proof against Detection and Location",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Amulet of the Planes",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Animated Shield",
+        "type": "Armor (shield)",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Apparatus of Kwalish",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Armor, +1",
+        "type": "Armor (light, medium, or heavy)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Armor, +2",
+        "type": "Armor (light, medium, or heavy)",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Armor, +3",
+        "type": "Armor (light, medium, or heavy)",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Armor of Invulnerability",
+        "type": "Armor (plate)",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Armor of Resistance",
+        "type": "Armor (light, medium, or heavy)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Armor of Vulnerability",
+        "type": "Armor (plate)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Arrow-Catching Shield",
+        "type": "Armor (shield)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Arrow of Slaying",
+        "type": "Weapon (arrow)",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Bag of Beans",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Bag of Devouring",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Bag of Holding",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Bag of Tricks",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Bead of Force",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Belt of Dwarvenkind",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Belt of Giant Strength",
+        "type": "Wondrous item",
+        "rarity": "varies",
+        "attunement": true
+    },
+    {
+        "item": "Berserker Axe",
+        "type": "Weapon (any axe)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Boots of Elvenkind",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Boots of Levitation",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Boots of Speed",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Boots of Striding and Springing",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Boots of the Winterlands",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Bowl of Commanding Water Elementals",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Bracers of Archery",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Bracers of Defense",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Brazier of Commanding Fire Elementals",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Brooch of Shielding",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Broom of Flying",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Candle of Invocation",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Cap of Water Breathing",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Cape of the Mountebank",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Carpet of Flying",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Censer of Controlling Air Elementals",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Chime of Opening",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Circlet of Blasting",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Cloak of Arachnida",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Cloak of Displacement",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Cloak of Elvenkind",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Cloak of Invisibility",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Cloak of Protection",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Cloak of the Bat",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Cloak of the Manta Ray",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Crystal Ball",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Crystal Ball",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Cube of Force",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Cubic Gate",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Daern’s Instant Fortress",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Dagger of Venom",
+        "type": "Weapon (dagger)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Dancing Sword",
+        "type": "Weapon (any sword)",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Decanter of Endless Water",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Deck of Illusions",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Deck of Many Things",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Defender",
+        "type": "Weapon (any sword)",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Demon Armor",
+        "type": "Armor (plate)",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Dimensional Shackles",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Dragon Scale Mail",
+        "type": "Armor (scale mail)",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Dragon Slayer",
+        "type": "Weapon (any sword)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Driftglobe",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Dust of Disappearance",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Dust of Dryness",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Dust of Sneezing and Choking",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Dwarven Plate",
+        "type": "Armor (plate)",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Dwarven Thrower",
+        "type": "Weapon (warhammer)",
+        "rarity": "very rare",
+        "attunement": "by a dwarf"
+    },
+    {
+        "item": "Efreeti Bottle",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Efreeti Chain",
+        "type": "Armor (chain mail)",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Elemental Gem",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Elixir of Health",
+        "type": "Potion",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Elven Chain",
+        "type": "Armor (chain shirt)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Eversmoking Bottle",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Eyes of Charming",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Eyes of Minute Seeing",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Eyes of the Eagle",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Figurine of Wondrous Power (Bronze Griffon)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Figurine of Wondrous Power (Ebony Fly)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Figurine of Wondrous Power (Golden Lions)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Figurine of Wondrous Power (Ivory Goats)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Figurine of Wondrous Power (Marble Elephant)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Figurine of Wondrous Power (Obsidian Steed)",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Figurine of Wondrous Power (Onyx Dog)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Figurine of Wondrous Power (Serpentine Owl)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Figurine of Wondrous Power (Silver Raven)",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Flame Tongue",
+        "type": "Weapon (any sword)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Folding Boat",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Frost Brand",
+        "type": "Weapon (any sword)",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Gauntlets of Ogre Power",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Gem of Brightness",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Gem of Seeing",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Giant Slayer",
+        "type": "Weapon (any axe or sword)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Glamoured Studded Leather",
+        "type": "Armor (studded leather)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Gloves of Missile Snaring",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Gloves of Swimming and Climbing",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Gloves of Thievery",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Goggles of Night",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Hammer of Thunderbolts",
+        "type": "Weapon (maul)",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Hat of Disguise",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Headband of Intellect",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Helm of Brilliance",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Helm of Comprehending Languages",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Helm of Telepathy",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Helm of Teleportation",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Heward’s Handy Haversack",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Holy Avenger",
+        "type": "Weapon (any sword)",
+        "rarity": "legendary",
+        "attunement": "by a paladin"
+    },
+    {
+        "item": "Horn of Blasting",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Horn of Valhalla (silver)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Horn of Valhalla (brass)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Horn of Valhalla (bronze)",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Horn of Valhalla (iron)",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Horseshoes of a Zephyr",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Horseshoes of Speed",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Immovable Rod",
+        "type": "Rod",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Instrument of the Bards (Anstruth harp)",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": "by a bard"
+    },
+    {
+        "item": "Instrument of the Bards (Canaith mandolin)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": "by a bard"
+    },
+    {
+        "item": "Instrument of the Bards (Cli lyre)",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": "by a bard"
+    },
+    {
+        "item": "Instrument of the Bards (Doss lute)",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": "by a bard"
+    },
+    {
+        "item": "Instrument of the Bards (Fochlucan bandore)",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": "by a bard"
+    },
+    {
+        "item": "Instrument of the Bards (Mac-Fuirmidh cittern)",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": "by a bard"
+    },
+    {
+        "item": "Instrument of the Bards (Ollamh harp)",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": "by a bard"
+    },
+    {
+        "item": "Ioun Stone",
+        "type": "Wondrous item",
+        "rarity": "varies",
+        "attunement": true
+    },
+    {
+        "item": "Iron Bands of Bilarro",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Iron Flask",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Javelin of Lightning",
+        "type": "Weapon (javelin)",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Keoghtom’s Ointment",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Lantern of Revealing",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Luck Blade",
+        "type": "Weapon (any sword)",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Mace of Disruption",
+        "type": "Weapon (mace)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Mace of Smiting",
+        "type": "Weapon (mace)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Mace of Terror",
+        "type": "Weapon (mace)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Mantle of Spell Resistance",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Manual of Bodily Health",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Manual of Gainful Exercise",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Manual of Golems",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Manual of Quickness of Action",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Mariner’s Armor",
+        "type": "Armor (light, medium, or heavy)",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Medallion of Thoughts",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Mirror of Life Trapping",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Mithral Armor",
+        "type": "Armor (medium or heavy, but not hide)",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Necklace of Adaptation",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Necklace of Fireballs",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Necklace of Prayer Beads",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": "by a cleric, druid, or paladin"
+    },
+    {
+        "item": "Nine Lives Stealer",
+        "type": "Weapon (any sword)",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Nolzur’s Marvelous Pigments",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Oathbow",
+        "type": "Weapon (longbow)",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Oil of Etherealness",
+        "type": "Potion",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Oil of Sharpness",
+        "type": "Potion",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Oil of Slipperiness",
+        "type": "Potion",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Pearl of Power",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Periapt of Health",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Periapt of Proof against Poison",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Periapt of Wound Closure",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Philter of Love",
+        "type": "Potion",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Pipes of Haunting",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Pipes of the Sewers",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Plate Armor of Etherealness",
+        "type": "Armor (plate)",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Portable Hole",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Animal Friendship",
+        "type": "Potion",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Clairvoyance",
+        "type": "Potion",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Climbing",
+        "type": "Potion",
+        "rarity": "common",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Diminution",
+        "type": "Potion",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Fire Breath",
+        "type": "Potion",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Flying",
+        "type": "Potion",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Gaseous Form",
+        "type": "Potion",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Giant Strength",
+        "type": "Potion",
+        "rarity": "varies",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Growth",
+        "type": "Potion",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Healing",
+        "type": "Potion",
+        "rarity": "varies",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Heroism",
+        "type": "Potion",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Invisibility",
+        "type": "Potion",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Invulnerability",
+        "type": "Potion",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Longevity",
+        "type": "Potion",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Mind Reading",
+        "type": "Potion",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Poison",
+        "type": "Potion",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Resistance",
+        "type": "Potion",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Speed",
+        "type": "Potion",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Vitality",
+        "type": "Potion",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Potion of Water Breathing",
+        "type": "Potion",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Quaal’s Feather Token",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Quiver of Ehlonna",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Ring of Animal Influence",
+        "type": "Ring",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Ring of Djinni Summoning",
+        "type": "Ring",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Elemental Command",
+        "type": "Ring",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Evasion",
+        "type": "Ring",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Feather Falling",
+        "type": "Ring",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Free Action",
+        "type": "Ring",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Invisibility",
+        "type": "Ring",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Jumping",
+        "type": "Ring",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Mind Shielding",
+        "type": "Ring",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Protection",
+        "type": "Ring",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Regeneration",
+        "type": "Ring",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Resistance",
+        "type": "Ring",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Shooting Stars",
+        "type": "Ring",
+        "rarity": "very rare",
+        "attunement": "outdoors at night"
+    },
+    {
+        "item": "Ring of Spell Storing",
+        "type": "Ring",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Spell Turning",
+        "type": "Ring",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Swimming",
+        "type": "Ring",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Ring of Telekinesis",
+        "type": "Ring",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Ring of the Ram",
+        "type": "Ring",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Three Wishes",
+        "type": "Ring",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Ring of Warmth",
+        "type": "Ring",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Ring of Water Walking",
+        "type": "Ring",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Ring of X-ray Vision",
+        "type": "Ring",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Robe of Eyes",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Robe of Scintillating Colors",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Robe of Stars",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Robe of the Archmagi",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": "by a sorcerer, warlock, or wizard"
+    },
+    {
+        "item": "Robe of Useful Items",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Rod of Absorption",
+        "type": "Rod",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Rod of Alertness",
+        "type": "Rod",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Rod of Lordly Might",
+        "type": "Rod",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Rod of the Pact Keeper, +1",
+        "type": "Rod",
+        "rarity": "uncommon",
+        "attunement": "by a warlock"
+    },
+    {
+        "item": "Rod of the Pact Keeper, +2",
+        "type": "Rod",
+        "rarity": "rare",
+        "attunement": "by a warlock"
+    },
+    {
+        "item": "Rod of the Pact Keeper, +3",
+        "type": "Rod",
+        "rarity": "very rare",
+        "attunement": "by a warlock"
+    },
+    {
+        "item": "Rod of Resurrection",
+        "type": "Rod",
+        "rarity": "legendary",
+        "attunement": "by a cleric, druid, or paladin"
+    },
+    {
+        "item": "Rod of Rulership",
+        "type": "Rod",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Rod of Security",
+        "type": "Rod",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Rope of Climbing",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Rope of Entanglement",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Saddle of the Cavalier",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Scarab of Protection",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Scimitar of Speed",
+        "type": "Weapon (scimitar)",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Scroll of Protection",
+        "type": "Scroll",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Sending Stones",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Sentinel Shield",
+        "type": "Armor (shield)",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Shield, +1",
+        "type": "Armor (shield)",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Shield, +2",
+        "type": "Armor (shield)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Shield, +3",
+        "type": "Armor (shield)",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Shield of Missile Attraction",
+        "type": "Armor (shield)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Slippers of Spider Climbing",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Sovereign Glue",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Spell Scroll",
+        "type": "Scroll",
+        "rarity": "varies",
+        "attunement": false
+    },
+    {
+        "item": "Spellguard Shield",
+        "type": "Armor (shield)",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Sphere of Annihilation",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Staff of Charming",
+        "type": "Staff",
+        "rarity": "rare",
+        "attunement": "by a bard, cleric, druid, sorcerer, warlock, or wizard"
+    },
+    {
+        "item": "Staff of Fire",
+        "type": "Staff",
+        "rarity": "very rare",
+        "attunement": "by a druid, sorcerer, warlock, or wizard"
+    },
+    {
+        "item": "Staff of Frost",
+        "type": "Staff",
+        "rarity": "very rare",
+        "attunement": "by a druid, sorcerer, warlock, or wizard"
+    },
+    {
+        "item": "Staff of Healing",
+        "type": "Staff",
+        "rarity": "rare",
+        "attunement": "by a bard, cleric, or druid"
+    },
+    {
+        "item": "Staff of Power",
+        "type": "Staff",
+        "rarity": "very rare",
+        "attunement": "by a sorcerer, warlock, or wizard"
+    },
+    {
+        "item": "Staff of Striking",
+        "type": "Staff",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Staff of Swarming Insects",
+        "type": "Staff",
+        "rarity": "rare",
+        "attunement": "by a bard, cleric, druid, sorcerer, warlock, or wizard"
+    },
+    {
+        "item": "Staff of the Adder",
+        "type": "Staff",
+        "rarity": "uncommon",
+        "attunement": "by a cleric, druid, or warlock"
+    },
+    {
+        "item": "Staff of the Magi",
+        "type": "Staff",
+        "rarity": "legendary",
+        "attunement": "by a sorcerer, warlock, or wizard"
+    },
+    {
+        "item": "Staff of the Python",
+        "type": "Staff",
+        "rarity": "uncommon",
+        "attunement": "by a cleric, druid, or warlock"
+    },
+    {
+        "item": "Staff of the Woodlands",
+        "type": "Staff",
+        "rarity": "rare",
+        "attunement": "by a druid"
+    },
+    {
+        "item": "Staff of Thunder and Lightning",
+        "type": "Staff",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Staff of Withering",
+        "type": "Staff",
+        "rarity": "rare",
+        "attunement": "by a cleric, druid, or warlock"
+    },
+    {
+        "item": "Stone of Controlling Earth Elementals",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Stone of Good Luck (Luckstone)",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Sun Blade",
+        "type": "Weapon (longsword)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Sword of Answering",
+        "type": "Weapon (longsword)",
+        "rarity": "legendary",
+        "attunement": "by a creature with the same alignment as the sword"
+    },
+    {
+        "item": "Sword of Life Stealing",
+        "type": "Weapon (any sword)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Sword of Sharpness",
+        "type": "Weapon (any sword that deals slashing damage)",
+        "rarity": "very rare",
+        "attunement": true
+    },
+    {
+        "item": "Sword of Vengeance",
+        "type": "Weapon (any sword)",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Sword of Wounding",
+        "type": "Weapon (any sword)",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Talisman of Pure Good",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": "by a creature of good alignment"
+    },
+    {
+        "item": "Talisman of the Sphere",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Talisman of Ultimate Evil",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": "by a creature of evil alignment"
+    },
+    {
+        "item": "Tentacle Rod",
+        "type": "Rod",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Tome of Clear Thought",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Tome of Leadership and Influence",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Tome of the Stilled Tongue",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": "by a wizard"
+    },
+    {
+        "item": "Tome of Understanding",
+        "type": "Wondrous item",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Trident of Fish Command",
+        "type": "Weapon (trident)",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Universal Solvent",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Vicious Weapon",
+        "type": "Weapon (any)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Vorpal Sword",
+        "type": "Weapon (any sword that deals slashing damage)",
+        "rarity": "legendary",
+        "attunement": true
+    },
+    {
+        "item": "Wand of Binding",
+        "type": "Wand",
+        "rarity": "rare",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Wand of Enemy Detection",
+        "type": "Wand",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Wand of Fear",
+        "type": "Wand",
+        "rarity": "rare",
+        "attunement": true
+    },
+    {
+        "item": "Wand of Fireballs",
+        "type": "Wand",
+        "rarity": "rare",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Wand of Lightning Bolts",
+        "type": "Wand",
+        "rarity": "rare",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Wand of Magic Detection",
+        "type": "Wand",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Wand of Magic Missiles",
+        "type": "Wand",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Wand of Paralysis",
+        "type": "Wand",
+        "rarity": "rare",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Wand of Polymorph",
+        "type": "Wand",
+        "rarity": "very rare",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Wand of Secrets",
+        "type": "Wand",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Wand of the War Mage, +1",
+        "type": "Wand",
+        "rarity": "uncommon",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Wand of the War Mage, +2",
+        "type": "Wand",
+        "rarity": "rare",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Wand of the War Mage, +3",
+        "type": "Wand",
+        "rarity": "very rare",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Wand of Web",
+        "type": "Wand",
+        "rarity": "uncommon",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Wand of Wonder",
+        "type": "Wand",
+        "rarity": "rare",
+        "attunement": "by a spellcaster"
+    },
+    {
+        "item": "Weapon, +1",
+        "type": "Weapon (any)",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Weapon, +2",
+        "type": "Weapon (any)",
+        "rarity": "rare",
+        "attunement": false
+    },
+    {
+        "item": "Weapon, +3",
+        "type": "Weapon (any)",
+        "rarity": "very rare",
+        "attunement": false
+    },
+    {
+        "item": "Weapon of Warning",
+        "type": "Weapon (any)",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Well of Many Worlds",
+        "type": "Wondrous item",
+        "rarity": "legendary",
+        "attunement": false
+    },
+    {
+        "item": "Wind Fan",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": false
+    },
+    {
+        "item": "Winged Boots",
+        "type": "Wondrous item",
+        "rarity": "uncommon",
+        "attunement": true
+    },
+    {
+        "item": "Wings of Flying",
+        "type": "Wondrous item",
+        "rarity": "rare",
+        "attunement": true
+    }
+]
