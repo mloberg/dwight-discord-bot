@@ -1,40 +1,35 @@
-import { Client } from "discord.js";
-import parser from "yargs-parser";
+import Commando from "discord.js-commando";
+import path from "path";
 
-import Command from "./command";
-import commands from "./commands";
-
-const prefix = process.env.BOT_PREFIX || "^";
-const client = new Client();
-
-client.once("ready", () => {
-    console.log("Ready!");
-    client.user.setActivity("Assistant to the Dungeon Master");
+const client = new Commando.CommandoClient({
+    owner: "690307094250782801",
+    commandPrefix: process.env.BOT_PREFIX || "^",
 });
 
 client.on("error", console.error);
+client.on("warn", console.warn);
 
-client.on("message", async message => {
-    if (!message.content.startsWith(prefix) || message.author.bot) {
-        return;
-    }
+if (process.env.DEBUG) {
+    client.on("debug", console.log);
+}
 
-    const input = message.content.slice(prefix.length).split(/ +/);
-    const commandName = input.shift().toLowerCase();
+client.on("ready", () => {
+    client.user.setActivity("Assistant to the Dungeon Master");
 
-    const command: Command = commands.get(commandName);
-    if (!command) {
-        return;
-    }
-
-    const args = parser(input, command.parserOptions);
-
-    try {
-        await command.run(message, args);
-    } catch (err) {
-        console.log(err);
-        message.reply(`I encountered an error: ${err.message}`);
-    }
+    console.log(`Client ready; logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`);
 });
+client.on("commandError", (cmd, err) => {
+    if (err instanceof Commando.FriendlyError) {
+        return;
+    }
+
+    console.error(`Error in command ${cmd.groupID}:${cmd.memberName}`, err);
+});
+
+client.registry
+    .registerDefaults()
+    .registerGroup("dnd")
+    .registerTypesIn(path.join(__dirname, "types"))
+    .registerCommandsIn(path.join(__dirname, "commands"));
 
 client.login(process.env.BOT_TOKEN);

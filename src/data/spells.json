@@ -1,0 +1,3700 @@
+[
+  {
+    "spell": "Acid Arrow",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Acid Splash",
+    "level": 0,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Aid",
+    "level": 2,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Alarm",
+    "level": 1,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Ranger",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Alter Self",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Animal Friendship",
+    "level": 1,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Animal Messenger",
+    "level": 2,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Animal Shapes",
+    "level": 8,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Animate Dead",
+    "level": 3,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Cleric",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Animate Objects",
+    "level": 5,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Antilife Shell",
+    "level": 5,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Antimagic Field",
+    "level": 8,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Antipathy Sympathy",
+    "level": 8,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Antipathy Sympathy",
+    "level": 8,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Arcane Eye",
+    "level": 4,
+    "school": "Divination",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Arcane Hand",
+    "level": 5,
+    "school": "Evocation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Arcane Lock",
+    "level": 2,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Arcane Sword",
+    "level": 7,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Arcanist's Magic Aura",
+    "level": 2,
+    "school": "Illusion",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Astral Projection",
+    "level": 9,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Cleric",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Augury",
+    "level": 2,
+    "school": "Divination",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Awaken",
+    "level": 5,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Bane",
+    "level": 1,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Banishment",
+    "level": 4,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Paladin",
+        "Cleric",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Barkskin",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Beacon of Hope",
+    "level": 3,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Bestow Curse",
+    "level": 3,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Black Tentacles",
+    "level": 4,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Blade Barrier",
+    "level": 6,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Bless",
+    "level": 1,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Blight",
+    "level": 4,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Blindness Deafness",
+    "level": 2,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Blindness Deafness",
+    "level": 2,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Blink",
+    "level": 3,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Blur",
+    "level": 2,
+    "school": "Illusion",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Branding Smite",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Burning Hands",
+    "level": 1,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Call Lightning",
+    "level": 3,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Calm Emotions",
+    "level": 2,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Chain Lightning",
+    "level": 6,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Charm Person",
+    "level": 1,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Chill Touch",
+    "level": 0,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Circle of Death",
+    "level": 6,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Clairvoyance",
+    "level": 3,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Clone",
+    "level": 8,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Cloudkill",
+    "level": 5,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Color Spray",
+    "level": 1,
+    "school": "Illusion",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Command",
+    "level": 1,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Commune",
+    "level": 5,
+    "school": "Divination",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Commune with Nature",
+    "level": 5,
+    "school": "Divination",
+    "class": [
+      [
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Comprehend Languages",
+    "level": 1,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Compulsion",
+    "level": 4,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard"
+      ]
+    ]
+  },
+  {
+    "spell": "Cone of Cold",
+    "level": 5,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Confusion",
+    "level": 4,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Conjure Animals",
+    "level": 3,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Conjure Celestial",
+    "level": 7,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Conjure Elemental",
+    "level": 5,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Conjure Fey",
+    "level": 6,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid",
+        "Warlock"
+      ]
+    ]
+  },
+  {
+    "spell": "Conjure Minor Elementals",
+    "level": 4,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Conjure Woodland Beings",
+    "level": 4,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Contact Other Plane",
+    "level": 5,
+    "school": "Divination",
+    "class": [
+      [
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Contagion",
+    "level": 5,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Contingency",
+    "level": 6,
+    "school": "Evocation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Continual Flame",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Control Water",
+    "level": 4,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Control Weather",
+    "level": 8,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Counterspell",
+    "level": 3,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Create Food and Water",
+    "level": 3,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Create Undead",
+    "level": 6,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Cleric",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Create or Destroy Water",
+    "level": 1,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Creation",
+    "level": 5,
+    "school": "Illusion",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Cure Wounds",
+    "level": 1,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Paladin",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Dancing Lights",
+    "level": 0,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Darkness",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Darkvision",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid",
+        "Ranger",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Daylight",
+    "level": 3,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Paladin",
+        "Ranger",
+        "Sorcerer"
+      ]
+    ]
+  },
+  {
+    "spell": "Death Ward",
+    "level": 4,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Delayed Blast Fireball",
+    "level": 7,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Demiplane",
+    "level": 8,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Detect Evil and Good",
+    "level": 1,
+    "school": "Divination",
+    "class": [
+      [
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Detect Magic",
+    "level": 1,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Paladin",
+        "Ranger",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Detect Poison and Disease",
+    "level": 1,
+    "school": "Divination",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Paladin",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Detect Thoughts",
+    "level": 2,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Dimension Door",
+    "level": 4,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Disguise Self",
+    "level": 1,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Disintegrate",
+    "level": 6,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Dispel Evil and Good",
+    "level": 5,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Dispel Magic",
+    "level": 3,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Paladin",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Divination",
+    "level": 4,
+    "school": "Divination",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Divine Favor",
+    "level": 1,
+    "school": "Evocation",
+    "class": [
+      [
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Divine Word",
+    "level": 7,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Dominate Beast",
+    "level": 4,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer"
+      ]
+    ]
+  },
+  {
+    "spell": "Dominate Monster",
+    "level": 8,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Dominate Person",
+    "level": 5,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Dream",
+    "level": 5,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Druidcraft",
+    "level": 0,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Earthquake",
+    "level": 8,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Sorcerer"
+      ]
+    ]
+  },
+  {
+    "spell": "Eldritch Blast",
+    "level": 0,
+    "school": "Evocation",
+    "class": [
+      [
+        "Warlock"
+      ]
+    ]
+  },
+  {
+    "spell": "Enhance Ability",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Sorcerer"
+      ]
+    ]
+  },
+  {
+    "spell": "Enlarge Reduce",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Enlarge Reduce",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Entangle",
+    "level": 1,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Enthrall",
+    "level": 2,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Warlock"
+      ]
+    ]
+  },
+  {
+    "spell": "Etherealness",
+    "level": 7,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Expeditious Retreat",
+    "level": 1,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Eyebite",
+    "level": 6,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Fabricate",
+    "level": 4,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Faerie Fire",
+    "level": 1,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Faithful Hound",
+    "level": 4,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "False Life",
+    "level": 1,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Fear",
+    "level": 3,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Feather Fall",
+    "level": 1,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Feeblemind",
+    "level": 8,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Find Familiar",
+    "level": 1,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Find Steed",
+    "level": 2,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Find Traps",
+    "level": 2,
+    "school": "Divination",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Find the Path",
+    "level": 6,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Finger of Death",
+    "level": 7,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Fire Bolt",
+    "level": 0,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Fire Shield",
+    "level": 4,
+    "school": "Evocation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Fire Storm",
+    "level": 7,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Sorcerer"
+      ]
+    ]
+  },
+  {
+    "spell": "Fireball",
+    "level": 3,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Flame Blade",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Flame Strike",
+    "level": 5,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Flaming Sphere",
+    "level": 2,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Flesh to Stone",
+    "level": 6,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Floating Disk",
+    "level": 1,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Fly",
+    "level": 3,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Fog Cloud",
+    "level": 1,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid",
+        "Ranger",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Forbiddance",
+    "level": 6,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Forcecage",
+    "level": 7,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Foresight",
+    "level": 9,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Freedom of Movement",
+    "level": 4,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Freezing Sphere",
+    "level": 6,
+    "school": "Evocation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Gaseous Form",
+    "level": 3,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Gate",
+    "level": 9,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Cleric",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Geas",
+    "level": 5,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Paladin",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Gentle Repose",
+    "level": 2,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Cleric",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Giant Insect",
+    "level": 4,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Glibness",
+    "level": 8,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Warlock"
+      ]
+    ]
+  },
+  {
+    "spell": "Globe of Invulnerability",
+    "level": 6,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Glyph of Warding",
+    "level": 3,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Goodberry",
+    "level": 1,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Grease",
+    "level": 1,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Greater Invisibility",
+    "level": 4,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Greater Restoration",
+    "level": 5,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Guardian of Faith",
+    "level": 4,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Guards and Wards",
+    "level": 6,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Guidance",
+    "level": 0,
+    "school": "Divination",
+    "class": [
+      [
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Guiding Bolt",
+    "level": 1,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Gust of Wind",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Hallow",
+    "level": 5,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Hallucinatory Terrain",
+    "level": 4,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Harm",
+    "level": 6,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Haste",
+    "level": 3,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Heal",
+    "level": 6,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Healing Word",
+    "level": 1,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Heat Metal",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Hellish Rebuke",
+    "level": 1,
+    "school": "Evocation",
+    "class": [
+      [
+        "Warlock"
+      ]
+    ]
+  },
+  {
+    "spell": "Heroes' Feast",
+    "level": 6,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Heroism",
+    "level": 1,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Hideous Laughter",
+    "level": 1,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Hold Monster",
+    "level": 5,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Hold Person",
+    "level": 2,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Holy Aura",
+    "level": 8,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Hunter's Mark",
+    "level": 1,
+    "school": "Divination",
+    "class": [
+      [
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Hypnotic Pattern",
+    "level": 3,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Ice Storm",
+    "level": 4,
+    "school": "Evocation",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Identify",
+    "level": 1,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Illusory Script",
+    "level": 1,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Imprisonment",
+    "level": 9,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Incendiary Cloud",
+    "level": 8,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Inflict Wounds",
+    "level": 1,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Insect Plague",
+    "level": 5,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Sorcerer"
+      ]
+    ]
+  },
+  {
+    "spell": "Instant Summons",
+    "level": 6,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Invisibility",
+    "level": 2,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Irresistible Dance",
+    "level": 6,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Jump",
+    "level": 1,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid",
+        "Ranger",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Knock",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Legend Lore",
+    "level": 5,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Lesser Restoration",
+    "level": 2,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Paladin",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Levitate",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Light",
+    "level": 0,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Lightning Bolt",
+    "level": 3,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Locate Animals or Plants",
+    "level": 2,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Locate Creature",
+    "level": 4,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Paladin",
+        "Ranger",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Locate Object",
+    "level": 2,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Paladin",
+        "Ranger",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Longstrider",
+    "level": 1,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Ranger",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Mage Armor",
+    "level": 1,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Mage Hand",
+    "level": 0,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Magic Circle",
+    "level": 3,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Paladin",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Magic Jar",
+    "level": 6,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Magic Missile",
+    "level": 1,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Magic Mouth",
+    "level": 2,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Magic Weapon",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Paladin",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Magnificent Mansion",
+    "level": 7,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Major Image",
+    "level": 3,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Mass Cure Wounds",
+    "level": 5,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Mass Heal",
+    "level": 9,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Mass Healing Word",
+    "level": 3,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Mass Suggestion",
+    "level": 6,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Maze",
+    "level": 8,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Meld into Stone",
+    "level": 3,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Mending",
+    "level": 0,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Message",
+    "level": 0,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Meteor Swarm",
+    "level": 9,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Mind Blank",
+    "level": 8,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Minor Illusion",
+    "level": 0,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Mirage Arcane",
+    "level": 7,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Mirror Image",
+    "level": 2,
+    "school": "Illusion",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Mislead",
+    "level": 5,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Misty Step",
+    "level": 2,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Modify Memory",
+    "level": 5,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Moonbeam",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Move Earth",
+    "level": 6,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Nondetection",
+    "level": 3,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Bard",
+        "Ranger",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Pass without Trace",
+    "level": 2,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Passwall",
+    "level": 5,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Phantasmal Killer",
+    "level": 4,
+    "school": "Illusion",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Phantom Steed",
+    "level": 3,
+    "school": "Illusion",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Planar Ally",
+    "level": 6,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Planar Binding",
+    "level": 5,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Plane Shift",
+    "level": 7,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Cleric",
+        "Sorcerer",
+        "Warlock",
+        "Wizard",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Plant Growth",
+    "level": 3,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Poison Spray",
+    "level": 0,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Polymorph",
+    "level": 4,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Power Word Kill",
+    "level": 9,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Power Word Stun",
+    "level": 8,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Prayer of Healing",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Prestidigitation",
+    "level": 0,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Prismatic Spray",
+    "level": 7,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Prismatic Wall",
+    "level": 9,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Private Sanctum",
+    "level": 4,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Produce Flame",
+    "level": 0,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Programmed Illusion",
+    "level": 6,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Project Image",
+    "level": 7,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Protection from Energy",
+    "level": 3,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Ranger",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Protection from Evil and Good",
+    "level": 1,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Paladin",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Protection from Poison",
+    "level": 2,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Paladin",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Purify Food and Drink",
+    "level": 1,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Raise Dead",
+    "level": 5,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Ray of Enfeeblement",
+    "level": 2,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Ray of Frost",
+    "level": 0,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Regenerate",
+    "level": 7,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Reincarnate",
+    "level": 5,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Remove Curse",
+    "level": 3,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Paladin",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Resilient Sphere",
+    "level": 4,
+    "school": "Evocation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Resistance",
+    "level": 0,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Resurrection",
+    "level": 7,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Bard",
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Reverse Gravity",
+    "level": 7,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Revivify",
+    "level": 3,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Rope Trick",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Sacred Flame",
+    "level": 0,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Sanctuary",
+    "level": 1,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Scorching Ray",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Scrying",
+    "level": 5,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Druid",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Secret Chest",
+    "level": 4,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "See Invisibility",
+    "level": 2,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Seeming",
+    "level": 5,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Sending",
+    "level": 3,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Sequester",
+    "level": 7,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Shapechange",
+    "level": 9,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Shatter",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Shield",
+    "level": 1,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Shield of Faith",
+    "level": 1,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  },
+  {
+    "spell": "Shillelagh",
+    "level": 0,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Shocking Grasp",
+    "level": 0,
+    "school": "Evocation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Silence",
+    "level": 2,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Silent Image",
+    "level": 1,
+    "school": "Illusion",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Simulacrum",
+    "level": 7,
+    "school": "Illusion",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Sleep",
+    "level": 1,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Sleet Storm",
+    "level": 3,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Slow",
+    "level": 3,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Spare the Dying",
+    "level": 0,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Speak with Animals",
+    "level": 1,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Speak with Dead",
+    "level": 3,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Bard",
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Speak with Plants",
+    "level": 3,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Spider Climb",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Spike Growth",
+    "level": 2,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Spirit Guardians",
+    "level": 3,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Spiritual Weapon",
+    "level": 2,
+    "school": "Evocation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Stinking Cloud",
+    "level": 3,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Stone Shape",
+    "level": 4,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Stoneskin",
+    "level": 4,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Druid",
+        "Paladin",
+        "Ranger",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Storm of Vengeance",
+    "level": 9,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Suggestion",
+    "level": 2,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Sunbeam",
+    "level": 6,
+    "school": "Evocation",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Sunburst",
+    "level": 8,
+    "school": "Evocation",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Symbol",
+    "level": 7,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Telekinesis",
+    "level": 5,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Telepathic Bond",
+    "level": 5,
+    "school": "Divination",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Teleport",
+    "level": 7,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Teleportation Circle",
+    "level": 5,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Teleportation Circle",
+    "level": 5,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Thaumaturgy",
+    "level": 0,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Thunderwave",
+    "level": 1,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Time Stop",
+    "level": 9,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Tiny Hut",
+    "level": 3,
+    "school": "Evocation",
+    "class": [
+      [
+        "Bard",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Tongues",
+    "level": 3,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Transport via Plants",
+    "level": 6,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Tree Stride",
+    "level": 5,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "True Polymorph",
+    "level": 9,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Bard",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "True Resurrection",
+    "level": 9,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Cleric",
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "True Seeing",
+    "level": 6,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "True Strike",
+    "level": 0,
+    "school": "Divination",
+    "class": [
+      [
+        "Bard",
+        "Sorcerer",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Unseen Servant",
+    "level": 1,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Bard",
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Vampiric Touch",
+    "level": 3,
+    "school": "Necromancy",
+    "class": [
+      [
+        "Warlock",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Vicious Mockery",
+    "level": 0,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard"
+      ]
+    ]
+  },
+  {
+    "spell": "Wall of Fire",
+    "level": 4,
+    "school": "Evocation",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Wall of Force",
+    "level": 5,
+    "school": "Evocation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Wall of Ice",
+    "level": 6,
+    "school": "Evocation",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Wall of Stone",
+    "level": 5,
+    "school": "Evocation",
+    "class": [
+      [
+        "Druid",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Wall of Thorns",
+    "level": 6,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Warding Bond",
+    "level": 2,
+    "school": "Abjuration",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Water Breathing",
+    "level": 3,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid",
+        "Ranger",
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Water Walk",
+    "level": 3,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Cleric",
+        "Druid",
+        "Ranger",
+        "Sorcerer"
+      ]
+    ]
+  },
+  {
+    "spell": "Web",
+    "level": 2,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Weird",
+    "level": 9,
+    "school": "Illusion",
+    "class": [
+      [
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Wind Walk",
+    "level": 6,
+    "school": "Transmutation",
+    "class": [
+      [
+        "Druid"
+      ]
+    ]
+  },
+  {
+    "spell": "Wind Wall",
+    "level": 3,
+    "school": "Evocation",
+    "class": [
+      [
+        "Druid",
+        "Ranger"
+      ]
+    ]
+  },
+  {
+    "spell": "Wish",
+    "level": 9,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Sorcerer",
+        "Wizard"
+      ]
+    ]
+  },
+  {
+    "spell": "Word of Recall",
+    "level": 6,
+    "school": "Conjuration",
+    "class": [
+      [
+        "Cleric"
+      ]
+    ]
+  },
+  {
+    "spell": "Zone of Truth",
+    "level": 2,
+    "school": "Enchantment",
+    "class": [
+      [
+        "Bard",
+        "Cleric",
+        "Paladin"
+      ]
+    ]
+  }
+]

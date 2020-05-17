@@ -3,7 +3,7 @@ export function rand<T>(items: T[]): T {
 }
 
 export function roll(expr: string): number {
-    const input = expr.toLowerCase().match(/^(\d+)?d(\d+)([+-x])?(\d+)?/);
+    const input = expr.toLowerCase().match(/^(\d+)?d(\d+)([+-×x])?(\d+)?/);
     if (!input) {
         throw new Error("Invalid roll expression");
     }
@@ -22,7 +22,7 @@ export function roll(expr: string): number {
         total += mod;
     } else if ("-" === modifier) {
         total -= mod;
-    } else if ("x" === modifier) {
+    } else if ("x" === modifier || "×" === modifier) {
         total = total * mod;
     }
 
