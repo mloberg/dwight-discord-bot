@@ -20,7 +20,7 @@ export default class Prune extends Command {
     }
 
     async run({ channel }, args) {
-        channel.bulkDelete(args.count, true);
+        channel.bulkDelete(args.count + 1, true);
 
         return null;
     }
