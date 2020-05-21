@@ -1,15 +1,15 @@
 import { rand } from "../utils";
-import spells from "./spells.json";
+import spells from "./spells";
 
-const spell = level => rand(spells.filter(s => s.level === level));
+const spell = async lvl => rand((await spells()).filter(s => s.level === lvl)).spell;
 
 export default {
     a: [
         ...new Array(50).fill("Potion of healing"), // 1-50
-        ...new Array(10).fill(() => `Spell scroll (${spell(0)})`), // 51-60
+        ...new Array(10).fill(async () => `Spell scroll (${await spell(0)})`), // 51-60
         ...new Array(10).fill("Potion of climbing"), // 61-70
-        ...new Array(20).fill(() => `Spell scroll (${spell(1)})`), // 71-90
-        ...new Array(4).fill(() => `Spell scroll (${spell(2)})`), // 91-94
+        ...new Array(20).fill(async () => `Spell scroll (${await spell(1)})`), // 71-90
+        ...new Array(4).fill(async () => `Spell scroll (${await spell(2)})`), // 91-94
         ...new Array(4).fill("Potion of healing (greater)"), // 95-98
         "Bag of holding", // 99
         "Driftglobe", // 100
@@ -23,8 +23,8 @@ export default {
         ...new Array(5).fill("Potion of hill giant strength"), // 40–44
         ...new Array(5).fill("Potion of growth"), // 45–49
         ...new Array(5).fill("Potion of water breathing"), // 50–54
-        ...new Array(5).fill(() => `Spell scroll (${spell(2)})`), // 55–59
-        ...new Array(5).fill(() => `Spell scroll (${spell(3)})`), // 60–64
+        ...new Array(5).fill(async () => `Spell scroll (${await spell(2)})`), // 55–59
+        ...new Array(5).fill(async () => `Spell scroll (${await spell(3)})`), // 60–64
         ...new Array(3).fill("Bag of holding"), // 65–67
         ...new Array(3).fill("Keoghtom’s ointment"), // 68–70
         ...new Array(3).fill("Oil of slipperiness"), // 71–73
@@ -53,7 +53,7 @@ export default {
     ],
     c: [
         ...new Array(15).fill("Potion of healing (superior)"), // 1-15
-        ...new Array(7).fill(() => `Spell scroll (${spell(4)})`), // 16–22
+        ...new Array(7).fill(async () => `Spell scroll (${await spell(4)})`), // 16–22
         ...new Array(5).fill("Ammunition, +2"), // 23–27
         ...new Array(5).fill("Potion of clairvoyance"), // 28–32
         ...new Array(5).fill("Potion of diminution"), // 33–37
@@ -63,7 +63,7 @@ export default {
         ...new Array(5).fill("Potion of heroism"), // 53–57
         ...new Array(5).fill("Potion of invulnerability"), // 58–62
         ...new Array(5).fill("Potion of mind reading"), // 63–67
-        ...new Array(5).fill(() => `Spell scroll (${spell(5)})`), // 68–72
+        ...new Array(5).fill(async () => `Spell scroll (${await spell(5)})`), // 68–72
         ...new Array(3).fill("Elixir of health"), // 73–75
         ...new Array(3).fill("Oil of etherealness"), // 76–78
         ...new Array(3).fill("Potion of fire giant strength"), // 79–81
@@ -85,25 +85,25 @@ export default {
         ...new Array(20).fill("Potion of healing (supreme)"), // 1-20
         ...new Array(10).fill("Potion of invisibility"), // 21-30
         ...new Array(10).fill("Potion of speed"), // 31–40
-        ...new Array(10).fill(() => `Spell scroll (${spell(6)})`), // 41–50
-        ...new Array(7).fill(() => `Spell scroll (${spell(7)})`), // 51–57
+        ...new Array(10).fill(async () => `Spell scroll (${await spell(6)})`), // 41–50
+        ...new Array(7).fill(async () => `Spell scroll (${await spell(7)})`), // 51–57
         ...new Array(5).fill("Ammunition, +3"), // 58–62
         ...new Array(5).fill("Oil of sharpness"), // 63–67
         ...new Array(5).fill("Potion of flying"), // 68–72
         ...new Array(5).fill("Potion of cloud giant strength"), // 73–77
         ...new Array(5).fill("Potion of longevity"), // 78–82
         ...new Array(5).fill("Potion of vitality"), // 83–87
-        ...new Array(5).fill(() => `Spell scroll (${spell(8)})`), // 88–92
+        ...new Array(5).fill(async () => `Spell scroll (${await spell(8)})`), // 88–92
         ...new Array(3).fill("Horseshoes of a zephyr"), // 93–95
         ...new Array(3).fill("Nolzur’s marvelous pigments"), // 96–98
         "Bag of devouring", // 99
         "Portable hole", // 100
     ],
     e: [
-        ...new Array(30).fill(() => `Spell scroll (${spell(8)})`), // 1-30
+        ...new Array(30).fill(async () => `Spell scroll (${await spell(8)})`), // 1-30
         ...new Array(25).fill("Potion of storm giant strength"), // 31-55
         ...new Array(15).fill("Potion of healing (supreme)"), // 56–70
-        ...new Array(15).fill(() => `Spell scroll (${spell(9)})`), // 71–85
+        ...new Array(15).fill(async () => `Spell scroll (${await spell(9)})`), // 71–85
         ...new Array(8).fill("Universal solvent"), // 86–93
         ...new Array(5).fill("Arrow of slaying"), // 94–98
         ...new Array(2).fill("Sovereign glue"), // 99–100

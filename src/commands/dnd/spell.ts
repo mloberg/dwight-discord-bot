@@ -1,10 +1,8 @@
 import { Command, FriendlyError } from "discord.js-commando";
-import fetch from "node-fetch";
 
-import Cache from "../../data/cache";
+import spellList from "../../data/spells";
 import { rand } from "../../utils";
 
-const spellCache = new Cache();
 
 export default class Treasure extends Command {
     constructor(client) {
@@ -15,7 +13,7 @@ export default class Treasure extends Command {
             memberName: "spell",
             description: "Return a random spell.",
             examples: ["spell 0", "spell 1 Wizard Evocation"],
-            format: "LEVEL CLASS SCHOOL>",
+            format: "LEVEL CLASS SCHOOL",
             args: [
                 {
                     key: "level",
@@ -43,14 +41,7 @@ export default class Treasure extends Command {
     }
 
     async run(msg, args) {
-        const data = await spellCache.remember("spells", async () => {
-            return (await fetch("https://dnd.mlo.io/api/spells.json")).json();
-        });
-        let spells: {
-            spell: string;
-            class: string[];
-            school: string;
-        }[] = data.spells.filter(s => s.level === args.level);
+        let spells = (await spellList()).filter(s => s.level === args.level);
 
         if (args.class) {
             spells = spells.filter(s => s.class.includes(args.class));

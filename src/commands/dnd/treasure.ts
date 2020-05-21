@@ -1,4 +1,5 @@
 import { Command } from "discord.js-commando";
+import { isString } from "util";
 
 import treasure, { crIndex } from "../../data/treasure";
 import { rand, roll as _d } from "../../utils";
@@ -53,14 +54,15 @@ export default class Treasure extends Command {
             }
 
             for (let index = 0; index < _d(key); index++) {
-                let item = rand(value);
-                if (item instanceof Function) {
-                    item = item();
-                }
+                const item = await this.resolveItem(rand(value));
                 reply += `\n* ${type}: ${item}`;
             }
         }
 
         return msg.channel.send(reply);
+    }
+
+    private async resolveItem(value: string|Function): Promise<string> {
+        return isString(value) ? value : await value();
     }
 }
