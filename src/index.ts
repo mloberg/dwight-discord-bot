@@ -1,9 +1,11 @@
 import Commando from "discord.js-commando";
 import path from "path";
 
+import { env } from "./utils";
+
 const client = new Commando.CommandoClient({
     owner: "690307094250782801",
-    commandPrefix: process.env.BOT_PREFIX || "^",
+    commandPrefix: env("BOT_PREFIX", "^"),
 });
 
 client.on("error", console.error);
@@ -32,4 +34,4 @@ client.registry
     .registerTypesIn(path.join(__dirname, "types"))
     .registerCommandsIn(path.join(__dirname, "commands"));
 
-client.login(process.env.BOT_TOKEN);
+client.login(env("BOT_TOKEN", ""));

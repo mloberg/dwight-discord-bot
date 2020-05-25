@@ -1,9 +1,13 @@
-export function rand<T>(items: T[]): T {
-    return items[Math.floor(Math.random() * items.length)];
-}
-
 export function between(min: number, max: number): number {
     return Math.floor(Math.random()*(max-min+1)+min);
+}
+
+export function env(key: string, _default: string): string {
+    return process.env[key] || _default;
+}
+
+export function rand<T>(items: T[]): T {
+    return items[Math.floor(Math.random() * items.length)];
 }
 
 export function roll(expr: string): number {
