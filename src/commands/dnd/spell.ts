@@ -1,4 +1,4 @@
-import { Command, FriendlyError } from "discord.js-commando";
+import { Command, CommandMessage, FriendlyError } from "discord.js-commando";
 
 import spellList from "../../data/spells";
 import { rand } from "../../utils";
@@ -40,7 +40,7 @@ export default class Treasure extends Command {
         });
     }
 
-    async run(msg, args) {
+    async run(msg: CommandMessage, args) {
         let spells = (await spellList()).filter(s => s.level === args.level);
 
         if (args.class) {

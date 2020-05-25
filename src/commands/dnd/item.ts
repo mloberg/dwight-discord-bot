@@ -1,4 +1,4 @@
-import { Command, FriendlyError } from "discord.js-commando";
+import { Command, CommandMessage, FriendlyError } from "discord.js-commando";
 
 import itemList from "../../data/items.json";
 import { rand } from "../../utils";
@@ -11,7 +11,7 @@ export default class Treasure extends Command {
             group: "dnd",
             memberName: "item",
             description: "Return a random magic item.",
-            examples: ["spell uncommon"],
+            examples: ["item uncommon"],
             format: "RARITY",
             args: [
                 {
@@ -32,7 +32,7 @@ export default class Treasure extends Command {
         });
     }
 
-    async run(msg, args) {
+    async run(msg: CommandMessage, args) {
         let items = itemList.filter(i => i.rarity === args.rarity);
 
         if (args.type) {

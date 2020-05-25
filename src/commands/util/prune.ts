@@ -1,4 +1,4 @@
-import { Command } from "discord.js-commando";
+import { Command, CommandMessage } from "discord.js-commando";
 
 export default class Prune extends Command {
     constructor(client) {
@@ -19,7 +19,7 @@ export default class Prune extends Command {
         });
     }
 
-    async run({ channel }, args) {
+    async run({ channel }: CommandMessage, args) {
         channel.bulkDelete(args.count + 1, true);
 
         return null;

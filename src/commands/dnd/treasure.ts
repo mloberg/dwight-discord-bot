@@ -1,4 +1,4 @@
-import { Command } from "discord.js-commando";
+import { Command, CommandMessage } from "discord.js-commando";
 import { isString } from "util";
 
 import treasure, { crIndex } from "../../data/treasure";
@@ -40,7 +40,7 @@ export default class Treasure extends Command {
         });
     }
 
-    async run(msg, args) {
+    async run(msg: CommandMessage, args) {
         const roll = 0 === args.roll ? _d("d100") : args.roll;
         const table = (["ind", "individual"].includes(args.type)
             ? treasure.individual
