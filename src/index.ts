@@ -4,7 +4,7 @@ import path from "path";
 import { env } from "./utils";
 
 const client = new Commando.CommandoClient({
-    owner: "690307094250782801",
+    owner: env("BOT_OWNER", ""),
     commandPrefix: env("BOT_PREFIX", "^"),
 });
 
