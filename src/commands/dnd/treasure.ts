@@ -12,21 +12,13 @@ export default class Treasure extends Command {
             group: "dnd",
             memberName: "treasure",
             description: "Generate random treasure.",
-            examples: ["treasure ind 2", "treasure hoard 5 72"],
-            format: "[ind|individual|group|hoard] CR <d100>",
+            examples: ["treasure 2", "treasure !5 72"],
+            format: "[!]CR <d100>",
             args: [
                 {
-                    key: "type",
-                    prompt: "What type of treasure to generate?",
-                    type: "string",
-                    validate: v => ["ind", "individual", "group", "hoard"].includes(v), // use oneOf in next version
-                },
-                {
                     key: "cr",
-                    label: "challengeRating",
-                    prompt: "What was the challenge rating?",
-                    type: "integer",
-                    min: 0,
+                    prompt: "What is the challenge rating?",
+                    type: "crit",
                 },
                 {
                     key: "roll",
@@ -41,10 +33,10 @@ export default class Treasure extends Command {
     }
 
     async run(msg: CommandMessage, args) {
+        const [hoard, cr] = args.cr;
         const roll = 0 === args.roll ? _d("d100") : args.roll;
-        const table = (["ind", "individual"].includes(args.type)
-            ? treasure.individual
-            : treasure.hoard)[crIndex(args.cr)][roll - 1];
+        const tables = hoard ? treasure.hoard : treasure.individual;
+        const table = tables[crIndex(cr)][roll - 1];
 
         let reply = "You found:";
         for (const [key, type, value] of table) {
