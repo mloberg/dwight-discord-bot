@@ -1,4 +1,7 @@
 {
+  "name": "@mloberg/dwight-bot",
+  "license": "MIT",
+  "homepage": "https://github.com/mloberg/dwight-discord-bot",
   "private": true,
   "scripts": {
     "build": "tsc",
