@@ -1,0 +1,46 @@
+import { Message, Client } from "discord.js";
+import { Command, Arguments } from "../types";
+
+import treasure, { crIndex } from "../data/treasure";
+import { rand, roll } from "../utils";
+import { isString } from "util";
+
+export default class extends Command {
+    constructor(client: Client) {
+        super(client, {
+            name: "treasure",
+            description: "Give me the loot!",
+        });
+    }
+
+    async run({ channel }: Message, args: Arguments) {
+        const cr = args.cr || args._[0];
+        const dice = args.roll || args._[1] || roll("d100");
+
+        if (!cr) {
+            throw new Error("Missing challenge rating");
+        }
+
+        const tables = args.hoard ? treasure.hoard : treasure.individual;
+        const table = tables[crIndex(cr)][dice - 1];
+
+        let reply = "You found:";
+        for (const [key, type, value] of table) {
+            if (!value) {
+                reply += `\n* ${roll(key)} ${type}`;
+                continue;
+            }
+
+            for (let index = 0; index < roll(key); index++) {
+                const item = await this.resolveItem(rand(value));
+                reply += `\n* ${type}: ${item}`;
+            }
+        }
+
+        return channel.send(reply);
+    }
+
+    private async resolveItem(value: string|Function): Promise<string> {
+        return isString(value) ? value : await value();
+    }
+}

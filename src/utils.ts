@@ -10,6 +10,10 @@ export function rand<T>(items: T[]): T {
     return items[Math.floor(Math.random() * items.length)];
 }
 
+export function ucfirst(input: string): string {
+    return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+}
+
 export function roll(expr: string): number {
     const input = expr.toLowerCase().match(/^(\d+)?d(\d+)([+-×x])?(\d+)?/);
     if (!input) {

@@ -1,37 +1,48 @@
-import Commando from "discord.js-commando";
-import path from "path";
+import { Client, Collection } from "discord.js";
+import { readdirSync } from "fs";
+import parser from "yargs-parser";
 
 import { env } from "./utils";
+import { Command } from "./types";
 
-const client = new Commando.CommandoClient({
-    owner: env("BOT_OWNER", ""),
-    commandPrefix: env("BOT_PREFIX", "^"),
-});
+const client = new Client();
+const commands = new Collection<string, Command>();
 
-client.on("error", console.error);
-client.on("warn", console.warn);
+const prefix = env("BOT_PREFIX", "__");
 
-if (process.env.DEBUG) {
-    client.on("debug", console.log);
-}
-
-client.on("ready", () => {
+client.once("ready", () => {
     client.user.setActivity("Assistant to the Dungeon Master");
 
     console.log(`Client ready; logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`);
 });
-client.on("commandError", (cmd, err) => {
-    if (err instanceof Commando.FriendlyError) {
+
+const commandFiles = readdirSync(`${__dirname}/commands`).filter(file => file.endsWith(".js"));
+
+for (const file of commandFiles) {
+    const commandModule = require(`${__dirname}/commands/${file}`).default;
+    const command: Command = new commandModule(client);
+	commands.set(command.name, command);
+}
+
+client.on("message", async (message) => {
+    if (!message.content.startsWith(prefix) || message.author.bot) {
         return;
     }
 
-    console.error(`Error in command ${cmd.groupID}:${cmd.memberName}`, err);
-});
+    const args = parser(message.content.slice(prefix.length).trim());
+    const command = args._.shift().toString();
 
-client.registry
-    .registerDefaults()
-    .registerGroup("dnd")
-    .registerTypesIn(path.join(__dirname, "types"))
-    .registerCommandsIn(path.join(__dirname, "commands"));
+    if (!commands.has(command)) {
+        return;
+    }
+
+    try {
+        await commands.get(command).run(message, args);
+    } catch (err) {
+        // add command usage to output?
+        message.reply(`That broke me. ${err.toString()}`);
+        console.log(err);
+    }
+});
 
 client.login(env("BOT_TOKEN", ""));

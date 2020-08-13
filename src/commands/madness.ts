@@ -1,6 +1,6 @@
-import { Command } from "discord.js-commando";
-
-import { rand, roll } from "../../utils";
+import { Message, Client } from "discord.js";
+import { Command, Arguments } from "../types";
+import { rand, roll } from "../utils";
 
 const madness = {
     short: {
@@ -56,45 +56,24 @@ const madness = {
     },
 };
 
-export default class Madness extends Command {
-    constructor(client) {
+export default class extends Command {
+    constructor(client: Client) {
         super(client, {
             name: "madness",
-            group: "dnd",
-            memberName: "madness",
-            description: "Send a random madness to a user.",
-            examples: ["madness short @user", "madness long @user"],
-            format: "TYPE USER",
-            args: [
-                {
-                    key: "type",
-                    prompt: "What type of madness should I assign?",
-                    type: "string",
-                    validate: v => ["short", "long", "flaw"].includes(v.toLowerCase()),
-                },
-                {
-                    key: "user",
-                    prompt: "Who should I assign a madness to?",
-                    type: "member",
-                },
-                {
-                    key: "roll",
-                    prompt: "What did you roll? (d100)",
-                    type: "integer",
-                    max: 100,
-                    default: 0,
-                },
-            ],
+            description: "Give a random madness to a player",
         });
     }
 
-    async run(_, args) {
-        const mad = madness[args.type.toLowerCase()];
+    async run({ mentions }: Message, args: Arguments) {
+        if (!mentions.users.size) {
+            throw new Error("You must assign a madness to a user.");
+        }
+        const user = mentions.users.first();
+        const mad = madness[args._[0].toString().toLowerCase() || "short"];
         const duration = `${mad.duration ? roll(mad.duration) : ""} ${mad.time}.`.trim();
         const message = `${rand(mad.options)} This lasts ${duration}`;
+        console.log(`${user.username}: ${message}`);
 
-        console.log(`${args.user.user.username}: ${message}`);
-
-        return args.user.send(message);
+        return user.send(message);
     }
 }
