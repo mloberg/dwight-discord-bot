@@ -12,11 +12,17 @@ interface Item {
 }
 
 const apiUrl = env('API_URL', 'https://dnd.mlo.io/api');
-const itemCache = new Cache();
+const cache = new Cache<Item[]>();
 
 export default async (): Promise<Item[]> => {
-    const data = await itemCache.remember('items', async () => {
-        return (await fetch(`${apiUrl}/items.json`)).json();
-    });
+    const cached = cache.get();
+    if (cached) {
+        return cached;
+    }
+
+    const response = await fetch(`${apiUrl}/items.json`);
+    const data = await response.json();
+    cache.set(data.items);
+
     return data.items;
 };

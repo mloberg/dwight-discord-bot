@@ -11,11 +11,17 @@ interface Spell {
 }
 
 const apiUrl = env('API_URL', 'https://dnd.mlo.io/api');
-const spellCache = new Cache();
+const cache = new Cache<Spell[]>();
 
 export default async (): Promise<Spell[]> => {
-    const data = await spellCache.remember('spells', async () => {
-        return (await fetch(`${apiUrl}/spells.json`)).json();
-    });
+    const cached = cache.get();
+    if (cached) {
+        return cached;
+    }
+
+    const response = await fetch(`${apiUrl}/spells.json`);
+    const data = await response.json();
+    cache.set(data.spells);
+
     return data.spells;
 };

@@ -1,34 +1,19 @@
-interface CacheItem<T> {
-    value: T;
-    expires: Date;
-}
-
 export default class Cache<T> {
-    private cache: Record<string, CacheItem<T>> = {};
+    private value: T;
+    private expires: Date;
     constructor(readonly ttl = 300) {}
 
-    get(key: string): null | T {
-        const cache = this.cache[key];
-        if (cache && cache.expires.getTime() > new Date().getTime()) {
-            return cache.value;
+    get(): null | T {
+        if (this.value && this.expires.getTime() > new Date().getTime()) {
+            return this.value;
         }
         return null;
     }
 
-    set(key: string, value: T, ttl?: number): void {
+    set(value: T, ttl?: number): void {
         const expires = new Date();
         expires.setSeconds(expires.getSeconds() + (ttl || this.ttl));
-        this.cache[key] = { value, expires };
-    }
-
-    remember(key: string, value: { (): T }, ttl?: number): T {
-        const cached = this.get(key);
-        if (cached) {
-            return cached;
-        }
-
-        const resolved = value();
-        this.set(key, resolved, ttl);
-        return resolved;
+        this.value = value;
+        this.expires = expires;
     }
 }
