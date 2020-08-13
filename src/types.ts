@@ -1,13 +1,14 @@
-import { Message, Client } from "discord.js";
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { Client, Message } from 'discord.js';
 
 type ArgsOutput = (string | number)[];
 export interface Arguments {
     /** Non-option arguments */
     _: ArgsOutput;
     /** Arguments after the end-of-options flag `--` */
-    "--"?: ArgsOutput;
+    '--'?: ArgsOutput;
     /** All remaining options */
-    [argName: string]: any;
+    [argName: string]: any; // eslint-disable-line @typescript-eslint/no-explicit-any
 }
 
 interface CommandOptions {
@@ -23,7 +24,7 @@ export class Command {
         this.description = options.description;
     }
 
-    async run(message: Message, args: Arguments): Promise<Message|void> {
-        throw new Error("Missing command logic");
+    async run(message: Message, args: Arguments): Promise<Message | void> {
+        throw new Error('Missing command logic');
     }
 }

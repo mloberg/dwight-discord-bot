@@ -1,30 +1,30 @@
-import { Message, Client } from "discord.js";
-import { Command, Arguments } from "../types";
+import { Client, Message } from 'discord.js';
+import { isString } from 'util';
 
-import treasure, { crIndex } from "../data/treasure";
-import { rand, roll } from "../utils";
-import { isString } from "util";
+import treasure, { crIndex } from '../data/treasure';
+import { Arguments, Command } from '../types';
+import { rand, roll } from '../utils';
 
 export default class extends Command {
     constructor(client: Client) {
         super(client, {
-            name: "treasure",
-            description: "Give me the loot!",
+            name: 'treasure',
+            description: 'Give me the loot!',
         });
     }
 
-    async run({ channel }: Message, args: Arguments) {
+    async run({ channel }: Message, args: Arguments): Promise<Message> {
         const cr = args.cr || args._[0];
-        const dice = args.roll || args._[1] || roll("d100");
+        const dice = args.roll || args._[1] || roll('d100');
 
         if (!cr) {
-            throw new Error("Missing challenge rating");
+            throw new Error('Missing challenge rating');
         }
 
         const tables = args.hoard ? treasure.hoard : treasure.individual;
         const table = tables[crIndex(cr)][dice - 1];
 
-        let reply = "You found:";
+        let reply = 'You found:';
         for (const [key, type, value] of table) {
             if (!value) {
                 reply += `\n* ${roll(key)} ${type}`;
@@ -40,7 +40,7 @@ export default class extends Command {
         return channel.send(reply);
     }
 
-    private async resolveItem(value: string|Function): Promise<string> {
+    private async resolveItem(value: string | { (): PromiseLike<string> }): Promise<string> {
         return isString(value) ? value : await value();
     }
 }
