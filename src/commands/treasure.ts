@@ -1,18 +1,19 @@
-import { Client, Message } from 'discord.js';
-import { isString } from 'util';
+import { Message } from 'discord.js';
 
 import treasure, { crIndex } from '../data/treasure';
 import { Arguments, Command } from '../types';
 import { random, roll } from '../utils';
 
-export default class extends Command {
-    constructor(client: Client) {
-        super(client, {
-            name: 'treasure',
-            description: 'Give me the loot!',
-        });
-    }
+const resolveItem = async (value: string | { (): PromiseLike<string> }): Promise<string> => {
+    return typeof value === 'string' ? value : await value();
+};
 
+const command: Command = {
+    name: 'treasure',
+    description: 'Give me the loot!',
+    alias: ['loot'],
+    usage: 'CR [ROLL] [--hoard]',
+    examples: ['4', '6 86', '10 --hoard'],
     async run(message: Message, args: Arguments): Promise<Message> {
         const cr = args.cr || args._[0];
         const dice = args.roll || args._[1] || roll('d100');
@@ -32,7 +33,7 @@ export default class extends Command {
             }
 
             for (let index = 0; index < roll(key); index++) {
-                const item = await this.resolveItem(random(value));
+                const item = await resolveItem(random(value));
                 reply += `\n* ${type}: ${item}`;
             }
         }
@@ -40,9 +41,7 @@ export default class extends Command {
         await message.delete();
 
         return message.channel.send(reply);
-    }
+    },
+};
 
-    private async resolveItem(value: string | { (): PromiseLike<string> }): Promise<string> {
-        return isString(value) ? value : await value();
-    }
-}
+export default command;

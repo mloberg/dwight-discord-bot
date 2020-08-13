@@ -1,16 +1,13 @@
-import { Client, Message } from 'discord.js';
+import { Message } from 'discord.js';
 
 import { Command } from '../types';
 
-export default class extends Command {
-    constructor(client: Client) {
-        super(client, {
-            name: 'ping',
-            description: 'pong',
-        });
-    }
-
+const command: Command = {
+    name: 'ping',
+    description: 'Pong',
     async run({ channel }: Message): Promise<Message> {
         return channel.send('pong');
-    }
-}
+    },
+};
+
+export default command;

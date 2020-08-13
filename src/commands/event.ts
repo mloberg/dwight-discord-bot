@@ -1,4 +1,4 @@
-import { Client, Message } from 'discord.js';
+import { Message } from 'discord.js';
 
 import { Arguments, Command } from '../types';
 import { random } from '../utils';
@@ -46,14 +46,11 @@ const events: { event: string; where?: string[]; when?: string[] }[] = [
     { event: 'Unexplained magic occurs' },
 ];
 
-export default class extends Command {
-    constructor(client: Client) {
-        super(client, {
-            name: 'event',
-            description: 'Trigger a random event',
-        });
-    }
-
+const command: Command = {
+    name: 'event',
+    description: 'Trigger a random event',
+    usage: '[--where] WHERE [--when] WHEN',
+    examples: ['town', 'outside night', '--when night'],
     async run(message: Message, args: Arguments): Promise<Message> {
         const where = args.where || args._[0];
         const when = args.when || args._[1];
@@ -73,5 +70,7 @@ export default class extends Command {
         await message.delete();
 
         return event ? message.channel.send(event.event) : null;
-    }
-}
+    },
+};
+
+export default command;

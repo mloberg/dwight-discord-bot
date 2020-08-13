@@ -1,17 +1,15 @@
-import { Client, Message } from 'discord.js';
+import { Message } from 'discord.js';
 
 import spellList from '../data/spells';
 import { Arguments, Command } from '../types';
 import { random, ucfirst } from '../utils';
 
-export default class extends Command {
-    constructor(client: Client) {
-        super(client, {
-            name: 'spell',
-            description: 'Return a random spell',
-        });
-    }
-
+const command: Command = {
+    name: 'spell',
+    description: 'Return a random spell',
+    alias: ['spells'],
+    usage: '[--level] LEVEL [--class] CLASS [--school] SCHOOL',
+    examples: ['cantrip', '1 bard', '4 --school illusion'],
     async run(message: Message, args: Arguments): Promise<Message> {
         const level = args.level || args._[0];
         const type = args.class || args._[1];
@@ -36,5 +34,7 @@ export default class extends Command {
         }
 
         return message.reply(spell.spell);
-    }
-}
+    },
+};
+
+export default command;

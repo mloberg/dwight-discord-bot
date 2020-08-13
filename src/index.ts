@@ -20,8 +20,7 @@ const commandFiles = readdirSync(`${__dirname}/commands`).filter((file) => file.
 
 for (const file of commandFiles) {
     /* eslint-disable @typescript-eslint/no-var-requires */
-    const commandModule = require(`${__dirname}/commands/${file}`).default;
-    const command: Command = new commandModule(client);
+    const command: Command = require(`${__dirname}/commands/${file}`).default;
     commands.set(command.name, command);
 }
 
@@ -31,14 +30,16 @@ client.on('message', async (message) => {
     }
 
     const args = parser(message.content.slice(prefix.length).trim());
-    const command = args._.shift().toString();
+    const commandName = args._.shift().toString();
 
-    if (!commands.has(command)) {
+    const command = commands.get(commandName) || commands.find((cmd) => cmd.alias && cmd.alias.includes(commandName));
+
+    if (!command) {
         return;
     }
 
     try {
-        await commands.get(command).run(message, args);
+        await command.run(message, args, commands);
     } catch (err) {
         // add command usage to output?
         message.reply(`That broke me. ${err.toString()}`);

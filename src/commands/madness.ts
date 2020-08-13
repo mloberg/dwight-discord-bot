@@ -1,4 +1,4 @@
-import { Client, Message } from 'discord.js';
+import { Message } from 'discord.js';
 
 import { Arguments, Command } from '../types';
 import { random, roll } from '../utils';
@@ -91,14 +91,10 @@ const madness = {
     },
 };
 
-export default class extends Command {
-    constructor(client: Client) {
-        super(client, {
-            name: 'madness',
-            description: 'Give a random madness to a player',
-        });
-    }
-
+const command: Command = {
+    name: 'madness',
+    description: 'Give a random madness to a player',
+    usage: '[short|long|flaw] @user',
     async run({ mentions }: Message, args: Arguments): Promise<Message> {
         if (!mentions.users.size) {
             throw new Error('You must assign a madness to a user.');
@@ -110,5 +106,7 @@ export default class extends Command {
         console.log(`${user.username}: ${message}`);
 
         return user.send(message);
-    }
-}
+    },
+};
+
+export default command;

@@ -1,4 +1,4 @@
-import { Client, Message } from 'discord.js';
+import { Message } from 'discord.js';
 
 import { Arguments, Command } from '../types';
 import { roll } from '../utils';
@@ -56,14 +56,11 @@ const wildMagicTable = [
     'You regain all expended sorcery points.',
 ];
 
-export default class extends Command {
-    constructor(client: Client) {
-        super(client, {
-            name: 'wild',
-            description: 'Roll on the Wild Magic Surge table',
-        });
-    }
-
+const command: Command = {
+    name: 'wild',
+    description: 'Roll on the Wild Magic Surge table',
+    alias: ['wild-magic'],
+    usage: '[ROLL]',
     async run(message: Message, args: Arguments): Promise<Message> {
         const dice = args.roll || args._[0] || roll('d100');
         const index = Math.floor((dice - 1) / 2);
@@ -72,5 +69,7 @@ export default class extends Command {
         await message.delete();
 
         return message.reply(result);
-    }
-}
+    },
+};
+
+export default command;
