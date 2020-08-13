@@ -5,10 +5,9 @@ interface CacheItem<T> {
 
 export default class Cache<T> {
     private cache: Record<string, CacheItem<T>> = {};
-    constructor(readonly ttl = 300) {
-    }
+    constructor(readonly ttl = 300) {}
 
-    get(key: string): null|T {
+    get(key: string): null | T {
         const cache = this.cache[key];
         if (cache && cache.expires.getTime() > new Date().getTime()) {
             return cache.value;
@@ -19,10 +18,10 @@ export default class Cache<T> {
     set(key: string, value: T, ttl?: number): void {
         const expires = new Date();
         expires.setSeconds(expires.getSeconds() + (ttl || this.ttl));
-        this.cache[key] = {value, expires};
+        this.cache[key] = { value, expires };
     }
 
-    remember(key: string, value, ttl?: number) {
+    remember(key: string, value: { (): T }, ttl?: number): T {
         const cached = this.get(key);
         if (cached) {
             return cached;
