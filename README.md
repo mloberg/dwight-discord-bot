@@ -22,6 +22,3 @@ To rebuild and restart the bot on file changes, run `npm run watch`.
 ## Contributing
 
 Before commit changes, make sure `npm run lint` passes.
-
-Use [Commitizen](https://commitizen.github.io/cz-cli/) when commiting. Run
-`npm run commit` and follow the prompts.
