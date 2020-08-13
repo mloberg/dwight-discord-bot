@@ -2,7 +2,7 @@ import { Client, Message } from 'discord.js';
 
 import spellList from '../data/spells';
 import { Arguments, Command } from '../types';
-import { rand, ucfirst } from '../utils';
+import { random, ucfirst } from '../utils';
 
 export default class extends Command {
     constructor(client: Client) {
@@ -30,7 +30,7 @@ export default class extends Command {
             spells = spells.filter((s) => school === s.school);
         }
 
-        const spell = rand(spells);
+        const spell = random(spells);
         if (!spell) {
             throw new Error('I could not find an spell matching those parameters.');
         }

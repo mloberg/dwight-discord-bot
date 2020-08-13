@@ -1,7 +1,7 @@
-import { rand } from '../utils';
+import { random } from '../utils';
 import spells from './spells';
 
-const spell = async (lvl) => rand((await spells()).filter((s) => s.level === lvl)).spell;
+const spell = async (lvl) => random((await spells()).filter((s) => s.level === lvl)).spell;
 
 export default {
     a: [
@@ -173,7 +173,7 @@ export default {
     g: [
         ...new Array(11).fill('Weapon, +2'), // 01–11
         ...new Array(3).fill(() =>
-            rand([
+            random([
                 // 12–14
                 'Figurine of wondrous power (Bronze griffon)',
                 'Figurine of wondrous power (Ebony fly)',
@@ -373,7 +373,7 @@ export default {
         ...new Array(2).fill('Armor, +2 studded leather'), // 72–73
         ...new Array(2).fill('Well of many worlds'), // 74–75
         (): string =>
-            rand([
+            random([
                 // 76
                 'Armor, +2 half plate',
                 'Armor, +2 half plate',

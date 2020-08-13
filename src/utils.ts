@@ -6,7 +6,7 @@ export function env(key: string, _default: string): string {
     return process.env[key] || _default;
 }
 
-export function rand<T>(items: T[]): T {
+export function random<T>(items: T[]): T {
     return items[Math.floor(Math.random() * items.length)];
 }
 

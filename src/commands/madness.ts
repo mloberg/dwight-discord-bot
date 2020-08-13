@@ -1,7 +1,7 @@
 import { Client, Message } from 'discord.js';
 
 import { Arguments, Command } from '../types';
-import { rand, roll } from '../utils';
+import { random, roll } from '../utils';
 
 const madness = {
     short: {
@@ -106,7 +106,7 @@ export default class extends Command {
         const user = mentions.users.first();
         const mad = madness[args._[0].toString().toLowerCase() || 'short'];
         const duration = `${mad.duration ? roll(mad.duration) : ''} ${mad.time}.`.trim();
-        const message = `${rand(mad.options)} This lasts ${duration}`;
+        const message = `${random(mad.options)} This lasts ${duration}`;
         console.log(`${user.username}: ${message}`);
 
         return user.send(message);

@@ -3,7 +3,7 @@ import { isString } from 'util';
 
 import treasure, { crIndex } from '../data/treasure';
 import { Arguments, Command } from '../types';
-import { rand, roll } from '../utils';
+import { random, roll } from '../utils';
 
 export default class extends Command {
     constructor(client: Client) {
@@ -13,7 +13,7 @@ export default class extends Command {
         });
     }
 
-    async run({ channel }: Message, args: Arguments): Promise<Message> {
+    async run(message: Message, args: Arguments): Promise<Message> {
         const cr = args.cr || args._[0];
         const dice = args.roll || args._[1] || roll('d100');
 
@@ -32,12 +32,14 @@ export default class extends Command {
             }
 
             for (let index = 0; index < roll(key); index++) {
-                const item = await this.resolveItem(rand(value));
+                const item = await this.resolveItem(random(value));
                 reply += `\n* ${type}: ${item}`;
             }
         }
 
-        return channel.send(reply);
+        await message.delete();
+
+        return message.channel.send(reply);
     }
 
     private async resolveItem(value: string | { (): PromiseLike<string> }): Promise<string> {

@@ -2,7 +2,7 @@ import { Client, Message } from 'discord.js';
 
 import itemList from '../data/items';
 import { Arguments, Command } from '../types';
-import { rand } from '../utils';
+import { random } from '../utils';
 
 export default class extends Command {
     constructor(client: Client) {
@@ -25,7 +25,7 @@ export default class extends Command {
             items = items.filter((i) => type === i.type.toLowerCase());
         }
 
-        const item = rand(items);
+        const item = random(items);
         if (!item) {
             throw new Error('I could not find an item matching those parameters.');
         }
