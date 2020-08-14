@@ -1,5 +1,6 @@
 import { Collection, Message } from 'discord.js';
 
+import { FriendlyError } from '../error';
 import { Arguments, Command } from '../types';
 import { env } from '../utils';
 
@@ -9,9 +10,10 @@ const command: Command = {
     name: 'help',
     description: 'Get help with commands',
     alias: ['commands'],
+    usage: '[COMMAND]',
     async run(message: Message, args: Arguments, commands: Collection<string, Command>): Promise<Message> {
         if (!args._.length) {
-            return message.reply(
+            return message.channel.send(
                 [
                     'Here is a list of available commands:',
                     commands.map((c) => c.name).join(', '),
@@ -25,7 +27,7 @@ const command: Command = {
         const command = commands.get(name) || commands.find((c) => c.alias && c.alias.includes(name));
 
         if (!command) {
-            return message.channel.send("That's not a valid command");
+            throw new FriendlyError(`No command for "${name}" found.`);
         }
 
         const help = [`**${command.name}**: ${command.description}`];

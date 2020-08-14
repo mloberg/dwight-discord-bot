@@ -1,5 +1,6 @@
 import { Message } from 'discord.js';
 
+import { FriendlyError } from '../error';
 import { Arguments, Command } from '../types';
 import { random, roll } from '../utils';
 
@@ -97,7 +98,7 @@ const command: Command = {
     usage: '[short|long|flaw] @user',
     async run({ mentions }: Message, args: Arguments): Promise<Message> {
         if (!mentions.users.size) {
-            throw new Error('You must assign a madness to a user.');
+            throw new FriendlyError('You must assign a madness to a user.');
         }
         const user = mentions.users.first();
         const mad = madness[args._[0].toString().toLowerCase() || 'short'];

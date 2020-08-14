@@ -1,6 +1,7 @@
 import { Message } from 'discord.js';
 
 import itemList from '../data/items';
+import { FriendlyError } from '../error';
 import { Arguments, Command } from '../types';
 import { random } from '../utils';
 
@@ -27,7 +28,7 @@ const command: Command = {
 
         const item = random(items);
         if (!item) {
-            throw new Error('I could not find an item matching those parameters.');
+            throw new FriendlyError("I couldn't find an item matching those parameters.");
         }
 
         return message.reply(item.item);

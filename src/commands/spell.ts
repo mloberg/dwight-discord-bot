@@ -1,6 +1,7 @@
 import { Message } from 'discord.js';
 
 import spellList from '../data/spells';
+import { FriendlyError } from '../error';
 import { Arguments, Command } from '../types';
 import { random, ucfirst } from '../utils';
 
@@ -30,7 +31,7 @@ const command: Command = {
 
         const spell = random(spells);
         if (!spell) {
-            throw new Error('I could not find an spell matching those parameters.');
+            throw new FriendlyError("I couldn't find an spell matching those parameters.");
         }
 
         return message.reply(spell.spell);

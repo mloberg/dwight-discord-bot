@@ -2,6 +2,7 @@ import { Client, Collection } from 'discord.js';
 import { readdirSync } from 'fs';
 import parser from 'yargs-parser';
 
+import { FriendlyError } from './error';
 import { Command } from './types';
 import { env } from './utils';
 
@@ -41,9 +42,11 @@ client.on('message', async (message) => {
     try {
         await command.run(message, args, commands);
     } catch (err) {
-        // add command usage to output?
-        message.reply(`That broke me. ${err.toString()}`);
-        console.log(err);
+        if (err instanceof FriendlyError) {
+            return message.reply(err.message);
+        }
+        message.reply('That broke me. Check my logs for details.');
+        console.error(err);
     }
 });
 
