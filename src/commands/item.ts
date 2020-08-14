@@ -17,12 +17,14 @@ const command: Command = {
 
         let items = await itemList();
         if (rarity) {
-            items = items.filter((i) => rarity.toLowerCase() === i.rarity);
+            const rarityFilter = rarity.toLowerCase() === 'vrare' ? 'very rare' : rarity.toLowerCase();
+            items = items.filter((i) => i.rarity.toLowerCase() === rarityFilter);
         }
 
         if (type) {
-            items = items.filter((i) =>
-                type.toLowerCase() === 'wondrous' ? 'wondrous item' : type.toLowerCase() === i.type,
+            const typeFilter = type.toLowerCase() === 'wondrous' ? 'wondrous item' : type.toLowerCase();
+            items = items.filter(
+                (i) => i.type.toLowerCase() === typeFilter || (i.subtype && i.subtype.toLowerCase() === typeFilter),
             );
         }
 
