@@ -4,7 +4,7 @@
   "homepage": "https://github.com/mloberg/dwight-discord-bot",
   "private": true,
   "scripts": {
-    "test": "jest --forceExit --verbose",
+    "test": "jest --forceExit --coverage --verbose",
     "test:watch": "jest --verbose --watch",
     "build": "tsc",
     "start": "node -r dotenv/config dist/index.js",
