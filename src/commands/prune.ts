@@ -7,7 +7,7 @@ const command: Command = {
     description: 'Prune messages from a channel',
     usage: 'COUNT',
     async run({ channel }: Message, args: Arguments): Promise<void> {
-        channel.bulkDelete(Number(args._[0]) + 1, true);
+        await channel.bulkDelete(Number(args._[0]) + 1, true);
     },
 };
 
