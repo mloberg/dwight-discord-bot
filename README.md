@@ -22,4 +22,5 @@ To rebuild and restart the bot on file changes, run `npm run watch`.
 
 ## Contributing
 
-Before commit changes, make sure `npm run lint` passes.
+Make sure tests (`npm run test`) and lint (`npm run lint`) pass before submitting
+a Pull Request.
