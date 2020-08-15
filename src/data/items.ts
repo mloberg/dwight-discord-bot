@@ -12,7 +12,7 @@ interface Item {
 }
 
 const apiUrl = env('API_URL', 'https://dnd.mlo.io/api');
-const cache = new Cache<Item[]>();
+const cache = new Cache<Item[]>(86400);
 
 export default async (): Promise<Item[]> => {
     const cached = cache.get();

@@ -1,19 +1,17 @@
 export default class Cache<T> {
     private value: T;
-    private expires: Date;
+    private expires: number;
     constructor(readonly ttl = 300) {}
 
     get(): null | T {
-        if (this.value && this.expires.getTime() > new Date().getTime()) {
+        if (this.value && this.expires && this.expires > Date.now()) {
             return this.value;
         }
         return null;
     }
 
     set(value: T, ttl?: number): void {
-        const expires = new Date();
-        expires.setSeconds(expires.getSeconds() + (ttl || this.ttl));
+        this.expires = Date.now() + (ttl ?? this.ttl * 1000);
         this.value = value;
-        this.expires = expires;
     }
 }

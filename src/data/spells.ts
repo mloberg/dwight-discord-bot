@@ -11,7 +11,7 @@ interface Spell {
 }
 
 const apiUrl = env('API_URL', 'https://dnd.mlo.io/api');
-const cache = new Cache<Spell[]>();
+const cache = new Cache<Spell[]>(86400);
 
 export default async (): Promise<Spell[]> => {
     const cached = cache.get();
