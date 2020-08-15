@@ -14,6 +14,10 @@ export function ucfirst(input: string): string {
     return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
 }
 
+export async function resolve(value: string | { (): PromiseLike<string> }): Promise<string> {
+    return typeof value === 'string' ? value : await value();
+}
+
 export function roll(expr: string): number {
     const input = expr.toLowerCase().match(/^(\d+)?d(\d+)([+-×x])?(\d+)?/);
     if (!input) {
