@@ -1,12 +1,9 @@
 import { Message } from 'discord.js';
 
 import treasure, { crIndex } from '../data/treasure';
+import { FriendlyError } from '../error';
 import { Arguments, Command } from '../types';
-import { random, roll } from '../utils';
-
-const resolveItem = async (value: string | { (): PromiseLike<string> }): Promise<string> => {
-    return typeof value === 'string' ? value : await value();
-};
+import { random, resolve, roll } from '../utils';
 
 const command: Command = {
     name: 'treasure',
@@ -19,28 +16,28 @@ const command: Command = {
         const dice = args.roll || args._[1] || roll('d100');
 
         if (!cr) {
-            throw new Error('Missing challenge rating');
+            throw new FriendlyError('Missing challenge rating');
         }
 
         const tables = args.hoard ? treasure.hoard : treasure.individual;
         const table = tables[crIndex(cr)][dice - 1];
 
-        let reply = 'You found:';
+        const reply = ['You found:'];
         for (const [key, type, value] of table) {
             if (!value) {
-                reply += `\n* ${roll(key)} ${type}`;
+                reply.push(`* ${roll(key)} ${type}`);
                 continue;
             }
 
             for (let index = 0; index < roll(key); index++) {
-                const item = await resolveItem(random(value));
-                reply += `\n* ${type}: ${item}`;
+                const item = await resolve(random(value));
+                reply.push(`* ${type}: ${item}`);
             }
         }
 
         await message.delete();
 
-        return message.channel.send(reply);
+        return message.channel.send(reply, { split: true });
     },
 };
 

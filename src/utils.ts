@@ -3,15 +3,15 @@ export function between(min: number, max: number): number {
 }
 
 export function env(key: string, _default: string): string {
-    return process.env[key] || _default;
+    return process.env[key] ?? _default;
 }
 
 export function random<T>(items: T[]): T {
     return items[Math.floor(Math.random() * items.length)];
 }
 
-export function ucfirst(input: string): string {
-    return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
+export async function resolve(value: string | { (): PromiseLike<string> }): Promise<string> {
+    return typeof value === 'string' ? value : await value();
 }
 
 export function roll(expr: string): number {
@@ -38,5 +38,9 @@ export function roll(expr: string): number {
         total = total * mod;
     }
 
-    return total;
+    return Math.max(total, 1);
+}
+
+export function ucfirst(input: string): string {
+    return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
 }

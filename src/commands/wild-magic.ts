@@ -3,7 +3,7 @@ import { Message } from 'discord.js';
 import { Arguments, Command } from '../types';
 import { roll } from '../utils';
 
-const wildMagicTable = [
+export const wildMagic = [
     'Roll on this table at the start of each of your turns for the next minute, ignoring this result on subsequent rolls.',
     'For the next minute, you can see any invisible creature if you have line of sight to it.',
     'A modron chosen and controlled by the DM appears in an unoccupied space within 5 feet of you, then disappears 1 minute later.',
@@ -58,13 +58,13 @@ const wildMagicTable = [
 
 const command: Command = {
     name: 'wild',
-    description: 'Roll on the Wild Magic Surge table',
+    description: 'Roll on the Wild Magic table',
     alias: ['wild-magic'],
     usage: '[ROLL]',
     async run(message: Message, args: Arguments): Promise<Message> {
         const dice = args.roll || args._[0] || roll('d100');
         const index = Math.floor((dice - 1) / 2);
-        const result = wildMagicTable[index];
+        const result = wildMagic[index];
 
         await message.delete();
 
