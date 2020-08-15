@@ -12,13 +12,15 @@ const command: Command = {
     usage: '[--level] LEVEL [--class] CLASS [--school] SCHOOL',
     examples: ['cantrip', '1 bard', '4 --school illusion'],
     async run(message: Message, args: Arguments): Promise<Message> {
-        const level = args.level || args._[0];
-        const type = args.class || args._[1];
-        const school = args.school || args._[2];
+        const level = args.level ?? args._[0];
+        const type = args.class ?? args._[1];
+        const school = args.school ?? args._[2];
 
         let spells = await spellList();
-        if (level) {
-            spells = spells.filter((s) => level === s.level || (s.level === 0 && level === 'cantrip'));
+        if (level && 'cantrip' === level.toString().toLowerCase()) {
+            spells = spells.filter((s) => s.level === 0);
+        } else if (level || 0 === level) {
+            spells = spells.filter((s) => s.level === level);
         }
 
         if (type) {
@@ -26,12 +28,12 @@ const command: Command = {
         }
 
         if (school) {
-            spells = spells.filter((s) => school === s.school);
+            spells = spells.filter((s) => s.school.toLowerCase() === school.toLowerCase());
         }
 
         const spell = random(spells);
         if (!spell) {
-            throw new FriendlyError("I couldn't find an spell matching those parameters.");
+            throw new FriendlyError("I couldn't find a spell matching those parameters.");
         }
 
         return message.reply(spell.spell);

@@ -12,8 +12,8 @@ const command: Command = {
     usage: '[--rarity] RARITY [--type] TYPE',
     examples: ['rare', 'rare weapon', '--type weapon'],
     async run(message: Message, args: Arguments): Promise<Message> {
-        const rarity = args.rarity || args._[0];
-        const type = args.type || args._[1];
+        const rarity = args.rarity ?? args._[0];
+        const type = args.type ?? args._[1];
 
         let items = await itemList();
         if (rarity) {

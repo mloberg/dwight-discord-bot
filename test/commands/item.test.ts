@@ -48,6 +48,7 @@ describe('__item configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('item');
         expect(command.description).toEqual('Return a random magic item');
+        expect(command.usage).toEqual('[--rarity] RARITY [--type] TYPE');
     });
 
     it('should have an alias', () => {
@@ -68,7 +69,7 @@ describe('__item', () => {
         message = new Message(client, {}, channel);
     });
 
-    it('returns a random event', async () => {
+    it('returns a random item', async () => {
         const reply = await command.run(message, { _: [] }, new Collection());
 
         expect(reply).toBe(message);
