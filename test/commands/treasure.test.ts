@@ -150,7 +150,7 @@ describe('__treasure', () => {
     });
 
     it('returns a treasure hoard with dice roll', async () => {
-        await command.run(message, { _: [], cr: 12, dice: '99', hoard: true }, new Collection());
+        await command.run(message, { _: [], cr: 12, roll: 99, hoard: true }, new Collection());
 
         expect(mocks.delete).toBeCalledTimes(1);
 
