@@ -1,6 +1,7 @@
 import { Client, Collection, Guild, Message, TextChannel } from 'discord.js';
 
 import command from '../../src/commands/prune';
+import { FriendlyError } from '../../src/error';
 
 const mocks = {
     delete: jest.fn(),
@@ -15,6 +16,7 @@ jest.mock('discord.js', () => {
         Message: jest.fn().mockImplementation(() => {
             return {
                 channel: {
+                    type: 'text',
                     bulkDelete: mocks.delete,
                 },
             };
@@ -46,9 +48,22 @@ describe('__ping', () => {
         message = new Message(client, {}, channel);
     });
 
-    it('deletes messages', async () => {
+    it('deletes messages in text channels', async () => {
         await command.run(message, { _: ['3'] }, new Collection());
 
         expect(mocks.delete).toBeCalledWith(4, true);
+    });
+
+    it('throws an error if in a DM', async () => {
+        message.channel.type = 'dm';
+
+        try {
+            await command.run(message, { _: ['3'] }, new Collection());
+
+            fail('expected error to be thrown');
+        } catch (err) {
+            expect(err instanceof FriendlyError).toBe(true);
+            expect(err.message).toEqual("I can't bulk delete in DMs.");
+        }
     });
 });
