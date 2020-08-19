@@ -44,7 +44,7 @@ jest.mock('../../src/data/items', () => {
     ];
 });
 
-describe('__item configuration', () => {
+describe('_item configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('item');
         expect(command.description).toEqual('Return a random magic item');
@@ -56,7 +56,7 @@ describe('__item configuration', () => {
     });
 });
 
-describe('__item', () => {
+describe('_item', () => {
     let message: Message;
 
     beforeEach(() => {

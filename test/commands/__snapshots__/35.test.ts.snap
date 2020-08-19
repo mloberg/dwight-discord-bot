@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`__3.5 has the correct conversions 1`] = `
+exports[`_3.5 has the correct conversions 1`] = `
 Object {
   "appraise": "INT",
   "balance": "DEX (Acrobatics)",

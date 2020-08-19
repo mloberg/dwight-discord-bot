@@ -43,7 +43,7 @@ jest.mock('../../src/data/spells', () => {
     ];
 });
 
-describe('__spell configuration', () => {
+describe('_spell configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('spell');
         expect(command.description).toEqual('Return a random spell');
@@ -55,7 +55,7 @@ describe('__spell configuration', () => {
     });
 });
 
-describe('__spell', () => {
+describe('_spell', () => {
     let message: Message;
 
     beforeEach(() => {

@@ -24,7 +24,7 @@ jest.mock('discord.js', () => {
     };
 });
 
-describe('__event configuration', () => {
+describe('_event configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('event');
         expect(command.description).toEqual('Trigger a random event');
@@ -35,7 +35,7 @@ describe('__event configuration', () => {
     });
 });
 
-describe('__event', () => {
+describe('_event', () => {
     let message: Message;
 
     beforeEach(() => {

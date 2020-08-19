@@ -9,7 +9,7 @@ import { env } from './utils';
 const client = new Client();
 const commands = new Collection<string, Command>();
 
-const prefix = env('BOT_PREFIX', '__');
+const prefix = env('BOT_PREFIX', '_');
 
 client.once('ready', () => {
     client.user.setActivity('Assistant to the Dungeon Master');

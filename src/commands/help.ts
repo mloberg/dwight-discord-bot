@@ -4,7 +4,7 @@ import { FriendlyError } from '../error';
 import { Arguments, Command } from '../types';
 import { env } from '../utils';
 
-const prefix = env('BOT_PREFIX', '__');
+const prefix = env('BOT_PREFIX', '_');
 
 const command: Command = {
     name: 'help',

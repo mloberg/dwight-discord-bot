@@ -21,7 +21,7 @@ jest.mock('discord.js', () => {
     };
 });
 
-describe('__3.5 configuration', () => {
+describe('_3.5 configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('3.5');
         expect(command.description).toEqual('3.5 to 5th edition skills conversion');
@@ -33,7 +33,7 @@ describe('__3.5 configuration', () => {
     });
 });
 
-describe('__3.5', () => {
+describe('_3.5', () => {
     let message: Message;
 
     beforeEach(() => {

@@ -24,7 +24,7 @@ jest.mock('discord.js', () => {
     };
 });
 
-describe('__help configuration', () => {
+describe('_help configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('help');
         expect(command.description).toEqual('Get help with commands');
@@ -36,7 +36,7 @@ describe('__help configuration', () => {
     });
 });
 
-describe('__help', () => {
+describe('_help', () => {
     let message: Message;
     const commands = new Collection();
     commands.set('basic', {
@@ -83,7 +83,7 @@ describe('__help', () => {
             [
                 'Here is a list of available commands:',
                 'basic, aliased, detailed',
-                'Get more details with "__help [command]"',
+                'Get more details with "_help [command]"',
             ],
             { split: true },
         );
@@ -97,8 +97,8 @@ describe('__help', () => {
             [
                 '**detailed**: Command with all configuration',
                 '*aliases*: deets',
-                '*usage*: `__detailed FOO BAR`',
-                '*examples*: `__detailed foo`, `__detailed bar`',
+                '*usage*: `_detailed FOO BAR`',
+                '*examples*: `_detailed foo`, `_detailed bar`',
             ],
         ],
     ])('returns the details for a %s command', async (cmd, help) => {

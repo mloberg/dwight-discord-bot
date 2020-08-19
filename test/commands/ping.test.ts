@@ -22,7 +22,7 @@ jest.mock('discord.js', () => {
     };
 });
 
-describe('__ping configuration', () => {
+describe('_ping configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('ping');
         expect(command.description).toEqual('Pong');
@@ -33,7 +33,7 @@ describe('__ping configuration', () => {
     });
 });
 
-describe('__ping', () => {
+describe('_ping', () => {
     let message: Message;
 
     beforeEach(() => {

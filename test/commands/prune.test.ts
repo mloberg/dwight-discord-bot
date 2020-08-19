@@ -24,7 +24,7 @@ jest.mock('discord.js', () => {
     };
 });
 
-describe('__prune configuration', () => {
+describe('_prune configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('prune');
         expect(command.description).toEqual('Prune messages from a channel');
@@ -36,7 +36,7 @@ describe('__prune configuration', () => {
     });
 });
 
-describe('__ping', () => {
+describe('_ping', () => {
     let message: Message;
 
     beforeEach(() => {

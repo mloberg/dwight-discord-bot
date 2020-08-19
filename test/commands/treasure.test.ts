@@ -89,7 +89,7 @@ jest.mock('../../src/data/spells', () => {
     ];
 });
 
-describe('__treasure configuration', () => {
+describe('_treasure configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('treasure');
         expect(command.description).toEqual('Give me the loot!');
@@ -101,7 +101,7 @@ describe('__treasure configuration', () => {
     });
 });
 
-describe('__treasure', () => {
+describe('_treasure', () => {
     let message: Message;
 
     beforeEach(() => {

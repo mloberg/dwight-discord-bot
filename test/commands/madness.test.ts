@@ -39,7 +39,7 @@ jest.mock('discord.js', () => {
     };
 });
 
-describe('__madness configuration', () => {
+describe('_madness configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('madness');
         expect(command.description).toEqual('Give a random madness to a player');
@@ -51,7 +51,7 @@ describe('__madness configuration', () => {
     });
 });
 
-describe('__madness', () => {
+describe('_madness', () => {
     const userRegex = /(.*) This lasts (\d+) (.*)\./;
     const authorRegex = /(.*) got the following madness: (.*) This lasts (\d+) (.*)\./;
     let message: Message;

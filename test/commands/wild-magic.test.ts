@@ -22,7 +22,7 @@ jest.mock('discord.js', () => {
     };
 });
 
-describe('__wild configuration', () => {
+describe('_wild configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('wild');
         expect(command.description).toEqual('Roll on the Wild Magic table');
@@ -34,7 +34,7 @@ describe('__wild configuration', () => {
     });
 });
 
-describe('__wild', () => {
+describe('_wild', () => {
     let message: Message;
 
     beforeEach(() => {
