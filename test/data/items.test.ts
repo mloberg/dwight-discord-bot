@@ -24,5 +24,5 @@ test('fetch and cache item list', async () => {
     expect(cached).toEqual(result);
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(fetchMock).toHaveBeenCalledWith('https://dnd.mlo.io/api/items.json');
+    expect(fetchMock).toHaveBeenCalledWith('https://everlastingdungeons.com/api/items.json');
 });

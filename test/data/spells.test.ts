@@ -24,5 +24,5 @@ test('fetch and cache spell list', async () => {
     expect(cached).toEqual(result);
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(fetchMock).toHaveBeenCalledWith('https://dnd.mlo.io/api/spells.json');
+    expect(fetchMock).toHaveBeenCalledWith('https://everlastingdungeons.com/api/spells.json');
 });

@@ -11,7 +11,7 @@ interface Item {
     attunement: boolean | string;
 }
 
-const apiUrl = env('API_URL', 'https://dnd.mlo.io/api');
+const apiUrl = env('API_URL', 'https://everlastingdungeons.com/api');
 const cache = new Cache<Item[]>(86400);
 
 export default async (): Promise<Item[]> => {
