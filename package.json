@@ -18,7 +18,7 @@
     "discord.js": "^12.3.1",
     "dotenv": "^8.2.0",
     "node-fetch": "^2.6.0",
-    "yargs-parser": "^19.0.1"
+    "yargs": "^15.4.1"
   },
   "devDependencies": {
     "@types/jest": "^26.0.10",

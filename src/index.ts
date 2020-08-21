@@ -1,6 +1,6 @@
 import { Client, Collection } from 'discord.js';
 import { readdirSync } from 'fs';
-import parser from 'yargs-parser';
+import { parse } from 'yargs';
 
 import { FriendlyError } from './error';
 import { Command } from './types';
@@ -30,8 +30,9 @@ client.on('message', async (message) => {
         return;
     }
 
-    const args = parser(message.content.slice(prefix.length).trim());
+    const args = parse(message.content.slice(prefix.length).trim());
     const commandName = args._.shift().toString();
+    delete args.$0;
 
     const command = commands.get(commandName) || commands.find((cmd) => cmd.alias && cmd.alias.includes(commandName));
 
