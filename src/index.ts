@@ -12,7 +12,7 @@ const commands = new Collection<string, Command>();
 const prefix = env('BOT_PREFIX', '_');
 
 client.once('ready', () => {
-    client.user.setActivity('Assistant to the Dungeon Master');
+    client.user.setActivity(`Assistant to the Dungeon Master | ${prefix}help`);
 
     console.log(`Client ready; logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`);
 });
