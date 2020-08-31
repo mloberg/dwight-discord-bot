@@ -3,6 +3,9 @@
   "license": "MIT",
   "homepage": "https://github.com/mloberg/dwight-discord-bot",
   "private": true,
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "test": "jest --forceExit --coverage --verbose",
     "test:watch": "jest --verbose --watch",
