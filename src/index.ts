@@ -51,4 +51,14 @@ client.on('message', async (message) => {
     }
 });
 
+process.on('unhandledRejection', (reason) => {
+    //.throw it and let our exception handler deal with it
+    throw reason;
+});
+
+process.on('uncaughtException', (err: Error) => {
+    console.error(err);
+    process.exit(1);
+});
+
 client.login(env('BOT_TOKEN', ''));
