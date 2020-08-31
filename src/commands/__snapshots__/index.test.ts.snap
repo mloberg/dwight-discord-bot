@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`_help returns a list of all commands 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        "Here is a list of available commands:",
+        "35, help, commands, 3.5, event, item, items, madness, ping, prune, spell, spells, treasure, loot, wild, wild-magic",
+        "Get more details with \\"_help [command]\\"",
+      ],
+      Object {
+        "split": true,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": Object {
+        "send": [MockFunction] {
+          "calls": Array [
+            Array [
+              Array [
+                "Here is a list of available commands:",
+                "35, help, commands, 3.5, event, item, items, madness, ping, prune, spell, spells, treasure, loot, wild, wild-magic",
+                "Get more details with \\"_help [command]\\"",
+              ],
+              Object {
+                "split": true,
+              },
+            ],
+          ],
+          "results": [Circular],
+        },
+      },
+    },
+  ],
+}
+`;
+
+exports[`_help returns the details for the event command 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        "**event**: Trigger a random event",
+      ],
+      Object {
+        "split": true,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": Object {
+        "send": [MockFunction] {
+          "calls": Array [
+            Array [
+              Array [
+                "**event**: Trigger a random event",
+              ],
+              Object {
+                "split": true,
+              },
+            ],
+          ],
+          "results": [Circular],
+        },
+      },
+    },
+  ],
+}
+`;
+
+exports[`_help returns the details for the help command 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        "**help**: Get help with commands",
+        "*aliases*: commands",
+        "*usage*: \`_help [COMMAND]\`",
+      ],
+      Object {
+        "split": true,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": Object {
+        "send": [MockFunction] {
+          "calls": Array [
+            Array [
+              Array [
+                "**help**: Get help with commands",
+                "*aliases*: commands",
+                "*usage*: \`_help [COMMAND]\`",
+              ],
+              Object {
+                "split": true,
+              },
+            ],
+          ],
+          "results": [Circular],
+        },
+      },
+    },
+  ],
+}
+`;
+
+exports[`_help returns the details for the treasure command 1`] = `
+[MockFunction] {
+  "calls": Array [
+    Array [
+      Array [
+        "**treasure**: Give me the loot!",
+        "*aliases*: loot",
+        "*usage*: \`_treasure CR [ROLL] [--hoard]\`",
+        "*examples*: \`_treasure 4\`, \`_treasure 6 86\`, \`_treasure 10 --hoard\`",
+      ],
+      Object {
+        "split": true,
+      },
+    ],
+  ],
+  "results": Array [
+    Object {
+      "type": "return",
+      "value": Object {
+        "send": [MockFunction] {
+          "calls": Array [
+            Array [
+              Array [
+                "**treasure**: Give me the loot!",
+                "*aliases*: loot",
+                "*usage*: \`_treasure CR [ROLL] [--hoard]\`",
+                "*examples*: \`_treasure 4\`, \`_treasure 6 86\`, \`_treasure 10 --hoard\`",
+              ],
+              Object {
+                "split": true,
+              },
+            ],
+          ],
+          "results": [Circular],
+        },
+      },
+    },
+  ],
+}
+`;

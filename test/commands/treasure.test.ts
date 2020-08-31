@@ -1,4 +1,4 @@
-import { Client, Collection, Guild, Message, TextChannel } from 'discord.js';
+import { Client, Guild, Message, TextChannel } from 'discord.js';
 
 import command from '../../src/commands/treasure';
 import { FriendlyError } from '../../src/error';
@@ -115,7 +115,7 @@ describe('_treasure', () => {
     });
 
     it('returns individual treasure', async () => {
-        await command.run(message, { _: ['1'] }, new Collection());
+        await command.run(message, { _: ['1'] });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -126,7 +126,7 @@ describe('_treasure', () => {
     });
 
     it('returns individual treasure for a dice roll', async () => {
-        await command.run(message, { _: [17, 99] }, new Collection());
+        await command.run(message, { _: [17, 99] });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -139,7 +139,7 @@ describe('_treasure', () => {
     });
 
     it('returns a treasure hoard', async () => {
-        await command.run(message, { _: [], cr: 4, hoard: true }, new Collection());
+        await command.run(message, { _: [], cr: 4, hoard: true });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -150,7 +150,7 @@ describe('_treasure', () => {
     });
 
     it('returns a treasure hoard with dice roll', async () => {
-        await command.run(message, { _: [], cr: 12, roll: 99, hoard: true }, new Collection());
+        await command.run(message, { _: [], cr: 12, roll: 99, hoard: true });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -163,7 +163,7 @@ describe('_treasure', () => {
 
     it('throws an error if no CR given', async () => {
         try {
-            await command.run(message, { _: [] }, new Collection());
+            await command.run(message, { _: [] });
 
             fail('expected error to be thrown');
         } catch (err) {

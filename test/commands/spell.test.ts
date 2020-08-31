@@ -1,4 +1,4 @@
-import { Client, Collection, Guild, Message, TextChannel } from 'discord.js';
+import { Client, Guild, Message, TextChannel } from 'discord.js';
 
 import command from '../../src/commands/spell';
 import { FriendlyError } from '../../src/error';
@@ -69,7 +69,7 @@ describe('_spell', () => {
     });
 
     it('returns a random spell', async () => {
-        const reply = await command.run(message, { _: [] }, new Collection());
+        const reply = await command.run(message, { _: [] });
 
         expect(reply).toBe(message);
 
@@ -78,8 +78,8 @@ describe('_spell', () => {
     });
 
     it('returns a spell filtered by level', async () => {
-        const one = await command.run(message, { _: [], level: 0 }, new Collection());
-        const two = await command.run(message, { _: [], level: 'Cantrip' }, new Collection());
+        const one = await command.run(message, { _: [], level: 0 });
+        const two = await command.run(message, { _: [], level: 'Cantrip' });
 
         expect(one).toEqual(message);
         expect(two).toEqual(message);
@@ -89,8 +89,8 @@ describe('_spell', () => {
     });
 
     it('returns a filtered spell', async () => {
-        const one = await command.run(message, { _: [], school: 'Evocation', class: 'Wizard' }, new Collection());
-        const two = await command.run(message, { _: [5, 'Cleric', 'Divination'] }, new Collection());
+        const one = await command.run(message, { _: [], school: 'Evocation', class: 'Wizard' });
+        const two = await command.run(message, { _: [5, 'Cleric', 'Divination'] });
 
         expect(one).toEqual(message);
         expect(two).toEqual(message);
@@ -101,7 +101,7 @@ describe('_spell', () => {
 
     it('throws an error when no item matches', async () => {
         try {
-            await command.run(message, { _: [5, 'Ranger'] }, new Collection());
+            await command.run(message, { _: [5, 'Ranger'] });
 
             fail('expected error to be thrown');
         } catch (err) {

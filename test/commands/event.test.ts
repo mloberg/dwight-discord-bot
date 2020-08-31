@@ -1,4 +1,4 @@
-import { Client, Collection, Guild, Message, TextChannel } from 'discord.js';
+import { Client, Guild, Message, TextChannel } from 'discord.js';
 
 import command, { events } from '../../src/commands/event';
 
@@ -50,7 +50,7 @@ describe('_event', () => {
     });
 
     it('returns a random event', async () => {
-        const reply = await command.run(message, { _: [] }, new Collection());
+        const reply = await command.run(message, { _: [] });
 
         expect(mocks.delete).toHaveBeenCalledTimes(1);
         expect(reply).toBe(message.channel);

@@ -7,7 +7,7 @@
     "node": ">=12"
   },
   "scripts": {
-    "test": "jest --forceExit --coverage --verbose",
+    "test": "jest --detectOpenHandles --coverage --verbose",
     "test:watch": "jest --verbose --watch",
     "build": "tsc",
     "start": "node -r dotenv/config dist/index.js",
@@ -24,6 +24,7 @@
     "yargs": "^15.4.1"
   },
   "devDependencies": {
+    "@tsconfig/node12": "^1.0.7",
     "@types/jest": "^26.0.10",
     "@types/node": "^14.6.2",
     "@types/node-fetch": "^2.5.7",

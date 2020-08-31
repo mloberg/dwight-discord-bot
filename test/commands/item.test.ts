@@ -1,4 +1,4 @@
-import { Client, Collection, Guild, Message, TextChannel } from 'discord.js';
+import { Client, Guild, Message, TextChannel } from 'discord.js';
 
 import command from '../../src/commands/item';
 import { FriendlyError } from '../../src/error';
@@ -70,7 +70,7 @@ describe('_item', () => {
     });
 
     it('returns a random item', async () => {
-        const reply = await command.run(message, { _: [] }, new Collection());
+        const reply = await command.run(message, { _: [] });
 
         expect(reply).toBe(message);
 
@@ -79,8 +79,8 @@ describe('_item', () => {
     });
 
     it('returns an item filtered by rarity', async () => {
-        const one = await command.run(message, { _: [], rarity: 'Uncommon' }, new Collection());
-        const two = await command.run(message, { _: [], rarity: 'vrare' }, new Collection());
+        const one = await command.run(message, { _: [], rarity: 'Uncommon' });
+        const two = await command.run(message, { _: [], rarity: 'vrare' });
 
         expect(one).toEqual(message);
         expect(two).toEqual(message);
@@ -90,8 +90,8 @@ describe('_item', () => {
     });
 
     it('returns an item filtered by type', async () => {
-        const one = await command.run(message, { _: [], type: 'Wondrous' }, new Collection());
-        const two = await command.run(message, { _: [], type: 'Text Editor' }, new Collection());
+        const one = await command.run(message, { _: [], type: 'Wondrous' });
+        const two = await command.run(message, { _: [], type: 'Text Editor' });
 
         expect(one).toEqual(message);
         expect(two).toEqual(message);
@@ -101,7 +101,7 @@ describe('_item', () => {
     });
 
     it('returns an item matching multiple filters', async () => {
-        const reply = await command.run(message, { _: ['common', 'armor'] }, new Collection());
+        const reply = await command.run(message, { _: ['common', 'armor'] });
 
         expect(reply).toBe(message);
 
@@ -111,7 +111,7 @@ describe('_item', () => {
 
     it('throws an error when no item matches', async () => {
         try {
-            await command.run(message, { _: ['very rare', 'weapon'] }, new Collection());
+            await command.run(message, { _: ['very rare', 'weapon'] });
 
             fail('expected error to be thrown');
         } catch (err) {

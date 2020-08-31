@@ -1,6 +1,6 @@
-import { Client, Collection, Guild, Message, TextChannel } from 'discord.js';
+import { Client, Guild, Message, TextChannel } from 'discord.js';
 
-import command, { wildMagic } from '../../src/commands/wild-magic';
+import command, { wildMagic } from '../../src/commands/wildMagic';
 
 const mocks = {
     delete: jest.fn(),
@@ -49,7 +49,7 @@ describe('_wild', () => {
     });
 
     it('returns a wild magic event', async () => {
-        const reply = await command.run(message, { _: [] }, new Collection());
+        const reply = await command.run(message, { _: [] });
 
         expect(mocks.delete).toHaveBeenCalledTimes(1);
         expect(reply).toBe(message);
@@ -59,8 +59,8 @@ describe('_wild', () => {
     });
 
     it('returns a wild magic event for a dice roll', async () => {
-        const one = await command.run(message, { _: [89] }, new Collection());
-        const two = await command.run(message, { _: [], roll: 97 }, new Collection());
+        const one = await command.run(message, { _: [89] });
+        const two = await command.run(message, { _: [], roll: 97 });
 
         expect(mocks.delete).toHaveBeenCalledTimes(2);
         expect(one).toBe(message);

@@ -1,13 +1,11 @@
-import { Client, Collection } from 'discord.js';
-import { readdirSync } from 'fs';
+import { Client } from 'discord.js';
 import yargs from 'yargs';
 
+import commands from './commands';
 import { FriendlyError } from './error';
-import { Command } from './types';
 import { env } from './utils';
 
 const client = new Client();
-const commands = new Collection<string, Command>();
 
 const prefix = env('BOT_PREFIX', '_');
 
@@ -16,14 +14,6 @@ client.once('ready', () => {
 
     console.log(`Client ready; logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`);
 });
-
-const commandFiles = readdirSync(`${__dirname}/commands`).filter((file) => file.endsWith('.js'));
-
-for (const file of commandFiles) {
-    /* eslint-disable @typescript-eslint/no-var-requires */
-    const command: Command = require(`${__dirname}/commands/${file}`).default;
-    commands.set(command.name, command);
-}
 
 client.on('message', async (message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) {
@@ -34,18 +24,19 @@ client.on('message', async (message) => {
     const commandName = args._.shift().toString();
     delete args.$0;
 
-    const command = commands.get(commandName) || commands.find((cmd) => cmd.alias && cmd.alias.includes(commandName));
+    const command = commands.get(commandName);
 
     if (!command) {
         return;
     }
 
     try {
-        await command.run(message, args, commands);
+        await command.run(message, args);
     } catch (err) {
         if (err instanceof FriendlyError) {
             return message.reply(err.message);
         }
+
         message.reply('That broke me. Check my logs for details.');
         console.error(err);
     }

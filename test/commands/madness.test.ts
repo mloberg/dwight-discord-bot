@@ -1,4 +1,4 @@
-import { Client, Collection, Guild, Message, TextChannel } from 'discord.js';
+import { Client, Guild, Message, TextChannel } from 'discord.js';
 
 import command, { madness } from '../../src/commands/madness';
 import { FriendlyError } from '../../src/error';
@@ -69,7 +69,7 @@ describe('_madness', () => {
 
     it('sends a user a madness', async () => {
         mocks.size = 1;
-        await command.run(message, { _: [] }, new Collection());
+        await command.run(message, { _: [] });
 
         const userMessage: string = mocks.user.mock.calls[0][0];
         const userMatch = userMessage.match(userRegex);
@@ -89,7 +89,7 @@ describe('_madness', () => {
 
     it('sends a user a type of madness', async () => {
         mocks.size = 1;
-        await command.run(message, { _: ['LONG'] }, new Collection());
+        await command.run(message, { _: ['LONG'] });
 
         const userMessage: string = mocks.user.mock.calls[0][0];
         const userMatch = userMessage.match(userRegex);
@@ -109,7 +109,7 @@ describe('_madness', () => {
 
     it('can send a flaw', async () => {
         mocks.size = 1;
-        await command.run(message, { _: ['flaw'] }, new Collection());
+        await command.run(message, { _: ['flaw'] });
 
         const userMessage: string = mocks.user.mock.calls[0][0];
         const userMatch = userMessage.match(/(.*) This lasts until cured\./);
@@ -119,7 +119,7 @@ describe('_madness', () => {
 
     it('throws an error if no user is given', async () => {
         try {
-            await command.run(message, { _: [] }, new Collection());
+            await command.run(message, { _: [] });
 
             fail('expected error to be thrown');
         } catch (err) {

@@ -1,4 +1,8 @@
-import { Collection, Message } from 'discord.js';
+import { Message } from 'discord.js';
+
+export interface Dictionary<T> {
+    [key: string]: T;
+}
 
 type ArgsOutput = (string | number)[];
 export interface Arguments {
@@ -16,5 +20,5 @@ export interface Command {
     alias?: string[];
     usage?: string;
     examples?: string[];
-    run(message: Message, args: Arguments, commands: Collection<string, Command>): Promise<Message | void>;
+    run(message: Message, args: Arguments): Promise<Message | void>;
 }

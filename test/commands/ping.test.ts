@@ -1,4 +1,4 @@
-import { Client, Collection, Guild, Message, TextChannel } from 'discord.js';
+import { Client, Guild, Message, TextChannel } from 'discord.js';
 
 import command from '../../src/commands/ping';
 
@@ -47,7 +47,7 @@ describe('_ping', () => {
     });
 
     it('responds', async () => {
-        await command.run(message, { _: [] }, new Collection());
+        await command.run(message, { _: [] });
 
         expect(mocks.send).toBeCalledWith('pong');
     });

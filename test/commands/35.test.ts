@@ -1,4 +1,4 @@
-import { Client, Collection, Guild, Message, TextChannel } from 'discord.js';
+import { Client, Guild, Message, TextChannel } from 'discord.js';
 
 import command, { conversion } from '../../src/commands/35';
 import { FriendlyError } from '../../src/error';
@@ -51,7 +51,7 @@ describe('_3.5', () => {
         [['Use', 'Magic', 'Device'], 'INT (Arcana)'],
         [['Ride'], 'WIS (Animal Handling) or DEX (Acrobatics)'],
     ])('returns a comprable 5e skill for %s', async (search, result) => {
-        await command.run(message, { _: search }, new Collection());
+        await command.run(message, { _: search });
 
         expect(mocks.reply).toHaveBeenCalledTimes(1);
         expect(mocks.reply).toHaveBeenCalledWith(result);
@@ -63,7 +63,7 @@ describe('_3.5', () => {
 
     it('throws an error on invalid skill', async () => {
         try {
-            await command.run(message, { _: ['foo'] }, new Collection());
+            await command.run(message, { _: ['foo'] });
 
             fail('expected error to be thrown');
         } catch (err) {

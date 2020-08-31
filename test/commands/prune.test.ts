@@ -1,4 +1,4 @@
-import { Client, Collection, Guild, Message, TextChannel } from 'discord.js';
+import { Client, Guild, Message, TextChannel } from 'discord.js';
 
 import command from '../../src/commands/prune';
 import { FriendlyError } from '../../src/error';
@@ -49,7 +49,7 @@ describe('_ping', () => {
     });
 
     it('deletes messages in text channels', async () => {
-        await command.run(message, { _: ['3'] }, new Collection());
+        await command.run(message, { _: ['3'] });
 
         expect(mocks.delete).toBeCalledWith(4, true);
     });
@@ -58,7 +58,7 @@ describe('_ping', () => {
         message.channel.type = 'dm';
 
         try {
-            await command.run(message, { _: ['3'] }, new Collection());
+            await command.run(message, { _: ['3'] });
 
             fail('expected error to be thrown');
         } catch (err) {
