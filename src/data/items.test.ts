@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { mocked } from 'ts-jest/utils';
 
-import items from '../../src/data/items';
+import items from './items';
 
 const { Response } = jest.requireActual('node-fetch');
 

@@ -1,8 +1,9 @@
 import { Client, Guild, Message, TextChannel } from 'discord.js';
 
-import command from '../../src/commands/ping';
+import command, { events } from './event';
 
 const mocks = {
+    delete: jest.fn(),
     send: jest.fn(),
 };
 
@@ -14,6 +15,7 @@ jest.mock('discord.js', () => {
         Collection: jest.fn(),
         Message: jest.fn().mockImplementation(() => {
             return {
+                delete: mocks.delete,
                 channel: {
                     send: mocks.send,
                 },
@@ -22,10 +24,10 @@ jest.mock('discord.js', () => {
     };
 });
 
-describe('_ping configuration', () => {
+describe('_event configuration', () => {
     it('should have basic command infomation', () => {
-        expect(command.name).toEqual('ping');
-        expect(command.description).toEqual('Pong');
+        expect(command.name).toEqual('event');
+        expect(command.description).toEqual('Trigger a random event');
     });
 
     it('should have no aliases', () => {
@@ -33,10 +35,11 @@ describe('_ping configuration', () => {
     });
 });
 
-describe('_ping', () => {
+describe('_event', () => {
     let message: Message;
 
     beforeEach(() => {
+        mocks.delete.mockClear();
         mocks.send.mockClear();
         mocks.send.mockReturnThis();
 
@@ -46,9 +49,13 @@ describe('_ping', () => {
         message = new Message(client, {}, channel);
     });
 
-    it('responds', async () => {
-        await command.run(message, { _: [] });
+    it('returns a random event', async () => {
+        const reply = await command.run(message, { _: [] });
 
-        expect(mocks.send).toBeCalledWith('pong');
+        expect(mocks.delete).toHaveBeenCalledTimes(1);
+        expect(reply).toBe(message.channel);
+
+        const event = mocks.send.mock.calls[0][0];
+        expect(events).toContainEqual(event);
     });
 });

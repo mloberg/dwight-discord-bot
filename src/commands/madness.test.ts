@@ -1,7 +1,7 @@
 import { Client, Guild, Message, TextChannel } from 'discord.js';
 
-import command, { madness } from '../../src/commands/madness';
-import { FriendlyError } from '../../src/error';
+import { FriendlyError } from '../error';
+import command, { madness } from './madness';
 
 const mocks = {
     size: 0,

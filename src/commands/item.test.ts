@@ -1,7 +1,7 @@
 import { Client, Guild, Message, TextChannel } from 'discord.js';
 
-import command from '../../src/commands/item';
-import { FriendlyError } from '../../src/error';
+import { FriendlyError } from '../error';
+import command from './item';
 
 const mocks = {
     reply: jest.fn(),
@@ -20,7 +20,7 @@ jest.mock('discord.js', () => {
         }),
     };
 });
-jest.mock('../../src/data/items', () => {
+jest.mock('../data/items', () => {
     return () => [
         {
             item: 'IDE of Lesser Bugs',

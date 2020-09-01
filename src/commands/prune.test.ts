@@ -1,7 +1,7 @@
 import { Client, Guild, Message, TextChannel } from 'discord.js';
 
-import command from '../../src/commands/prune';
-import { FriendlyError } from '../../src/error';
+import { FriendlyError } from '../error';
+import command from './prune';
 
 const mocks = {
     delete: jest.fn(),

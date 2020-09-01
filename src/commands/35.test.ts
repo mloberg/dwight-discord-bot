@@ -1,7 +1,7 @@
 import { Client, Guild, Message, TextChannel } from 'discord.js';
 
-import command, { conversion } from '../../src/commands/35';
-import { FriendlyError } from '../../src/error';
+import { FriendlyError } from '../error';
+import command, { conversion } from './35';
 
 const mocks = {
     reply: jest.fn(),

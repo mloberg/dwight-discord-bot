@@ -1,4 +1,4 @@
-import { between, env, random, resolve, roll, ucfirst } from '../src/utils';
+import { between, env, random, resolve, roll, ucfirst } from './utils';
 
 describe('between', () => {
     it('returns a number between two given numbers', () => {

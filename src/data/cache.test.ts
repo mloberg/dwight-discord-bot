@@ -1,4 +1,4 @@
-import Cache from '../../src/data/cache';
+import Cache from './cache';
 
 const realDateNow = Date.now.bind(global.Date);
 const dateNowStub = jest.fn(() => 1);

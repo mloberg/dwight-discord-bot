@@ -1,6 +1,6 @@
 import { Client, Guild, Message, TextChannel } from 'discord.js';
 
-import command, { wildMagic } from '../../src/commands/wildMagic';
+import command, { wildMagic } from './wildMagic';
 
 const mocks = {
     delete: jest.fn(),

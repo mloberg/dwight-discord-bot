@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import { mocked } from 'ts-jest/utils';
 
-import spells from '../../src/data/spells';
+import spells from './spells';
 
 const { Response } = jest.requireActual('node-fetch');
 

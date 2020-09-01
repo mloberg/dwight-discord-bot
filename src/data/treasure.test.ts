@@ -1,4 +1,4 @@
-import treasure, { art, crIndex, gems } from '../../src/data/treasure';
+import treasure, { art, crIndex, gems } from './treasure';
 
 test('crIndex returns the correct index for the given cr', () => {
     expect(crIndex(0)).toEqual('0-4');

@@ -1,7 +1,7 @@
 import { Client, Guild, Message, TextChannel } from 'discord.js';
 
-import command from '../../src/commands/spell';
-import { FriendlyError } from '../../src/error';
+import { FriendlyError } from '../error';
+import command from './spell';
 
 const mocks = {
     reply: jest.fn(),
@@ -20,7 +20,7 @@ jest.mock('discord.js', () => {
         }),
     };
 });
-jest.mock('../../src/data/spells', () => {
+jest.mock('../data/spells', () => {
     return () => [
         {
             spell: 'Debugger',

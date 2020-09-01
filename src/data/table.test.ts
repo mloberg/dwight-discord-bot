@@ -1,11 +1,11 @@
-import tables from '../../src/data/table';
+import tables from './table';
 
-jest.mock('../../src/utils', () => {
+jest.mock('../utils', () => {
     return {
         random: jest.fn((x) => x[0]),
     };
 });
-jest.mock('../../src/data/spells', () => {
+jest.mock('./spells', () => {
     return () => [
         {
             spell: 'Cantrip',
