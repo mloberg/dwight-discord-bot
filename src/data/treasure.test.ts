@@ -1,4 +1,4 @@
-import treasure, { art, crIndex, gems } from './treasure';
+import { art, crIndex, gems, hoard, individual } from './treasure';
 
 test('crIndex returns the correct index for the given cr', () => {
     expect(crIndex(0)).toEqual('0-4');
@@ -32,5 +32,6 @@ test('gems', () => {
 });
 
 test('treasure', () => {
-    expect(treasure).toMatchSnapshot();
+    expect(individual).toMatchSnapshot();
+    expect(hoard).toMatchSnapshot();
 });

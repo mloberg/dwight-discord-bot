@@ -1,6 +1,6 @@
 export default class Cache<T> {
-    private value: T;
-    private expires: number;
+    private value?: T;
+    private expires?: number;
     constructor(readonly ttl = 300) {}
 
     get(): null | T {

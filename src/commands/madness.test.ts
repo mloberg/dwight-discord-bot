@@ -4,10 +4,9 @@ import { FriendlyError } from '../error';
 import command, { madness } from './madness';
 
 const mocks = {
-    size: 0,
     user: jest.fn(),
     author: jest.fn(),
-    username: 'jdoe',
+    send: jest.fn(),
 };
 
 jest.mock('discord.js', () => {
@@ -20,15 +19,7 @@ jest.mock('discord.js', () => {
             return {
                 mentions: {
                     users: {
-                        get size() {
-                            return mocks.size;
-                        },
-                        first() {
-                            return {
-                                username: mocks.username,
-                                send: mocks.user,
-                            };
-                        },
+                        first: mocks.user,
                     },
                 },
                 author: {
@@ -57,8 +48,8 @@ describe('_madness', () => {
     let message: Message;
 
     beforeEach(() => {
-        mocks.size = 0;
         mocks.user.mockClear();
+        mocks.send.mockClear();
         mocks.author.mockClear();
 
         const client = new Client();
@@ -68,11 +59,17 @@ describe('_madness', () => {
     });
 
     it('sends a user a madness', async () => {
-        mocks.size = 1;
+        mocks.user.mockReturnValue({
+            username: 'jdoe',
+            send: mocks.send,
+        });
         await command.run(message, { _: [] });
 
-        const userMessage: string = mocks.user.mock.calls[0][0];
+        const userMessage: string = mocks.send.mock.calls[0][0];
         const userMatch = userMessage.match(userRegex);
+        if (!userMatch) {
+            throw new Error('unexpected message format');
+        }
 
         expect(madness.short.options).toContain(userMatch[1]);
         expect(Number(userMatch[2])).toBeGreaterThanOrEqual(1);
@@ -81,18 +78,27 @@ describe('_madness', () => {
 
         const authorMessage: string = mocks.author.mock.calls[0][0];
         const authorMatch = authorMessage.match(authorRegex);
+        if (!authorMatch) {
+            throw new Error('unexpected message format');
+        }
 
-        expect(authorMatch[1]).toBe(mocks.username);
+        expect(authorMatch[1]).toBe('jdoe');
         expect(authorMatch[2]).toBe(userMatch[1]);
         expect(authorMatch[3]).toBe(userMatch[2]);
     });
 
     it('sends a user a type of madness', async () => {
-        mocks.size = 1;
+        mocks.user.mockReturnValue({
+            username: 'jdoe',
+            send: mocks.send,
+        });
         await command.run(message, { _: ['LONG'] });
 
-        const userMessage: string = mocks.user.mock.calls[0][0];
+        const userMessage: string = mocks.send.mock.calls[0][0];
         const userMatch = userMessage.match(userRegex);
+        if (!userMatch) {
+            throw new Error('unexpected message format');
+        }
 
         expect(madness.long.options).toContain(userMatch[1]);
         expect(Number(userMatch[2])).toBeGreaterThanOrEqual(10);
@@ -101,24 +107,34 @@ describe('_madness', () => {
 
         const authorMessage: string = mocks.author.mock.calls[0][0];
         const authorMatch = authorMessage.match(authorRegex);
+        if (!authorMatch) {
+            throw new Error('unexpected message format');
+        }
 
-        expect(authorMatch[1]).toBe(mocks.username);
+        expect(authorMatch[1]).toBe('jdoe');
         expect(authorMatch[2]).toBe(userMatch[1]);
         expect(authorMatch[3]).toBe(userMatch[2]);
     });
 
     it('can send a flaw', async () => {
-        mocks.size = 1;
+        mocks.user.mockReturnValue({
+            username: 'jdoe',
+            send: mocks.send,
+        });
         await command.run(message, { _: ['flaw'] });
 
-        const userMessage: string = mocks.user.mock.calls[0][0];
+        const userMessage: string = mocks.send.mock.calls[0][0];
         const userMatch = userMessage.match(/(.*) This lasts until cured\./);
+        if (!userMatch) {
+            throw new Error('unexpected message format');
+        }
 
         expect(madness.flaw.options).toContain(userMatch[1]);
     });
 
     it('throws an error if no user is given', async () => {
         try {
+            mocks.user.mockReturnValue(null);
             await command.run(message, { _: [] });
 
             fail('expected error to be thrown');

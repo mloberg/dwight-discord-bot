@@ -1,9 +1,9 @@
 import { Message } from 'discord.js';
 
 import { FriendlyError } from '../error';
-import { Arguments, Command } from '../types';
+import { Arguments, Command, Dictionary } from '../types';
 
-export const conversion = {
+export const conversion: Dictionary<string> = {
     appraise: 'INT',
     balance: 'DEX (Acrobatics)',
     bluff: 'CHA (Persuasion / Deception)',

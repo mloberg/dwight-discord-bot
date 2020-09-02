@@ -3,6 +3,7 @@ import yargs from 'yargs';
 
 import commands from './commands';
 import { FriendlyError } from './error';
+import { Arguments } from './types';
 import { env } from './utils';
 
 const client = new Client();
@@ -10,8 +11,11 @@ const client = new Client();
 const prefix = env('BOT_PREFIX', '_');
 
 client.once('ready', () => {
-    client.user.setActivity(`Assistant to the Dungeon Master | ${prefix}help`);
+    if (!client.user) {
+        return;
+    }
 
+    client.user.setActivity(`Assistant to the Dungeon Master | ${prefix}help`);
     console.log(`Client ready; logged in as ${client.user.username}#${client.user.discriminator} (${client.user.id})`);
 });
 
@@ -20,18 +24,17 @@ client.on('message', async (message) => {
         return;
     }
 
-    const args = yargs.help(false).parse(message.content.slice(prefix.length).trim());
-    const commandName = args._.shift().toString();
-    delete args.$0;
+    const [commandName, ...args] = message.content.slice(prefix.length).trim().split(' ');
+    const parsed: Arguments = yargs.help(false).parse(args.join(' '));
+    delete parsed.$0;
 
     const command = commands.get(commandName);
-
     if (!command) {
         return;
     }
 
     try {
-        await command.run(message, args);
+        await command.run(message, parsed);
     } catch (err) {
         if (err instanceof FriendlyError) {
             return message.reply(err.message);

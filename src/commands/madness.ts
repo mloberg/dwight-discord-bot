@@ -1,10 +1,16 @@
 import { Message } from 'discord.js';
 
 import { FriendlyError } from '../error';
-import { Arguments, Command } from '../types';
+import { Arguments, Command, Dictionary } from '../types';
 import { random, roll } from '../utils';
 
-export const madness = {
+interface Madness {
+    duration: string;
+    time: string;
+    options: string[];
+}
+
+export const madness: Dictionary<Madness> = {
     short: {
         duration: '1d10',
         time: 'minutes',
@@ -97,10 +103,10 @@ const command: Command = {
     description: 'Give a random madness to a player',
     usage: '[short|long|flaw] @user',
     async run({ mentions, author }: Message, args: Arguments): Promise<Message> {
-        if (!mentions.users.size) {
+        const user = mentions.users.first();
+        if (!user) {
             throw new FriendlyError('You must assign a madness to a user.');
         }
-        const user = mentions.users.first();
         const mad = madness[(args._[0] || 'short').toString().toLowerCase()];
         const duration = `${mad.duration ? roll(mad.duration) : ''} ${mad.time}.`.trim();
         const message = `${random(mad.options)} This lasts ${duration}`;

@@ -1,9 +1,10 @@
+import { Dictionary } from '../types';
 import { random } from '../utils';
 import spells from './spells';
 
-const spell = async (lvl) => random((await spells()).filter((s) => s.level === lvl)).spell;
+const spell = async (lvl: number) => random((await spells()).filter((s) => s.level === lvl)).spell;
 
-export default {
+const table: Dictionary<(string | (() => Promise<string>))[]> = {
     a: [
         ...new Array(50).fill('Potion of healing'), // 1-50
         ...new Array(10).fill(async () => `Spell scroll (${await spell(0)})`), // 51-60
@@ -414,3 +415,5 @@ export default {
         'Tome of the stilled tongue', // 100
     ],
 };
+
+export default table;

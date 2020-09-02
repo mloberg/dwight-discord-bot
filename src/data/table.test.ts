@@ -70,7 +70,7 @@ jest.mock('./spells', () => {
     ];
 });
 
-const resolveTable = async (table) => {
+const resolveTable = async (table: (string | (() => Promise<string>))[]) => {
     const resolved = [];
     for (const item of table) {
         resolved.push(typeof item === 'string' ? item : await item());

@@ -1,6 +1,6 @@
 import { Message } from 'discord.js';
 
-import treasure, { crIndex } from '../data/treasure';
+import { crIndex, hoard, individual } from '../data/treasure';
 import { FriendlyError } from '../error';
 import { Arguments, Command } from '../types';
 import { random, resolve, roll } from '../utils';
@@ -12,18 +12,22 @@ const command: Command = {
     usage: 'CR [ROLL] [--hoard]',
     examples: ['4', '6 86', '10 --hoard'],
     async run(message: Message, args: Arguments): Promise<Message> {
-        const cr = args.cr || args._[0];
+        const cr = args.cr ?? args._[0] ?? null;
         const dice = args.roll || args._[1] || roll('d100');
 
-        if (!cr) {
+        if (cr === null) {
             throw new FriendlyError('Missing challenge rating');
         }
 
-        const tables = args.hoard ? treasure.hoard : treasure.individual;
+        const tables = args.hoard ? hoard : individual;
         const table = tables[crIndex(cr)][dice - 1];
 
         const reply = ['You found:'];
-        for (const [key, type, value] of table) {
+        for (const record of table) {
+            const key = record[0] as string;
+            const type = record[1];
+            const value = record[2] as (string | (() => Promise<string>))[];
+
             if (!value) {
                 reply.push(`* ${roll(key)} ${type}`);
                 continue;
