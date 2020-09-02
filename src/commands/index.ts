@@ -4,6 +4,7 @@ import { FriendlyError } from '../error';
 import { Arguments, Command, Dictionary } from '../types';
 import { env } from '../utils';
 import conversion from './35';
+import elixir from './elixir';
 import event from './event';
 import item from './item';
 import madness from './madness';
@@ -75,6 +76,7 @@ const commands = new Commands();
 
 commands.register(help);
 commands.register(conversion);
+commands.register(elixir);
 commands.register(event);
 commands.register(item);
 commands.register(madness);
