@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
 
 import { FriendlyError } from '../error';
-import { Arguments, Command, Dictionary } from '../types';
+import { Arguments, Command } from '../types';
 import { env } from '../utils';
 import conversion from './35';
 import elixir from './elixir';
@@ -17,19 +17,18 @@ import wildMagic from './wildMagic';
 const prefix = env('BOT_PREFIX', '_');
 
 export class Commands {
-    private commands: Dictionary<Command> = {};
+    private commands: Command[] = [];
 
     register(command: Command): void {
-        this.commands[command.name] = command;
-        (command.alias || []).forEach((alias) => (this.commands[alias] = command));
+        this.commands.push(command);
     }
 
-    get(name: string): Command {
-        return this.commands[name] || null;
+    get(name: string): Command | null {
+        return this.commands.find((c) => c.name === name || (c.alias && c.alias.includes(name))) || null;
     }
 
     list(): string[] {
-        return Object.keys(this.commands);
+        return this.commands.map((c) => c.name);
     }
 }
 

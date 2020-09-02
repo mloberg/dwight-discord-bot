@@ -6,7 +6,7 @@ exports[`_help returns a list of all commands 1`] = `
     Array [
       Array [
         "Here is a list of available commands:",
-        "35, help, commands, 3.5, elixir, elx, event, item, items, madness, ping, prune, spell, spells, treasure, loot, wild, wild-magic",
+        "help, 3.5, elixir, event, item, madness, ping, prune, spell, treasure, wild",
         "Get more details with \\"_help [command]\\"",
       ],
       Object {
@@ -23,7 +23,7 @@ exports[`_help returns a list of all commands 1`] = `
             Array [
               Array [
                 "Here is a list of available commands:",
-                "35, help, commands, 3.5, elixir, elx, event, item, items, madness, ping, prune, spell, spells, treasure, loot, wild, wild-magic",
+                "help, 3.5, elixir, event, item, madness, ping, prune, spell, treasure, wild",
                 "Get more details with \\"_help [command]\\"",
               ],
               Object {

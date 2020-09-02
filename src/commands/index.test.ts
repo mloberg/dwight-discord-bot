@@ -79,7 +79,7 @@ describe('Commands', () => {
         expect(commands.list()).toHaveLength(0);
 
         commands.register(help);
-        expect(commands.list()).toHaveLength(2);
+        expect(commands.list()).toHaveLength(1);
     });
 
     it('returns the correct command', () => {
