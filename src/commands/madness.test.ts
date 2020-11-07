@@ -9,26 +9,24 @@ const mocks = {
     send: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Collection: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                mentions: {
-                    users: {
-                        first: mocks.user,
-                    },
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Collection: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            mentions: {
+                users: {
+                    first: mocks.user,
                 },
-                author: {
-                    send: mocks.author,
-                },
-            };
-        }),
-    };
-});
+            },
+            author: {
+                send: mocks.author,
+            },
+        };
+    }),
+}));
 
 describe('_madness configuration', () => {
     it('should have basic command infomation', () => {
@@ -63,7 +61,7 @@ describe('_madness', () => {
             username: 'jdoe',
             send: mocks.send,
         });
-        await command.run(message, { _: [] });
+        await command.run(message, { $0: 'madness', _: [] });
 
         const userMessage: string = mocks.send.mock.calls[0][0];
         const userMatch = userMessage.match(userRegex);
@@ -92,7 +90,7 @@ describe('_madness', () => {
             username: 'jdoe',
             send: mocks.send,
         });
-        await command.run(message, { _: ['LONG'] });
+        await command.run(message, { $0: 'madness', _: ['LONG'] });
 
         const userMessage: string = mocks.send.mock.calls[0][0];
         const userMatch = userMessage.match(userRegex);
@@ -121,7 +119,7 @@ describe('_madness', () => {
             username: 'jdoe',
             send: mocks.send,
         });
-        await command.run(message, { _: ['flaw'] });
+        await command.run(message, { $0: 'madness', _: ['flaw'] });
 
         const userMessage: string = mocks.send.mock.calls[0][0];
         const userMatch = userMessage.match(/(.*) This lasts until cured\./);
@@ -135,7 +133,7 @@ describe('_madness', () => {
     it('throws an error if no user is given', async () => {
         try {
             mocks.user.mockReturnValue(null);
-            await command.run(message, { _: [] });
+            await command.run(message, { $0: 'madness', _: [] });
 
             fail('expected error to be thrown');
         } catch (err) {

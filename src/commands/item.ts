@@ -1,9 +1,10 @@
 import { Message } from 'discord.js';
+import { sample } from 'lodash';
+import { Arguments } from 'yargs';
 
 import itemList from '../data/items';
 import { FriendlyError } from '../error';
-import { Arguments, Command } from '../types';
-import { random } from '../utils';
+import { Command } from '../types';
 
 const command: Command = {
     name: 'item',
@@ -12,8 +13,8 @@ const command: Command = {
     usage: '[--rarity] RARITY [--type] TYPE',
     examples: ['rare', 'rare weapon', '--type weapon'],
     async run(message: Message, args: Arguments): Promise<Message> {
-        const rarity = args.rarity ?? args._[0];
-        const type = args.type ?? args._[1];
+        const rarity = (args.rarity || args._[0]) as string;
+        const type = (args.type || args._[1]) as string;
 
         let items = await itemList();
         if (rarity) {
@@ -28,7 +29,7 @@ const command: Command = {
             );
         }
 
-        const item = random(items);
+        const item = sample(items);
         if (!item) {
             throw new FriendlyError("I couldn't find an item matching those parameters.");
         }

@@ -7,19 +7,17 @@ const mocks = {
     reply: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Collection: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                reply: mocks.reply,
-            };
-        }),
-    };
-});
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Collection: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            reply: mocks.reply,
+        };
+    }),
+}));
 
 describe('_3.5 configuration', () => {
     it('should have basic command infomation', () => {
@@ -51,7 +49,7 @@ describe('_3.5', () => {
         [['Use', 'Magic', 'Device'], 'INT (Arcana)'],
         [['Ride'], 'WIS (Animal Handling) or DEX (Acrobatics)'],
     ])('returns a comprable 5e skill for %s', async (search, result) => {
-        await command.run(message, { _: search });
+        await command.run(message, { $0: '3.5', _: search });
 
         expect(mocks.reply).toHaveBeenCalledTimes(1);
         expect(mocks.reply).toHaveBeenCalledWith(result);
@@ -63,7 +61,7 @@ describe('_3.5', () => {
 
     it('throws an error on invalid skill', async () => {
         try {
-            await command.run(message, { _: ['foo'] });
+            await command.run(message, { $0: '3.5', _: ['foo'] });
 
             fail('expected error to be thrown');
         } catch (err) {

@@ -7,20 +7,18 @@ const mocks = {
     send: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                channel: {
-                    send: mocks.send,
-                },
-            };
-        }),
-    };
-});
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            channel: {
+                send: mocks.send,
+            },
+        };
+    }),
+}));
 
 describe('_help configuration', () => {
     it('should have basic command infomation', () => {
@@ -48,14 +46,14 @@ describe('_help', () => {
     });
 
     it('returns a list of all commands', async () => {
-        const reply = await help.run(message, { _: [] });
+        const reply = await help.run(message, { $0: 'help', _: [] });
 
         expect(reply).toEqual(message.channel);
         expect(mocks.send).toMatchSnapshot();
     });
 
     it.each(['help', 'treasure', 'event'])('returns the details for the %s command', async (cmd) => {
-        const reply = await help.run(message, { _: [cmd] });
+        const reply = await help.run(message, { $0: 'help', _: [cmd] });
 
         expect(reply).toEqual(message.channel);
         expect(mocks.send).toMatchSnapshot();
@@ -63,7 +61,7 @@ describe('_help', () => {
 
     it('returns an error if an invalid command is given', async () => {
         try {
-            await help.run(message, { _: ['invalid'] });
+            await help.run(message, { $0: 'help', _: ['invalid'] });
 
             fail('expected error to be thrown');
         } catch (err) {

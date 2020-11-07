@@ -7,20 +7,18 @@ const mocks = {
     reply: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Collection: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                delete: mocks.delete,
-                reply: mocks.reply,
-            };
-        }),
-    };
-});
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Collection: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            delete: mocks.delete,
+            reply: mocks.reply,
+        };
+    }),
+}));
 
 describe('_elixir configuration', () => {
     it('should have basic command infomation', () => {
@@ -48,7 +46,7 @@ describe('_elixir', () => {
     });
 
     it('returns an elixir', async () => {
-        const reply = await command.run(message, { _: [] });
+        const reply = await command.run(message, { $0: 'elixir', _: [] });
 
         expect(mocks.delete).toHaveBeenCalledTimes(1);
         expect(reply).toBe(message);
@@ -58,8 +56,8 @@ describe('_elixir', () => {
     });
 
     it('returns an elixir for a dice roll', async () => {
-        const one = await command.run(message, { _: [1] });
-        const two = await command.run(message, { _: [], roll: 4 });
+        const one = await command.run(message, { $0: 'elixir', _: ['1'] });
+        const two = await command.run(message, { $0: 'elixir', _: [], roll: 4 });
 
         expect(mocks.delete).toHaveBeenCalledTimes(2);
         expect(one).toBe(message);

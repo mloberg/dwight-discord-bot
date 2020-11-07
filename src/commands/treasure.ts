@@ -1,9 +1,11 @@
 import { Message } from 'discord.js';
+import { sample } from 'lodash';
+import { Arguments } from 'yargs';
 
 import { crIndex, hoard, individual } from '../data/treasure';
 import { FriendlyError } from '../error';
-import { Arguments, Command } from '../types';
-import { random, resolve, roll } from '../utils';
+import { Command } from '../types';
+import { roll } from '../utils';
 
 const command: Command = {
     name: 'treasure',
@@ -11,11 +13,11 @@ const command: Command = {
     alias: ['loot'],
     usage: 'CR [ROLL] [--hoard]',
     examples: ['4', '6 86', '10 --hoard'],
-    async run(message: Message, args: Arguments): Promise<Message> {
-        const cr = args.cr ?? args._[0] ?? null;
-        const dice = args.roll || args._[1] || roll('d100');
+    async run(message: Message, args: Arguments): Promise<Message[]> {
+        const cr = Number(args.cr ?? args._[0]);
+        const dice = Number(args.roll || args._[1] || roll('d100'));
 
-        if (cr === null) {
+        if (isNaN(cr)) {
             throw new FriendlyError('Missing challenge rating');
         }
 
@@ -34,8 +36,9 @@ const command: Command = {
             }
 
             for (let index = 0; index < roll(key); index++) {
-                const item = await resolve(random(value));
-                reply.push(`* ${type}: ${item}`);
+                const item = sample(value) ?? '';
+                const resolved = typeof item === 'string' ? item : await item();
+                reply.push(`* ${type}: ${resolved}`);
             }
         }
 

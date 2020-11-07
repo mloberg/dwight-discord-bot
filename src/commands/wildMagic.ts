@@ -1,6 +1,7 @@
 import { Message } from 'discord.js';
+import { Arguments } from 'yargs';
 
-import { Arguments, Command } from '../types';
+import { Command } from '../types';
 import { roll } from '../utils';
 
 export const wildMagic = [
@@ -62,7 +63,7 @@ const command: Command = {
     alias: ['wild-magic'],
     usage: '[ROLL]',
     async run(message: Message, args: Arguments): Promise<Message> {
-        const dice = args.roll || args._[0] || roll('d100');
+        const dice = Number(args.roll || args._[0] || roll('d100'));
         const index = Math.floor((dice - 1) / 2);
         const result = wildMagic[index];
 

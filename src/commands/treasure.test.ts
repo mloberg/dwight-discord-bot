@@ -8,22 +8,20 @@ const mocks = {
     send: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Collection: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                delete: mocks.delete,
-                channel: {
-                    send: mocks.send,
-                },
-            };
-        }),
-    };
-});
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Collection: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            delete: mocks.delete,
+            channel: {
+                send: mocks.send,
+            },
+        };
+    }),
+}));
 jest.mock('../data/spells', () => {
     return () => [
         {
@@ -115,7 +113,7 @@ describe('_treasure', () => {
     });
 
     it('returns individual treasure', async () => {
-        await command.run(message, { _: ['1'] });
+        await command.run(message, { $0: 'treasure', _: ['1'] });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -126,7 +124,7 @@ describe('_treasure', () => {
     });
 
     it('returns individual treasure for a dice roll', async () => {
-        await command.run(message, { _: [17, 99] });
+        await command.run(message, { $0: 'treasure', _: ['17', '99'] });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -139,7 +137,7 @@ describe('_treasure', () => {
     });
 
     it('returns a treasure hoard', async () => {
-        await command.run(message, { _: [], cr: 4, hoard: true });
+        await command.run(message, { $0: 'treasure', _: [], cr: 4, hoard: true });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -150,7 +148,7 @@ describe('_treasure', () => {
     });
 
     it('returns a treasure hoard with dice roll', async () => {
-        await command.run(message, { _: [], cr: 12, roll: 99, hoard: true });
+        await command.run(message, { $0: 'treasure', _: [], cr: 12, roll: 99, hoard: true });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -163,7 +161,7 @@ describe('_treasure', () => {
 
     it('throws an error if no CR given', async () => {
         try {
-            await command.run(message, { _: [] });
+            await command.run(message, { $0: 'treasure', _: [] });
 
             fail('expected error to be thrown');
         } catch (err) {

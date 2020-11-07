@@ -7,22 +7,20 @@ const mocks = {
     send: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Collection: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                delete: mocks.delete,
-                channel: {
-                    send: mocks.send,
-                },
-            };
-        }),
-    };
-});
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Collection: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            delete: mocks.delete,
+            channel: {
+                send: mocks.send,
+            },
+        };
+    }),
+}));
 
 describe('_event configuration', () => {
     it('should have basic command infomation', () => {
@@ -50,7 +48,7 @@ describe('_event', () => {
     });
 
     it('returns a random event', async () => {
-        const reply = await command.run(message, { _: [] });
+        const reply = await command.run(message, { $0: 'event', _: [] });
 
         expect(mocks.delete).toHaveBeenCalledTimes(1);
         expect(reply).toBe(message.channel);

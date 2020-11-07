@@ -7,22 +7,20 @@ const mocks = {
     delete: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Collection: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                channel: {
-                    type: 'text',
-                    bulkDelete: mocks.delete,
-                },
-            };
-        }),
-    };
-});
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Collection: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            channel: {
+                type: 'text',
+                bulkDelete: mocks.delete,
+            },
+        };
+    }),
+}));
 
 describe('_prune configuration', () => {
     it('should have basic command infomation', () => {
@@ -49,7 +47,7 @@ describe('_ping', () => {
     });
 
     it('deletes messages in text channels', async () => {
-        await command.run(message, { _: ['3'] });
+        await command.run(message, { $0: 'prune', _: ['3'] });
 
         expect(mocks.delete).toBeCalledWith(4, true);
     });
@@ -58,12 +56,12 @@ describe('_ping', () => {
         message.channel.type = 'dm';
 
         try {
-            await command.run(message, { _: ['3'] });
+            await command.run(message, { $0: 'prune', _: ['3'] });
 
             fail('expected error to be thrown');
         } catch (err) {
             expect(err instanceof FriendlyError).toBe(true);
-            expect(err.message).toEqual("I can't bulk delete in DMs.");
+            expect(err.message).toEqual("I can't bulk delete DMs.");
         }
     });
 });

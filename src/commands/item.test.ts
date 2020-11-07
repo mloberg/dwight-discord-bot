@@ -7,19 +7,17 @@ const mocks = {
     reply: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Collection: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                reply: mocks.reply,
-            };
-        }),
-    };
-});
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Collection: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            reply: mocks.reply,
+        };
+    }),
+}));
 jest.mock('../data/items', () => {
     return () => [
         {
@@ -70,7 +68,7 @@ describe('_item', () => {
     });
 
     it('returns a random item', async () => {
-        const reply = await command.run(message, { _: [] });
+        const reply = await command.run(message, { $0: 'item', _: [] });
 
         expect(reply).toBe(message);
 
@@ -79,8 +77,8 @@ describe('_item', () => {
     });
 
     it('returns an item filtered by rarity', async () => {
-        const one = await command.run(message, { _: [], rarity: 'Uncommon' });
-        const two = await command.run(message, { _: [], rarity: 'vrare' });
+        const one = await command.run(message, { $0: 'item', _: [], rarity: 'Uncommon' });
+        const two = await command.run(message, { $0: 'item', _: [], rarity: 'vrare' });
 
         expect(one).toEqual(message);
         expect(two).toEqual(message);
@@ -90,8 +88,8 @@ describe('_item', () => {
     });
 
     it('returns an item filtered by type', async () => {
-        const one = await command.run(message, { _: [], type: 'Wondrous' });
-        const two = await command.run(message, { _: [], type: 'Text Editor' });
+        const one = await command.run(message, { $0: 'item', _: [], type: 'Wondrous' });
+        const two = await command.run(message, { $0: 'item', _: [], type: 'Text Editor' });
 
         expect(one).toEqual(message);
         expect(two).toEqual(message);
@@ -101,7 +99,7 @@ describe('_item', () => {
     });
 
     it('returns an item matching multiple filters', async () => {
-        const reply = await command.run(message, { _: ['common', 'armor'] });
+        const reply = await command.run(message, { $0: 'item', _: ['common', 'armor'] });
 
         expect(reply).toBe(message);
 
@@ -111,7 +109,7 @@ describe('_item', () => {
 
     it('throws an error when no item matches', async () => {
         try {
-            await command.run(message, { _: ['very rare', 'weapon'] });
+            await command.run(message, { $0: 'item', _: ['very rare', 'weapon'] });
 
             fail('expected error to be thrown');
         } catch (err) {

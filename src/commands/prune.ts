@@ -1,7 +1,8 @@
 import { Message } from 'discord.js';
+import { Arguments } from 'yargs';
 
 import { FriendlyError } from '../error';
-import { Arguments, Command } from '../types';
+import { Command } from '../types';
 
 const command: Command = {
     name: 'prune',
@@ -9,7 +10,7 @@ const command: Command = {
     usage: 'COUNT',
     async run(message: Message, args: Arguments) {
         if (message.channel.type === 'dm') {
-            throw new FriendlyError("I can't bulk delete in DMs.");
+            throw new FriendlyError("I can't bulk delete DMs.");
         }
 
         await message.channel.bulkDelete(Number(args._[0]) + 1, true);

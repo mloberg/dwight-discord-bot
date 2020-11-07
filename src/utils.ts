@@ -1,19 +1,3 @@
-export function between(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-export function env(key: string, _default: string): string {
-    return process.env[key] ?? _default;
-}
-
-export function random<T>(items: T[]): T {
-    return items[Math.floor(Math.random() * items.length)];
-}
-
-export async function resolve(value: string | { (): PromiseLike<string> }): Promise<string> {
-    return typeof value === 'string' ? value : await value();
-}
-
 export function roll(expr: string): number {
     const input = expr.toLowerCase().match(/^(\d+)?d(\d+)([+-×x])?(\d+)?/);
     if (!input) {
@@ -39,8 +23,4 @@ export function roll(expr: string): number {
     }
 
     return Math.max(total, 1);
-}
-
-export function ucfirst(input: string): string {
-    return input.charAt(0).toUpperCase() + input.slice(1).toLowerCase();
 }

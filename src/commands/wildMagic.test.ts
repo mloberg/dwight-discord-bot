@@ -7,20 +7,18 @@ const mocks = {
     reply: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Collection: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                delete: mocks.delete,
-                reply: mocks.reply,
-            };
-        }),
-    };
-});
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Collection: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            delete: mocks.delete,
+            reply: mocks.reply,
+        };
+    }),
+}));
 
 describe('_wild configuration', () => {
     it('should have basic command infomation', () => {
@@ -49,7 +47,7 @@ describe('_wild', () => {
     });
 
     it('returns a wild magic event', async () => {
-        const reply = await command.run(message, { _: [] });
+        const reply = await command.run(message, { $0: 'wild', _: [] });
 
         expect(mocks.delete).toHaveBeenCalledTimes(1);
         expect(reply).toBe(message);
@@ -59,8 +57,8 @@ describe('_wild', () => {
     });
 
     it('returns a wild magic event for a dice roll', async () => {
-        const one = await command.run(message, { _: [89] });
-        const two = await command.run(message, { _: [], roll: 97 });
+        const one = await command.run(message, { $0: 'wild', _: ['89'] });
+        const two = await command.run(message, { $0: 'wild', _: [], roll: 97 });
 
         expect(mocks.delete).toHaveBeenCalledTimes(2);
         expect(one).toBe(message);

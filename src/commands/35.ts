@@ -1,7 +1,8 @@
 import { Message } from 'discord.js';
+import { Arguments } from 'yargs';
 
 import { FriendlyError } from '../error';
-import { Arguments, Command, Dictionary } from '../types';
+import { Command, Dictionary } from '../types';
 
 export const conversion: Dictionary<string> = {
     appraise: 'INT',

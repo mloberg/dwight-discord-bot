@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-import { env } from '../utils';
+import config from '../config';
 import Cache from './cache';
 
 interface Item {
@@ -11,7 +11,6 @@ interface Item {
     attunement: boolean | string;
 }
 
-const apiUrl = env('API_URL', 'https://everlastingdungeons.com/api');
 const cache = new Cache<Item[]>(86400);
 
 export default async (): Promise<Item[]> => {
@@ -20,7 +19,7 @@ export default async (): Promise<Item[]> => {
         return cached;
     }
 
-    const response = await fetch(`${apiUrl}/items.json`);
+    const response = await fetch(`${config.apiUrl}/items.json`);
     const data = await response.json();
     cache.set(data.items);
 

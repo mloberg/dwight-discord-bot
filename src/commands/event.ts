@@ -1,7 +1,7 @@
 import { Message } from 'discord.js';
+import { sample } from 'lodash';
 
 import { Command } from '../types';
-import { random } from '../utils';
 
 export const events = [
     'A door opens',
@@ -32,7 +32,7 @@ const command: Command = {
     async run(message: Message): Promise<Message> {
         await message.delete();
 
-        return message.channel.send(random(events));
+        return message.channel.send(sample(events) ?? 'Something happens');
     },
 };
 

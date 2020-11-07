@@ -1,8 +1,10 @@
 import { Message } from 'discord.js';
+import { sample } from 'lodash';
+import { Arguments } from 'yargs';
 
 import { FriendlyError } from '../error';
-import { Arguments, Command, Dictionary } from '../types';
-import { random, roll } from '../utils';
+import { Command, Dictionary } from '../types';
+import { roll } from '../utils';
 
 interface Madness {
     duration: string;
@@ -109,7 +111,7 @@ const command: Command = {
         }
         const mad = madness[(args._[0] || 'short').toString().toLowerCase()];
         const duration = `${mad.duration ? roll(mad.duration) : ''} ${mad.time}.`.trim();
-        const message = `${random(mad.options)} This lasts ${duration}`;
+        const message = `${sample(mad.options)} This lasts ${duration}`;
 
         await author.send(`${user.username} got the following madness: ${message}`);
 

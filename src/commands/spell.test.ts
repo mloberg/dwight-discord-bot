@@ -7,19 +7,17 @@ const mocks = {
     reply: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Collection: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                reply: mocks.reply,
-            };
-        }),
-    };
-});
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Collection: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            reply: mocks.reply,
+        };
+    }),
+}));
 jest.mock('../data/spells', () => {
     return () => [
         {
@@ -69,7 +67,7 @@ describe('_spell', () => {
     });
 
     it('returns a random spell', async () => {
-        const reply = await command.run(message, { _: [] });
+        const reply = await command.run(message, { $0: 'spell', _: [] });
 
         expect(reply).toBe(message);
 
@@ -78,8 +76,8 @@ describe('_spell', () => {
     });
 
     it('returns a spell filtered by level', async () => {
-        const one = await command.run(message, { _: [], level: 0 });
-        const two = await command.run(message, { _: [], level: 'Cantrip' });
+        const one = await command.run(message, { $0: 'spell', _: [], level: 0 });
+        const two = await command.run(message, { $0: 'spell', _: [], level: 'Cantrip' });
 
         expect(one).toEqual(message);
         expect(two).toEqual(message);
@@ -89,8 +87,8 @@ describe('_spell', () => {
     });
 
     it('returns a filtered spell', async () => {
-        const one = await command.run(message, { _: [], school: 'Evocation', class: 'Wizard' });
-        const two = await command.run(message, { _: [5, 'Cleric', 'Divination'] });
+        const one = await command.run(message, { $0: 'spell', _: [], school: 'Evocation', class: 'Wizard' });
+        const two = await command.run(message, { $0: 'spell', _: ['5', 'Cleric', 'Divination'] });
 
         expect(one).toEqual(message);
         expect(two).toEqual(message);
@@ -101,7 +99,7 @@ describe('_spell', () => {
 
     it('throws an error when no item matches', async () => {
         try {
-            await command.run(message, { _: [5, 'Ranger'] });
+            await command.run(message, { $0: 'spell', _: ['5', 'Ranger'] });
 
             fail('expected error to be thrown');
         } catch (err) {

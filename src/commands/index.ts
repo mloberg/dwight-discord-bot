@@ -1,8 +1,9 @@
 import { Message } from 'discord.js';
+import { Arguments } from 'yargs';
 
+import config from '../config';
 import { FriendlyError } from '../error';
-import { Arguments, Command } from '../types';
-import { env } from '../utils';
+import { Command } from '../types';
 import conversion from './35';
 import elixir from './elixir';
 import event from './event';
@@ -13,8 +14,6 @@ import prune from './prune';
 import spell from './spell';
 import treasure from './treasure';
 import wildMagic from './wildMagic';
-
-const prefix = env('BOT_PREFIX', '_');
 
 export class Commands {
     private commands: Command[] = [];
@@ -37,13 +36,13 @@ export const help: Command = {
     description: 'Get help with commands',
     alias: ['commands'],
     usage: '[COMMAND]',
-    async run(message: Message, args: Arguments): Promise<Message> {
+    async run(message: Message, args: Arguments): Promise<Message | Message[]> {
         if (!args._.length) {
             return message.channel.send(
                 [
                     'Here is a list of available commands:',
                     commands.list().join(', '),
-                    `Get more details with "${prefix}help [command]"`,
+                    `Get more details with "${config.prefix}help [command]"`,
                 ],
                 { split: true },
             );
@@ -61,10 +60,12 @@ export const help: Command = {
             help.push(`*aliases*: ${command.alias.join(', ')}`);
         }
         if (command.usage) {
-            help.push(`*usage*: \`${prefix}${command.name} ${command.usage}\``);
+            help.push(`*usage*: \`${config.prefix}${command.name} ${command.usage}\``);
         }
         if (command.examples) {
-            help.push(`*examples*: ${command.examples.map((e) => `\`${prefix}${command.name} ${e}\``).join(', ')}`);
+            help.push(
+                `*examples*: ${command.examples.map((e) => `\`${config.prefix}${command.name} ${e}\``).join(', ')}`,
+            );
         }
 
         return message.channel.send(help, { split: true });

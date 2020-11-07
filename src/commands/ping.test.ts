@@ -6,21 +6,19 @@ const mocks = {
     send: jest.fn(),
 };
 
-jest.mock('discord.js', () => {
-    return {
-        Client: jest.fn(),
-        Guild: jest.fn(),
-        TextChannel: jest.fn(),
-        Collection: jest.fn(),
-        Message: jest.fn().mockImplementation(() => {
-            return {
-                channel: {
-                    send: mocks.send,
-                },
-            };
-        }),
-    };
-});
+jest.mock('discord.js', () => ({
+    Client: jest.fn(),
+    Guild: jest.fn(),
+    TextChannel: jest.fn(),
+    Collection: jest.fn(),
+    Message: jest.fn().mockImplementation(() => {
+        return {
+            channel: {
+                send: mocks.send,
+            },
+        };
+    }),
+}));
 
 describe('_ping configuration', () => {
     it('should have basic command infomation', () => {
@@ -47,7 +45,7 @@ describe('_ping', () => {
     });
 
     it('responds', async () => {
-        await command.run(message, { _: [] });
+        await command.run(message, { $0: 'ping', _: [] });
 
         expect(mocks.send).toBeCalledWith('pong');
     });

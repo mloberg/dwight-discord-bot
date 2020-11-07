@@ -1,6 +1,7 @@
 import { Message } from 'discord.js';
+import { Arguments } from 'yargs';
 
-import { Arguments, Command } from '../types';
+import { Command } from '../types';
 import { roll } from '../utils';
 
 export const elixirs = [
@@ -17,7 +18,7 @@ const command: Command = {
     alias: ['elx'],
     description: 'Craft an experimental elixir',
     async run(message: Message, args: Arguments): Promise<Message> {
-        const dice = args.roll || args._[0] || roll('d6');
+        const dice = Number(args.roll || args._[0] || roll('d6'));
         const result = elixirs[dice - 1];
 
         await message.delete();
