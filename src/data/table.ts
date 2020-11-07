@@ -1,8 +1,15 @@
+import { sample } from 'lodash';
+
 import { Dictionary } from '../types';
-import { random } from '../utils';
 import spells from './spells';
 
-const spell = async (lvl: number) => random((await spells()).filter((s) => s.level === lvl)).spell;
+const spell = async (lvl: number) => {
+    const list = await spells();
+    const options = list.filter((s) => s.level === lvl);
+    const selected = sample(options);
+
+    return selected ? selected.spell : `A level ${lvl} spell`;
+};
 
 const table: Dictionary<(string | (() => Promise<string>))[]> = {
     a: [
@@ -173,18 +180,19 @@ const table: Dictionary<(string | (() => Promise<string>))[]> = {
     ],
     g: [
         ...new Array(11).fill('Weapon, +2'), // 01–11
-        ...new Array(3).fill(() =>
-            random([
-                // 12–14
-                'Figurine of wondrous power (Bronze griffon)',
-                'Figurine of wondrous power (Ebony fly)',
-                'Figurine of wondrous power (Golden lion)',
-                'Figurine of wondrous power (Ivory goat)',
-                'Figurine of wondrous power (Marble elephant)',
-                'Figurine of wondrous power (Onyx dog)',
-                'Figurine of wondrous power (Onyx dog)',
-                'Figurine of wondrous power (Serpentine owl)',
-            ]),
+        ...new Array(3).fill(
+            (): string =>
+                sample([
+                    // 12–14
+                    'Figurine of wondrous power (Bronze griffon)',
+                    'Figurine of wondrous power (Ebony fly)',
+                    'Figurine of wondrous power (Golden lion)',
+                    'Figurine of wondrous power (Ivory goat)',
+                    'Figurine of wondrous power (Marble elephant)',
+                    'Figurine of wondrous power (Onyx dog)',
+                    'Figurine of wondrous power (Onyx dog)',
+                    'Figurine of wondrous power (Serpentine owl)',
+                ]) ?? 'Figurine of wondrous power',
         ),
         'Adamantine armor (breastplate)', // 15
         'Adamantine armor (splint)', // 16
@@ -374,7 +382,7 @@ const table: Dictionary<(string | (() => Promise<string>))[]> = {
         ...new Array(2).fill('Armor, +2 studded leather'), // 72–73
         ...new Array(2).fill('Well of many worlds'), // 74–75
         (): string =>
-            random([
+            sample([
                 // 76
                 'Armor, +2 half plate',
                 'Armor, +2 half plate',
@@ -388,7 +396,7 @@ const table: Dictionary<(string | (() => Promise<string>))[]> = {
                 'Armor, +3 splint',
                 'Armor, +3 half plate',
                 'Armor, +3 plate',
-            ]),
+            ]) ?? 'Armor +2/+3',
         'Apparatus of Kwalish', // 77
         'Armor of invulnerability', // 78
         'Belt of storm giant strength', // 79

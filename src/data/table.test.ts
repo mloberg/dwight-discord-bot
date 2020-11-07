@@ -1,10 +1,8 @@
 import tables from './table';
 
-jest.mock('../utils', () => {
-    return {
-        random: jest.fn((x) => x[0]),
-    };
-});
+jest.mock('lodash', () => ({
+    sample: jest.fn((x) => x[0]),
+}));
 jest.mock('./spells', () => {
     return () => [
         {
