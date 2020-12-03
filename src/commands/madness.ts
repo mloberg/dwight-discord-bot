@@ -103,19 +103,22 @@ export const madness: Dictionary<Madness> = {
 const command: Command = {
     name: 'madness',
     description: 'Give a random madness to a player',
-    usage: '[short|long|flaw] @user',
-    async run({ mentions, author }: Message, args: Arguments): Promise<Message> {
-        const user = mentions.users.first();
-        if (!user) {
+    usage: '[short|long|flaw] ...@user',
+    async run({ mentions, author }: Message, args: Arguments) {
+        const type = (args._[0] || 'short').toString().toLowerCase();
+        const users = mentions.users.filter((u) => !u.bot);
+        if (0 === users.size) {
             throw new FriendlyError('You must assign a madness to a user.');
         }
-        const mad = madness[(args._[0] || 'short').toString().toLowerCase()];
-        const duration = `${mad.duration ? roll(mad.duration) : ''} ${mad.time}.`.trim();
-        const message = `${sample(mad.options)} This lasts ${duration}`;
 
-        await author.send(`${user.username} got the following madness: ${message}`);
+        users.forEach(async (user) => {
+            const mad = madness[type];
+            const duration = `${mad.duration ? roll(mad.duration) : ''} ${mad.time}.`.trim();
+            const message = `${sample(mad.options)} This lasts ${duration}`;
 
-        return user.send(message);
+            await author.send(`${user.username} got the following madness: ${message}`);
+            await user.send(message);
+        });
     },
 };
 

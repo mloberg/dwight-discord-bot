@@ -4,10 +4,12 @@ import { FriendlyError } from '../error';
 import command, { madness } from './madness';
 
 const mocks = {
-    user: jest.fn(),
+    users: jest.fn(),
     author: jest.fn(),
     send: jest.fn(),
 };
+
+const { Collection } = jest.requireActual('discord.js');
 
 jest.mock('discord.js', () => ({
     Client: jest.fn(),
@@ -18,7 +20,7 @@ jest.mock('discord.js', () => ({
         return {
             mentions: {
                 users: {
-                    first: mocks.user,
+                    filter: mocks.users,
                 },
             },
             author: {
@@ -32,7 +34,7 @@ describe('_madness configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('madness');
         expect(command.description).toEqual('Give a random madness to a player');
-        expect(command.usage).toEqual('[short|long|flaw] @user');
+        expect(command.usage).toEqual('[short|long|flaw] ...@user');
     });
 
     it('should have no aliases', () => {
@@ -46,7 +48,7 @@ describe('_madness', () => {
     let message: Message;
 
     beforeEach(() => {
-        mocks.user.mockClear();
+        mocks.users.mockClear();
         mocks.send.mockClear();
         mocks.author.mockClear();
 
@@ -57,11 +59,16 @@ describe('_madness', () => {
     });
 
     it('sends a user a madness', async () => {
-        mocks.user.mockReturnValue({
-            username: 'jdoe',
-            send: mocks.send,
-        });
+        const users = new Collection();
+        users.set('1', { username: 'jdoe', send: mocks.send });
+        users.set('2', { username: 'foo', send: jest.fn() });
+        mocks.users.mockReturnValue(users);
+
         await command.run(message, { $0: 'madness', _: [] });
+
+        expect(mocks.author).toHaveBeenCalledTimes(2);
+        expect(mocks.send).toHaveBeenCalledTimes(1);
+        expect(users.get('2').send).toHaveBeenCalledTimes(1);
 
         const userMessage: string = mocks.send.mock.calls[0][0];
         const userMatch = userMessage.match(userRegex);
@@ -86,10 +93,10 @@ describe('_madness', () => {
     });
 
     it('sends a user a type of madness', async () => {
-        mocks.user.mockReturnValue({
-            username: 'jdoe',
-            send: mocks.send,
-        });
+        const users = new Collection();
+        users.set('', { username: 'jdoe', send: mocks.send });
+        mocks.users.mockReturnValue(users);
+
         await command.run(message, { $0: 'madness', _: ['LONG'] });
 
         const userMessage: string = mocks.send.mock.calls[0][0];
@@ -114,25 +121,17 @@ describe('_madness', () => {
         expect(authorMatch[3]).toBe(userMatch[2]);
     });
 
-    it('can send a flaw', async () => {
-        mocks.user.mockReturnValue({
-            username: 'jdoe',
-            send: mocks.send,
-        });
-        await command.run(message, { $0: 'madness', _: ['flaw'] });
-
-        const userMessage: string = mocks.send.mock.calls[0][0];
-        const userMatch = userMessage.match(/(.*) This lasts until cured\./);
-        if (!userMatch) {
-            throw new Error('unexpected message format');
-        }
-
-        expect(madness.flaw.options).toContain(userMatch[1]);
+    it('can send to multiple users', async () => {
+        const user2 = jest.fn();
+        const users = new Collection();
+        users.set('1', { username: 'jdoe', send: mocks.send });
+        users.set('2', { username: 'foo', send: user2 });
+        mocks.users.mockReturnValue(users);
     });
 
     it('throws an error if no user is given', async () => {
         try {
-            mocks.user.mockReturnValue(null);
+            mocks.users.mockReturnValue(new Collection());
             await command.run(message, { $0: 'madness', _: [] });
 
             fail('expected error to be thrown');
