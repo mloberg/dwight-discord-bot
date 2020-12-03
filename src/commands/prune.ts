@@ -7,6 +7,7 @@ import { Command } from '../types';
 const command: Command = {
     name: 'prune',
     description: 'Prune messages from a channel',
+    alias: ['purge'],
     usage: 'COUNT',
     async run(message: Message, args: Arguments) {
         if (message.channel.type === 'dm') {

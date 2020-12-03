@@ -29,8 +29,8 @@ describe('_prune configuration', () => {
         expect(command.usage).toEqual('COUNT');
     });
 
-    it('should have no aliases', () => {
-        expect(command.alias).toBeUndefined();
+    it('should have a purge alias', () => {
+        expect(command.alias).toContain('purge');
     });
 });
 
