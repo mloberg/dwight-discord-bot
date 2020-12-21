@@ -1,5 +1,5 @@
 import { Message } from 'discord.js';
-import { sample } from 'lodash';
+import { isString, sample } from 'lodash';
 import { Arguments } from 'yargs';
 
 import { crIndex, hoard, individual } from '../data/treasure';
@@ -37,7 +37,7 @@ const command: Command = {
 
             for (let index = 0; index < roll(key); index++) {
                 const item = sample(value) ?? '';
-                const resolved = typeof item === 'string' ? item : await item();
+                const resolved = isString(item) ? item : await item();
                 reply.push(`* ${type}: ${resolved}`);
             }
         }

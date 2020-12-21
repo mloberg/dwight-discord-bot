@@ -12,6 +12,7 @@ import madness from './madness';
 import ping from './ping';
 import prune from './prune';
 import spell from './spell';
+import table from './table';
 import treasure from './treasure';
 import wildMagic from './wildMagic';
 
@@ -83,6 +84,7 @@ commands.register(madness);
 commands.register(ping);
 commands.register(prune);
 commands.register(spell);
+commands.register(table);
 commands.register(treasure);
 commands.register(wildMagic);
 
