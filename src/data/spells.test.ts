@@ -1,28 +1,21 @@
-import fetch from 'node-fetch';
+import axios from 'axios';
 import { mocked } from 'ts-jest/utils';
 
 import spells from './spells';
 
-const { Response } = jest.requireActual('node-fetch');
-
-jest.mock('node-fetch');
+jest.mock('axios');
 
 test('fetch and cache spell list', async () => {
-    const fetchMock = mocked(fetch, true);
-    fetchMock.mockReturnValue(
-        Promise.resolve(
-            new Response('{"spells":[{"spell":"Foo","level":3,"school":"divination","class":["Bard","Cleric"]}]}'),
-        ),
-    );
+    const axiosMock = mocked(axios, true);
+    axiosMock.get.mockResolvedValue({ data: { spells: ['foo', 'bar'] } });
 
     const result = await spells();
 
-    expect(result.length).toEqual(1);
-    expect(result[0].spell).toEqual('Foo');
+    expect(result).toEqual(['foo', 'bar']);
 
     const cached = await spells();
     expect(cached).toEqual(result);
 
-    expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(fetchMock).toHaveBeenCalledWith('https://everlastingdungeons.com/api/spells.json');
+    expect(axiosMock.get).toHaveBeenCalledTimes(1);
+    expect(axiosMock.get).toHaveBeenCalledWith('https://everlastingdungeons.com/api/spells.json');
 });

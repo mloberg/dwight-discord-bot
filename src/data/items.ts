@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import axios from 'axios';
 
 import config from '../config';
 import Cache from './cache';
@@ -14,14 +14,9 @@ interface Item {
 const cache = new Cache<Item[]>(86400);
 
 export default async (): Promise<Item[]> => {
-    const cached = cache.get();
-    if (cached) {
-        return cached;
-    }
+    return await cache.remember('items', async () => {
+        const response = await axios.get(`${config.apiUrl}/items.json`);
 
-    const response = await fetch(`${config.apiUrl}/items.json`);
-    const data = await response.json();
-    cache.set(data.items);
-
-    return data.items;
+        return response.data.items;
+    });
 };

@@ -19,20 +19,19 @@
     "fix": "npm run lint -- --fix"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "discord.js": "^12.5.1",
     "dotenv": "^8.2.0",
     "joi": "^17.3.0",
     "lodash": "^4.17.20",
-    "node-fetch": "^2.6.1",
-    "pino": "^6.10.0",
+    "pino": "^6.8.0",
     "yargs": "^16.2.0"
   },
   "devDependencies": {
     "@tsconfig/node14": "^1.0.0",
     "@types/jest": "^26.0.19",
     "@types/lodash": "^4.14.165",
-    "@types/node": "^14.14.21",
-    "@types/node-fetch": "^2.5.7",
+    "@types/node": "^14.14.14",
     "@types/pino": "^6.3.4",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
@@ -42,7 +41,7 @@
     "eslint-plugin-prettier": "^3.3.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "jest": "^26.6.3",
-    "nodemon": "^2.0.7",
+    "nodemon": "^2.0.6",
     "pino-pretty": "^4.3.0",
     "prettier": "^2.2.1",
     "ts-jest": "^26.4.4",
