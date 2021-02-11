@@ -1,40 +1,31 @@
 import Cache from './cache';
 
-const realDateNow = Date.now.bind(global.Date);
-const dateNowStub = jest.fn(() => 1);
-
-beforeEach(() => {
-    global.Date.now = dateNowStub;
-});
-
-afterEach(() => {
-    global.Date.now = realDateNow;
-});
-
 describe('Cache', () => {
+    const cache = new Cache<string>();
+
+    beforeEach(() => {
+        cache.clear();
+    });
+
     it('returns the cached value', () => {
-        const cache = new Cache();
+        expect(cache.get('test')).toBeUndefined();
 
-        expect(cache.get()).toBeNull();
-
-        cache.set('foobar');
-        expect(cache.get()).toEqual('foobar');
+        cache.set('foo', 'bar');
+        expect(cache.get('foo')).toEqual('bar');
     });
 
     it('does not return cached value if over ttl', () => {
-        const cache = new Cache();
-        cache.set('foobar');
-
-        dateNowStub.mockReturnValue(3000001);
-
-        expect(cache.get()).toBeNull();
+        cache.set('test', 'expired', -1);
+        expect(cache.get('test')).toBeUndefined();
     });
 
-    it('can set ttl on cache set', () => {
-        const cache = new Cache(60);
-        cache.set('foobar', 3000);
+    it('returns remembered value', async () => {
+        cache.set('foo', 'cached');
+        expect(await cache.remember('foo', () => 'new value')).toBe('cached');
+    });
 
-        dateNowStub.mockReturnValue(3000000);
-        expect(cache.get()).toEqual('foobar');
+    it('stores remembered value', async () => {
+        expect(await cache.remember('foo', () => 'resolved')).toBe('resolved');
+        expect(cache.get('foo')).toBe('resolved');
     });
 });

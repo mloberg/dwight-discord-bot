@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import axios from 'axios';
 
 import config from '../config';
 import Cache from './cache';
@@ -13,14 +13,9 @@ interface Spell {
 const cache = new Cache<Spell[]>(86400);
 
 export default async (): Promise<Spell[]> => {
-    const cached = cache.get();
-    if (cached) {
-        return cached;
-    }
+    return await cache.remember('spells', async () => {
+        const response = await axios.get(`${config.apiUrl}/spells.json`);
 
-    const response = await fetch(`${config.apiUrl}/spells.json`);
-    const data = await response.json();
-    cache.set(data.spells);
-
-    return data.spells;
+        return response.data.spells;
+    });
 };
