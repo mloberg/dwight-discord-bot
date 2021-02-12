@@ -13,14 +13,12 @@ jest.mock('discord.js', () => ({
     Guild: jest.fn(),
     TextChannel: jest.fn(),
     Collection: jest.fn(),
-    Message: jest.fn().mockImplementation(() => {
-        return {
-            delete: mocks.delete,
-            channel: {
-                send: mocks.send,
-            },
-        };
-    }),
+    Message: jest.fn().mockImplementation(() => ({
+        delete: mocks.delete,
+        channel: {
+            send: mocks.send,
+        },
+    })),
 }));
 jest.mock('../data/spells', () => {
     return () => [
@@ -91,7 +89,7 @@ describe('_treasure configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('treasure');
         expect(command.description).toEqual('Give me the loot!');
-        expect(command.usage).toEqual('CR [ROLL] [--hoard]');
+        expect(command.usage).toEqual('[hoard] <cr> [d100]');
     });
 
     it('should have an alias', () => {
@@ -113,18 +111,14 @@ describe('_treasure', () => {
     });
 
     it('returns individual treasure', async () => {
-        await command.run(message, { $0: 'treasure', _: ['1'] });
+        await command.run(message, { command: 'treasure', args: [], match: [], groups: { cr: '1' } });
 
         expect(mocks.delete).toBeCalledTimes(1);
-
-        const treasure = mocks.send.mock.calls[0];
-        expect(treasure[0].length).toEqual(2);
-        expect(treasure[0][0]).toEqual('You found:');
-        expect(treasure[1]).toEqual({ split: true });
+        expect(mocks.send).toHaveBeenCalledWith(expect.arrayContaining(['You found:']), { split: true });
     });
 
     it('returns individual treasure for a dice roll', async () => {
-        await command.run(message, { $0: 'treasure', _: ['17', '99'] });
+        await command.run(message, { command: 'treasure', args: [], match: [], groups: { cr: '17', roll: '99' } });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -137,7 +131,7 @@ describe('_treasure', () => {
     });
 
     it('returns a treasure hoard', async () => {
-        await command.run(message, { $0: 'treasure', _: [], cr: 4, hoard: true });
+        await command.run(message, { command: 'treasure', args: [], match: [], groups: { cr: '4', hoard: 'hoard' } });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -148,7 +142,12 @@ describe('_treasure', () => {
     });
 
     it('returns a treasure hoard with dice roll', async () => {
-        await command.run(message, { $0: 'treasure', _: [], cr: 12, roll: 99, hoard: true });
+        await command.run(message, {
+            command: 'treasure',
+            args: [],
+            match: [],
+            groups: { cr: '12', roll: '99', hoard: 'hoard' },
+        });
 
         expect(mocks.delete).toBeCalledTimes(1);
 
@@ -161,11 +160,10 @@ describe('_treasure', () => {
 
     it('throws an error if no CR given', async () => {
         try {
-            await command.run(message, { $0: 'treasure', _: [] });
-
+            await command.run(message, { command: 'treasure', args: [], match: [], groups: {} });
             fail('expected error to be thrown');
         } catch (err) {
-            expect(err instanceof FriendlyError).toBe(true);
+            expect(err).toBeInstanceOf(FriendlyError);
             expect(err.message).toEqual('Missing challenge rating');
         }
     });

@@ -1,6 +1,4 @@
-import { Message } from 'discord.js';
 import { isString, sample } from 'lodash';
-import { Arguments } from 'yargs';
 
 import { crIndex, hoard, individual } from '../data/treasure';
 import { FriendlyError } from '../error';
@@ -9,19 +7,20 @@ import { roll } from '../utils';
 
 const command: Command = {
     name: 'treasure',
-    description: 'Give me the loot!',
     alias: ['loot'],
-    usage: 'CR [ROLL] [--hoard]',
-    examples: ['4', '6 86', '10 --hoard'],
-    async run(message: Message, args: Arguments): Promise<Message[]> {
-        const cr = Number(args.cr ?? args._[0]);
-        const dice = Number(args.roll || args._[1] || roll('d100'));
+    args: /(?<hoard>hoard )?(?<cr>\d+)(?<roll> \d+)?/,
+    description: 'Give me the loot!',
+    usage: '[hoard] <cr> [d100]',
+    examples: ['4', '6 86', 'hoard 10'],
+    async run(message, { groups }) {
+        const cr = Number(groups.cr);
+        const dice = Number(groups.roll || roll('d100'));
 
         if (isNaN(cr)) {
             throw new FriendlyError('Missing challenge rating');
         }
 
-        const tables = args.hoard ? hoard : individual;
+        const tables = groups.hoard ? hoard : individual;
         const table = tables[crIndex(cr)][dice - 1];
 
         const reply = ['You found:'];

@@ -1,4 +1,3 @@
-import { Message } from 'discord.js';
 import { sample } from 'lodash';
 
 import { Command } from '../types';
@@ -29,7 +28,7 @@ export const events = [
 const command: Command = {
     name: 'event',
     description: 'Trigger a random event',
-    async run(message: Message): Promise<Message> {
+    async run(message) {
         await message.delete();
 
         return message.channel.send(sample(events) ?? 'Something happens');

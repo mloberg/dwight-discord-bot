@@ -1,6 +1,4 @@
-import { Message } from 'discord.js';
 import { sample, upperFirst } from 'lodash';
-import { Arguments } from 'yargs';
 
 import spellList from '../data/spells';
 import { FriendlyError } from '../error';
@@ -10,13 +8,14 @@ const command: Command = {
     name: 'spell',
     description: 'Return a random spell',
     alias: ['spells'],
-    usage: '[--level] LEVEL [--class] CLASS [--school] SCHOOL',
-    examples: ['cantrip', '1 bard', '4 --school illusion'],
-    async run(message: Message, args: Arguments): Promise<Message> {
-        const levelInput = String(args.level ?? args._[0]);
+    args: /(?<level>cantrip|\d(?:[sthnrd]+)?)? ?(?<class>bard|cleric|druid|paladin|ranger|warlock|wizard)? ?(?<school>\w+)?/,
+    usage: '[level] [class] [school]',
+    examples: ['cantrip', '1 bard', '4 illusion'],
+    async run(message, { groups }) {
+        const levelInput = String(groups.level);
         const level = 'cantrip' === levelInput.toLowerCase() ? 0 : Number(levelInput);
-        const type = (args.class || args._[1]) as string;
-        const school = (args.school || args._[2]) as string;
+        const type = groups.class;
+        const school = groups.school;
 
         let spells = await spellList();
         if (!isNaN(level)) {

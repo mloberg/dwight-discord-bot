@@ -12,11 +12,9 @@ jest.mock('discord.js', () => ({
     Guild: jest.fn(),
     TextChannel: jest.fn(),
     Collection: jest.fn(),
-    Message: jest.fn().mockImplementation(() => {
-        return {
-            reply: mocks.reply,
-        };
-    }),
+    Message: jest.fn().mockImplementation(() => ({
+        reply: mocks.reply,
+    })),
 }));
 jest.mock('../data/items', () => {
     return () => [
@@ -46,7 +44,7 @@ describe('_item configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('item');
         expect(command.description).toEqual('Return a random magic item');
-        expect(command.usage).toEqual('[--rarity] RARITY [--type] TYPE');
+        expect(command.usage).toEqual('[rarity] [type]');
     });
 
     it('should have an alias', () => {
@@ -68,52 +66,49 @@ describe('_item', () => {
     });
 
     it('returns a random item', async () => {
-        const reply = await command.run(message, { $0: 'item', _: [] });
-
-        expect(reply).toBe(message);
+        await command.run(message, { command: 'item', args: [], match: [], groups: {} });
 
         const item = mocks.reply.mock.calls[0][0];
         expect(['IDE of Lesser Bugs', 'Phone of Longer Life', 'Pants of Greater Comfort']).toContainEqual(item);
     });
 
     it('returns an item filtered by rarity', async () => {
-        const one = await command.run(message, { $0: 'item', _: [], rarity: 'Uncommon' });
-        const two = await command.run(message, { $0: 'item', _: [], rarity: 'vrare' });
+        await command.run(message, { command: 'item', args: [], match: [], groups: { rarity: 'Uncommon' } });
+        expect(mocks.reply).toHaveBeenLastCalledWith('Phone of Longer Life');
 
-        expect(one).toEqual(message);
-        expect(two).toEqual(message);
-
-        expect(mocks.reply.mock.calls[0][0]).toBe('Phone of Longer Life');
-        expect(mocks.reply.mock.calls[1][0]).toBe('IDE of Lesser Bugs');
+        await command.run(message, { command: 'item', args: [], match: [], groups: { rarity: 'very rare' } });
+        expect(mocks.reply).toHaveBeenLastCalledWith('IDE of Lesser Bugs');
     });
 
     it('returns an item filtered by type', async () => {
-        const one = await command.run(message, { $0: 'item', _: [], type: 'Wondrous' });
-        const two = await command.run(message, { $0: 'item', _: [], type: 'Text Editor' });
+        await command.run(message, { command: 'item', args: [], match: [], groups: { type: 'Wondrous' } });
+        expect(mocks.reply).toHaveBeenLastCalledWith('Phone of Longer Life');
 
-        expect(one).toEqual(message);
-        expect(two).toEqual(message);
-
-        expect(mocks.reply.mock.calls[0][0]).toBe('Phone of Longer Life');
-        expect(mocks.reply.mock.calls[1][0]).toBe('IDE of Lesser Bugs');
+        await command.run(message, { command: 'item', args: [], match: [], groups: { type: 'Text Editor' } });
+        expect(mocks.reply).toHaveBeenLastCalledWith('IDE of Lesser Bugs');
     });
 
     it('returns an item matching multiple filters', async () => {
-        const reply = await command.run(message, { $0: 'item', _: ['common', 'armor'] });
-
-        expect(reply).toBe(message);
-
-        const item = mocks.reply.mock.calls[0][0];
-        expect(item).toBe('Pants of Greater Comfort');
+        await command.run(message, {
+            command: 'item',
+            args: [],
+            match: [],
+            groups: { rarity: 'common', type: 'armor' },
+        });
+        expect(mocks.reply).toHaveBeenLastCalledWith('Pants of Greater Comfort');
     });
 
     it('throws an error when no item matches', async () => {
         try {
-            await command.run(message, { $0: 'item', _: ['very rare', 'weapon'] });
-
+            await command.run(message, {
+                command: 'item',
+                args: [],
+                match: [],
+                groups: { rarity: 'very rare', type: 'weapon' },
+            });
             fail('expected error to be thrown');
         } catch (err) {
-            expect(err instanceof FriendlyError).toBe(true);
+            expect(err).toBeInstanceOf(FriendlyError);
             expect(err.message).toEqual("I couldn't find an item matching those parameters.");
         }
     });

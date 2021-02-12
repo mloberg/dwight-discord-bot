@@ -3,7 +3,7 @@ import { Client, Guild, Message, TextChannel } from 'discord.js';
 import command from './ping';
 
 const mocks = {
-    send: jest.fn(),
+    react: jest.fn(),
 };
 
 jest.mock('discord.js', () => ({
@@ -11,13 +11,9 @@ jest.mock('discord.js', () => ({
     Guild: jest.fn(),
     TextChannel: jest.fn(),
     Collection: jest.fn(),
-    Message: jest.fn().mockImplementation(() => {
-        return {
-            channel: {
-                send: mocks.send,
-            },
-        };
-    }),
+    Message: jest.fn().mockImplementation(() => ({
+        react: mocks.react,
+    })),
 }));
 
 describe('_ping configuration', () => {
@@ -35,8 +31,7 @@ describe('_ping', () => {
     let message: Message;
 
     beforeEach(() => {
-        mocks.send.mockClear();
-        mocks.send.mockReturnThis();
+        mocks.react.mockClear();
 
         const client = new Client();
         const guild = new Guild(client, {});
@@ -45,8 +40,7 @@ describe('_ping', () => {
     });
 
     it('responds', async () => {
-        await command.run(message, { $0: 'ping', _: [] });
-
-        expect(mocks.send).toBeCalledWith('pong');
+        await command.run(message, { command: 'ping', args: [], match: [], groups: {} });
+        expect(mocks.react).toBeCalledWith('🏓');
     });
 });

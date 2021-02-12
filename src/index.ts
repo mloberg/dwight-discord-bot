@@ -1,20 +1,26 @@
 import { Client } from 'discord.js';
-import { escapeRegExp } from 'lodash';
-import yargs from 'yargs';
+import { escapeRegExp, memoize } from 'lodash';
 
-import commands from './commands';
+import commands, { Commands } from './commands';
 import config from './config';
 import { FriendlyError } from './error';
 import logger from './logger';
+import { Context } from './types';
 
 const client = new Client();
+const regex = memoize((commands: Commands, ...prefix: string[]) => {
+    const prefixMatch = prefix.join('|');
+    const commandMatch = commands.all().map(escapeRegExp).join('|');
+
+    return new RegExp(`^(?:${prefixMatch})\\s*?(?<command>${commandMatch})(?<args>.*)?`, 'i');
+});
 
 client.once('ready', () => {
     if (!client.user) {
         return;
     }
 
-    client.user.setActivity(`Assistant to the Dungeon Master | ${config.prefix}help`);
+    client.user.setActivity(`Assistant to the DM | ${config.prefix}help`);
     logger.info(
         {
             username: `${client.user.username}#${client.user.discriminator} (${client.user.id})`,
@@ -25,31 +31,45 @@ client.once('ready', () => {
 });
 
 client.on('message', async (message) => {
-    const prefixRegex = new RegExp(`^(<@!?${client.user?.id}>|${escapeRegExp(config.prefix)})\\s*`);
-    if (message.author.bot || !prefixRegex.test(message.content)) {
+    if (message.author.bot) {
         return;
     }
 
-    const [, matchedPrefix] = message.content.match(prefixRegex) ?? [];
-    const [commandName, ...args] = message.content.slice(matchedPrefix.length).trim().split(/ +/);
-    const parsed = yargs.help(false).parse(args.join(' '));
-    parsed.$0 = commandName;
-
-    const command = commands.get(commandName.toLowerCase());
-    if (!command) {
+    const text = message.content.trim().replace(/\s+/, ' ');
+    const match = regex(commands, `<@!?${client.user?.id}>`, escapeRegExp(config.prefix)).exec(text);
+    if (!match) {
         return;
     }
+
+    const { command, args = '' } = match.groups || {};
+    const handler = commands.get(command.toLowerCase());
+    if (!handler) {
+        throw new Error(`Could not find handler for ${command}.`);
+    }
+
+    const parsedArgs = (handler.args || /.*/).exec(args.trim());
+    if (!parsedArgs) {
+        logger.debug({ command, args, regex: handler.args }, 'Invalid usage');
+        await message.reply(`Usage: ${config.prefix}${handler.name} ${handler.usage}`);
+        return;
+    }
+
+    const context: Context = {
+        command,
+        args: args.split(' ').filter((v) => v),
+        match: parsedArgs,
+        groups: parsedArgs.groups || {},
+    };
 
     logger.debug({
         guild: message.guild?.name,
         channel: message.channel.toString(),
         message: message.content,
-        command: commandName,
-        args: parsed,
+        ...context,
     });
 
     try {
-        await command.run(message, parsed);
+        await handler.run(message, context);
     } catch (err) {
         if (err instanceof FriendlyError) {
             return message.reply(err.message);

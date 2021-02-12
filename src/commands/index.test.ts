@@ -11,20 +11,18 @@ jest.mock('discord.js', () => ({
     Client: jest.fn(),
     Guild: jest.fn(),
     TextChannel: jest.fn(),
-    Message: jest.fn().mockImplementation(() => {
-        return {
-            channel: {
-                send: mocks.send,
-            },
-        };
-    }),
+    Message: jest.fn().mockImplementation(() => ({
+        channel: {
+            send: mocks.send,
+        },
+    })),
 }));
 
 describe('_help configuration', () => {
     it('should have basic command infomation', () => {
         expect(help.name).toEqual('help');
         expect(help.description).toEqual('Get help with commands');
-        expect(help.usage).toEqual('[COMMAND]');
+        expect(help.usage).toEqual('[command]');
     });
 
     it('should have an alias', () => {
@@ -46,22 +44,18 @@ describe('_help', () => {
     });
 
     it('returns a list of all commands', async () => {
-        const reply = await help.run(message, { $0: 'help', _: [] });
-
-        expect(reply).toEqual(message.channel);
+        await help.run(message, { command: 'help', args: [], match: [], groups: {} });
         expect(mocks.send).toMatchSnapshot();
     });
 
     it.each(['help', 'treasure', 'event'])('returns the details for the %s command', async (cmd) => {
-        const reply = await help.run(message, { $0: 'help', _: [cmd] });
-
-        expect(reply).toEqual(message.channel);
+        await help.run(message, { command: 'help', args: [cmd], match: [], groups: {} });
         expect(mocks.send).toMatchSnapshot();
     });
 
     it('returns an error if an invalid command is given', async () => {
         try {
-            await help.run(message, { $0: 'help', _: ['invalid'] });
+            await help.run(message, { command: 'help', args: ['invalid'], match: [], groups: {} });
 
             fail('expected error to be thrown');
         } catch (err) {
@@ -74,10 +68,11 @@ describe('_help', () => {
 describe('Commands', () => {
     it('registers commands and their aliases', () => {
         const commands = new Commands();
-        expect(commands.list()).toHaveLength(0);
+        expect(commands.list()).toEqual([]);
 
         commands.register(help);
-        expect(commands.list()).toHaveLength(1);
+        expect(commands.list()).toEqual(['help']);
+        expect(commands.all()).toEqual(['help', 'commands', 'usage']);
     });
 
     it('returns the correct command', () => {

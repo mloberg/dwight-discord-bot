@@ -1,6 +1,3 @@
-import { Message } from 'discord.js';
-import { Arguments } from 'yargs';
-
 import { Command } from '../types';
 import { roll } from '../utils';
 
@@ -56,18 +53,36 @@ export const wildMagic = [
     'You are surrounded by faint, ethereal music for the next minute.',
     'You regain all expended sorcery points.',
 ];
+const wildMagicBarbarian = [
+    'Shadowy tendrils lash around you. Each creature of your choice that you can see within 30 feet of you must succeed on a Constitution saving throw or take 1d12 necrotic damage. You also gain 1d12 temporary hit points.',
+    'You teleport up to 30 feet to an unoccupied space you can see. Until your rage ends, you can use this effect again on each of your turns as a bonus action.',
+    'An intangible spirit, which looks like a flumph or a pixie (your choice), appears within 5 feet of one creature of your choice that you can see within 30 feet of you. At the end of the current turn, the spirit explodes, and each creature within 5 feet of it must succeed on a Dexterity saving throw or take 1d6 force damage. Until your rage ends, you can use this effect again, summoning another spirit, on each of your turns as a bonus action.',
+    'Magic infuses one weapon of your choice that you are holding. Until your rage ends, the weapon’s damage type changes to force, and it gains the light and thrown properties, with a normal range of 20 feet and a long range of 60 feet. If the weapon leaves your hand, the weapon reappears in your hand at the end of the current turn.',
+    'Whenever a creature hits you with an attack roll before your rage ends, that creature takes 1d6 force damage, as magic lashes out in retribution.',
+    'Until your rage ends, you are surrounded by multi­colored, protective lights; you gain a +1 bonus to AC, and while within 10 feet of you, your allies gain the same bonus.',
+    'Flowers and vines temporarily grow around you; until your rage ends, the ground within 15 feet of you is difficult terrain for your enemies.',
+    'A bolt of light shoots from your chest. Another creature of your choice that you can see within 30 feet of you must succeed on a Constitution saving throw or take 1d6 radiant damage and be blinded until the start of your next turn. Until your rage ends, you can use this effect again on each of your turns as a bonus action.',
+];
 
 const command: Command = {
-    name: 'wild',
+    name: 'wild magic',
     description: 'Roll on the Wild Magic table',
-    alias: ['wild-magic'],
-    usage: '[ROLL]',
-    async run(message: Message, args: Arguments): Promise<Message> {
-        const dice = Number(args.roll || args._[0] || roll('d100'));
+    alias: ['wild-magic', 'wild'],
+    args: /(?<barbarian>barbarian )?(?<roll>\d+)?/,
+    usage: '[barbarian] [d100|d8]',
+    async run(message, { groups }) {
+        await message.delete();
+
+        if (groups.barbarian) {
+            const dice = Number(groups.roll || roll('d8')) - 1;
+            const result = wildMagicBarbarian[dice];
+
+            return message.reply(result);
+        }
+
+        const dice = Number(groups.roll || roll('d100'));
         const index = Math.floor((dice - 1) / 2);
         const result = wildMagic[index];
-
-        await message.delete();
 
         return message.reply(result);
     },

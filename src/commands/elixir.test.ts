@@ -12,12 +12,10 @@ jest.mock('discord.js', () => ({
     Guild: jest.fn(),
     TextChannel: jest.fn(),
     Collection: jest.fn(),
-    Message: jest.fn().mockImplementation(() => {
-        return {
-            delete: mocks.delete,
-            reply: mocks.reply,
-        };
-    }),
+    Message: jest.fn().mockImplementation(() => ({
+        delete: mocks.delete,
+        reply: mocks.reply,
+    })),
 }));
 
 describe('_elixir configuration', () => {
@@ -46,28 +44,20 @@ describe('_elixir', () => {
     });
 
     it('returns an elixir', async () => {
-        const reply = await command.run(message, { $0: 'elixir', _: [] });
+        await command.run(message, { command: 'elixir', args: [], match: [], groups: {} });
 
         expect(mocks.delete).toHaveBeenCalledTimes(1);
-        expect(reply).toBe(message);
 
         const elixir = mocks.reply.mock.calls[0][0];
         expect(elixirs).toContainEqual(elixir);
     });
 
     it('returns an elixir for a dice roll', async () => {
-        const one = await command.run(message, { $0: 'elixir', _: ['1'] });
-        const two = await command.run(message, { $0: 'elixir', _: [], roll: 4 });
+        await command.run(message, { command: 'elixir', args: [], match: [], groups: { roll: '1' } });
 
-        expect(mocks.delete).toHaveBeenCalledTimes(2);
-        expect(one).toBe(message);
-        expect(two).toBe(message);
-
+        expect(mocks.delete).toHaveBeenCalledTimes(1);
         expect(mocks.reply).toHaveBeenCalledWith(
             '**Healing**. The drinker regains a number of hit points equal to 2d4 + your Intelligence modifier.',
-        );
-        expect(mocks.reply).toHaveBeenCalledWith(
-            '**Boldness**. The drinker can roll a d4 and add the number rolled to every attack roll and saving throw they make for the next minute.',
         );
     });
 });

@@ -1,6 +1,3 @@
-import { Message } from 'discord.js';
-import { Arguments } from 'yargs';
-
 import { FriendlyError } from '../error';
 import { Command } from '../types';
 
@@ -8,13 +5,13 @@ const command: Command = {
     name: 'prune',
     description: 'Prune messages from a channel',
     alias: ['purge'],
-    usage: 'COUNT',
-    async run(message: Message, args: Arguments) {
+    usage: '<count>',
+    async run(message, { args }) {
         if (message.channel.type === 'dm') {
             throw new FriendlyError("I can't bulk delete DMs.");
         }
 
-        await message.channel.bulkDelete(Number(args._[0]) + 1, true);
+        await message.channel.bulkDelete(Number(args[0]) + 1, true);
     },
 };
 

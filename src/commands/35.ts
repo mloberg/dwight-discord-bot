@@ -1,6 +1,3 @@
-import { Message } from 'discord.js';
-import { Arguments } from 'yargs';
-
 import { FriendlyError } from '../error';
 import { Command, Dictionary } from '../types';
 
@@ -45,11 +42,12 @@ export const conversion: Dictionary<string> = {
 
 const command: Command = {
     name: '3.5',
-    description: '3.5 to 5th edition skills conversion',
     alias: ['35'],
-    usage: 'SKILL',
-    async run(message: Message, args: Arguments): Promise<Message> {
-        const search = args._.join(' ');
+    args: /(?<skill>.+)/,
+    description: '3.5 to 5th edition skills conversion',
+    usage: '<skill>',
+    async run(message, { groups }) {
+        const search = groups.skill?.trim();
         const skill = conversion[search.toLowerCase()];
         if (!skill) {
             throw new FriendlyError(`I couldn't find skill "${search}".`);

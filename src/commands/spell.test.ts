@@ -12,11 +12,9 @@ jest.mock('discord.js', () => ({
     Guild: jest.fn(),
     TextChannel: jest.fn(),
     Collection: jest.fn(),
-    Message: jest.fn().mockImplementation(() => {
-        return {
-            reply: mocks.reply,
-        };
-    }),
+    Message: jest.fn().mockImplementation(() => ({
+        reply: mocks.reply,
+    })),
 }));
 jest.mock('../data/spells', () => {
     return () => [
@@ -45,7 +43,7 @@ describe('_spell configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('spell');
         expect(command.description).toEqual('Return a random spell');
-        expect(command.usage).toEqual('[--level] LEVEL [--class] CLASS [--school] SCHOOL');
+        expect(command.usage).toEqual('[level] [class] [school]');
     });
 
     it('should have an alias', () => {
@@ -67,43 +65,51 @@ describe('_spell', () => {
     });
 
     it('returns a random spell', async () => {
-        const reply = await command.run(message, { $0: 'spell', _: [] });
-
-        expect(reply).toBe(message);
+        await command.run(message, { command: 'spell', args: [], match: [], groups: {} });
 
         const spell = mocks.reply.mock.calls[0][0];
         expect(['Debugger', 'Foo', 'Bar']).toContainEqual(spell);
     });
 
     it('returns a spell filtered by level', async () => {
-        const one = await command.run(message, { $0: 'spell', _: [], level: 0 });
-        const two = await command.run(message, { $0: 'spell', _: [], level: 'Cantrip' });
+        await command.run(message, { command: 'spell', args: [], match: [], groups: { level: '0' } });
+        expect(mocks.reply).toHaveBeenLastCalledWith('Foo');
 
-        expect(one).toEqual(message);
-        expect(two).toEqual(message);
+        await command.run(message, { command: 'spell', args: [], match: [], groups: { level: 'Cantrip' } });
+        expect(mocks.reply).toHaveBeenLastCalledWith('Foo');
 
-        expect(mocks.reply.mock.calls[0][0]).toBe('Foo');
-        expect(mocks.reply.mock.calls[1][0]).toBe('Foo');
+        expect(mocks.reply).toHaveBeenCalledTimes(2);
     });
 
     it('returns a filtered spell', async () => {
-        const one = await command.run(message, { $0: 'spell', _: [], school: 'Evocation', class: 'Wizard' });
-        const two = await command.run(message, { $0: 'spell', _: ['5', 'Cleric', 'Divination'] });
+        await command.run(message, {
+            command: 'spell',
+            args: [],
+            match: [],
+            groups: { school: 'Evocation', class: 'Wizard' },
+        });
+        expect(mocks.reply).toHaveBeenLastCalledWith('Debugger');
 
-        expect(one).toEqual(message);
-        expect(two).toEqual(message);
-
-        expect(mocks.reply.mock.calls[0][0]).toBe('Debugger');
-        expect(mocks.reply.mock.calls[1][0]).toBe('Bar');
+        await command.run(message, {
+            command: 'spell',
+            args: [],
+            match: [],
+            groups: { level: '5', class: 'Cleric', school: 'Divination' },
+        });
+        expect(mocks.reply).toHaveBeenLastCalledWith('Bar');
     });
 
     it('throws an error when no item matches', async () => {
         try {
-            await command.run(message, { $0: 'spell', _: ['5', 'Ranger'] });
-
+            await command.run(message, {
+                command: 'spell',
+                args: [],
+                match: [],
+                groups: { level: '5', class: 'Ranger' },
+            });
             fail('expected error to be thrown');
         } catch (err) {
-            expect(err instanceof FriendlyError).toBe(true);
+            expect(err).toBeInstanceOf(FriendlyError);
             expect(err.message).toEqual("I couldn't find a spell matching those parameters.");
         }
     });
