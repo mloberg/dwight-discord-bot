@@ -1,6 +1,4 @@
-import { Message } from 'discord.js';
 import { sample } from 'lodash';
-import { Arguments } from 'yargs';
 
 import itemList from '../data/items';
 import { FriendlyError } from '../error';
@@ -10,16 +8,15 @@ const command: Command = {
     name: 'item',
     description: 'Return a random magic item',
     alias: ['items'],
-    usage: '[--rarity] RARITY [--type] TYPE',
-    examples: ['rare', 'rare weapon', '--type weapon'],
-    async run(message: Message, args: Arguments): Promise<Message> {
-        const rarity = (args.rarity || args._[0]) as string;
-        const type = (args.type || args._[1]) as string;
+    args: /(?<rarity>common|uncommon|rare|very rare|legendary|artifact)? ?(?<type>\w+)?/,
+    usage: '[rarity] [type]',
+    examples: ['rare', 'rare weapon', 'weapon'],
+    async run(message, { groups }) {
+        const { rarity, type } = groups;
 
         let items = await itemList();
         if (rarity) {
-            const rarityFilter = rarity.toLowerCase() === 'vrare' ? 'very rare' : rarity.toLowerCase();
-            items = items.filter((i) => i.rarity.toLowerCase() === rarityFilter);
+            items = items.filter((i) => i.rarity.toLowerCase() === rarity.toLowerCase());
         }
 
         if (type) {

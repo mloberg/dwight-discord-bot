@@ -1,6 +1,3 @@
-import { Message } from 'discord.js';
-import { Arguments } from 'yargs';
-
 import config from '../config';
 import { FriendlyError } from '../error';
 import { Command } from '../types';
@@ -30,15 +27,19 @@ export class Commands {
     list(): string[] {
         return this.commands.map((c) => c.name);
     }
+
+    all(): string[] {
+        return this.commands.flatMap((c) => [c.name, ...(c.alias || [])]);
+    }
 }
 
 export const help: Command = {
     name: 'help',
     description: 'Get help with commands',
-    alias: ['commands'],
-    usage: '[COMMAND]',
-    async run(message: Message, args: Arguments): Promise<Message | Message[]> {
-        if (!args._.length) {
+    alias: ['commands', 'usage'],
+    usage: '[command]',
+    async run(message, { args }) {
+        if (!args.length) {
             return message.channel.send(
                 [
                     'Here is a list of available commands:',
@@ -49,7 +50,7 @@ export const help: Command = {
             );
         }
 
-        const name = args._[0].toString().toLowerCase();
+        const name = args[0].toString().toLowerCase();
         const command = commands.get(name);
 
         if (!command) {

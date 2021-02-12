@@ -12,14 +12,12 @@ jest.mock('discord.js', () => ({
     Guild: jest.fn(),
     TextChannel: jest.fn(),
     Collection: jest.fn(),
-    Message: jest.fn().mockImplementation(() => {
-        return {
-            delete: mocks.delete,
-            channel: {
-                send: mocks.send,
-            },
-        };
-    }),
+    Message: jest.fn().mockImplementation(() => ({
+        delete: mocks.delete,
+        channel: {
+            send: mocks.send,
+        },
+    })),
 }));
 
 describe('_event configuration', () => {
@@ -48,10 +46,9 @@ describe('_event', () => {
     });
 
     it('returns a random event', async () => {
-        const reply = await command.run(message, { $0: 'event', _: [] });
+        await command.run(message, { command: 'event', args: [], match: [], groups: {} });
 
         expect(mocks.delete).toHaveBeenCalledTimes(1);
-        expect(reply).toBe(message.channel);
 
         const event = mocks.send.mock.calls[0][0];
         expect(events).toContainEqual(event);

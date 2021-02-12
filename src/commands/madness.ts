@@ -1,6 +1,4 @@
-import { Message } from 'discord.js';
 import { sample } from 'lodash';
-import { Arguments } from 'yargs';
 
 import { FriendlyError } from '../error';
 import { Command, Dictionary } from '../types';
@@ -102,10 +100,12 @@ export const madness: Dictionary<Madness> = {
 
 const command: Command = {
     name: 'madness',
+    alias: ['flaw'],
+    args: /(?<type>short|long)?/,
     description: 'Give a random madness to a player',
-    usage: '[short|long|flaw] ...@user',
-    async run({ mentions, author }: Message, args: Arguments) {
-        const type = (args._[0] || 'short').toString().toLowerCase();
+    usage: '[short|long|flaw] <...@user>',
+    async run({ mentions, author }, { command, groups }) {
+        const type = (command === 'flaw' ? 'flaw' : groups.type || 'short').toLowerCase();
         const users = mentions.users.filter((u) => !u.bot);
         if (0 === users.size) {
             throw new FriendlyError('You must assign a madness to a user.');

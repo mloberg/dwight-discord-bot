@@ -28,7 +28,7 @@ describe('_table configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('table');
         expect(command.description).toEqual('Roll on the magic item tables');
-        expect(command.usage).toEqual('TABLE [ROLL]');
+        expect(command.usage).toEqual('<table> [d100]');
     });
 
     it('should not have an alias', () => {
@@ -50,7 +50,7 @@ describe('_table', () => {
     });
 
     it('returns a value from the given table', async () => {
-        await command.run(message, { $0: 'table', _: ['a'] });
+        await command.run(message, { command: 'table', args: ['a'], match: [], groups: {} });
 
         expect(mocks.delete).toBeCalledTimes(1);
         expect(mocks.reply).toBeCalledTimes(1);
@@ -58,7 +58,7 @@ describe('_table', () => {
     });
 
     it('returns a value for a dice roll', async () => {
-        await command.run(message, { $0: 'table', _: ['b', '99'] });
+        await command.run(message, { command: 'table', args: ['b', '99'], match: [], groups: {} });
 
         expect(mocks.delete).toBeCalledTimes(1);
         expect(mocks.reply).toBeCalledTimes(1);
@@ -66,7 +66,7 @@ describe('_table', () => {
     });
 
     it('returns a resolved value', async () => {
-        await command.run(message, { $0: 'table', _: ['C'] });
+        await command.run(message, { command: 'table', args: ['C'], match: [], groups: {} });
 
         expect(mocks.delete).toBeCalledTimes(1);
         expect(mocks.reply).toBeCalledTimes(1);
@@ -75,10 +75,10 @@ describe('_table', () => {
 
     it('throws an error if invalid table given', async () => {
         try {
-            await command.run(message, { $0: 'table', _: [] });
+            await command.run(message, { command: 'table', args: [], match: [], groups: {} });
             fail('expected error to be thrown');
         } catch (err) {
-            expect(err instanceof FriendlyError).toBe(true);
+            expect(err).toBeInstanceOf(FriendlyError);
             expect(err.message).toEqual('Unknown table "-".');
         }
     });

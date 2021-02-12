@@ -1,6 +1,4 @@
-import { Message } from 'discord.js';
 import { isString } from 'lodash';
-import { Arguments } from 'yargs';
 
 import magicItemTable from '../data/table';
 import { FriendlyError } from '../error';
@@ -10,10 +8,10 @@ import { roll } from '../utils';
 const command: Command = {
     name: 'table',
     description: 'Roll on the magic item tables',
-    usage: 'TABLE [ROLL]',
-    async run(message: Message, args: Arguments) {
-        const index = (args._[0] || '-').toLowerCase();
-        const dice = Number(args._[1] || roll('d100'));
+    usage: '<table> [d100]',
+    async run(message, { args }) {
+        const index = (args[0] || '-').toLowerCase();
+        const dice = Number(args[1] || roll('d100'));
 
         const table = magicItemTable[index];
         if (!table) {
