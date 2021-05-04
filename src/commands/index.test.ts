@@ -1,7 +1,7 @@
 import { Client, Guild, Message, TextChannel } from 'discord.js';
 
 import { FriendlyError } from '../error';
-import { Commands, help } from '.';
+import { help } from '.';
 
 const mocks = {
     send: jest.fn(),
@@ -62,25 +62,5 @@ describe('_help', () => {
             expect(err instanceof FriendlyError).toBe(true);
             expect(err.message).toEqual('No command for "invalid" found.');
         }
-    });
-});
-
-describe('Commands', () => {
-    it('registers commands and their aliases', () => {
-        const commands = new Commands();
-        expect(commands.list()).toEqual([]);
-
-        commands.register(help);
-        expect(commands.list()).toEqual(['help']);
-        expect(commands.all()).toEqual(['help', 'commands', 'usage']);
-    });
-
-    it('returns the correct command', () => {
-        const commands = new Commands();
-        commands.register(help);
-
-        expect(commands.get('help')).toEqual(help);
-        expect(commands.get('commands')).toEqual(help);
-        expect(commands.get('foo')).toBeNull();
     });
 });

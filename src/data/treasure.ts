@@ -1,4 +1,4 @@
-import { Dictionary } from 'src/types';
+import { Dictionary } from 'lodash';
 
 import magicTable from './table';
 

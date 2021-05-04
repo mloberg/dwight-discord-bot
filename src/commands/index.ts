@@ -1,6 +1,6 @@
+import Command, { Manager } from '../command';
 import config from '../config';
 import { FriendlyError } from '../error';
-import { Command } from '../types';
 import conversion from './35';
 import elixir from './elixir';
 import event from './event';
@@ -13,27 +13,9 @@ import table from './table';
 import treasure from './treasure';
 import wildMagic from './wildMagic';
 
-export class Commands {
-    private commands: Command[] = [];
+const commands = new Manager();
 
-    register(command: Command): void {
-        this.commands.push(command);
-    }
-
-    get(name: string): Command | null {
-        return this.commands.find((c) => c.name === name || (c.alias && c.alias.includes(name))) || null;
-    }
-
-    list(): string[] {
-        return this.commands.map((c) => c.name);
-    }
-
-    all(): string[] {
-        return this.commands.flatMap((c) => [c.name, ...(c.alias || [])]);
-    }
-}
-
-export const help: Command = {
+export const help = new Command({
     name: 'help',
     description: 'Get help with commands',
     alias: ['commands', 'usage'],
@@ -44,7 +26,7 @@ export const help: Command = {
                 [
                     'Here is a list of available commands:',
                     commands.list().join(', '),
-                    `Get more details with "${config.prefix}help [command]"`,
+                    `Get more details with "${config.prefix}help ${this.usage}"`,
                 ],
                 { split: true },
             );
@@ -57,24 +39,9 @@ export const help: Command = {
             throw new FriendlyError(`No command for "${name}" found.`);
         }
 
-        const help = [`**${command.name}**: ${command.description}`];
-        if (command.alias) {
-            help.push(`*aliases*: ${command.alias.join(', ')}`);
-        }
-        if (command.usage) {
-            help.push(`*usage*: \`${config.prefix}${command.name} ${command.usage}\``);
-        }
-        if (command.examples) {
-            help.push(
-                `*examples*: ${command.examples.map((e) => `\`${config.prefix}${command.name} ${e}\``).join(', ')}`,
-            );
-        }
-
-        return message.channel.send(help, { split: true });
+        return message.channel.send(command.help(config.prefix), { split: true });
     },
-};
-
-const commands = new Commands();
+});
 
 commands.register(help);
 commands.register(conversion);

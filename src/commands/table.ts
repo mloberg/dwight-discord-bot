@@ -1,11 +1,11 @@
 import { isString } from 'lodash';
 
+import Command from '../command';
 import magicItemTable from '../data/table';
 import { FriendlyError } from '../error';
-import { Command } from '../types';
 import { roll } from '../utils';
 
-const command: Command = {
+export default new Command({
     name: 'table',
     description: 'Roll on the magic item tables',
     usage: '<table> [d100]',
@@ -24,6 +24,4 @@ const command: Command = {
 
         return message.reply(isString(item) ? item : await item());
     },
-};
-
-export default command;
+});

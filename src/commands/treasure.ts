@@ -1,11 +1,11 @@
 import { isString, sample } from 'lodash';
 
+import Command from '../command';
 import { crIndex, hoard, individual } from '../data/treasure';
 import { FriendlyError } from '../error';
-import { Command } from '../types';
 import { roll } from '../utils';
 
-const command: Command = {
+export default new Command({
     name: 'treasure',
     alias: ['loot'],
     args: /(?<hoard>hoard )?(?<cr>\d+)(?<roll> \d+)?/,
@@ -45,6 +45,4 @@ const command: Command = {
 
         return message.channel.send(reply, { split: true });
     },
-};
-
-export default command;
+});

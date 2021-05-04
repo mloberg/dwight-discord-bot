@@ -1,6 +1,6 @@
 import { sample } from 'lodash';
 
-import { Command } from '../types';
+import Command from '../command';
 
 export const events = [
     'A door opens',
@@ -25,7 +25,7 @@ export const events = [
     'Unexplained magic occurs',
 ];
 
-const command: Command = {
+export default new Command({
     name: 'event',
     description: 'Trigger a random event',
     async run(message) {
@@ -33,6 +33,4 @@ const command: Command = {
 
         return message.channel.send(sample(events) ?? 'Something happens');
     },
-};
-
-export default command;
+});

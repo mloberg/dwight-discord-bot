@@ -1,14 +1,14 @@
 import { Client } from 'discord.js';
 import { escapeRegExp, memoize } from 'lodash';
 
-import commands, { Commands } from './commands';
+import { Context, Manager } from './command';
+import commands from './commands';
 import config from './config';
 import { FriendlyError } from './error';
 import logger from './logger';
-import { Context } from './types';
 
 const client = new Client();
-const regex = memoize((commands: Commands, ...prefix: string[]) => {
+const regex = memoize((commands: Manager, ...prefix: string[]) => {
     const prefixMatch = prefix.join('|');
     const commandMatch = commands.all().map(escapeRegExp).join('|');
 

@@ -1,10 +1,10 @@
 import { sample, upperFirst } from 'lodash';
 
+import Command from '../command';
 import spellList from '../data/spells';
 import { FriendlyError } from '../error';
-import { Command } from '../types';
 
-const command: Command = {
+export default new Command({
     name: 'spell',
     description: 'Return a random spell',
     alias: ['spells'],
@@ -37,6 +37,4 @@ const command: Command = {
 
         return message.reply(spell.spell);
     },
-};
-
-export default command;
+});

@@ -24,10 +24,7 @@ describe('_event configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('event');
         expect(command.description).toEqual('Trigger a random event');
-    });
-
-    it('should have no aliases', () => {
-        expect(command.alias).toBeUndefined();
+        expect(command.alias).toEqual([]);
     });
 });
 

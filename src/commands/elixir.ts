@@ -1,4 +1,4 @@
-import { Command } from '../types';
+import Command from '../command';
 import { roll } from '../utils';
 
 export const elixirs = [
@@ -10,7 +10,7 @@ export const elixirs = [
     '**Transformation**. The drinker’s body is transformed as if by the alter self spell. The drinker determines the transformation caused by the spell, the effects of which last for 10 minutes.',
 ];
 
-const command: Command = {
+export default new Command({
     name: 'elixir',
     alias: ['elx'],
     args: /(?<roll>\d+)?/,
@@ -24,6 +24,4 @@ const command: Command = {
 
         return message.reply(result);
     },
-};
-
-export default command;
+});
