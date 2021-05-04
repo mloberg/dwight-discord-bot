@@ -2,23 +2,51 @@
 
 Dwight is a Discord bot to help dungeon masters with their 5e games.
 
-## Requirements
+## Commands
 
-* NodeJS (>=12)
+Here are the commands available from Dwight.
 
-## Setup
+| Command                                 | Description                            |
+|-----------------------------------------|----------------------------------------|
+| `?help [command]`                       | List and get help with a commands      |
+| `?3.5 <skill>`                          | Convert 3.5 skills to 5e               |
+| `?elixir <d6>`                          | Craft an Alchemist experimental elixir |
+| `?event`                                | Trigger a random event                 |
+| `?item [rarity] [type]`                 | Get a random magical item              |
+| `?madness [short|long|flaw] <...@user>` | Give a random madness to a user(s)     |
+| `?spell [level] [class] [school]`       | Get a random spell                     |
+| `?table <table> [d100]`                 | Roll on the magic item tables          |
+| `?treasure [hoard] <cr> [d100]`         | Generate treasure for an encounter     |
+| `?wild magic [barbarian] [d100|d8]`     | Roll on the wild magic table           |
 
-You'll need to create a Discord bot. Follow the instructions over at
-[discordjs.guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot).
+## Running
 
-Once you have that, copy `.env.dist` to `.env` and set the `BOT_TOKEN` value to
-the token you created above.
+To run Dwight, you'll first need to create a Discord bot. Follow the instructions
+over at [discordjs.guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)
+to get started.
+
+Once you have a bot created, you can run Dwight via [Docker](#docker) or [manually](#manually).
+
+### Docker
+
+The easiest way to run Dwight is via Docker. We host images on
+[GitHub Container Registry](https://github.com/users/mloberg/packages/container/package/dwight-bot).
+
+    docker run -e BOT_TOKEN=your-bot-token ghcr.io/mloberg/dwight-bot
+
+### Manually
+
+To run Dwight without Docker, you'll need NodeJS 14 (later versions may also work)
+and npm.
+
+Copy `.env.dist` to `.env` and set `BOT_TOKEN`.
 
 Once that's done run `npm install`, `npm run build`, and `npm start`.
 
 ## Development
 
-To rebuild and restart the bot on file changes, run `npm run watch`.
+To rebuild and restart the bot on file changes, run `npm run watch`. To increase
+logging, add `LOG_LEVEL=debug` to `.env`.
 
 ## Contributing
 
