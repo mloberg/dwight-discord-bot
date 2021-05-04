@@ -20,10 +20,7 @@ describe('_ping configuration', () => {
     it('should have basic command infomation', () => {
         expect(command.name).toEqual('ping');
         expect(command.description).toEqual('Pong');
-    });
-
-    it('should have no aliases', () => {
-        expect(command.alias).toBeUndefined();
+        expect(command.alias).toEqual([]);
     });
 });
 

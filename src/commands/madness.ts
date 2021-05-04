@@ -1,7 +1,7 @@
-import { sample } from 'lodash';
+import { Dictionary, sample } from 'lodash';
 
+import Command from '../command';
 import { FriendlyError } from '../error';
-import { Command, Dictionary } from '../types';
 import { roll } from '../utils';
 
 interface Madness {
@@ -98,7 +98,7 @@ export const madness: Dictionary<Madness> = {
     },
 };
 
-const command: Command = {
+export default new Command({
     name: 'madness',
     alias: ['flaw'],
     args: /(?<type>short|long)?/,
@@ -120,6 +120,4 @@ const command: Command = {
             await user.send(message);
         });
     },
-};
-
-export default command;
+});

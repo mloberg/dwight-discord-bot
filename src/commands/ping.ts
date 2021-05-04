@@ -1,11 +1,9 @@
-import { Command } from '../types';
+import Command from '../command';
 
-const command: Command = {
+export default new Command({
     name: 'ping',
     description: 'Pong',
     async run(message) {
         return message.react('🏓');
     },
-};
-
-export default command;
+});

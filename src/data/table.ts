@@ -1,6 +1,5 @@
-import { sample } from 'lodash';
+import { Dictionary, sample } from 'lodash';
 
-import { Dictionary } from '../types';
 import spells from './spells';
 
 const spell = async (lvl: number) => {

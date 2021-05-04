@@ -29,10 +29,7 @@ describe('_table configuration', () => {
         expect(command.name).toEqual('table');
         expect(command.description).toEqual('Roll on the magic item tables');
         expect(command.usage).toEqual('<table> [d100]');
-    });
-
-    it('should not have an alias', () => {
-        expect(command.alias).toBeUndefined();
+        expect(command.alias).toEqual([]);
     });
 });
 

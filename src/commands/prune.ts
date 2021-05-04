@@ -1,7 +1,7 @@
+import Command from '../command';
 import { FriendlyError } from '../error';
-import { Command } from '../types';
 
-const command: Command = {
+export default new Command({
     name: 'prune',
     description: 'Prune messages from a channel',
     alias: ['purge'],
@@ -13,6 +13,4 @@ const command: Command = {
 
         await message.channel.bulkDelete(Number(args[0]) + 1, true);
     },
-};
-
-export default command;
+});

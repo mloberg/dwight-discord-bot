@@ -1,10 +1,10 @@
 import { sample } from 'lodash';
 
+import Command from '../command';
 import itemList from '../data/items';
 import { FriendlyError } from '../error';
-import { Command } from '../types';
 
-const command: Command = {
+export default new Command({
     name: 'item',
     description: 'Return a random magic item',
     alias: ['items'],
@@ -33,6 +33,4 @@ const command: Command = {
 
         return message.reply(item.item);
     },
-};
-
-export default command;
+});
