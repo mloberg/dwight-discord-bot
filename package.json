@@ -21,7 +21,7 @@
   "dependencies": {
     "axios": "^0.21.1",
     "discord.js": "^12.5.3",
-    "dotenv": "^8.2.0",
+    "dotenv": "^8.4.0",
     "joi": "^17.4.0",
     "lodash": "^4.17.21",
     "pino": "^6.11.3"
