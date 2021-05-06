@@ -6,18 +6,19 @@ Dwight is a Discord bot to help dungeon masters with their 5e games.
 
 Here are the commands available from Dwight.
 
-| Command                                   | Description                            |
-|-------------------------------------------|----------------------------------------|
-| `?help [command]`                         | List and get help with a commands      |
-| `?3.5 <skill>`                            | Convert 3.5 skills to 5e               |
+| Command                                   | Description |
+|-------------------------------------------|-------------|
+| `?help [command]`                         | List and get help with a commands |
+| `?3.5 <skill>`                            | Convert 3.5 skills to 5e |
 | `?elixir <d6>`                            | Craft an Alchemist experimental elixir |
-| `?event`                                  | Trigger a random event                 |
-| `?item [rarity] [type]`                   | Get a random magical item              |
-| `?madness [short\|long\|flaw] <...@user>` | Give a random madness to a user(s)     |
-| `?spell [level] [class] [school]`         | Get a random spell                     |
-| `?table <table> [d100]`                   | Roll on the magic item tables          |
-| `?treasure [hoard] <cr> [d100]`           | Generate treasure for an encounter     |
-| `?wild magic [barbarian] [d100\|d8]`      | Roll on the wild magic table           |
+| `?event`                                  | Trigger a random event |
+| `?item [rarity] [type]`                   | Get a random magical item |
+| `?madness [short\|long\|flaw] <...@user>` | Give a random madness to a user(s) |
+| `?spell [level] [class] [school]`         | Get a random spell |
+| `?table <table> [d100]`                   | Roll on the magic item tables |
+| `?treasure [hoard] <cr> [d100]`           | Generate treasure for an encounter |
+| `?wild magic [barbarian] [d100\|d8]`      | Roll on the wild magic table |
+| `?portent <show\|roll\|use> [d20]`        | Manage portent dice for a Divination Wizard |
 
 ## Running
 
@@ -42,6 +43,15 @@ and npm.
 Copy `.env.dist` to `.env` and set `BOT_TOKEN`.
 
 Once that's done run `npm install`, `npm run build`, and `npm start`.
+
+## Data
+
+Some commands save data (like _portent_). By default this is in-memory, but you
+can either save it to Redis or to disk as a JSON file. To save in redis, pass
+(or set) `DB_URL` to `redis://user:pass@localhost:6379`. To save to disk set
+`file:./path/to/file.json`.
+
+    docker run -e BOT_TOKEN=your-bot-token -e DB_URL=file:.data/store.json -v $PWD/.data:/app.data ghcr.io/mloberg/dwight-bot
 
 ## Development
 
