@@ -7,7 +7,7 @@ exports[`_help returns a list of all commands 1`] = `
       Array [
         "Here is a list of available commands:",
         "help, 3.5, elixir, event, item, madness, ping, portent, prune, spell, table, treasure, wild magic",
-        "Get more details with \\"_help [command]\\"",
+        "Get more details with \\"?help [command]\\"",
       ],
       Object {
         "split": true,
@@ -24,7 +24,7 @@ exports[`_help returns a list of all commands 1`] = `
               Array [
                 "Here is a list of available commands:",
                 "help, 3.5, elixir, event, item, madness, ping, portent, prune, spell, table, treasure, wild magic",
-                "Get more details with \\"_help [command]\\"",
+                "Get more details with \\"?help [command]\\"",
               ],
               Object {
                 "split": true,
@@ -76,7 +76,7 @@ exports[`_help returns the details for the help command 1`] = `
     Array [
       "**help**: Get help with commands
 *aliases*: commands, usage
-*usage*: \`_help [command]\`",
+*usage*: \`?help [command]\`",
       Object {
         "split": true,
       },
@@ -91,7 +91,7 @@ exports[`_help returns the details for the help command 1`] = `
             Array [
               "**help**: Get help with commands
 *aliases*: commands, usage
-*usage*: \`_help [command]\`",
+*usage*: \`?help [command]\`",
               Object {
                 "split": true,
               },
@@ -111,8 +111,8 @@ exports[`_help returns the details for the treasure command 1`] = `
     Array [
       "**treasure**: Give me the loot!
 *aliases*: loot
-*usage*: \`_treasure [hoard] <cr> [d100]\`
-*examples*: \`_treasure 4\`, \`_treasure 6 86\`, \`_treasure hoard 10\`",
+*usage*: \`?treasure [hoard] <cr> [d100]\`
+*examples*: \`?treasure 4\`, \`?treasure 6 86\`, \`?treasure hoard 10\`",
       Object {
         "split": true,
       },
@@ -127,8 +127,8 @@ exports[`_help returns the details for the treasure command 1`] = `
             Array [
               "**treasure**: Give me the loot!
 *aliases*: loot
-*usage*: \`_treasure [hoard] <cr> [d100]\`
-*examples*: \`_treasure 4\`, \`_treasure 6 86\`, \`_treasure hoard 10\`",
+*usage*: \`?treasure [hoard] <cr> [d100]\`
+*examples*: \`?treasure 4\`, \`?treasure 6 86\`, \`?treasure hoard 10\`",
               Object {
                 "split": true,
               },
