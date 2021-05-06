@@ -10,7 +10,7 @@ export const schema = joi
             .lowercase()
             .default('info'),
         APP_DEBUG: joi.boolean().default(false),
-        BOT_PREFIX: joi.string().invalid('@').default('_'),
+        BOT_PREFIX: joi.string().invalid('@').default('?'),
         BOT_TOKEN: joi.string().required(),
         API_URL: joi.string().default('https://everlastingdungeons.com/api'),
         DB_URL: joi.string(),

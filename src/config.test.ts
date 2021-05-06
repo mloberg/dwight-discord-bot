@@ -69,11 +69,11 @@ describe('env.DEBUG', () => {
 });
 
 describe('env.BOT_PREFIX', () => {
-    it('defaults to _', () => {
+    it('defaults to ?', () => {
         const { error, value } = schema.validate(defaults);
 
         expect(error).toBeFalsy();
-        expect(value.BOT_PREFIX).toEqual('_');
+        expect(value.BOT_PREFIX).toEqual('?');
     });
 
     it('can not be @', () => {
