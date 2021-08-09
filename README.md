@@ -37,8 +37,7 @@ The easiest way to run Dwight is via Docker. We host images on
 
 ### Manually
 
-To run Dwight without Docker, you'll need NodeJS 14 (later versions may also work)
-and npm.
+To run Dwight without Docker, you'll need NodeJS 16.
 
 Copy `.env.dist` to `.env` and set `BOT_TOKEN`.
 
