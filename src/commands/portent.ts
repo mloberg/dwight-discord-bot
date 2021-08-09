@@ -13,7 +13,7 @@ export default new Command({
         const key = `${message.guild?.name}-${message.author.username}`;
         const results: number[] = groups.command === 'roll' ? [roll('d20'), roll('d20')] : await db.get(key, []);
 
-        if (!results.length) {
+        if (!results || !results.length) {
             throw new FriendlyError("You don't have any portent rolls. Generate some with `portent roll`.");
         }
 
