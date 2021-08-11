@@ -1,21 +1,10 @@
-import { Client, Guild, Message, TextChannel } from 'discord.js';
+import { Message } from 'discord.js';
+import { mocked } from 'ts-jest/utils';
 
 import { FriendlyError } from '../error';
 import command from './spell';
 
-const mocks = {
-    reply: jest.fn(),
-};
-
-jest.mock('discord.js', () => ({
-    Client: jest.fn(),
-    Guild: jest.fn(),
-    TextChannel: jest.fn(),
-    Collection: jest.fn(),
-    Message: jest.fn().mockImplementation(() => ({
-        reply: mocks.reply,
-    })),
-}));
+jest.mock('discord.js');
 jest.mock('../data/spells', () => {
     return () => [
         {
@@ -52,43 +41,36 @@ describe('_spell configuration', () => {
 });
 
 describe('_spell', () => {
-    let message: Message;
-
-    beforeEach(() => {
-        mocks.reply.mockClear();
-        mocks.reply.mockReturnThis();
-
-        const client = new Client();
-        const guild = new Guild(client, {});
-        const channel = new TextChannel(guild, {});
-        message = new Message(client, {}, channel);
-    });
-
     it('returns a random spell', async () => {
+        const message = mocked(new Message({} as never, {} as never));
         await command.run(message, { command: 'spell', args: [], match: [], groups: {} });
 
-        const spell = mocks.reply.mock.calls[0][0];
+        const spell = message.reply.mock.calls[0][0];
         expect(['Debugger', 'Foo', 'Bar']).toContainEqual(spell);
     });
 
     it('returns a spell filtered by level', async () => {
+        const message = new Message({} as never, {} as never);
+
         await command.run(message, { command: 'spell', args: [], match: [], groups: { level: '0' } });
-        expect(mocks.reply).toHaveBeenLastCalledWith('Foo');
+        expect(message.reply).toHaveBeenLastCalledWith('Foo');
 
         await command.run(message, { command: 'spell', args: [], match: [], groups: { level: 'Cantrip' } });
-        expect(mocks.reply).toHaveBeenLastCalledWith('Foo');
+        expect(message.reply).toHaveBeenLastCalledWith('Foo');
 
-        expect(mocks.reply).toHaveBeenCalledTimes(2);
+        expect(message.reply).toHaveBeenCalledTimes(2);
     });
 
     it('returns a filtered spell', async () => {
+        const message = new Message({} as never, {} as never);
+
         await command.run(message, {
             command: 'spell',
             args: [],
             match: [],
             groups: { school: 'Evocation', class: 'Wizard' },
         });
-        expect(mocks.reply).toHaveBeenLastCalledWith('Debugger');
+        expect(message.reply).toHaveBeenLastCalledWith('Debugger');
 
         await command.run(message, {
             command: 'spell',
@@ -96,10 +78,12 @@ describe('_spell', () => {
             match: [],
             groups: { level: '5', class: 'Cleric', school: 'Divination' },
         });
-        expect(mocks.reply).toHaveBeenLastCalledWith('Bar');
+        expect(message.reply).toHaveBeenLastCalledWith('Bar');
     });
 
     it('throws an error when no item matches', async () => {
+        const message = new Message({} as never, {} as never);
+
         try {
             await command.run(message, {
                 command: 'spell',

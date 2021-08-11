@@ -1,29 +1,20 @@
-import { Client, Guild, Message, TextChannel } from 'discord.js';
+import { Message } from 'discord.js';
+import { mocked } from 'ts-jest/utils';
 
 import { FriendlyError } from '../error';
 import command, { madness } from './madness';
 
-const mocks = {
-    users: jest.fn(),
-    author: jest.fn(),
-    send: jest.fn(),
-};
-
 const { Collection } = jest.requireActual('discord.js');
 
 jest.mock('discord.js', () => ({
-    Client: jest.fn(),
-    Guild: jest.fn(),
-    TextChannel: jest.fn(),
-    Collection: jest.fn(),
     Message: jest.fn().mockImplementation(() => ({
         mentions: {
             users: {
-                filter: mocks.users,
+                filter: jest.fn(),
             },
         },
         author: {
-            send: mocks.author,
+            send: jest.fn(),
         },
     })),
 }));
@@ -43,32 +34,22 @@ describe('_madness configuration', () => {
 describe('_madness', () => {
     const userRegex = /(.*) This lasts (\d+) (.*)\./;
     const authorRegex = /(.*) got the following madness: (.*) This lasts (\d+) (.*)\./;
-    let message: Message;
-
-    beforeEach(() => {
-        mocks.users.mockClear();
-        mocks.send.mockClear();
-        mocks.author.mockClear();
-
-        const client = new Client();
-        const guild = new Guild(client, {});
-        const channel = new TextChannel(guild, {});
-        message = new Message(client, {}, channel);
-    });
 
     it('sends a user a madness', async () => {
         const users = new Collection();
-        users.set('1', { username: 'jdoe', send: mocks.send });
+        users.set('1', { username: 'jdoe', send: jest.fn() });
         users.set('2', { username: 'foo', send: jest.fn() });
-        mocks.users.mockReturnValue(users);
+
+        const message = mocked(new Message({} as never, {} as never), true);
+        message.mentions.users.filter.mockReturnValue(users);
 
         await command.run(message, { command: 'madness', args: [], match: [], groups: {} });
 
-        expect(mocks.author).toHaveBeenCalledTimes(2);
-        expect(mocks.send).toHaveBeenCalledTimes(1);
+        expect(message.author.send).toHaveBeenCalledTimes(2);
+        expect(users.get('1').send).toHaveBeenCalledTimes(1);
         expect(users.get('2').send).toHaveBeenCalledTimes(1);
 
-        const userMessage: string = mocks.send.mock.calls[0][0];
+        const userMessage: string = users.get('1').send.mock.calls[0][0];
         const userMatch = userMessage.match(userRegex);
         if (!userMatch) {
             throw new Error('unexpected message format');
@@ -79,7 +60,7 @@ describe('_madness', () => {
         expect(Number(userMatch[2])).toBeLessThanOrEqual(10);
         expect(userMatch[3]).toEqual('minutes');
 
-        const authorMessage: string = mocks.author.mock.calls[0][0];
+        const authorMessage = message.author.send.mock.calls[0][0] as string;
         const authorMatch = authorMessage.match(authorRegex);
         if (!authorMatch) {
             throw new Error('unexpected message format');
@@ -92,12 +73,14 @@ describe('_madness', () => {
 
     it('sends a user a type of madness', async () => {
         const users = new Collection();
-        users.set('', { username: 'jdoe', send: mocks.send });
-        mocks.users.mockReturnValue(users);
+        users.set('', { username: 'jdoe', send: jest.fn() });
+
+        const message = mocked(new Message({} as never, {} as never), true);
+        message.mentions.users.filter.mockReturnValue(users);
 
         await command.run(message, { command: 'madness', args: [], match: [], groups: { type: 'LONG' } });
 
-        const userMessage: string = mocks.send.mock.calls[0][0];
+        const userMessage = mocked(users.get('').send).mock.calls[0][0];
         const userMatch = userMessage.match(userRegex);
         if (!userMatch) {
             throw new Error('unexpected message format');
@@ -108,7 +91,7 @@ describe('_madness', () => {
         expect(Number(userMatch[2])).toBeLessThanOrEqual(100);
         expect(userMatch[3]).toEqual('hours');
 
-        const authorMessage: string = mocks.author.mock.calls[0][0];
+        const authorMessage = message.author.send.mock.calls[0][0] as string;
         const authorMatch = authorMessage.match(authorRegex);
         if (!authorMatch) {
             throw new Error('unexpected message format');
@@ -119,33 +102,23 @@ describe('_madness', () => {
         expect(authorMatch[3]).toBe(userMatch[2]);
     });
 
-    it('can send to multiple users', async () => {
-        const user2 = jest.fn();
-        const users = new Collection();
-        users.set('1', { username: 'jdoe', send: mocks.send });
-        users.set('2', { username: 'foo', send: user2 });
-        mocks.users.mockReturnValue(users);
-
-        await command.run(message, { command: 'madness', args: [], match: [], groups: { type: 'short' } });
-        expect(mocks.author).toHaveBeenCalledTimes(2);
-        expect(mocks.send).toHaveBeenCalledTimes(1);
-        expect(user2).toHaveBeenCalledTimes(1);
-    });
-
     it('can send flaw', async () => {
         const users = new Collection();
-        users.set('1', { username: 'jdoe', send: mocks.send });
-        mocks.users.mockReturnValue(users);
+        users.set('1', { username: 'jdoe', send: jest.fn() });
+
+        const message = mocked(new Message({} as never, {} as never), true);
+        message.mentions.users.filter.mockReturnValue(users);
 
         await command.run(message, { command: 'flaw', args: [], match: [], groups: {} });
-        expect(mocks.author).toHaveBeenCalled();
-        expect(mocks.send).toHaveBeenCalled();
-        expect(mocks.send).toHaveBeenCalledWith(expect.stringMatching(/^You gain the following flaw:/));
+        expect(message.author.send).toHaveBeenCalled();
+        expect(users.get('1').send).toHaveBeenCalledWith(expect.stringMatching(/^You gain the following flaw:/));
     });
 
     it('throws an error if no user is given', async () => {
+        const message = mocked(new Message({} as never, {} as never), true);
+        message.mentions.users.filter.mockReturnValue(new Collection());
+
         try {
-            mocks.users.mockReturnValue(new Collection());
             await command.run(message, { command: 'madness', args: [], match: [], groups: {} });
 
             fail('expected error to be thrown');

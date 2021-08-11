@@ -1,23 +1,9 @@
-import { Client, Guild, Message, TextChannel } from 'discord.js';
+import { Message } from 'discord.js';
 
 import { FriendlyError } from '../error';
 import command from './table';
 
-const mocks = {
-    delete: jest.fn(),
-    reply: jest.fn(),
-};
-
-jest.mock('discord.js', () => ({
-    Client: jest.fn(),
-    Guild: jest.fn(),
-    TextChannel: jest.fn(),
-    Collection: jest.fn(),
-    Message: jest.fn().mockImplementation(() => ({
-        delete: mocks.delete,
-        reply: mocks.reply,
-    })),
-}));
+jest.mock('discord.js');
 jest.mock('../data/table', () => ({
     a: new Array(100).fill('foo'),
     b: [...new Array(98).fill('bar'), 'test', 'foobar'],
@@ -34,43 +20,36 @@ describe('_table configuration', () => {
 });
 
 describe('_table', () => {
-    let message: Message;
-
-    beforeEach(() => {
-        mocks.delete.mockClear();
-        mocks.reply.mockClear();
-
-        const client = new Client();
-        const guild = new Guild(client, {});
-        const channel = new TextChannel(guild, {});
-        message = new Message(client, {}, channel);
-    });
-
     it('returns a value from the given table', async () => {
+        const message = new Message({} as never, {} as never);
         await command.run(message, { command: 'table', args: ['a'], match: [], groups: {} });
 
-        expect(mocks.delete).toBeCalledTimes(1);
-        expect(mocks.reply).toBeCalledTimes(1);
-        expect(mocks.reply).toHaveBeenCalledWith('foo');
+        expect(message.delete).toBeCalledTimes(1);
+        expect(message.reply).toBeCalledTimes(1);
+        expect(message.reply).toHaveBeenCalledWith('foo');
     });
 
     it('returns a value for a dice roll', async () => {
+        const message = new Message({} as never, {} as never);
         await command.run(message, { command: 'table', args: ['b', '99'], match: [], groups: {} });
 
-        expect(mocks.delete).toBeCalledTimes(1);
-        expect(mocks.reply).toBeCalledTimes(1);
-        expect(mocks.reply).toHaveBeenCalledWith('test');
+        expect(message.delete).toBeCalledTimes(1);
+        expect(message.reply).toBeCalledTimes(1);
+        expect(message.reply).toHaveBeenCalledWith('test');
     });
 
     it('returns a resolved value', async () => {
+        const message = new Message({} as never, {} as never);
         await command.run(message, { command: 'table', args: ['C'], match: [], groups: {} });
 
-        expect(mocks.delete).toBeCalledTimes(1);
-        expect(mocks.reply).toBeCalledTimes(1);
-        expect(mocks.reply).toHaveBeenCalledWith('baz');
+        expect(message.delete).toBeCalledTimes(1);
+        expect(message.reply).toBeCalledTimes(1);
+        expect(message.reply).toHaveBeenCalledWith('baz');
     });
 
     it('throws an error if invalid table given', async () => {
+        const message = new Message({} as never, {} as never);
+
         try {
             await command.run(message, { command: 'table', args: [], match: [], groups: {} });
             fail('expected error to be thrown');

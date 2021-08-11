@@ -1,22 +1,9 @@
-import { Client, Guild, Message, TextChannel } from 'discord.js';
+import { Message } from 'discord.js';
+import { mocked } from 'ts-jest/utils';
 
 import command, { elixirs } from './elixir';
 
-const mocks = {
-    delete: jest.fn(),
-    reply: jest.fn(),
-};
-
-jest.mock('discord.js', () => ({
-    Client: jest.fn(),
-    Guild: jest.fn(),
-    TextChannel: jest.fn(),
-    Collection: jest.fn(),
-    Message: jest.fn().mockImplementation(() => ({
-        delete: mocks.delete,
-        reply: mocks.reply,
-    })),
-}));
+jest.mock('discord.js');
 
 describe('_elixir configuration', () => {
     it('should have basic command infomation', () => {
@@ -30,33 +17,24 @@ describe('_elixir configuration', () => {
 });
 
 describe('_elixir', () => {
-    let message: Message;
-
-    beforeEach(() => {
-        mocks.delete.mockClear();
-        mocks.reply.mockClear();
-        mocks.reply.mockReturnThis();
-
-        const client = new Client();
-        const guild = new Guild(client, {});
-        const channel = new TextChannel(guild, {});
-        message = new Message(client, {}, channel);
-    });
-
     it('returns an elixir', async () => {
+        const message = mocked(new Message({} as never, {} as never));
+
         await command.run(message, { command: 'elixir', args: [], match: [], groups: {} });
 
-        expect(mocks.delete).toHaveBeenCalledTimes(1);
+        expect(message.delete).toHaveBeenCalledTimes(1);
 
-        const elixir = mocks.reply.mock.calls[0][0];
+        const elixir = message.reply.mock.calls[0][0];
         expect(elixirs).toContainEqual(elixir);
     });
 
     it('returns an elixir for a dice roll', async () => {
+        const message = new Message({} as never, {} as never);
+
         await command.run(message, { command: 'elixir', args: [], match: [], groups: { roll: '1' } });
 
-        expect(mocks.delete).toHaveBeenCalledTimes(1);
-        expect(mocks.reply).toHaveBeenCalledWith(
+        expect(message.delete).toHaveBeenCalledTimes(1);
+        expect(message.reply).toHaveBeenCalledWith(
             '**Healing**. The drinker regains a number of hit points equal to 2d4 + your Intelligence modifier.',
         );
     });

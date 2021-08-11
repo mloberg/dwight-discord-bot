@@ -1,12 +1,8 @@
-import { Client, Guild, Message, TextChannel } from 'discord.js';
+import { Message } from 'discord.js';
+import { mocked } from 'ts-jest/utils';
 
 import { FriendlyError } from '../error';
 import command from './treasure';
-
-const mocks = {
-    delete: jest.fn(),
-    send: jest.fn(),
-};
 
 jest.mock('discord.js', () => ({
     Client: jest.fn(),
@@ -14,9 +10,9 @@ jest.mock('discord.js', () => ({
     TextChannel: jest.fn(),
     Collection: jest.fn(),
     Message: jest.fn().mockImplementation(() => ({
-        delete: mocks.delete,
+        delete: jest.fn(),
         channel: {
-            send: mocks.send,
+            send: jest.fn(),
         },
     })),
 }));
@@ -98,67 +94,36 @@ describe('_treasure configuration', () => {
 });
 
 describe('_treasure', () => {
-    let message: Message;
-
-    beforeEach(() => {
-        mocks.delete.mockClear();
-        mocks.send.mockClear();
-
-        const client = new Client();
-        const guild = new Guild(client, {});
-        const channel = new TextChannel(guild, {});
-        message = new Message(client, {}, channel);
-    });
-
     it('returns individual treasure', async () => {
+        const message = new Message({} as never, {} as never);
         await command.run(message, { command: 'treasure', args: [], match: [], groups: { cr: '1' } });
 
-        expect(mocks.delete).toBeCalledTimes(1);
-        expect(mocks.send).toHaveBeenCalledWith(expect.arrayContaining(['You found:']), { split: true });
+        expect(message.delete).toBeCalledTimes(1);
+        expect(message.channel.send).toHaveBeenCalledWith(expect.stringMatching(/^You found:/));
     });
 
     it('returns individual treasure for a dice roll', async () => {
+        const message = mocked(new Message({} as never, {} as never), true);
         await command.run(message, { command: 'treasure', args: [], match: [], groups: { cr: '17', roll: '99' } });
 
-        expect(mocks.delete).toBeCalledTimes(1);
-
-        const treasure = mocks.send.mock.calls[0];
-        expect(treasure[0].length).toEqual(3);
-        expect(treasure[0][0]).toEqual('You found:');
-        expect(treasure[0][1]).toMatch(/\d+ gp/);
-        expect(treasure[0][2]).toMatch(/\d+ pp/);
-        expect(treasure[1]).toEqual({ split: true });
+        expect(message.delete).toBeCalledTimes(1);
+        expect(message.channel.send).toHaveBeenCalledWith(expect.stringMatching(/^You found:/));
+        expect(message.channel.send).toHaveBeenCalledWith(expect.stringMatching(/\d+ gp/));
+        expect(message.channel.send).toHaveBeenCalledWith(expect.stringMatching(/\d+ pp/));
     });
 
     it('returns a treasure hoard', async () => {
+        const message = mocked(new Message({} as never, {} as never), true);
         await command.run(message, { command: 'treasure', args: [], match: [], groups: { cr: '4', hoard: 'hoard' } });
 
-        expect(mocks.delete).toBeCalledTimes(1);
-
-        const treasure = mocks.send.mock.calls[0];
-        expect(treasure[0].length).toBeGreaterThanOrEqual(3);
-        expect(treasure[0][0]).toEqual('You found:');
-        expect(treasure[1]).toEqual({ split: true });
-    });
-
-    it('returns a treasure hoard with dice roll', async () => {
-        await command.run(message, {
-            command: 'treasure',
-            args: [],
-            match: [],
-            groups: { cr: '12', roll: '99', hoard: 'hoard' },
-        });
-
-        expect(mocks.delete).toBeCalledTimes(1);
-
-        const treasure = mocks.send.mock.calls[0];
-        expect(treasure[0].length).toBeGreaterThanOrEqual(3);
-        expect(treasure[0][0]).toEqual('You found:');
-        expect(treasure[0].join(' ')).toContain('Item: ');
-        expect(treasure[1]).toEqual({ split: true });
+        expect(message.delete).toBeCalledTimes(1);
+        expect(message.channel.send).toHaveBeenCalledWith(expect.stringMatching(/^You found:/));
+        expect(message.channel.send).toHaveBeenCalledWith(expect.stringMatching(/(Gem|Art|Item)/));
     });
 
     it('throws an error if no CR given', async () => {
+        const message = new Message({} as never, {} as never);
+
         try {
             await command.run(message, { command: 'treasure', args: [], match: [], groups: {} });
             fail('expected error to be thrown');

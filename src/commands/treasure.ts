@@ -43,6 +43,6 @@ export default new Command({
 
         await message.delete();
 
-        return message.channel.send(reply, { split: true });
+        return message.channel.send(reply.join('\n'));
     },
 });
