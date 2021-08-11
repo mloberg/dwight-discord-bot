@@ -5,7 +5,7 @@ exports[`_help returns a list of all commands 1`] = `
   "calls": Array [
     Array [
       "Here is a list of available commands:
-help, 3.5, elixir, event, item, madness, ping, portent, prune, spell, table, treasure, wild magic
+help, elixir, event, item, madness, ping, portent, spell, table, treasure, wild magic
 Get more details with \\"?help [command]\\"",
     ],
   ],
