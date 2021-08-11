@@ -1,21 +1,13 @@
-import { Client, Guild, Message, TextChannel } from 'discord.js';
+import { Message, TextChannel } from 'discord.js';
 
 import { FriendlyError } from '../error';
 import command from './prune';
 
-const mocks = {
-    delete: jest.fn(),
-};
-
 jest.mock('discord.js', () => ({
-    Client: jest.fn(),
-    Guild: jest.fn(),
-    TextChannel: jest.fn(),
-    Collection: jest.fn(),
     Message: jest.fn().mockImplementation(() => ({
         channel: {
             type: 'text',
-            bulkDelete: mocks.delete,
+            bulkDelete: jest.fn(),
         },
     })),
 }));
@@ -33,24 +25,17 @@ describe('_prune configuration', () => {
 });
 
 describe('_ping', () => {
-    let message: Message;
-
-    beforeEach(() => {
-        mocks.delete.mockClear();
-
-        const client = new Client();
-        const guild = new Guild(client, {});
-        const channel = new TextChannel(guild, {});
-        message = new Message(client, {}, channel);
-    });
-
     it('deletes messages in text channels', async () => {
+        const message = new Message({} as never, {} as never);
+
         await command.run(message, { command: 'prune', args: ['3'], match: [], groups: {} });
-        expect(mocks.delete).toBeCalledWith(4, true);
+
+        expect((message.channel as TextChannel).bulkDelete).toBeCalledWith(4, true);
     });
 
     it('throws an error if in a DM', async () => {
-        message.channel.type = 'dm';
+        const message = new Message({} as never, {} as never);
+        message.channel.type = 'DM';
 
         try {
             await command.run(message, { command: 'prune', args: [], match: [], groups: {} });

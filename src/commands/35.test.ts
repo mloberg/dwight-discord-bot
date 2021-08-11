@@ -1,21 +1,9 @@
-import { Client, Guild, Message, TextChannel } from 'discord.js';
+import { Message } from 'discord.js';
 
 import { FriendlyError } from '../error';
 import command, { conversion } from './35';
 
-const mocks = {
-    reply: jest.fn(),
-};
-
-jest.mock('discord.js', () => ({
-    Client: jest.fn(),
-    Guild: jest.fn(),
-    TextChannel: jest.fn(),
-    Collection: jest.fn(),
-    Message: jest.fn().mockImplementation(() => ({
-        reply: mocks.reply,
-    })),
-}));
+jest.mock('discord.js');
 
 describe('_3.5 configuration', () => {
     it('should have basic command infomation', () => {
@@ -30,27 +18,17 @@ describe('_3.5 configuration', () => {
 });
 
 describe('_3.5', () => {
-    let message: Message;
-
-    beforeEach(() => {
-        mocks.reply.mockClear();
-        mocks.reply.mockReturnThis();
-
-        const client = new Client();
-        const guild = new Guild(client, {});
-        const channel = new TextChannel(guild, {});
-        message = new Message(client, {}, channel);
-    });
-
     it.each([
         ['use rope', 'DEX (Acrobatics)'],
         ['Use Magic Device', 'INT (Arcana)'],
         ['Ride', 'WIS (Animal Handling) or DEX (Acrobatics)'],
     ])('returns a comprable 5e skill for %s', async (skill, result) => {
+        const message = new Message({} as never, {} as never);
+
         await command.run(message, { command: '3.5', args: [], match: [], groups: { skill } });
 
-        expect(mocks.reply).toHaveBeenCalledTimes(1);
-        expect(mocks.reply).toHaveBeenCalledWith(result);
+        expect(message.reply).toHaveBeenCalledTimes(1);
+        expect(message.reply).toHaveBeenCalledWith(result);
     });
 
     it('has the correct conversions', () => {
@@ -58,6 +36,8 @@ describe('_3.5', () => {
     });
 
     it('throws an error on invalid skill', async () => {
+        const message = new Message({} as never, {} as never);
+
         try {
             await command.run(message, { command: '3.5', args: [], match: [], groups: { skill: 'foo' } });
 

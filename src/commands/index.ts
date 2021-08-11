@@ -28,8 +28,7 @@ export const help = new Command({
                     'Here is a list of available commands:',
                     commands.list().join(', '),
                     `Get more details with "${config.prefix}help ${this.usage}"`,
-                ],
-                { split: true },
+                ].join('\n'),
             );
         }
 
@@ -40,7 +39,7 @@ export const help = new Command({
             throw new FriendlyError(`No command for "${name}" found.`);
         }
 
-        return message.channel.send(command.help(config.prefix), { split: true });
+        return message.channel.send(command.help(config.prefix));
     },
 });
 

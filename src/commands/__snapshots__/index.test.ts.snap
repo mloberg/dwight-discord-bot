@@ -4,36 +4,15 @@ exports[`_help returns a list of all commands 1`] = `
 [MockFunction] {
   "calls": Array [
     Array [
-      Array [
-        "Here is a list of available commands:",
-        "help, 3.5, elixir, event, item, madness, ping, portent, prune, spell, table, treasure, wild magic",
-        "Get more details with \\"?help [command]\\"",
-      ],
-      Object {
-        "split": true,
-      },
+      "Here is a list of available commands:
+help, 3.5, elixir, event, item, madness, ping, portent, prune, spell, table, treasure, wild magic
+Get more details with \\"?help [command]\\"",
     ],
   ],
   "results": Array [
     Object {
       "type": "return",
-      "value": Object {
-        "send": [MockFunction] {
-          "calls": Array [
-            Array [
-              Array [
-                "Here is a list of available commands:",
-                "help, 3.5, elixir, event, item, madness, ping, portent, prune, spell, table, treasure, wild magic",
-                "Get more details with \\"?help [command]\\"",
-              ],
-              Object {
-                "split": true,
-              },
-            ],
-          ],
-          "results": [Circular],
-        },
-      },
+      "value": undefined,
     },
   ],
 }
@@ -44,27 +23,12 @@ exports[`_help returns the details for the event command 1`] = `
   "calls": Array [
     Array [
       "**event**: Trigger a random event",
-      Object {
-        "split": true,
-      },
     ],
   ],
   "results": Array [
     Object {
       "type": "return",
-      "value": Object {
-        "send": [MockFunction] {
-          "calls": Array [
-            Array [
-              "**event**: Trigger a random event",
-              Object {
-                "split": true,
-              },
-            ],
-          ],
-          "results": [Circular],
-        },
-      },
+      "value": undefined,
     },
   ],
 }
@@ -77,29 +41,12 @@ exports[`_help returns the details for the help command 1`] = `
       "**help**: Get help with commands
 *aliases*: commands, usage
 *usage*: \`?help [command]\`",
-      Object {
-        "split": true,
-      },
     ],
   ],
   "results": Array [
     Object {
       "type": "return",
-      "value": Object {
-        "send": [MockFunction] {
-          "calls": Array [
-            Array [
-              "**help**: Get help with commands
-*aliases*: commands, usage
-*usage*: \`?help [command]\`",
-              Object {
-                "split": true,
-              },
-            ],
-          ],
-          "results": [Circular],
-        },
-      },
+      "value": undefined,
     },
   ],
 }
@@ -113,30 +60,12 @@ exports[`_help returns the details for the treasure command 1`] = `
 *aliases*: loot
 *usage*: \`?treasure [hoard] <cr> [d100]\`
 *examples*: \`?treasure 4\`, \`?treasure 6 86\`, \`?treasure hoard 10\`",
-      Object {
-        "split": true,
-      },
     ],
   ],
   "results": Array [
     Object {
       "type": "return",
-      "value": Object {
-        "send": [MockFunction] {
-          "calls": Array [
-            Array [
-              "**treasure**: Give me the loot!
-*aliases*: loot
-*usage*: \`?treasure [hoard] <cr> [d100]\`
-*examples*: \`?treasure 4\`, \`?treasure 6 86\`, \`?treasure hoard 10\`",
-              Object {
-                "split": true,
-              },
-            ],
-          ],
-          "results": [Circular],
-        },
-      },
+      "value": undefined,
     },
   ],
 }

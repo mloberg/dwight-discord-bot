@@ -1,4 +1,4 @@
-import { Client } from 'discord.js';
+import { Client, Intents } from 'discord.js';
 import { escapeRegExp, memoize } from 'lodash';
 
 import { Context, Manager } from './command';
@@ -7,7 +7,7 @@ import config from './config';
 import { FriendlyError } from './error';
 import logger from './logger';
 
-const client = new Client();
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const regex = memoize((commands: Manager, ...prefix: string[]) => {
     const prefixMatch = prefix.join('|');
     const commandMatch = commands.all().map(escapeRegExp).join('|');
@@ -30,7 +30,7 @@ client.once('ready', () => {
     );
 });
 
-client.on('message', async (message) => {
+client.on('messageCreate', async (message) => {
     if (message.author.bot) {
         return;
     }
@@ -72,16 +72,17 @@ client.on('message', async (message) => {
         await handler.run(message, context);
     } catch (err) {
         if (err instanceof FriendlyError) {
-            return message.reply(err.message);
+            await message.reply(err.message);
+            return;
         }
 
-        message.reply('That broke me. Check my logs for details.');
+        await message.reply('That broke me. Check my logs for details.');
         logger.error(err);
     }
 });
 
 process.on('unhandledRejection', (reason) => {
-    //.throw it and let our exception handler deal with it
+    // throw it and let our exception handler deal with it
     throw reason;
 });
 

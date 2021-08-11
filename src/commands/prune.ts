@@ -7,7 +7,7 @@ export default new Command({
     alias: ['purge'],
     usage: '<count>',
     async run(message, { args }) {
-        if (message.channel.type === 'dm') {
+        if (message.channel.type === 'DM') {
             throw new FriendlyError("I can't bulk delete DMs.");
         }
 
