@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/35 is a slash command 1`] = `
+Object {
+  "description": "Convert 3.5 skill to 5e",
+  "name": "35",
+  "options": Array [
+    Object {
+      "description": "3.5 skill",
+      "name": "skill",
+      "required": true,
+      "type": "STRING",
+    },
+  ],
+  "run": [Function],
+}
+`;

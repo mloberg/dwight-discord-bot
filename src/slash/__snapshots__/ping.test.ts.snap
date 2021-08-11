@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/ping is a slash command 1`] = `
+Object {
+  "description": "pong",
+  "name": "ping",
+  "run": [Function],
+}
+`;

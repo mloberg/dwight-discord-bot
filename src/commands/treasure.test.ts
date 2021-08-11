@@ -5,10 +5,6 @@ import { FriendlyError } from '../error';
 import command from './treasure';
 
 jest.mock('discord.js', () => ({
-    Client: jest.fn(),
-    Guild: jest.fn(),
-    TextChannel: jest.fn(),
-    Collection: jest.fn(),
     Message: jest.fn().mockImplementation(() => ({
         delete: jest.fn(),
         channel: {
@@ -114,7 +110,12 @@ describe('_treasure', () => {
 
     it('returns a treasure hoard', async () => {
         const message = mocked(new Message({} as never, {} as never), true);
-        await command.run(message, { command: 'treasure', args: [], match: [], groups: { cr: '4', hoard: 'hoard' } });
+        await command.run(message, {
+            command: 'treasure',
+            args: [],
+            match: [],
+            groups: { cr: '4', hoard: 'hoard', roll: '99' },
+        });
 
         expect(message.delete).toBeCalledTimes(1);
         expect(message.channel.send).toHaveBeenCalledWith(expect.stringMatching(/^You found:/));

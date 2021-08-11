@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/prune is a slash command 1`] = `
+Object {
+  "description": "Prune messages",
+  "name": "prune",
+  "options": Array [
+    Object {
+      "description": "Number of messages to delete",
+      "name": "messages",
+      "required": true,
+      "type": "INTEGER",
+    },
+  ],
+  "run": [Function],
+}
+`;

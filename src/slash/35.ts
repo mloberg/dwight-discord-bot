@@ -1,9 +1,7 @@
-import { Dictionary } from 'lodash';
-
-import Command from '../command';
 import { FriendlyError } from '../error';
+import { SlashCommand } from '../types';
 
-export const conversion: Dictionary<string> = {
+const skills: Record<string, string> = {
     appraise: 'INT',
     balance: 'DEX (Acrobatics)',
     bluff: 'CHA (Persuasion / Deception)',
@@ -42,19 +40,26 @@ export const conversion: Dictionary<string> = {
     'use rope': 'DEX (Acrobatics)',
 };
 
-export default new Command({
-    name: '3.5',
-    alias: ['35'],
-    description: '3.5 to 5th edition skills conversion',
-    usage: '<skill>',
-    args: /(?<skill>.+)/,
-    async run(message, { groups }) {
-        const search = groups.skill?.trim();
-        const skill = conversion[search.toLowerCase()];
+const skill: SlashCommand = {
+    name: '35',
+    description: 'Convert 3.5 skill to 5e',
+    options: [
+        {
+            name: 'skill',
+            description: '3.5 skill',
+            type: 'STRING',
+            required: true,
+        },
+    ],
+    async run(command) {
+        const search = command.options.getString('skill') || '';
+        const skill = skills[search?.toLowerCase()];
         if (!skill) {
             throw new FriendlyError(`I couldn't find skill "${search}".`);
         }
 
-        return message.reply(skill);
+        await command.reply(skill);
     },
-});
+};
+
+export default skill;

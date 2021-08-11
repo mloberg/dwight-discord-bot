@@ -14,6 +14,7 @@ export const schema = joi
         BOT_TOKEN: joi.string().required(),
         API_URL: joi.string().default('https://everlastingdungeons.com/api'),
         DB_URL: joi.string(),
+        GUILD_ID: joi.string(),
     })
     .unknown()
     .required();
@@ -32,4 +33,5 @@ export default {
     token: env.BOT_TOKEN as string,
     apiUrl: env.API_URL as string,
     dbUrl: env.DB_URL as string | undefined,
+    guildID: env.GUILD_ID as string | undefined,
 };

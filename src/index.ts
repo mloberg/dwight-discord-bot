@@ -6,6 +6,7 @@ import commands from './commands';
 import config from './config';
 import { FriendlyError } from './error';
 import logger from './logger';
+import slash from './slash';
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 const regex = memoize((commands: Manager, ...prefix: string[]) => {
@@ -15,7 +16,7 @@ const regex = memoize((commands: Manager, ...prefix: string[]) => {
     return new RegExp(`^(?:${prefixMatch})\\s*?(?<command>${commandMatch})(?<args>.*)?`, 'i');
 });
 
-client.once('ready', () => {
+client.once('ready', async () => {
     if (!client.user) {
         return;
     }
@@ -26,8 +27,37 @@ client.once('ready', () => {
             username: `${client.user.username}#${client.user.discriminator} (${client.user.id})`,
             prefix: config.prefix,
         },
-        'Client ready',
+        'Bot ready',
     );
+
+    if (config.guildID) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        const commands = slash.map(({ run, ...data }) => data);
+        await client.guilds.cache.get(config.guildID)?.commands.set(commands);
+        logger.info({ commands: commands.map(({ name }) => name), guild: config.guildID }, 'Registered commands');
+    }
+});
+
+client.on('interactionCreate', async (interaction) => {
+    if (!interaction.isCommand()) {
+        return;
+    }
+
+    const command = slash.get(interaction.commandName);
+    if (!command) {
+        return;
+    }
+
+    try {
+        await command.run(interaction);
+        if (!interaction.replied) {
+            await interaction.reply(':white_check_mark:');
+        }
+    } catch (err) {
+        const content = err instanceof FriendlyError ? err.message : 'An unknown error occurred.';
+        await interaction.reply({ content, ephemeral: true });
+        logger.error(err);
+    }
 });
 
 client.on('messageCreate', async (message) => {

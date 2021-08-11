@@ -1,14 +1,12 @@
 import Command, { Manager } from '../command';
 import config from '../config';
 import { FriendlyError } from '../error';
-import conversion from './35';
 import elixir from './elixir';
 import event from './event';
 import item from './item';
 import madness from './madness';
 import ping from './ping';
 import portent from './portent';
-import prune from './prune';
 import spell from './spell';
 import table from './table';
 import treasure from './treasure';
@@ -44,14 +42,12 @@ export const help = new Command({
 });
 
 commands.register(help);
-commands.register(conversion);
 commands.register(elixir);
 commands.register(event);
 commands.register(item);
 commands.register(madness);
 commands.register(ping);
 commands.register(portent);
-commands.register(prune);
 commands.register(spell);
 commands.register(table);
 commands.register(treasure);
