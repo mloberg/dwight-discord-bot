@@ -17,7 +17,7 @@ const prune: SlashCommand = {
             throw new FriendlyError("I can't bulk delete messages in this channel.");
         }
 
-        const messages = command.options.getInteger('messages') ?? 0;
+        const messages = command.options.getInteger('messages', true);
         await command.reply('...');
         await command.channel.bulkDelete(messages + 1);
     },

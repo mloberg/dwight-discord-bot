@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/wildMagic is a slash command 1`] = `
+Object {
+  "description": "Roll on the Wild Magic table",
+  "name": "wildmagic",
+  "options": Array [
+    Object {
+      "description": "Roll on the Barbarian Wild Magic table",
+      "name": "barbarian",
+      "type": "BOOLEAN",
+    },
+    Object {
+      "description": "d100 (Sorcerer) or d8 (Barbarian) roll",
+      "name": "roll",
+      "type": "INTEGER",
+    },
+  ],
+  "run": [Function],
+}
+`;

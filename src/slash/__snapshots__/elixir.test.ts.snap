@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/elixir is a slash command 1`] = `
+Object {
+  "description": "Craft an experimental elixir",
+  "name": "elixir",
+  "options": Array [
+    Object {
+      "description": "d6 roll",
+      "name": "roll",
+      "type": "INTEGER",
+    },
+  ],
+  "run": [Function],
+}
+`;

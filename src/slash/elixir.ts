@@ -1,4 +1,4 @@
-import Command from '../command';
+import { SlashCommand } from '../types';
 import { roll } from '../utils';
 
 export const elixirs = [
@@ -10,18 +10,22 @@ export const elixirs = [
     '**Transformation**. The drinker’s body is transformed as if by the alter self spell. The drinker determines the transformation caused by the spell, the effects of which last for 10 minutes.',
 ];
 
-export default new Command({
+const elixir: SlashCommand = {
     name: 'elixir',
-    alias: ['elx'],
-    args: /(?<roll>\d+)?/,
     description: 'Craft an experimental elixir',
-    usage: '[d6]',
-    async run(message, { groups }) {
-        const dice = Number(groups.roll || roll('d6'));
+    options: [
+        {
+            name: 'roll',
+            description: 'd6 roll',
+            type: 'INTEGER',
+        },
+    ],
+    async run(command) {
+        const dice = command.options.getInteger('roll') || roll('d6');
         const result = elixirs[dice - 1];
 
-        await message.delete();
-
-        return message.reply(result);
+        await command.reply(result);
     },
-});
+};
+
+export default elixir;

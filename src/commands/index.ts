@@ -1,8 +1,6 @@
 import Command, { Manager } from '../command';
 import config from '../config';
 import { FriendlyError } from '../error';
-import elixir from './elixir';
-import event from './event';
 import item from './item';
 import madness from './madness';
 import ping from './ping';
@@ -10,7 +8,6 @@ import portent from './portent';
 import spell from './spell';
 import table from './table';
 import treasure from './treasure';
-import wildMagic from './wildMagic';
 
 const commands = new Manager();
 
@@ -42,8 +39,6 @@ export const help = new Command({
 });
 
 commands.register(help);
-commands.register(elixir);
-commands.register(event);
 commands.register(item);
 commands.register(madness);
 commands.register(ping);
@@ -51,6 +46,5 @@ commands.register(portent);
 commands.register(spell);
 commands.register(table);
 commands.register(treasure);
-commands.register(wildMagic);
 
 export default commands;
