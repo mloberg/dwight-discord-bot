@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/event is a slash command 1`] = `
+Object {
+  "description": "Trigger a random event",
+  "name": "event",
+  "options": Array [
+    Object {
+      "description": "d20 roll",
+      "name": "roll",
+      "type": "INTEGER",
+    },
+  ],
+  "run": [Function],
+}
+`;

@@ -52,8 +52,8 @@ const skill: SlashCommand = {
         },
     ],
     async run(command) {
-        const search = command.options.getString('skill') || '';
-        const skill = skills[search?.toLowerCase()];
+        const search = command.options.getString('skill', true);
+        const skill = skills[search.toLowerCase()];
         if (!skill) {
             throw new FriendlyError(`I couldn't find skill "${search}".`);
         }

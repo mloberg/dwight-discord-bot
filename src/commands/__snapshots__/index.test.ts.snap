@@ -5,24 +5,8 @@ exports[`_help returns a list of all commands 1`] = `
   "calls": Array [
     Array [
       "Here is a list of available commands:
-help, elixir, event, item, madness, ping, portent, spell, table, treasure, wild magic
+help, item, madness, ping, portent, spell, table, treasure
 Get more details with \\"?help [command]\\"",
-    ],
-  ],
-  "results": Array [
-    Object {
-      "type": "return",
-      "value": undefined,
-    },
-  ],
-}
-`;
-
-exports[`_help returns the details for the event command 1`] = `
-[MockFunction] {
-  "calls": Array [
-    Array [
-      "**event**: Trigger a random event",
     ],
   ],
   "results": Array [

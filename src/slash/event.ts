@@ -1,6 +1,5 @@
-import { sample } from 'lodash';
-
-import Command from '../command';
+import { SlashCommand } from '../types';
+import { roll } from '../utils';
 
 export const events = [
     'A door opens',
@@ -25,12 +24,22 @@ export const events = [
     'Unexplained magic occurs',
 ];
 
-export default new Command({
+const event: SlashCommand = {
     name: 'event',
     description: 'Trigger a random event',
-    async run(message) {
-        await message.delete();
+    options: [
+        {
+            name: 'roll',
+            description: 'd20 roll',
+            type: 'INTEGER',
+        },
+    ],
+    async run(command) {
+        const dice = command.options.getInteger('roll') || roll('d20');
+        const event = events[dice - 1];
 
-        return message.channel.send(sample(events) ?? 'Something happens');
+        await command.reply(event);
     },
-});
+};
+
+export default event;

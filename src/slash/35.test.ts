@@ -32,7 +32,8 @@ describe('/35', () => {
 
     it('throws errors on invalid skill', async () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        command.options.getString.mockReturnValue('foo');
 
-        await expect(convert.run(command)).rejects.toThrowError(new FriendlyError('I couldn\'t find skill "".'));
+        await expect(convert.run(command)).rejects.toThrowError(new FriendlyError('I couldn\'t find skill "foo".'));
     });
 });
