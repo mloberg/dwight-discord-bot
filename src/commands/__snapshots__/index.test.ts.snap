@@ -5,7 +5,7 @@ exports[`_help returns a list of all commands 1`] = `
   "calls": Array [
     Array [
       "Here is a list of available commands:
-help, ping, portent, treasure
+help, ping, portent
 Get more details with \\"?help [command]\\"",
     ],
   ],
@@ -36,14 +36,11 @@ exports[`_help returns the details for the help command 1`] = `
 }
 `;
 
-exports[`_help returns the details for the treasure command 1`] = `
+exports[`_help returns the details for the ping command 1`] = `
 [MockFunction] {
   "calls": Array [
     Array [
-      "**treasure**: Give me the loot!
-*aliases*: loot
-*usage*: \`?treasure [hoard] <cr> [d100]\`
-*examples*: \`?treasure 4\`, \`?treasure 6 86\`, \`?treasure hoard 10\`",
+      "**ping**: Pong",
     ],
   ],
   "results": Array [
