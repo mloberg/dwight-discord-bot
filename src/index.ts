@@ -1,9 +1,9 @@
 import { Client, Intents } from 'discord.js';
 
+import commands from './commands';
 import config from './config';
 import { FriendlyError } from './error';
 import logger from './logger';
-import slash from './slash';
 
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
@@ -20,9 +20,9 @@ client.once('ready', async () => {
 
     if (config.guildID) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const commands = slash.map(({ run, ...data }) => data);
-        await client.guilds.cache.get(config.guildID)?.commands.set(commands);
-        logger.info({ commands: commands.map(({ name }) => name), guild: config.guildID }, 'Registered commands');
+        const data = commands.map(({ run, ...data }) => data);
+        await client.guilds.cache.get(config.guildID)?.commands.set(data);
+        logger.info({ commands: Array.from(commands.keys()), guild: config.guildID }, 'Registered commands');
     }
 });
 
@@ -31,7 +31,7 @@ client.on('interactionCreate', async (interaction) => {
         return;
     }
 
-    const command = slash.get(interaction.commandName);
+    const command = commands.get(interaction.commandName);
     if (!command) {
         return;
     }
