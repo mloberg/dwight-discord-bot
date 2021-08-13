@@ -1,5 +1,3 @@
-import { Dictionary } from 'lodash';
-
 import magicTable from './table';
 
 export const gems = {
@@ -165,7 +163,7 @@ const hoardCoins = {
     ],
 };
 
-export const individual: Dictionary<string[][]> = {
+export const individual: Record<string, string[][]> = {
     '0-4': [
         ...new Array(30).fill([
             // 1–30
@@ -255,7 +253,7 @@ export const individual: Dictionary<string[][]> = {
     ],
 };
 
-export const hoard: Dictionary<(string | (string | (() => Promise<string>))[])[][][]> = {
+export const hoard: Record<string, (string | (string | (() => Promise<string>))[])[][][]> = {
     '0-4': [
         ...new Array(6).fill(hoardCoins['0-4']), // 1-6
         ...new Array(10).fill([

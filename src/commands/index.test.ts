@@ -31,7 +31,7 @@ describe('_help', () => {
         expect(message.channel.send).toMatchSnapshot();
     });
 
-    it.each(['help', 'treasure'])('returns the details for the %s command', async (cmd) => {
+    it.each(['help', 'ping'])('returns the details for the %s command', async (cmd) => {
         const message = new Message({} as never, {} as never);
 
         await help.run(message, { command: 'help', args: [cmd], match: [], groups: {} });

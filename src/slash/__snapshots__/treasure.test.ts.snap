@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/treasure is a slash command 1`] = `
+Object {
+  "description": "Give me the loot!",
+  "name": "treasure",
+  "options": Array [
+    Object {
+      "description": "Challenge rating",
+      "name": "cr",
+      "required": true,
+      "type": "INTEGER",
+    },
+    Object {
+      "description": "d100 roll",
+      "name": "roll",
+      "type": "INTEGER",
+    },
+    Object {
+      "description": "Generate a treasure hoard",
+      "name": "hoard",
+      "type": "BOOLEAN",
+    },
+  ],
+  "run": [Function],
+}
+`;
