@@ -1,7 +1,6 @@
 import Command, { Manager } from '../command';
 import config from '../config';
 import { FriendlyError } from '../error';
-import item from './item';
 import madness from './madness';
 import ping from './ping';
 import portent from './portent';
@@ -39,7 +38,6 @@ export const help = new Command({
 });
 
 commands.register(help);
-commands.register(item);
 commands.register(madness);
 commands.register(ping);
 commands.register(portent);

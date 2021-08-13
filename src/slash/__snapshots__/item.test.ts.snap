@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/item is a slash command 1`] = `
+Object {
+  "description": "Return a random magic item",
+  "name": "item",
+  "options": Array [
+    Object {
+      "choices": Array [
+        Object {
+          "name": "Common",
+          "value": "common",
+        },
+        Object {
+          "name": "Uncommon",
+          "value": "uncommon",
+        },
+        Object {
+          "name": "Rare",
+          "value": "rare",
+        },
+        Object {
+          "name": "Very Rare",
+          "value": "very rare",
+        },
+        Object {
+          "name": "Legendary",
+          "value": "legendary",
+        },
+        Object {
+          "name": "Artifact",
+          "value": "artifact",
+        },
+      ],
+      "description": "Item rarity",
+      "name": "rarity",
+      "type": "STRING",
+    },
+    Object {
+      "description": "Item type",
+      "name": "type",
+      "type": "STRING",
+    },
+  ],
+  "run": [Function],
+}
+`;
