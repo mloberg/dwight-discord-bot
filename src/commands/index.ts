@@ -3,7 +3,6 @@ import config from '../config';
 import { FriendlyError } from '../error';
 import ping from './ping';
 import portent from './portent';
-import spell from './spell';
 import table from './table';
 import treasure from './treasure';
 
@@ -39,7 +38,6 @@ export const help = new Command({
 commands.register(help);
 commands.register(ping);
 commands.register(portent);
-commands.register(spell);
 commands.register(table);
 commands.register(treasure);
 
