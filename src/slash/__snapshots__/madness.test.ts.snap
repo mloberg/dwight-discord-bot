@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/madness is a slash command 1`] = `
+Object {
+  "description": "Give a random madness to a player",
+  "name": "madness",
+  "options": Array [
+    Object {
+      "choices": Array [
+        Object {
+          "name": "Short (minutes)",
+          "value": "short",
+        },
+        Object {
+          "name": "Long (hours)",
+          "value": "long",
+        },
+        Object {
+          "name": "Flaw (permenant)",
+          "value": "flaw",
+        },
+      ],
+      "description": "Type of madness",
+      "name": "type",
+      "required": true,
+      "type": "STRING",
+    },
+    Object {
+      "description": "User to send a madness",
+      "name": "user",
+      "type": "USER",
+    },
+    Object {
+      "description": "d100 roll",
+      "name": "roll",
+      "type": "INTEGER",
+    },
+  ],
+  "run": [Function],
+}
+`;
