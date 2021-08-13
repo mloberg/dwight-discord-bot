@@ -1,4 +1,4 @@
-import { Dictionary, sample } from 'lodash';
+import { sample } from 'lodash';
 
 import spells from './spells';
 
@@ -10,7 +10,7 @@ const spell = async (lvl: number) => {
     return selected ? selected.spell : `A level ${lvl} spell`;
 };
 
-const table: Dictionary<(string | (() => Promise<string>))[]> = {
+const table: Record<string, (string | (() => Promise<string>))[]> = {
     a: [
         ...new Array(50).fill('Potion of healing'), // 1-50
         ...new Array(10).fill(async () => `Spell scroll (${await spell(0)})`), // 51-60

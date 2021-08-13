@@ -1,0 +1,36 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/table is a slash command 1`] = `
+Object {
+  "description": "Roll on the magic item tables",
+  "name": "table",
+  "options": Array [
+    Object {
+      "choices": Array [
+        Object {
+          "name": "A",
+          "value": "a",
+        },
+        Object {
+          "name": "B",
+          "value": "b",
+        },
+        Object {
+          "name": "C",
+          "value": "c",
+        },
+      ],
+      "description": "Magic item table",
+      "name": "table",
+      "required": true,
+      "type": "STRING",
+    },
+    Object {
+      "description": "d100 roll",
+      "name": "roll",
+      "type": "INTEGER",
+    },
+  ],
+  "run": [Function],
+}
+`;
