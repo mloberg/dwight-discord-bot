@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/portent is a slash command 1`] = `
+Object {
+  "description": "Manage portent dice for a Divination Wizard",
+  "name": "portent",
+  "options": Array [
+    Object {
+      "description": "Show available portent dice",
+      "name": "show",
+      "type": "SUB_COMMAND",
+    },
+    Object {
+      "description": "Roll new portent dice",
+      "name": "roll",
+      "options": Array [
+        Object {
+          "description": "Value of first die",
+          "name": "one",
+          "type": "INTEGER",
+        },
+        Object {
+          "description": "Value of second die",
+          "name": "two",
+          "type": "INTEGER",
+        },
+        Object {
+          "description": "Value of third die (greater portent)",
+          "name": "three",
+          "type": "INTEGER",
+        },
+        Object {
+          "description": "Roll three dice instead of two",
+          "name": "greater",
+          "type": "BOOLEAN",
+        },
+      ],
+      "type": "SUB_COMMAND",
+    },
+    Object {
+      "description": "Use a portent die",
+      "name": "use",
+      "options": Array [
+        Object {
+          "description": "Die value to use",
+          "name": "dice",
+          "required": true,
+          "type": "INTEGER",
+        },
+      ],
+      "type": "SUB_COMMAND",
+    },
+  ],
+  "run": [Function],
+}
+`;

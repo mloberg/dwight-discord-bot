@@ -2,7 +2,6 @@ import Command, { Manager } from '../command';
 import config from '../config';
 import { FriendlyError } from '../error';
 import ping from './ping';
-import portent from './portent';
 
 const commands = new Manager();
 
@@ -35,6 +34,5 @@ export const help = new Command({
 
 commands.register(help);
 commands.register(ping);
-commands.register(portent);
 
 export default commands;
