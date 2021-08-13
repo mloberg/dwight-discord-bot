@@ -1,16 +1,14 @@
-import { Dictionary, sample } from 'lodash';
-
-import Command from '../command';
-import { FriendlyError } from '../error';
+import { SlashCommand } from '../types';
 import { roll } from '../utils';
 
-interface Madness {
-    duration: string;
-    time: string;
-    options: string[];
-}
-
-export const madness: Dictionary<Madness> = {
+const table: Record<
+    string,
+    {
+        duration: string;
+        time: string;
+        options: string[];
+    }
+> = {
     short: {
         duration: '1d10',
         time: 'minutes',
@@ -98,26 +96,57 @@ export const madness: Dictionary<Madness> = {
     },
 };
 
-export default new Command({
+const madness: SlashCommand = {
     name: 'madness',
-    alias: ['flaw'],
-    args: /(?<type>short|long)?/,
     description: 'Give a random madness to a player',
-    usage: '[short|long|flaw] <...@user>',
-    async run({ mentions, author }, { command, groups }) {
-        const type = (command === 'flaw' ? 'flaw' : groups.type || 'short').toLowerCase();
-        const users = mentions.users.filter((u) => !u.bot);
-        if (0 === users.size) {
-            throw new FriendlyError('You must assign a madness to a user.');
+    options: [
+        {
+            name: 'type',
+            description: 'Type of madness',
+            type: 'STRING',
+            required: true,
+            choices: [
+                {
+                    name: 'Short (minutes)',
+                    value: 'short',
+                },
+                {
+                    name: 'Long (hours)',
+                    value: 'long',
+                },
+                {
+                    name: 'Flaw (permenant)',
+                    value: 'flaw',
+                },
+            ],
+        },
+        {
+            name: 'user',
+            description: 'User to send a madness',
+            type: 'USER',
+        },
+        {
+            name: 'roll',
+            description: 'd100 roll',
+            type: 'INTEGER',
+        },
+    ],
+    async run(command) {
+        const type = command.options.getString('type', true);
+        const user = command.options.getUser('user');
+        const dice = command.options.getInteger('roll') || roll('d100');
+
+        const madness = table[type];
+        const result = madness.options[dice - 1];
+        const duration = `${madness.duration ? roll(madness.duration) : ''} ${madness.time}`.trim();
+        const content = `${result} This lasts ${duration}.`;
+
+        if (user) {
+            await user.send(content);
         }
 
-        users.forEach(async (user) => {
-            const mad = madness[type];
-            const duration = `${mad.duration ? roll(mad.duration) : ''} ${mad.time}.`.trim();
-            const message = `${sample(mad.options)} This lasts ${duration}`;
-
-            await author.send(`${user.username} got the following madness: ${message}`);
-            await user.send(message);
-        });
+        await command.reply({ content, ephemeral: true });
     },
-});
+};
+
+export default madness;
