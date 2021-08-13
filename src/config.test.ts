@@ -68,21 +68,6 @@ describe('env.DEBUG', () => {
     });
 });
 
-describe('env.BOT_PREFIX', () => {
-    it('defaults to ?', () => {
-        const { error, value } = schema.validate(defaults);
-
-        expect(error).toBeFalsy();
-        expect(value.BOT_PREFIX).toEqual('?');
-    });
-
-    it('can not be @', () => {
-        expect(schema.validate({ BOT_PREFIX: '@', ...defaults }).error?.message).toEqual(
-            '"BOT_PREFIX" contains an invalid value',
-        );
-    });
-});
-
 describe('env.BOT_TOKEN', () => {
     it('is required', () => {
         expect(schema.validate({}).error?.message).toEqual('"BOT_TOKEN" is required');
