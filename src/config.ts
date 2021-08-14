@@ -8,7 +8,7 @@ export const schema = joi
         BOT_TOKEN: joi.string().required(),
         CLIENT_ID: joi.string(),
         DB_URL: joi.string(),
-        GUILD_ID: joi.string(),
+        GUILD_ID: joi.string().allow(''),
         LOG_LEVEL: joi.string().valid('fatal', 'error', 'warn', 'info', 'debug', 'silent').lowercase().default('info'),
         NODE_ENV: joi.string().lowercase().valid('development', 'test', 'production').default('production'),
     })
