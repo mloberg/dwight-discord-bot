@@ -1,5 +1,5 @@
+import { CommandBuilder } from '../command';
 import { FriendlyError } from '../error';
-import { SlashCommand } from '../types';
 
 const skills: Record<string, string> = {
     appraise: 'INT',
@@ -40,26 +40,15 @@ const skills: Record<string, string> = {
     'use rope': 'DEX (Acrobatics)',
 };
 
-const skill: SlashCommand = {
-    name: '35',
-    description: 'Convert 3.5 skill to 5e',
-    options: [
-        {
-            name: 'skill',
-            description: '3.5 skill',
-            type: 'STRING',
-            required: true,
-        },
-    ],
-    async run(command) {
-        const search = command.options.getString('skill', true);
-        const skill = skills[search.toLowerCase()];
-        if (!skill) {
-            throw new FriendlyError(`I couldn't find skill "${search}".`);
-        }
+export default new CommandBuilder(async (command) => {
+    const search = command.options.getString('skill', true);
+    const skill = skills[search.toLowerCase()];
+    if (!skill) {
+        throw new FriendlyError(`I couldn't find skill "${search}".`);
+    }
 
-        await command.reply(skill);
-    },
-};
-
-export default skill;
+    await command.reply(skill);
+})
+    .setName('35')
+    .setDescription('Convert 3.5 skill to 5e')
+    .addStringOption((option) => option.setName('skill').setDescription('3.5 skill').setRequired(true));

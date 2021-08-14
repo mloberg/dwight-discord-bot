@@ -20,17 +20,18 @@ Object {
           "value": "c",
         },
       ],
-      "description": "Magic item table",
+      "description": "Magic item table to roll on",
       "name": "table",
       "required": true,
-      "type": "STRING",
+      "type": 3,
     },
     Object {
-      "description": "d100 roll",
+      "choices": undefined,
+      "description": "Value of a d100 roll.",
       "name": "roll",
-      "type": "INTEGER",
+      "required": false,
+      "type": 4,
     },
   ],
-  "run": [Function],
 }
 `;

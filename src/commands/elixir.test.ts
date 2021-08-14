@@ -20,7 +20,7 @@ describe('/elixir', () => {
     it('returns a random elixir', async () => {
         const command = mocked(new CommandInteraction({} as never, {} as never));
 
-        await elixir.run(command);
+        await elixir.handler(command);
         expect(elixirs).toContainEqual(command.reply.mock.calls[0][0]);
     });
 
@@ -28,7 +28,7 @@ describe('/elixir', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(1);
 
-        await elixir.run(command);
+        await elixir.handler(command);
         expect(command.reply).toHaveBeenCalledWith(
             '**Healing**. The drinker regains a number of hit points equal to 2d4 + your Intelligence modifier.',
         );

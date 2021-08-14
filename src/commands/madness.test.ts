@@ -28,7 +28,7 @@ describe('/madness', () => {
         command.options.getString.mockReturnValue('short');
         command.options.getUser.mockReturnValue(user);
 
-        await madness.run(command);
+        await madness.handler(command);
 
         const content = expect.stringMatching(/^.*\. This lasts \d+ minutes\.$/);
         expect(user.send).toHaveBeenCalledWith(content);
@@ -40,7 +40,7 @@ describe('/madness', () => {
         command.options.getString.mockReturnValue('flaw');
         command.options.getInteger.mockReturnValue(16);
 
-        await madness.run(command);
+        await madness.handler(command);
         expect(command.reply).toHaveBeenCalledWith({
             content: 'You gain the following flaw: "I keep whatever I find." This lasts until cured.',
             ephemeral: true,

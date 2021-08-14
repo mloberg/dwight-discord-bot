@@ -17,13 +17,6 @@ client.once('ready', async () => {
         },
         'Bot ready',
     );
-
-    if (config.guildID) {
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const data = commands.map(({ run, ...data }) => data);
-        await client.guilds.cache.get(config.guildID)?.commands.set(data);
-        logger.info({ commands: Array.from(commands.keys()), guild: config.guildID }, 'Registered commands');
-    }
 });
 
 client.on('interactionCreate', async (interaction) => {
@@ -37,7 +30,7 @@ client.on('interactionCreate', async (interaction) => {
     }
 
     try {
-        await command.run(interaction);
+        await command.handler(interaction);
         if (!interaction.replied) {
             await interaction.reply(':white_check_mark:');
         }
@@ -54,7 +47,7 @@ process.on('unhandledRejection', (reason) => {
 });
 
 process.on('uncaughtException', (err: Error) => {
-    logger.error(err);
+    logger.fatal(err);
     process.exit(1);
 });
 

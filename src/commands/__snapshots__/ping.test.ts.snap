@@ -2,8 +2,8 @@
 
 exports[`/ping is a slash command 1`] = `
 Object {
-  "description": "pong",
+  "description": "Pong",
   "name": "ping",
-  "run": [Function],
+  "options": Array [],
 }
 `;

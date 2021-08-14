@@ -6,11 +6,12 @@ Object {
   "name": "event",
   "options": Array [
     Object {
-      "description": "d20 roll",
+      "choices": undefined,
+      "description": "Value of a d20 roll.",
       "name": "roll",
-      "type": "INTEGER",
+      "required": false,
+      "type": 4,
     },
   ],
-  "run": [Function],
 }
 `;

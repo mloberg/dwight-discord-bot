@@ -23,19 +23,21 @@ Object {
       "description": "Type of madness",
       "name": "type",
       "required": true,
-      "type": "STRING",
+      "type": 3,
     },
     Object {
-      "description": "User to send a madness",
+      "description": "Player",
       "name": "user",
-      "type": "USER",
+      "required": true,
+      "type": 6,
     },
     Object {
-      "description": "d100 roll",
+      "choices": undefined,
+      "description": "Value of a d100 roll.",
       "name": "roll",
-      "type": "INTEGER",
+      "required": false,
+      "type": 4,
     },
   ],
-  "run": [Function],
 }
 `;

@@ -50,7 +50,8 @@ Object {
       ],
       "description": "Spell level",
       "name": "level",
-      "type": "INTEGER",
+      "required": false,
+      "type": 4,
     },
     Object {
       "choices": Array [
@@ -89,7 +90,8 @@ Object {
       ],
       "description": "Spell school",
       "name": "school",
-      "type": "STRING",
+      "required": false,
+      "type": 3,
     },
     Object {
       "choices": Array [
@@ -124,9 +126,9 @@ Object {
       ],
       "description": "Spell class",
       "name": "class",
-      "type": "STRING",
+      "required": false,
+      "type": 3,
     },
   ],
-  "run": [Function],
 }
 `;

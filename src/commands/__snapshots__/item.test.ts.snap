@@ -34,14 +34,16 @@ Object {
       ],
       "description": "Item rarity",
       "name": "rarity",
-      "type": "STRING",
+      "required": false,
+      "type": 3,
     },
     Object {
-      "description": "Item type",
+      "choices": undefined,
+      "description": "Item type or subtype",
       "name": "type",
-      "type": "STRING",
+      "required": false,
+      "type": 3,
     },
   ],
-  "run": [Function],
 }
 `;

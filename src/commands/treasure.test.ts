@@ -87,7 +87,7 @@ describe('/treasure', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValueOnce(1);
 
-        await treasure.run(command);
+        await treasure.handler(command);
         expect(command.reply).toHaveBeenCalledWith(expect.stringMatching(/\* \d+ [csegp]p$/));
     });
 
@@ -96,7 +96,7 @@ describe('/treasure', () => {
         command.options.getInteger.mockReturnValueOnce(17);
         command.options.getInteger.mockReturnValue(99);
 
-        await treasure.run(command);
+        await treasure.handler(command);
         expect(command.reply).toHaveBeenCalledWith(expect.stringMatching(/\* \d+ [gp]p$/));
     });
 
@@ -106,7 +106,7 @@ describe('/treasure', () => {
         command.options.getInteger.mockReturnValueOnce(99);
         command.options.getBoolean.mockReturnValue(true);
 
-        await treasure.run(command);
+        await treasure.handler(command);
         expect(command.reply).toHaveBeenCalledWith(expect.stringMatching(/(Gem|Art|Item): .+$/));
     });
 });

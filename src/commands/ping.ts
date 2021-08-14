@@ -1,11 +1,7 @@
-import { SlashCommand } from '../types';
+import { CommandBuilder } from '../command';
 
-const ping: SlashCommand = {
-    name: 'ping',
-    description: 'pong',
-    async run(command) {
-        await command.reply('🏓');
-    },
-};
-
-export default ping;
+export default new CommandBuilder(async (command) => {
+    await command.reply('🏓');
+})
+    .setName('ping')
+    .setDescription('Pong');

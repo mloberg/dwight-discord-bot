@@ -42,7 +42,7 @@ describe('/portent', () => {
             const command = mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('show');
 
-            await portent.run(command);
+            await portent.handler(command);
             expect(mockDb.get).toHaveBeenCalledWith('1234-6789');
             expect(command.reply).toHaveBeenCalledWith('1, 20');
         });
@@ -51,7 +51,7 @@ describe('/portent', () => {
             const command = mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('show');
 
-            await portent.run(command);
+            await portent.handler(command);
             expect(command.reply).toHaveBeenCalledWith('No available portent dice.');
         });
     });
@@ -61,7 +61,7 @@ describe('/portent', () => {
             const command = mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('roll');
 
-            await portent.run(command);
+            await portent.handler(command);
             expect(command.reply).toHaveBeenCalledWith(expect.stringMatching(/^\d+, \d+$/));
             expect(mockDb.set).toHaveBeenCalledWith('1234-6789', expect.any(Array));
         });
@@ -74,7 +74,7 @@ describe('/portent', () => {
             // does not use unless greater portent
             command.options.getInteger.mockReturnValueOnce(3);
 
-            await portent.run(command);
+            await portent.handler(command);
             expect(command.reply).toHaveBeenCalledWith('1, 2');
             expect(mockDb.set).toHaveBeenCalledWith('1234-6789', [1, 2]);
         });
@@ -84,7 +84,7 @@ describe('/portent', () => {
             command.options.getSubcommand.mockReturnValue('roll');
             command.options.getBoolean.mockReturnValue(true);
 
-            await portent.run(command);
+            await portent.handler(command);
             expect(command.reply).toHaveBeenCalledWith(expect.stringMatching(/^\d+, \d+, \d+$/));
         });
 
@@ -96,7 +96,7 @@ describe('/portent', () => {
             command.options.getInteger.mockReturnValueOnce(2);
             command.options.getInteger.mockReturnValueOnce(3);
 
-            await portent.run(command);
+            await portent.handler(command);
             expect(command.reply).toHaveBeenCalledWith('1, 2, 3');
             expect(mockDb.set).toHaveBeenCalledWith('1234-6789', [1, 2, 3]);
         });
@@ -110,7 +110,7 @@ describe('/portent', () => {
             command.options.getSubcommand.mockReturnValue('use');
             command.options.getInteger.mockReturnValue(5);
 
-            await portent.run(command);
+            await portent.handler(command);
             expect(mockDb.set).toHaveBeenCalledWith('1234-6789', [1, 20]);
             expect(command.reply).toHaveBeenCalledWith('Remaining: 1, 20');
         });
@@ -122,7 +122,7 @@ describe('/portent', () => {
             command.options.getSubcommand.mockReturnValue('use');
             command.options.getInteger.mockReturnValue(20);
 
-            await portent.run(command);
+            await portent.handler(command);
             expect(mockDb.set).toHaveBeenCalledWith('1234-6789', [20]);
             expect(command.reply).toHaveBeenCalledWith('Remaining: 20');
         });
@@ -134,7 +134,7 @@ describe('/portent', () => {
             command.options.getSubcommand.mockReturnValue('use');
             command.options.getInteger.mockReturnValue(20);
 
-            await expect(portent.run(command)).rejects.toThrowError(
+            await expect(portent.handler(command)).rejects.toThrowError(
                 new FriendlyError('No portent dice for 20. Available: 1'),
             );
         });

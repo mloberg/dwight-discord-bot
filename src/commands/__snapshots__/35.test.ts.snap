@@ -6,12 +6,12 @@ Object {
   "name": "35",
   "options": Array [
     Object {
+      "choices": undefined,
       "description": "3.5 skill",
       "name": "skill",
       "required": true,
-      "type": "STRING",
+      "type": 3,
     },
   ],
-  "run": [Function],
 }
 `;

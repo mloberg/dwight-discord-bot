@@ -27,7 +27,7 @@ describe('/table', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValue('a');
 
-        await table.run(command);
+        await table.handler(command);
         expect(command.reply).toHaveBeenCalledWith('foo');
     });
 
@@ -36,7 +36,7 @@ describe('/table', () => {
         command.options.getString.mockReturnValue('b');
         command.options.getInteger.mockReturnValue(99);
 
-        await table.run(command);
+        await table.handler(command);
         expect(command.reply).toHaveBeenCalledWith('test');
     });
 
@@ -44,7 +44,7 @@ describe('/table', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValue('c');
 
-        await table.run(command);
+        await table.handler(command);
         expect(command.reply).toHaveBeenCalledWith('baz');
     });
 });
