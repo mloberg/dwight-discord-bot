@@ -1,9 +1,9 @@
 import { Collection } from 'discord.js';
 import fs from 'fs';
 
-import { SlashCommand } from '../types';
+import { CommandBuilder } from '../command';
 
-const commands = new Collection<string, SlashCommand>();
+const commands = new Collection<string, CommandBuilder>();
 
 const files = fs
     .readdirSync(__dirname)
@@ -12,7 +12,7 @@ const files = fs
 
 for (const file of files) {
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const command = require(`./${file}`).default;
+    const command: CommandBuilder = require(`./${file}`).default;
     commands.set(command.name, command);
 }
 

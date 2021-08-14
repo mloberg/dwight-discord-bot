@@ -1,4 +1,4 @@
-import { SlashCommand } from '../types';
+import { CommandBuilder, rollOption } from '../command';
 import { roll } from '../utils';
 
 export const events = [
@@ -24,22 +24,12 @@ export const events = [
     'Unexplained magic occurs',
 ];
 
-const event: SlashCommand = {
-    name: 'event',
-    description: 'Trigger a random event',
-    options: [
-        {
-            name: 'roll',
-            description: 'd20 roll',
-            type: 'INTEGER',
-        },
-    ],
-    async run(command) {
-        const dice = command.options.getInteger('roll') || roll('d20');
-        const event = events[dice - 1];
+export default new CommandBuilder(async (command) => {
+    const dice = command.options.getInteger('roll') || roll('d20');
+    const event = events[dice - 1];
 
-        await command.reply(event);
-    },
-};
-
-export default event;
+    await command.reply(event);
+})
+    .setName('event')
+    .setDescription('Trigger a random event')
+    .addIntegerOption(rollOption('d20'));

@@ -41,7 +41,7 @@ describe('env.LOG_LEVEL', () => {
 
     it('returns an error on invalid level', () => {
         expect(schema.validate({ LOG_LEVEL: 'foo', ...defaults }).error?.message).toEqual(
-            '"LOG_LEVEL" must be one of [fatal, error, warn, info, debug, trace, silent]',
+            '"LOG_LEVEL" must be one of [fatal, error, warn, info, debug, silent]',
         );
     });
 });

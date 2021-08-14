@@ -1,4 +1,4 @@
-import { SlashCommand } from '../types';
+import { CommandBuilder, rollOption } from '../command';
 import { roll } from '../utils';
 
 export const sorcererTable = [
@@ -115,29 +115,15 @@ export const barbarianTable = [
     'A bolt of light shoots from your chest. Another creature of your choice that you can see within 30 feet of you must succeed on a Constitution saving throw or take 1d6 radiant damage and be blinded until the start of your next turn. Until your rage ends, you can use this effect again on each of your turns as a bonus action.',
 ];
 
-const wildMagic: SlashCommand = {
-    name: 'wildmagic',
-    description: 'Roll on the Wild Magic table',
-    options: [
-        {
-            name: 'barbarian',
-            description: 'Roll on the Barbarian Wild Magic table',
-            type: 'BOOLEAN',
-        },
-        {
-            name: 'roll',
-            description: 'd100 (Sorcerer) or d8 (Barbarian) roll',
-            type: 'INTEGER',
-        },
-    ],
-    async run(command) {
-        const barbarian = command.options.getBoolean('barbarian') ?? false;
-        const dice = command.options.getInteger('roll') || (barbarian ? roll('d8') : roll('d100'));
-        const table = barbarian ? barbarianTable : sorcererTable;
-        const result = table[dice - 1];
+export default new CommandBuilder(async (command) => {
+    const barbarian = command.options.getBoolean('barbarian') ?? false;
+    const dice = command.options.getInteger('roll') || (barbarian ? roll('d8') : roll('d100'));
+    const table = barbarian ? barbarianTable : sorcererTable;
+    const result = table[dice - 1];
 
-        await command.reply(result);
-    },
-};
-
-export default wildMagic;
+    await command.reply(result);
+})
+    .setName('wildmagic')
+    .setDescription('Roll on the Wild Magic table')
+    .addBooleanOption((option) => option.setName('barbarian').setDescription('Roll on the Barbarian Wild Magic table'))
+    .addIntegerOption(rollOption('d100 (Sorcerer) or d8 (Barbarian)'));

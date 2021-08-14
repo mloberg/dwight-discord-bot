@@ -6,11 +6,12 @@ Object {
   "name": "elixir",
   "options": Array [
     Object {
-      "description": "d6 roll",
+      "choices": undefined,
+      "description": "Value of a d6 roll.",
       "name": "roll",
-      "type": "INTEGER",
+      "required": false,
+      "type": 4,
     },
   ],
-  "run": [Function],
 }
 `;

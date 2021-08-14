@@ -6,12 +6,12 @@ Object {
   "name": "prune",
   "options": Array [
     Object {
+      "choices": undefined,
       "description": "Number of messages to delete",
       "name": "messages",
       "required": true,
-      "type": "INTEGER",
+      "type": 4,
     },
   ],
-  "run": [Function],
 }
 `;

@@ -1,4 +1,4 @@
-import { SlashCommand } from '../types';
+import { CommandBuilder, rollOption } from '../command';
 import { roll } from '../utils';
 
 const table: Record<
@@ -96,57 +96,32 @@ const table: Record<
     },
 };
 
-const madness: SlashCommand = {
-    name: 'madness',
-    description: 'Give a random madness to a player',
-    options: [
-        {
-            name: 'type',
-            description: 'Type of madness',
-            type: 'STRING',
-            required: true,
-            choices: [
-                {
-                    name: 'Short (minutes)',
-                    value: 'short',
-                },
-                {
-                    name: 'Long (hours)',
-                    value: 'long',
-                },
-                {
-                    name: 'Flaw (permenant)',
-                    value: 'flaw',
-                },
-            ],
-        },
-        {
-            name: 'user',
-            description: 'User to send a madness',
-            type: 'USER',
-        },
-        {
-            name: 'roll',
-            description: 'd100 roll',
-            type: 'INTEGER',
-        },
-    ],
-    async run(command) {
-        const type = command.options.getString('type', true);
-        const user = command.options.getUser('user');
-        const dice = command.options.getInteger('roll') || roll('d100');
+export default new CommandBuilder(async (command) => {
+    const type = command.options.getString('type', true);
+    const user = command.options.getUser('user');
+    const dice = command.options.getInteger('roll') || roll('d100');
 
-        const madness = table[type];
-        const result = madness.options[dice - 1];
-        const duration = `${madness.duration ? roll(madness.duration) : ''} ${madness.time}`.trim();
-        const content = `${result} This lasts ${duration}.`;
+    const madness = table[type];
+    const result = madness.options[dice - 1];
+    const duration = `${madness.duration ? roll(madness.duration) : ''} ${madness.time}`.trim();
+    const content = `${result} This lasts ${duration}.`;
 
-        if (user) {
-            await user.send(content);
-        }
+    if (user) {
+        await user.send(content);
+    }
 
-        await command.reply({ content, ephemeral: true });
-    },
-};
-
-export default madness;
+    await command.reply({ content, ephemeral: true });
+})
+    .setName('madness')
+    .setDescription('Give a random madness to a player')
+    .addStringOption((option) =>
+        option
+            .setName('type')
+            .setDescription('Type of madness')
+            .setRequired(true)
+            .addChoice('Short (minutes)', 'short')
+            .addChoice('Long (hours)', 'long')
+            .addChoice('Flaw (permenant)', 'flaw'),
+    )
+    .addUserOption((option) => option.setName('user').setDescription('Player').setRequired(true))
+    .addIntegerOption(rollOption('d100'));

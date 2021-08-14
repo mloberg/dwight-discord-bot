@@ -44,7 +44,7 @@ describe('/item', () => {
     it('returns a random item', async () => {
         const command = mocked(new CommandInteraction({} as never, {} as never));
 
-        await item.run(command);
+        await item.handler(command);
         expect(['IDE of Lesser Bugs', 'Phone of Longer Life', 'Pants of Greater Comfort']).toContainEqual(
             command.reply.mock.calls[0][0],
         );
@@ -54,7 +54,7 @@ describe('/item', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValueOnce('uncommon');
 
-        await item.run(command);
+        await item.handler(command);
         expect(command.reply).toHaveBeenCalledWith('Phone of Longer Life');
     });
 
@@ -63,7 +63,7 @@ describe('/item', () => {
         command.options.getString.mockReturnValueOnce(null);
         command.options.getString.mockReturnValueOnce('Wondrous');
 
-        await item.run(command);
+        await item.handler(command);
         expect(command.reply).toHaveBeenCalledWith('Phone of Longer Life');
     });
 
@@ -72,7 +72,7 @@ describe('/item', () => {
         command.options.getString.mockReturnValueOnce(null);
         command.options.getString.mockReturnValueOnce('Text Editor');
 
-        await item.run(command);
+        await item.handler(command);
         expect(command.reply).toHaveBeenCalledWith('IDE of Lesser Bugs');
     });
 
@@ -81,7 +81,7 @@ describe('/item', () => {
         command.options.getString.mockReturnValueOnce('common');
         command.options.getString.mockReturnValueOnce('armor');
 
-        await item.run(command);
+        await item.handler(command);
         expect(command.reply).toHaveBeenCalledWith('Pants of Greater Comfort');
     });
 
@@ -90,7 +90,7 @@ describe('/item', () => {
         command.options.getString.mockReturnValueOnce('very rare');
         command.options.getString.mockReturnValueOnce('weapon');
 
-        await expect(item.run(command)).rejects.toThrowError(
+        await expect(item.handler(command)).rejects.toThrowError(
             new FriendlyError("I couldn't find an item matching those parameters."),
         );
     });

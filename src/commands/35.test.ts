@@ -26,7 +26,7 @@ describe('/35', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValue(skill);
 
-        await convert.run(command);
+        await convert.handler(command);
         expect(command.reply).toHaveBeenCalledWith(result);
     });
 
@@ -34,6 +34,6 @@ describe('/35', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValue('foo');
 
-        await expect(convert.run(command)).rejects.toThrowError(new FriendlyError('I couldn\'t find skill "foo".'));
+        await expect(convert.handler(command)).rejects.toThrowError(new FriendlyError('I couldn\'t find skill "foo".'));
     });
 });

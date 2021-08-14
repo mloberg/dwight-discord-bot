@@ -8,14 +8,16 @@ Object {
     Object {
       "description": "Roll on the Barbarian Wild Magic table",
       "name": "barbarian",
-      "type": "BOOLEAN",
+      "required": false,
+      "type": 5,
     },
     Object {
-      "description": "d100 (Sorcerer) or d8 (Barbarian) roll",
+      "choices": undefined,
+      "description": "Value of a d100 (Sorcerer) or d8 (Barbarian) roll.",
       "name": "roll",
-      "type": "INTEGER",
+      "required": false,
+      "type": 4,
     },
   ],
-  "run": [Function],
 }
 `;
