@@ -2,23 +2,18 @@
 
 Dwight is a Discord bot to help dungeon masters with their 5e games.
 
-## Commands
+## Overview
 
-Here are the commands available from Dwight.
-
-| Command                                   | Description |
-|-------------------------------------------|-------------|
-| `?help [command]`                         | List and get help with a commands |
-| `?3.5 <skill>`                            | Convert 3.5 skills to 5e |
-| `?elixir <d6>`                            | Craft an Alchemist experimental elixir |
-| `?event`                                  | Trigger a random event |
-| `?item [rarity] [type]`                   | Get a random magical item |
-| `?madness [short\|long\|flaw] <...@user>` | Give a random madness to a user(s) |
-| `?spell [level] [class] [school]`         | Get a random spell |
-| `?table <table> [d100]`                   | Roll on the magic item tables |
-| `?treasure [hoard] <cr> [d100]`           | Generate treasure for an encounter |
-| `?wild magic [barbarian] [d100\|d8]`      | Roll on the wild magic table |
-| `?portent <show\|roll\|use> [d20]`        | Manage portent dice for a Divination Wizard |
+* `/35`: Convert 3.5 skills to 5e
+* `/elixir`: Return a random experimental elixir for Artificers
+* `/event`: Return a random event
+* `/item`: Return a random magical item
+* `/madness`: Roll on the madness table and send it to a user
+* `/portent`: Manage portent dice for a Divination Wizard
+* `/spell`: Return a random spell
+* `/table`: Roll on the magic item tables
+* `/treasure`: Generate random treasure from the treasure tables
+* `/wildmagic`: Roll on the wild magic table
 
 ## Running
 
@@ -26,12 +21,20 @@ To run Dwight, you'll first need to create a Discord bot. Follow the instruction
 over at [discordjs.guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)
 to get started.
 
-Once you have a bot created, you can run Dwight via [Docker](#docker) or [manually](#manually).
+Once you have a bot created, you can run Dwight via [Docker](#docker) (recommended)
+or [manually](#manually).
 
 ### Docker
 
 The easiest way to run Dwight is via Docker. We host images on
 [GitHub Container Registry](https://github.com/users/mloberg/packages/container/package/dwight-bot).
+
+First you need to register the application commands. You can either do this globally,
+which can take a couple hours to propegate or for a single guild which is instant.
+
+    docker run -e BOT_TOKEN=your-bot-token -e CLIENT_ID=your-client-id ghcr.io/mloberg/dwight-bot [guild]
+
+Once installed, run the app.
 
     docker run -e BOT_TOKEN=your-bot-token ghcr.io/mloberg/dwight-bot
 
@@ -39,9 +42,15 @@ The easiest way to run Dwight is via Docker. We host images on
 
 To run Dwight without Docker, you'll need NodeJS 16.
 
-Copy `.env.dist` to `.env` and set `BOT_TOKEN`.
+First run `npm install` and `npm run build`.
 
-Once that's done run `npm install`, `npm run build`, and `npm start`.
+Then install the commands.
+
+    BOT_TOKEN=your-bot-token CLIENT_ID=your-client-id GUILD_ID=your-guild-id node dist/bin/install.js
+
+Then run the bot.
+
+    BOT_TOKEN=your-bot-token npm start
 
 ## Data
 
@@ -54,10 +63,10 @@ can either save it to Redis or to disk as a JSON file. To save in redis, pass
 
 ## Development
 
-To rebuild and restart the bot on file changes, run `npm run watch`. To increase
-logging, add `LOG_LEVEL=debug` to `.env`.
+Copy `.env.dist` to `.env` and fill in the values. Rebuild and restart the bot
+on file changes with `npm run dev`.
 
 ## Contributing
 
-Make sure tests (`npm run test`) and lint (`npm run lint`) pass before submitting
-a Pull Request.
+Make sure tests (`npm test`) and lint (`npm run lint`) pass before submitting a
+Pull Request.
