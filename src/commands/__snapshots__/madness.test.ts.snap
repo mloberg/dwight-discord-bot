@@ -2,6 +2,7 @@
 
 exports[`/madness is a slash command 1`] = `
 Object {
+  "default_permission": undefined,
   "description": "Give a random madness to a player",
   "name": "madness",
   "options": Array [

@@ -2,6 +2,7 @@
 
 exports[`/wildMagic is a slash command 1`] = `
 Object {
+  "default_permission": undefined,
   "description": "Roll on the Wild Magic table",
   "name": "wildmagic",
   "options": Array [
