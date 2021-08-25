@@ -2,6 +2,7 @@
 
 exports[`/event is a slash command 1`] = `
 Object {
+  "default_permission": undefined,
   "description": "Trigger a random event",
   "name": "event",
   "options": Array [

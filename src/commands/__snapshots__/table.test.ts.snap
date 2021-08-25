@@ -2,6 +2,7 @@
 
 exports[`/table is a slash command 1`] = `
 Object {
+  "default_permission": undefined,
   "description": "Roll on the magic item tables",
   "name": "table",
   "options": Array [

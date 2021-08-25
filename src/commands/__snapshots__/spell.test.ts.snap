@@ -2,6 +2,7 @@
 
 exports[`/spell is a slash command 1`] = `
 Object {
+  "default_permission": undefined,
   "description": "Return a random spell",
   "name": "spell",
   "options": Array [

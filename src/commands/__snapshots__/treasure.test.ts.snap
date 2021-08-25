@@ -2,6 +2,7 @@
 
 exports[`/treasure is a slash command 1`] = `
 Object {
+  "default_permission": undefined,
   "description": "Give me the loot!",
   "name": "treasure",
   "options": Array [
