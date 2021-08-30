@@ -37,7 +37,7 @@ client.on('interactionCreate', async (interaction) => {
     } catch (err) {
         const content = err instanceof FriendlyError ? err.message : 'An unknown error occurred.';
         await interaction.reply({ content, ephemeral: true });
-        logger.error(err);
+        logger.error(err as Error);
     }
 });
 

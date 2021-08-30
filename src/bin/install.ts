@@ -27,7 +27,7 @@ if (!clientID) {
 
         logger.info({ guild: config.guildID }, 'Successfully installed application (/) commands.');
     } catch (err) {
-        logger.fatal(err);
+        logger.fatal(err as Error);
         process.exit(1);
     }
 })();
