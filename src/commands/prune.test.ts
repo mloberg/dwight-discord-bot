@@ -27,7 +27,7 @@ describe('/prune', () => {
         command.options.getInteger.mockReturnValue(3);
 
         await prune.handler(command);
-        expect(command.reply).toBeCalledWith('...');
+        expect(command.reply).toHaveBeenCalledWith('...');
         expect((command.channel as TextChannel).bulkDelete).toHaveBeenCalledWith(4);
     });
 
@@ -35,7 +35,7 @@ describe('/prune', () => {
         const command = new CommandInteraction({} as never, {} as never);
         if (command.channel) command.channel.type = 'DM';
 
-        await expect(prune.handler(command)).rejects.toThrowError(
+        await expect(prune.handler(command)).rejects.toMatchError(
             new FriendlyError("I can't bulk delete messages in this channel."),
         );
     });

@@ -70,7 +70,7 @@ describe('/spell', () => {
         command.options.getString.mockReturnValueOnce('necromancy');
         command.options.getString.mockReturnValueOnce('Ranger');
 
-        await expect(spell.handler(command)).rejects.toThrowError(
+        await expect(spell.handler(command)).rejects.toMatchError(
             new FriendlyError("I couldn't find a spell matching those parameters."),
         );
     });

@@ -10,11 +10,13 @@ export default new CommandBuilder(async (command) => {
 
     let items = await itemList();
     if (rarity) {
-        items = items.filter((i) => i.rarity === rarity);
+        items = items.filter((item) => item.rarity === rarity);
     }
     if (type) {
         const typeFilter = type.toLowerCase() === 'wondrous' ? 'wondrous item' : type.toLowerCase();
-        items = items.filter((i) => i.type.toLowerCase() === typeFilter || i.subtype?.toLowerCase() === typeFilter);
+        items = items.filter(
+            (item) => item.type.toLowerCase() === typeFilter || item.subtype?.toLowerCase() === typeFilter,
+        );
     }
 
     const result = sample(items);

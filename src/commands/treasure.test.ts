@@ -88,7 +88,7 @@ describe('/treasure', () => {
         command.options.getInteger.mockReturnValueOnce(1);
 
         await treasure.handler(command);
-        expect(command.reply).toHaveBeenCalledWith(expect.stringMatching(/\* \d+ [csegp]p$/));
+        expect(command.reply).toHaveBeenCalledWith(expect.stringMatching(/\* \d+ [cegps]p$/));
     });
 
     it('returns random individual treasure for a dice roll', async () => {

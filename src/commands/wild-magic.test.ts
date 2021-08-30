@@ -1,7 +1,7 @@
 import { CommandInteraction } from 'discord.js';
 import { mocked } from 'ts-jest/utils';
 
-import wildMagic, { barbarianTable, sorcererTable } from './wildMagic';
+import wildMagic, { barbarianTable, sorcererTable } from './wild-magic';
 
 jest.mock('discord.js', () => ({
     CommandInteraction: jest.fn().mockImplementation(() => ({

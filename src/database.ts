@@ -25,7 +25,7 @@ class Database {
         this.impl = config.dbUrl?.startsWith('file:')
             ? new Keyv({
                   store: new KeyvFile({
-                      filename: this.uri?.substr(5),
+                      filename: this.uri?.slice(5),
                   }),
               })
             : new Keyv(config.dbUrl);

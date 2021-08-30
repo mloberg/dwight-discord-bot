@@ -60,7 +60,7 @@ describe('/item', () => {
 
     it('returns an item filtered by type', async () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
-        command.options.getString.mockReturnValueOnce(null);
+        command.options.getString.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
         command.options.getString.mockReturnValueOnce('Wondrous');
 
         await item.handler(command);
@@ -69,7 +69,7 @@ describe('/item', () => {
 
     it('returns an item filtered by subtype', async () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
-        command.options.getString.mockReturnValueOnce(null);
+        command.options.getString.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
         command.options.getString.mockReturnValueOnce('Text Editor');
 
         await item.handler(command);
@@ -90,7 +90,7 @@ describe('/item', () => {
         command.options.getString.mockReturnValueOnce('very rare');
         command.options.getString.mockReturnValueOnce('weapon');
 
-        await expect(item.handler(command)).rejects.toThrowError(
+        await expect(item.handler(command)).rejects.toMatchError(
             new FriendlyError("I couldn't find an item matching those parameters."),
         );
     });

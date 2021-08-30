@@ -15,6 +15,7 @@ export const schema = joi
     .unknown()
     .required();
 
+// eslint-disable-next-line unicorn/prevent-abbreviations
 const { error, value: env } = schema.validate(process.env);
 if (error) {
     throw new Error(`Config validation error: ${error.message}`);

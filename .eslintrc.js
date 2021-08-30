@@ -1,18 +1,32 @@
 module.exports = {
-    parser: '@typescript-eslint/parser',
-    parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: 'module',
+    parser: "@typescript-eslint/parser",
+    env: {
+        es2021: true,
+        node: true,
     },
     plugins: ['simple-import-sort'],
     extends: [
+        'eslint:recommended',
         'plugin:@typescript-eslint/recommended',
-        'prettier',
+        'plugin:import/recommended',
+        'plugin:import/typescript',
+        'plugin:jest/recommended',
+        'plugin:jest/style',
+        'plugin:node/recommended',
         'plugin:prettier/recommended',
+        'plugin:promise/recommended',
+        'plugin:unicorn/recommended',
     ],
     rules: {
+        'import/first': 'error',
+        'node/no-missing-import': 'off',
+        'node/no-unpublished-import': 'off',
+        'node/no-unsupported-features/es-syntax': 'off',
         'simple-import-sort/imports': 'error',
         'simple-import-sort/exports': 'error',
-        'sort-imports': 'off',
+        'unicorn/no-new-array': 'off',
+        'unicorn/numeric-separators-style': 'off',
+        'unicorn/prefer-module': 'off',
+        'unicorn/prefer-node-protocol': 'off',
     },
 };

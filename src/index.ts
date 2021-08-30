@@ -34,10 +34,10 @@ client.on('interactionCreate', async (interaction) => {
         if (!interaction.replied) {
             await interaction.reply(':white_check_mark:');
         }
-    } catch (err) {
-        const content = err instanceof FriendlyError ? err.message : 'An unknown error occurred.';
+    } catch (error) {
+        const content = error instanceof FriendlyError ? error.message : 'An unknown error occurred.';
         await interaction.reply({ content, ephemeral: true });
-        logger.error(err as Error);
+        logger.error(error as Error);
     }
 });
 
@@ -46,9 +46,9 @@ process.on('unhandledRejection', (reason) => {
     throw reason;
 });
 
-process.on('uncaughtException', (err: Error) => {
-    logger.fatal(err);
-    process.exit(1);
+process.on('uncaughtException', (error: Error) => {
+    logger.fatal(error);
+    process.exit(1); // eslint-disable-line no-process-exit
 });
 
 if (config.env !== 'test') {

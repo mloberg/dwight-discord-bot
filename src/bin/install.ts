@@ -1,3 +1,6 @@
+/* eslint-disable no-process-exit */
+/* eslint-disable unicorn/no-process-exit */
+
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 
@@ -18,16 +21,13 @@ if (!clientID) {
         : Routes.applicationGuildCommands(clientID, config.guildID);
 
     try {
-        logger.info(
-            { guild: config.guildID, commands: Array.from(commands.keys()) },
-            'Installing application (/) commands',
-        );
+        logger.info({ guild: config.guildID, commands: commands.keys() }, 'Installing application (/) commands');
 
         await rest.put(route, { body: commands.toJSON() });
 
         logger.info({ guild: config.guildID }, 'Successfully installed application (/) commands.');
-    } catch (err) {
-        logger.fatal(err as Error);
+    } catch (error) {
+        logger.fatal(error as Error);
         process.exit(1);
     }
 })();

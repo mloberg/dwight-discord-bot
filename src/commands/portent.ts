@@ -1,15 +1,15 @@
 import { CommandBuilder, rollOption } from '../command';
-import db from '../db';
+import database from '../database';
 import { FriendlyError } from '../error';
 import { roll } from '../utils';
 
 export default new CommandBuilder(async (command) => {
     const sub = command.options.getSubcommand();
     const key = `${command.guild?.id}-${command.user.id}`;
-    const dice: number[] = (await db.get(key)) || [];
+    const dice: number[] = (await database.get(key)) || [];
 
     if (sub === 'show') {
-        await command.reply(dice.length ? dice.join(', ') : 'No available portent dice.');
+        await command.reply(dice.length > 0 ? dice.join(', ') : 'No available portent dice.');
         return;
     }
 
@@ -21,7 +21,7 @@ export default new CommandBuilder(async (command) => {
         if (command.options.getBoolean('greater')) {
             results.push(command.options.getInteger('three') || roll('d20'));
         }
-        await db.set(key, results);
+        await database.set(key, results);
         await command.reply(results.join(', '));
         return;
     }
@@ -32,7 +32,7 @@ export default new CommandBuilder(async (command) => {
         throw new FriendlyError(`No portent dice for ${used}. Available: ${dice.join(', ')}`);
     }
     dice.splice(index, 1);
-    await db.set(key, dice);
+    await database.set(key, dice);
 
     await command.reply(`Remaining: ${dice.join(', ')}`);
 })

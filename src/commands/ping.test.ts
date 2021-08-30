@@ -12,6 +12,6 @@ describe('/ping', () => {
     it('replies', async () => {
         const command = new CommandInteraction({} as never, {} as never);
         await ping.handler(command);
-        expect(command.reply).toBeCalledWith('🏓');
+        expect(command.reply).toHaveBeenCalledWith('🏓');
     });
 });
