@@ -16,7 +16,7 @@ describe('roll', () => {
             roll('foo');
             fail('expected error to be thrown');
         } catch (err) {
-            expect(err.message).toEqual('Invalid roll expression');
+            expect((err as Error).message).toEqual('Invalid roll expression');
         }
     });
 });
