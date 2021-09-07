@@ -4,17 +4,25 @@ import { KeyvFile } from 'keyv-file';
 import config from './config';
 import logger from './logger';
 
-class Database {
+export class Database {
     private impl?: Keyv;
 
     constructor(private readonly uri: string | undefined, private log: typeof logger) {}
 
-    get(key: string, fallback?: unknown) {
-        return this.kv.get(key) || fallback;
+    async get<T extends unknown>(key: string, fallback?: T): Promise<T> {
+        return (await this.kv.get(key)) || fallback;
     }
 
-    set(key: string, value: unknown, ttl?: number) {
-        return this.kv.set(key, value, ttl);
+    async set<T extends unknown>(key: string, value: T, ttl?: number): Promise<void> {
+        await this.kv.set(key, value, ttl);
+    }
+
+    async delete(key: string): Promise<void> {
+        await this.kv.delete(key);
+    }
+
+    async clear(): Promise<void> {
+        await this.kv.clear();
     }
 
     private get kv() {
@@ -22,10 +30,10 @@ class Database {
             return this.impl;
         }
 
-        this.impl = config.dbUrl?.startsWith('file:')
+        this.impl = this.uri?.startsWith('file:')
             ? new Keyv({
                   store: new KeyvFile({
-                      filename: this.uri?.slice(5),
+                      filename: this.uri.slice(5),
                   }),
               })
             : new Keyv(config.dbUrl);

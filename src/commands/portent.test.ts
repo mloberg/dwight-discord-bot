@@ -43,11 +43,13 @@ describe('/portent', () => {
             command.options.getSubcommand.mockReturnValue('show');
 
             await portent.handler(command);
-            expect(mockDatabase.get).toHaveBeenCalledWith('1234-6789');
+            expect(mockDatabase.get).toHaveBeenCalledWith('1234-6789', []);
             expect(command.reply).toHaveBeenCalledWith('1, 20');
         });
 
         it('shows no available dice', async () => {
+            mockDatabase.get.mockResolvedValue([]);
+
             const command = mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('show');
 

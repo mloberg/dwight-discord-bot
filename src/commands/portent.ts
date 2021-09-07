@@ -6,7 +6,7 @@ import { roll } from '../utils';
 export default new CommandBuilder(async (command) => {
     const sub = command.options.getSubcommand();
     const key = `${command.guild?.id}-${command.user.id}`;
-    const dice: number[] = (await database.get(key)) || [];
+    const dice: number[] = await database.get(key, []);
 
     if (sub === 'show') {
         await command.reply(dice.length > 0 ? dice.join(', ') : 'No available portent dice.');
