@@ -21,7 +21,7 @@ if (!clientID) {
         : Routes.applicationGuildCommands(clientID, config.guildID);
 
     try {
-        logger.info({ guild: config.guildID, commands: commands.keys() }, 'Installing application (/) commands');
+        logger.info({ guild: config.guildID, commands: [...commands.keys()] }, 'Installing application (/) commands');
 
         await rest.put(route, { body: commands.toJSON() });
 
