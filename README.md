@@ -4,16 +4,17 @@ Dwight is a Discord bot to help dungeon masters with their 5e games.
 
 ## Overview
 
-* `/35`: Convert 3.5 skills to 5e
-* `/elixir`: Return a random experimental elixir for Artificers
-* `/event`: Return a random event
-* `/item`: Return a random magical item
-* `/madness`: Roll on the madness table and send it to a user
-* `/portent`: Manage portent dice for a Divination Wizard
-* `/spell`: Return a random spell
-* `/table`: Roll on the magic item tables
-* `/treasure`: Generate random treasure from the treasure tables
-* `/wildmagic`: Roll on the wild magic table
+* `/35` - Convert 3.5 skills to 5e
+* `/elixir` - Return a random experimental elixir for Artificers
+* `/event` - Return a random event
+* `/item` - Return a random magical item
+* `/madness` - Roll on the madness table and send it to a user
+* `/many` - The Deck of Many Things
+* `/portent` - Manage portent dice for a Divination Wizard
+* `/spell` - Return a random spell
+* `/table` - Roll on the magic item tables
+* `/treasure` - Generate random treasure from the treasure tables
+* `/wildmagic` - Roll on the wild magic table
 
 ## Running
 
