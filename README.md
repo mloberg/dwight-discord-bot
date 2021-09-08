@@ -14,6 +14,7 @@ Dwight is a Discord bot to help dungeon masters with their 5e games.
 * `/spell` - Return a random spell
 * `/table` - Roll on the magic item tables
 * `/treasure` - Generate random treasure from the treasure tables
+* `/tricks` - Pull from a Bag of Tricks
 * `/wildmagic` - Roll on the wild magic table
 
 ## Running
