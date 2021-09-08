@@ -2,64 +2,67 @@
 
 exports[`/portent is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Manage portent dice for a Divination Wizard",
-  "name": "portent",
-  "options": Array [
-    Object {
-      "description": "Show available portent dice",
-      "name": "show",
-      "options": Array [],
-      "type": 1,
-    },
-    Object {
-      "description": "Roll new portent dice",
-      "name": "roll",
-      "options": Array [
-        Object {
-          "description": "Roll three dice instead of two",
-          "name": "greater",
-          "required": false,
-          "type": 5,
-        },
-        Object {
-          "choices": undefined,
-          "description": "Value of a d20 roll.",
-          "name": "one",
-          "required": false,
-          "type": 4,
-        },
-        Object {
-          "choices": undefined,
-          "description": "Value of a d20 roll.",
-          "name": "two",
-          "required": false,
-          "type": 4,
-        },
-        Object {
-          "choices": undefined,
-          "description": "Value of a d20 roll.",
-          "name": "three",
-          "required": false,
-          "type": 4,
-        },
-      ],
-      "type": 1,
-    },
-    Object {
-      "description": "Use a portent die",
-      "name": "use",
-      "options": Array [
-        Object {
-          "choices": undefined,
-          "description": "Value of a d20 roll.",
-          "name": "dice",
-          "required": true,
-          "type": 4,
-        },
-      ],
-      "type": 1,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Manage portent dice for a Divination Wizard",
+    "name": "portent",
+    "options": Array [
+      Object {
+        "description": "Show available portent dice",
+        "name": "show",
+        "options": Array [],
+        "type": 1,
+      },
+      Object {
+        "description": "Roll new portent dice",
+        "name": "roll",
+        "options": Array [
+          Object {
+            "description": "Roll three dice instead of two",
+            "name": "greater",
+            "required": false,
+            "type": 5,
+          },
+          Object {
+            "choices": undefined,
+            "description": "Value of a d20 roll.",
+            "name": "one",
+            "required": false,
+            "type": 4,
+          },
+          Object {
+            "choices": undefined,
+            "description": "Value of a d20 roll.",
+            "name": "two",
+            "required": false,
+            "type": 4,
+          },
+          Object {
+            "choices": undefined,
+            "description": "Value of a d20 roll.",
+            "name": "three",
+            "required": false,
+            "type": 4,
+          },
+        ],
+        "type": 1,
+      },
+      Object {
+        "description": "Use a portent die",
+        "name": "use",
+        "options": Array [
+          Object {
+            "choices": undefined,
+            "description": "Value of a d20 roll.",
+            "name": "dice",
+            "required": true,
+            "type": 4,
+          },
+        ],
+        "type": 1,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

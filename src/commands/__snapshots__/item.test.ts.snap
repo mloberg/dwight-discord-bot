@@ -2,49 +2,52 @@
 
 exports[`/item is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Return a random magic item",
-  "name": "item",
-  "options": Array [
-    Object {
-      "choices": Array [
-        Object {
-          "name": "Common",
-          "value": "common",
-        },
-        Object {
-          "name": "Uncommon",
-          "value": "uncommon",
-        },
-        Object {
-          "name": "Rare",
-          "value": "rare",
-        },
-        Object {
-          "name": "Very Rare",
-          "value": "very rare",
-        },
-        Object {
-          "name": "Legendary",
-          "value": "legendary",
-        },
-        Object {
-          "name": "Artifact",
-          "value": "artifact",
-        },
-      ],
-      "description": "Item rarity",
-      "name": "rarity",
-      "required": false,
-      "type": 3,
-    },
-    Object {
-      "choices": undefined,
-      "description": "Item type or subtype",
-      "name": "type",
-      "required": false,
-      "type": 3,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Return a random magic item",
+    "name": "item",
+    "options": Array [
+      Object {
+        "choices": Array [
+          Object {
+            "name": "Common",
+            "value": "common",
+          },
+          Object {
+            "name": "Uncommon",
+            "value": "uncommon",
+          },
+          Object {
+            "name": "Rare",
+            "value": "rare",
+          },
+          Object {
+            "name": "Very Rare",
+            "value": "very rare",
+          },
+          Object {
+            "name": "Legendary",
+            "value": "legendary",
+          },
+          Object {
+            "name": "Artifact",
+            "value": "artifact",
+          },
+        ],
+        "description": "Item rarity",
+        "name": "rarity",
+        "required": false,
+        "type": 3,
+      },
+      Object {
+        "choices": undefined,
+        "description": "Item type or subtype",
+        "name": "type",
+        "required": false,
+        "type": 3,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

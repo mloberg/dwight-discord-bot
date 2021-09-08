@@ -1,5 +1,7 @@
-import { CommandBuilder, rollOption } from '../command';
-import { roll } from '../utils';
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { CommandInteraction } from 'discord.js';
+
+import { roll, rollOption } from '../utils';
 
 export const sorcererTable = [
     'Roll on this table at the start of each of your turns for the next minute, ignoring this result on subsequent rolls.',
@@ -115,15 +117,20 @@ export const barbarianTable = [
     'A bolt of light shoots from your chest. Another creature of your choice that you can see within 30 feet of you must succeed on a Constitution saving throw or take 1d6 radiant damage and be blinded until the start of your next turn. Until your rage ends, you can use this effect again on each of your turns as a bonus action.',
 ];
 
-export default new CommandBuilder(async (command) => {
-    const barbarian = command.options.getBoolean('barbarian') ?? false;
-    const dice = command.options.getInteger('roll') || (barbarian ? roll('d8') : roll('d100'));
-    const table = barbarian ? barbarianTable : sorcererTable;
-    const result = table[dice - 1];
+export default {
+    config: new SlashCommandBuilder()
+        .setName('wildmagic')
+        .setDescription('Roll on the Wild Magic table')
+        .addBooleanOption((option) =>
+            option.setName('barbarian').setDescription('Roll on the Barbarian Wild Magic table'),
+        )
+        .addIntegerOption(rollOption('d100 (Sorcerer) or d8 (Barbarian)')),
+    async handle(command: CommandInteraction): Promise<void> {
+        const barbarian = command.options.getBoolean('barbarian') ?? false;
+        const dice = command.options.getInteger('roll') || (barbarian ? roll('d8') : roll('d100'));
+        const table = barbarian ? barbarianTable : sorcererTable;
+        const result = table[dice - 1];
 
-    await command.reply(result);
-})
-    .setName('wildmagic')
-    .setDescription('Roll on the Wild Magic table')
-    .addBooleanOption((option) => option.setName('barbarian').setDescription('Roll on the Barbarian Wild Magic table'))
-    .addIntegerOption(rollOption('d100 (Sorcerer) or d8 (Barbarian)'));
+        await command.reply(result);
+    },
+};

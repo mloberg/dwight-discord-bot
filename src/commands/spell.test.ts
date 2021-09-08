@@ -44,7 +44,7 @@ describe('/spell', () => {
     it('returns a random spell', async () => {
         const command = mocked(new CommandInteraction({} as never, {} as never));
 
-        await spell.handler(command);
+        await spell.handle(command);
         expect(['Debugger', 'Foo', 'Bar']).toContainEqual(command.reply.mock.calls[0][0]);
     });
 
@@ -52,7 +52,7 @@ describe('/spell', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(0);
 
-        await spell.handler(command);
+        await spell.handle(command);
         expect(command.reply).toHaveBeenCalledWith('Foo');
     });
 
@@ -61,7 +61,7 @@ describe('/spell', () => {
         command.options.getString.mockReturnValueOnce('evocation');
         command.options.getString.mockReturnValueOnce('Wizard');
 
-        await spell.handler(command);
+        await spell.handle(command);
         expect(command.reply).toHaveBeenCalledWith('Debugger');
     });
 
@@ -70,7 +70,7 @@ describe('/spell', () => {
         command.options.getString.mockReturnValueOnce('necromancy');
         command.options.getString.mockReturnValueOnce('Ranger');
 
-        await expect(spell.handler(command)).rejects.toMatchError(
+        await expect(spell.handle(command)).rejects.toMatchError(
             new FriendlyError("I couldn't find a spell matching those parameters."),
         );
     });

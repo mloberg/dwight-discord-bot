@@ -2,17 +2,20 @@
 
 exports[`/prune is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Prune messages",
-  "name": "prune",
-  "options": Array [
-    Object {
-      "choices": undefined,
-      "description": "Number of messages to delete",
-      "name": "messages",
-      "required": true,
-      "type": 4,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Prune messages",
+    "name": "prune",
+    "options": Array [
+      Object {
+        "choices": undefined,
+        "description": "Number of messages to delete",
+        "name": "messages",
+        "required": true,
+        "type": 4,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

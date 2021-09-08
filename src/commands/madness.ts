@@ -1,5 +1,7 @@
-import { CommandBuilder, rollOption } from '../command';
-import { roll } from '../utils';
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { CommandInteraction } from 'discord.js';
+
+import { roll, rollOption } from '../utils';
 
 const table: Record<
     string,
@@ -96,32 +98,35 @@ const table: Record<
     },
 };
 
-export default new CommandBuilder(async (command) => {
-    const type = command.options.getString('type', true);
-    const user = command.options.getUser('user');
-    const dice = command.options.getInteger('roll') || roll('d100');
+export default {
+    config: new SlashCommandBuilder()
+        .setName('madness')
+        .setDescription('Give a random madness to a player')
+        .addStringOption((option) =>
+            option
+                .setName('type')
+                .setDescription('Type of madness')
+                .setRequired(true)
+                .addChoice('Short (minutes)', 'short')
+                .addChoice('Long (hours)', 'long')
+                .addChoice('Flaw (permenant)', 'flaw'),
+        )
+        .addUserOption((option) => option.setName('user').setDescription('Player').setRequired(true))
+        .addIntegerOption(rollOption('d100')),
+    async handle(command: CommandInteraction): Promise<void> {
+        const type = command.options.getString('type', true);
+        const user = command.options.getUser('user');
+        const dice = command.options.getInteger('roll') || roll('d100');
 
-    const madness = table[type];
-    const result = madness.options[dice - 1];
-    const duration = `${madness.duration ? roll(madness.duration) : ''} ${madness.time}`.trim();
-    const content = `${result} This lasts ${duration}.`;
+        const madness = table[type];
+        const result = madness.options[dice - 1];
+        const duration = `${madness.duration ? roll(madness.duration) : ''} ${madness.time}`.trim();
+        const content = `${result} This lasts ${duration}.`;
 
-    if (user) {
-        await user.send(content);
-    }
+        if (user) {
+            await user.send(content);
+        }
 
-    await command.reply({ content, ephemeral: true });
-})
-    .setName('madness')
-    .setDescription('Give a random madness to a player')
-    .addStringOption((option) =>
-        option
-            .setName('type')
-            .setDescription('Type of madness')
-            .setRequired(true)
-            .addChoice('Short (minutes)', 'short')
-            .addChoice('Long (hours)', 'long')
-            .addChoice('Flaw (permenant)', 'flaw'),
-    )
-    .addUserOption((option) => option.setName('user').setDescription('Player').setRequired(true))
-    .addIntegerOption(rollOption('d100'));
+        await command.reply({ content, ephemeral: true });
+    },
+};

@@ -2,37 +2,40 @@
 
 exports[`/tricks is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Pull from a Bag of Tricks",
-  "name": "tricks",
-  "options": Array [
-    Object {
-      "choices": Array [
-        Object {
-          "name": "Gray",
-          "value": "gray",
-        },
-        Object {
-          "name": "Rust",
-          "value": "rust",
-        },
-        Object {
-          "name": "Tan",
-          "value": "tan",
-        },
-      ],
-      "description": "The color of the Bag of Tricks",
-      "name": "color",
-      "required": true,
-      "type": 3,
-    },
-    Object {
-      "choices": undefined,
-      "description": "Value of a d8 roll.",
-      "name": "roll",
-      "required": false,
-      "type": 4,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Pull from a Bag of Tricks",
+    "name": "tricks",
+    "options": Array [
+      Object {
+        "choices": Array [
+          Object {
+            "name": "Gray",
+            "value": "gray",
+          },
+          Object {
+            "name": "Rust",
+            "value": "rust",
+          },
+          Object {
+            "name": "Tan",
+            "value": "tan",
+          },
+        ],
+        "description": "The color of the Bag of Tricks",
+        "name": "color",
+        "required": true,
+        "type": 3,
+      },
+      Object {
+        "choices": undefined,
+        "description": "Value of a d8 roll.",
+        "name": "roll",
+        "required": false,
+        "type": 4,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

@@ -2,134 +2,137 @@
 
 exports[`/spell is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Return a random spell",
-  "name": "spell",
-  "options": Array [
-    Object {
-      "choices": Array [
-        Object {
-          "name": "Cantrip",
-          "value": 0,
-        },
-        Object {
-          "name": "1st",
-          "value": 1,
-        },
-        Object {
-          "name": "2nd",
-          "value": 2,
-        },
-        Object {
-          "name": "3rd",
-          "value": 3,
-        },
-        Object {
-          "name": "4th",
-          "value": 4,
-        },
-        Object {
-          "name": "5th",
-          "value": 5,
-        },
-        Object {
-          "name": "6th",
-          "value": 6,
-        },
-        Object {
-          "name": "7th",
-          "value": 7,
-        },
-        Object {
-          "name": "8th",
-          "value": 8,
-        },
-        Object {
-          "name": "9th",
-          "value": 9,
-        },
-      ],
-      "description": "Spell level",
-      "name": "level",
-      "required": false,
-      "type": 4,
-    },
-    Object {
-      "choices": Array [
-        Object {
-          "name": "Abjuration",
-          "value": "abjuration",
-        },
-        Object {
-          "name": "Conjuration",
-          "value": "conjuration",
-        },
-        Object {
-          "name": "Divination",
-          "value": "divination",
-        },
-        Object {
-          "name": "Enchanment",
-          "value": "enchantment",
-        },
-        Object {
-          "name": "Evocation",
-          "value": "evocation",
-        },
-        Object {
-          "name": "Illusion",
-          "value": "illusion",
-        },
-        Object {
-          "name": "Necromancy",
-          "value": "necromancy",
-        },
-        Object {
-          "name": "Transmutation",
-          "value": "transmutation",
-        },
-      ],
-      "description": "Spell school",
-      "name": "school",
-      "required": false,
-      "type": 3,
-    },
-    Object {
-      "choices": Array [
-        Object {
-          "name": "Bard",
-          "value": "Bard",
-        },
-        Object {
-          "name": "Cleric",
-          "value": "Cleric",
-        },
-        Object {
-          "name": "Druid",
-          "value": "Druid",
-        },
-        Object {
-          "name": "Paladin",
-          "value": "Paladin",
-        },
-        Object {
-          "name": "Ranger",
-          "value": "Ranger",
-        },
-        Object {
-          "name": "Warlock",
-          "value": "Warlock",
-        },
-        Object {
-          "name": "Wizard",
-          "value": "Wizard",
-        },
-      ],
-      "description": "Spell class",
-      "name": "class",
-      "required": false,
-      "type": 3,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Return a random spell",
+    "name": "spell",
+    "options": Array [
+      Object {
+        "choices": Array [
+          Object {
+            "name": "Cantrip",
+            "value": 0,
+          },
+          Object {
+            "name": "1st",
+            "value": 1,
+          },
+          Object {
+            "name": "2nd",
+            "value": 2,
+          },
+          Object {
+            "name": "3rd",
+            "value": 3,
+          },
+          Object {
+            "name": "4th",
+            "value": 4,
+          },
+          Object {
+            "name": "5th",
+            "value": 5,
+          },
+          Object {
+            "name": "6th",
+            "value": 6,
+          },
+          Object {
+            "name": "7th",
+            "value": 7,
+          },
+          Object {
+            "name": "8th",
+            "value": 8,
+          },
+          Object {
+            "name": "9th",
+            "value": 9,
+          },
+        ],
+        "description": "Spell level",
+        "name": "level",
+        "required": false,
+        "type": 4,
+      },
+      Object {
+        "choices": Array [
+          Object {
+            "name": "Abjuration",
+            "value": "abjuration",
+          },
+          Object {
+            "name": "Conjuration",
+            "value": "conjuration",
+          },
+          Object {
+            "name": "Divination",
+            "value": "divination",
+          },
+          Object {
+            "name": "Enchanment",
+            "value": "enchantment",
+          },
+          Object {
+            "name": "Evocation",
+            "value": "evocation",
+          },
+          Object {
+            "name": "Illusion",
+            "value": "illusion",
+          },
+          Object {
+            "name": "Necromancy",
+            "value": "necromancy",
+          },
+          Object {
+            "name": "Transmutation",
+            "value": "transmutation",
+          },
+        ],
+        "description": "Spell school",
+        "name": "school",
+        "required": false,
+        "type": 3,
+      },
+      Object {
+        "choices": Array [
+          Object {
+            "name": "Bard",
+            "value": "Bard",
+          },
+          Object {
+            "name": "Cleric",
+            "value": "Cleric",
+          },
+          Object {
+            "name": "Druid",
+            "value": "Druid",
+          },
+          Object {
+            "name": "Paladin",
+            "value": "Paladin",
+          },
+          Object {
+            "name": "Ranger",
+            "value": "Ranger",
+          },
+          Object {
+            "name": "Warlock",
+            "value": "Warlock",
+          },
+          Object {
+            "name": "Wizard",
+            "value": "Wizard",
+          },
+        ],
+        "description": "Spell class",
+        "name": "class",
+        "required": false,
+        "type": 3,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

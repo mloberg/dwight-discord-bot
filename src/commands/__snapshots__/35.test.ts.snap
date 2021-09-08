@@ -2,17 +2,20 @@
 
 exports[`/35 is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Convert 3.5 skill to 5e",
-  "name": "35",
-  "options": Array [
-    Object {
-      "choices": undefined,
-      "description": "3.5 skill",
-      "name": "skill",
-      "required": true,
-      "type": 3,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Convert 3.5 skill to 5e",
+    "name": "35",
+    "options": Array [
+      Object {
+        "choices": undefined,
+        "description": "3.5 skill",
+        "name": "skill",
+        "required": true,
+        "type": 3,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

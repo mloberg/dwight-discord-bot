@@ -1,6 +1,7 @@
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { CommandInteraction } from 'discord.js';
 import { pull, sample, sampleSize } from 'lodash';
 
-import { CommandBuilder } from '../command';
 import database from '../database';
 import { FriendlyError } from '../error';
 
@@ -38,41 +39,44 @@ const fullDeck = {
 
 type Card = keyof typeof fullDeck;
 
-export default new CommandBuilder(async (command) => {
-    const sub = command.options.getSubcommand();
-    const key = `many:${command.guild ? command.guild.id : command.user.id}`;
+export default {
+    config: new SlashCommandBuilder()
+        .setName('many')
+        .setDescription('Pull from the Deck of Many Things')
+        .addSubcommand((option) =>
+            option
+                .setName('new')
+                .setDescription('Create a new deck to pull from')
+                .addBooleanOption((option) => option.setName('full').setDescription('Create a twenty-two card deck'))
+                .addIntegerOption((option) =>
+                    option.setName('missing').setDescription('Generate a deck with some random missing cards'),
+                ),
+        )
+        .addSubcommand((option) => option.setName('pull').setDescription('Pull a card from the deck')),
+    async handle(command: CommandInteraction): Promise<void> {
+        const sub = command.options.getSubcommand();
+        const key = `many:${command.guild ? command.guild.id : command.user.id}`;
 
-    if (sub === 'new') {
-        const cards = Object.keys(command.options.getBoolean('full') ? fullDeck : deck);
-        const missing = command.options.getInteger('missing') || 0;
+        if (sub === 'new') {
+            const cards = Object.keys(command.options.getBoolean('full') ? fullDeck : deck);
+            const missing = command.options.getInteger('missing') || 0;
 
-        await database.set(key, sampleSize(cards, cards.length - missing));
-        await command.reply('You find a mysterious deck of cards.');
-        return;
-    }
+            await database.set(key, sampleSize(cards, cards.length - missing));
+            await command.reply('You find a mysterious deck of cards.');
+            return;
+        }
 
-    const cards = (await database.get(key, [])) as Card[];
-    const card = sample(cards);
-    if (!card) {
-        throw new FriendlyError('Unable to draw a card.');
-    }
+        const cards = (await database.get(key, [])) as Card[];
+        const card = sample(cards);
+        if (!card) {
+            throw new FriendlyError('Unable to draw a card.');
+        }
 
-    if (card === 'Fool' || card === 'Jester') {
-        pull(cards, card);
-    }
+        if (card === 'Fool' || card === 'Jester') {
+            pull(cards, card);
+        }
 
-    await database.set(key, cards);
-    await command.reply(`**${card}** ${fullDeck[card]}`);
-})
-    .setName('many')
-    .setDescription('Pull from the Deck of Many Things')
-    .addSubcommand((option) =>
-        option
-            .setName('new')
-            .setDescription('Create a new deck to pull from')
-            .addBooleanOption((option) => option.setName('full').setDescription('Create a twenty-two card deck'))
-            .addIntegerOption((option) =>
-                option.setName('missing').setDescription('Generate a deck with some random missing cards'),
-            ),
-    )
-    .addSubcommand((option) => option.setName('pull').setDescription('Pull a card from the deck')) as CommandBuilder;
+        await database.set(key, cards);
+        await command.reply(`**${card}** ${fullDeck[card]}`);
+    },
+};

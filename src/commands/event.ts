@@ -1,5 +1,7 @@
-import { CommandBuilder, rollOption } from '../command';
-import { roll } from '../utils';
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { CommandInteraction } from 'discord.js';
+
+import { roll, rollOption } from '../utils';
 
 export const events = [
     'A door opens',
@@ -24,12 +26,15 @@ export const events = [
     'Unexplained magic occurs',
 ];
 
-export default new CommandBuilder(async (command) => {
-    const dice = command.options.getInteger('roll') || roll('d20');
-    const event = events[dice - 1];
+export default {
+    config: new SlashCommandBuilder()
+        .setName('event')
+        .setDescription('Trigger a random event')
+        .addIntegerOption(rollOption('d20')),
+    async handle(command: CommandInteraction): Promise<void> {
+        const dice = command.options.getInteger('roll') || roll('d20');
+        const event = events[dice - 1];
 
-    await command.reply(event);
-})
-    .setName('event')
-    .setDescription('Trigger a random event')
-    .addIntegerOption(rollOption('d20'));
+        await command.reply(event);
+    },
+};

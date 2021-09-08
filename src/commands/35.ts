@@ -1,4 +1,6 @@
-import { CommandBuilder } from '../command';
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { CommandInteraction } from 'discord.js';
+
 import { FriendlyError } from '../error';
 
 const skills: Record<string, string> = {
@@ -40,15 +42,18 @@ const skills: Record<string, string> = {
     'use rope': 'DEX (Acrobatics)',
 };
 
-export default new CommandBuilder(async (command) => {
-    const search = command.options.getString('skill', true);
-    const skill = skills[search.toLowerCase()];
-    if (!skill) {
-        throw new FriendlyError(`I couldn't find skill "${search}".`);
-    }
+export default {
+    config: new SlashCommandBuilder()
+        .setName('35')
+        .setDescription('Convert 3.5 skill to 5e')
+        .addStringOption((option) => option.setName('skill').setDescription('3.5 skill').setRequired(true)),
+    async handle(command: CommandInteraction): Promise<void> {
+        const search = command.options.getString('skill', true);
+        const skill = skills[search.toLowerCase()];
+        if (!skill) {
+            throw new FriendlyError(`I couldn't find skill "${search}".`);
+        }
 
-    await command.reply(skill);
-})
-    .setName('35')
-    .setDescription('Convert 3.5 skill to 5e')
-    .addStringOption((option) => option.setName('skill').setDescription('3.5 skill').setRequired(true));
+        await command.reply(skill);
+    },
+};

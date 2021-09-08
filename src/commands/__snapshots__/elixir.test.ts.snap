@@ -2,17 +2,20 @@
 
 exports[`/elixir is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Craft an experimental elixir",
-  "name": "elixir",
-  "options": Array [
-    Object {
-      "choices": undefined,
-      "description": "Value of a d6 roll.",
-      "name": "roll",
-      "required": false,
-      "type": 4,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Craft an experimental elixir",
+    "name": "elixir",
+    "options": Array [
+      Object {
+        "choices": undefined,
+        "description": "Value of a d6 roll.",
+        "name": "roll",
+        "required": false,
+        "type": 4,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

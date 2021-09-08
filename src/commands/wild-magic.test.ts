@@ -21,7 +21,7 @@ describe('/wildMagic', () => {
     it('returns a random wild magic effect', async () => {
         const command = mocked(new CommandInteraction({} as never, {} as never));
 
-        await wildMagic.handler(command);
+        await wildMagic.handle(command);
         expect(sorcererTable).toContainEqual(command.reply.mock.calls[0][0]);
     });
 
@@ -29,7 +29,7 @@ describe('/wildMagic', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(7);
 
-        await wildMagic.handler(command);
+        await wildMagic.handle(command);
         expect(command.reply).toHaveBeenCalledWith('You cast fireball as a 3rd-level spell centered on yourself.');
     });
 
@@ -37,7 +37,7 @@ describe('/wildMagic', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getBoolean.mockReturnValue(true);
 
-        await wildMagic.handler(command);
+        await wildMagic.handle(command);
         expect(barbarianTable).toContainEqual(command.reply.mock.calls[0][0]);
     });
 
@@ -46,7 +46,7 @@ describe('/wildMagic', () => {
         command.options.getBoolean.mockReturnValue(true);
         command.options.getInteger.mockReturnValue(7);
 
-        await wildMagic.handler(command);
+        await wildMagic.handle(command);
         expect(command.reply).toHaveBeenCalledWith(
             'Flowers and vines temporarily grow around you; until your rage ends, the ground within 15 feet of you is difficult terrain for your enemies.',
         );

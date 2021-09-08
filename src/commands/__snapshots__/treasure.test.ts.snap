@@ -2,30 +2,33 @@
 
 exports[`/treasure is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Give me the loot!",
-  "name": "treasure",
-  "options": Array [
-    Object {
-      "choices": undefined,
-      "description": "Challenge rating",
-      "name": "cr",
-      "required": true,
-      "type": 4,
-    },
-    Object {
-      "choices": undefined,
-      "description": "Value of a d100 roll.",
-      "name": "roll",
-      "required": false,
-      "type": 4,
-    },
-    Object {
-      "description": "Generate a treasure hoard",
-      "name": "hoard",
-      "required": false,
-      "type": 5,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Give me the loot!",
+    "name": "treasure",
+    "options": Array [
+      Object {
+        "choices": undefined,
+        "description": "Challenge rating",
+        "name": "cr",
+        "required": true,
+        "type": 4,
+      },
+      Object {
+        "choices": undefined,
+        "description": "Value of a d100 roll.",
+        "name": "roll",
+        "required": false,
+        "type": 4,
+      },
+      Object {
+        "description": "Generate a treasure hoard",
+        "name": "hoard",
+        "required": false,
+        "type": 5,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

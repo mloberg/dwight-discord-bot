@@ -1,5 +1,7 @@
-import { CommandBuilder, rollOption } from '../command';
-import { roll } from '../utils';
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { CommandInteraction } from 'discord.js';
+
+import { roll, rollOption } from '../utils';
 
 export const elixirs = [
     '**Healing**. The drinker regains a number of hit points equal to 2d4 + your Intelligence modifier.',
@@ -10,12 +12,15 @@ export const elixirs = [
     '**Transformation**. The drinker’s body is transformed as if by the alter self spell. The drinker determines the transformation caused by the spell, the effects of which last for 10 minutes.',
 ];
 
-export default new CommandBuilder(async (command) => {
-    const dice = command.options.getInteger('roll') || roll('d6');
-    const result = elixirs[dice - 1];
+export default {
+    config: new SlashCommandBuilder()
+        .setName('elixir')
+        .setDescription('Craft an experimental elixir')
+        .addIntegerOption(rollOption('d6')),
+    async handle(command: CommandInteraction): Promise<void> {
+        const dice = command.options.getInteger('roll') || roll('d6');
+        const result = elixirs[dice - 1];
 
-    await command.reply(result);
-})
-    .setName('elixir')
-    .setDescription('Craft an experimental elixir')
-    .addIntegerOption(rollOption('d6'));
+        await command.reply(result);
+    },
+};

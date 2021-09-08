@@ -2,37 +2,40 @@
 
 exports[`/table is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Roll on the magic item tables",
-  "name": "table",
-  "options": Array [
-    Object {
-      "choices": Array [
-        Object {
-          "name": "A",
-          "value": "a",
-        },
-        Object {
-          "name": "B",
-          "value": "b",
-        },
-        Object {
-          "name": "C",
-          "value": "c",
-        },
-      ],
-      "description": "Magic item table to roll on",
-      "name": "table",
-      "required": true,
-      "type": 3,
-    },
-    Object {
-      "choices": undefined,
-      "description": "Value of a d100 roll.",
-      "name": "roll",
-      "required": false,
-      "type": 4,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Roll on the magic item tables",
+    "name": "table",
+    "options": Array [
+      Object {
+        "choices": Array [
+          Object {
+            "name": "A",
+            "value": "a",
+          },
+          Object {
+            "name": "B",
+            "value": "b",
+          },
+          Object {
+            "name": "C",
+            "value": "c",
+          },
+        ],
+        "description": "Magic item table to roll on",
+        "name": "table",
+        "required": true,
+        "type": 3,
+      },
+      Object {
+        "choices": undefined,
+        "description": "Value of a d100 roll.",
+        "name": "roll",
+        "required": false,
+        "type": 4,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

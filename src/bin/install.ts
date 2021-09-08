@@ -22,10 +22,7 @@ if (!clientID) {
 
     try {
         logger.info({ guild: config.guildID, commands: [...commands.keys()] }, 'Installing application (/) commands');
-
-        await rest.put(route, { body: commands.toJSON() });
-
-        logger.info({ guild: config.guildID }, 'Successfully installed application (/) commands.');
+        await rest.put(route, { body: commands.map((command) => command.config.toJSON()) });
     } catch (error) {
         logger.fatal(error as Error);
         process.exit(1);

@@ -20,7 +20,7 @@ describe('/event', () => {
     it('returns a random event', async () => {
         const command = mocked(new CommandInteraction({} as never, {} as never));
 
-        await event.handler(command);
+        await event.handle(command);
         expect(events).toContainEqual(command.reply.mock.calls[0][0]);
     });
 
@@ -28,7 +28,7 @@ describe('/event', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(1);
 
-        await event.handler(command);
+        await event.handle(command);
         expect(command.reply).toHaveBeenCalledWith('A door opens');
     });
 });

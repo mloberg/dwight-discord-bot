@@ -2,43 +2,46 @@
 
 exports[`/madness is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Give a random madness to a player",
-  "name": "madness",
-  "options": Array [
-    Object {
-      "choices": Array [
-        Object {
-          "name": "Short (minutes)",
-          "value": "short",
-        },
-        Object {
-          "name": "Long (hours)",
-          "value": "long",
-        },
-        Object {
-          "name": "Flaw (permenant)",
-          "value": "flaw",
-        },
-      ],
-      "description": "Type of madness",
-      "name": "type",
-      "required": true,
-      "type": 3,
-    },
-    Object {
-      "description": "Player",
-      "name": "user",
-      "required": true,
-      "type": 6,
-    },
-    Object {
-      "choices": undefined,
-      "description": "Value of a d100 roll.",
-      "name": "roll",
-      "required": false,
-      "type": 4,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Give a random madness to a player",
+    "name": "madness",
+    "options": Array [
+      Object {
+        "choices": Array [
+          Object {
+            "name": "Short (minutes)",
+            "value": "short",
+          },
+          Object {
+            "name": "Long (hours)",
+            "value": "long",
+          },
+          Object {
+            "name": "Flaw (permenant)",
+            "value": "flaw",
+          },
+        ],
+        "description": "Type of madness",
+        "name": "type",
+        "required": true,
+        "type": 3,
+      },
+      Object {
+        "description": "Player",
+        "name": "user",
+        "required": true,
+        "type": 6,
+      },
+      Object {
+        "choices": undefined,
+        "description": "Value of a d100 roll.",
+        "name": "roll",
+        "required": false,
+        "type": 4,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

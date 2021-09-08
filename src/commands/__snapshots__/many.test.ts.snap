@@ -2,36 +2,39 @@
 
 exports[`/many is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Pull from the Deck of Many Things",
-  "name": "many",
-  "options": Array [
-    Object {
-      "description": "Create a new deck to pull from",
-      "name": "new",
-      "options": Array [
-        Object {
-          "description": "Create a twenty-two card deck",
-          "name": "full",
-          "required": false,
-          "type": 5,
-        },
-        Object {
-          "choices": undefined,
-          "description": "Generate a deck with some random missing cards",
-          "name": "missing",
-          "required": false,
-          "type": 4,
-        },
-      ],
-      "type": 1,
-    },
-    Object {
-      "description": "Pull a card from the deck",
-      "name": "pull",
-      "options": Array [],
-      "type": 1,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Pull from the Deck of Many Things",
+    "name": "many",
+    "options": Array [
+      Object {
+        "description": "Create a new deck to pull from",
+        "name": "new",
+        "options": Array [
+          Object {
+            "description": "Create a twenty-two card deck",
+            "name": "full",
+            "required": false,
+            "type": 5,
+          },
+          Object {
+            "choices": undefined,
+            "description": "Generate a deck with some random missing cards",
+            "name": "missing",
+            "required": false,
+            "type": 4,
+          },
+        ],
+        "type": 1,
+      },
+      Object {
+        "description": "Pull a card from the deck",
+        "name": "pull",
+        "options": Array [],
+        "type": 1,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

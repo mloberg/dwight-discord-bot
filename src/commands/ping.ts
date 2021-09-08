@@ -1,7 +1,9 @@
-import { CommandBuilder } from '../command';
+import { SlashCommandBuilder } from '@discordjs/builders';
+import { CommandInteraction } from 'discord.js';
 
-export default new CommandBuilder(async (command) => {
-    await command.reply('🏓');
-})
-    .setName('ping')
-    .setDescription('Pong');
+export default {
+    config: new SlashCommandBuilder().setName('ping').setDescription('Pong'),
+    async handle(command: CommandInteraction): Promise<void> {
+        await command.reply('🏓');
+    },
+};

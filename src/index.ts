@@ -24,19 +24,23 @@ client.on('interactionCreate', async (interaction) => {
         return;
     }
 
+    logger.debug({ id: interaction.commandId, command: interaction.commandName, channel: interaction.channelId });
+
     const command = commands.get(interaction.commandName);
     if (!command) {
         return;
     }
 
     try {
-        await command.handler(interaction);
-        if (!interaction.replied) {
+        await command.handle(interaction);
+        if (!interaction.replied && !interaction.deferred) {
             await interaction.reply(':white_check_mark:');
         }
     } catch (error) {
         const content = error instanceof FriendlyError ? error.message : 'An unknown error occurred.';
-        await interaction.reply({ content, ephemeral: true });
+        interaction.deferred
+            ? await interaction.followUp({ content, ephemeral: true })
+            : await interaction.reply({ content, ephemeral: true });
         logger.error(error as Error);
     }
 });

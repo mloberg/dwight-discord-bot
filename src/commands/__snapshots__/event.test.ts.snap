@@ -2,17 +2,20 @@
 
 exports[`/event is a slash command 1`] = `
 Object {
-  "default_permission": undefined,
-  "description": "Trigger a random event",
-  "name": "event",
-  "options": Array [
-    Object {
-      "choices": undefined,
-      "description": "Value of a d20 roll.",
-      "name": "roll",
-      "required": false,
-      "type": 4,
-    },
-  ],
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Trigger a random event",
+    "name": "event",
+    "options": Array [
+      Object {
+        "choices": undefined,
+        "description": "Value of a d20 roll.",
+        "name": "roll",
+        "required": false,
+        "type": 4,
+      },
+    ],
+  },
+  "handle": [Function],
 }
 `;

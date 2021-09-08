@@ -38,7 +38,7 @@ describe('/many', () => {
             const command = mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('new');
 
-            await many.handler(command);
+            await many.handle(command);
             expect(command.reply).toHaveBeenCalledWith('You find a mysterious deck of cards.');
             expect(mockDatabase.set).toHaveBeenCalledWith('many:1234', expect.arrayContaining(['Sun']));
             expect(mockDatabase.set.mock.calls[0][1]).toHaveLength(13);
@@ -49,7 +49,7 @@ describe('/many', () => {
             command.options.getSubcommand.mockReturnValue('new');
             command.options.getBoolean.mockReturnValueOnce(true);
 
-            await many.handler(command);
+            await many.handle(command);
             expect(command.reply).toHaveBeenCalledWith('You find a mysterious deck of cards.');
             expect(mockDatabase.set).toHaveBeenCalledWith('many:1234', expect.arrayContaining(['Gem']));
             expect(mockDatabase.set.mock.calls[0][1]).toHaveLength(22);
@@ -60,7 +60,7 @@ describe('/many', () => {
             command.options.getSubcommand.mockReturnValue('new');
             command.options.getInteger.mockReturnValue(3);
 
-            await many.handler(command);
+            await many.handle(command);
             expect(command.reply).toHaveBeenCalledWith('You find a mysterious deck of cards.');
             expect(mockDatabase.set.mock.calls[0][1]).toHaveLength(10);
         });
@@ -72,7 +72,7 @@ describe('/many', () => {
 
             const command = mocked(new CommandInteraction({} as never, {} as never), true);
 
-            await many.handler(command);
+            await many.handle(command);
             expect(command.reply).toHaveBeenCalledWith(
                 '**Moon** You are granted the ability to cast the wish spell 1d3 times.',
             );
@@ -84,7 +84,7 @@ describe('/many', () => {
 
             const command = mocked(new CommandInteraction({} as never, {} as never), true);
 
-            await many.handler(command);
+            await many.handle(command);
             expect(command.reply).toHaveBeenCalledWith(expect.stringContaining('card'));
             expect(mockDatabase.set).toHaveBeenCalledWith('many:1234', []);
         });
@@ -94,7 +94,7 @@ describe('/many', () => {
 
             const command = mocked(new CommandInteraction({} as never, {} as never), true);
 
-            await expect(many.handler(command)).rejects.toMatchError(new FriendlyError('Unable to draw a card.'));
+            await expect(many.handle(command)).rejects.toMatchError(new FriendlyError('Unable to draw a card.'));
         });
     });
 });

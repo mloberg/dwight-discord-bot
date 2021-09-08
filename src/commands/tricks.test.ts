@@ -23,7 +23,7 @@ describe('/tricks', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValue('rust');
 
-        await tricks.handler(command);
+        await tricks.handle(command);
         expect(command.reply).toHaveBeenCalledWith(expect.any(String));
     });
 
@@ -32,7 +32,7 @@ describe('/tricks', () => {
         command.options.getString.mockReturnValue('gray');
         command.options.getInteger.mockReturnValue(3);
 
-        await tricks.handler(command);
+        await tricks.handle(command);
         expect(command.reply).toHaveBeenCalledWith('Badger');
     });
 
@@ -41,7 +41,7 @@ describe('/tricks', () => {
         command.options.getString.mockReturnValue('tan');
         command.options.getInteger.mockReturnValue(20);
 
-        await expect(tricks.handler(command)).rejects.toMatchError(
+        await expect(tricks.handle(command)).rejects.toMatchError(
             new FriendlyError('Unable to pull from the Bag of Tricks.'),
         );
     });

@@ -1,3 +1,5 @@
+import { SlashCommandIntegerOption } from '@discordjs/builders';
+
 export function roll(expr: string): number {
     const input = expr.toLowerCase().match(/^(\d+)?d(\d+)([+-×])?(\d+)?/i);
     if (!input) {
@@ -24,3 +26,6 @@ export function roll(expr: string): number {
 
     return Math.max(total, 1);
 }
+
+export const rollOption = (dice: string): SlashCommandIntegerOption =>
+    new SlashCommandIntegerOption().setName('roll').setDescription(`Value of a ${dice} roll.`);
