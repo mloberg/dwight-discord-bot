@@ -31,4 +31,12 @@ describe('/event', () => {
         await event.handle(command);
         expect(command.reply).toHaveBeenCalledWith('A door opens');
     });
+
+    it('returns a generic event on invalid roll', async () => {
+        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        command.options.getInteger.mockReturnValue(100);
+
+        await event.handle(command);
+        expect(command.reply).toHaveBeenCalledWith('Something happens');
+    });
 });

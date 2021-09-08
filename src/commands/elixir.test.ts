@@ -1,7 +1,8 @@
 import { CommandInteraction } from 'discord.js';
 import { mocked } from 'ts-jest/utils';
 
-import elixir, { elixirs } from './elixir';
+import { FriendlyError } from '../error';
+import elixir from './elixir';
 
 jest.mock('discord.js', () => ({
     CommandInteraction: jest.fn().mockImplementation(() => ({
@@ -21,7 +22,7 @@ describe('/elixir', () => {
         const command = mocked(new CommandInteraction({} as never, {} as never));
 
         await elixir.handle(command);
-        expect(elixirs).toContainEqual(command.reply.mock.calls[0][0]);
+        expect(command.reply).toHaveBeenCalledWith(expect.any(String));
     });
 
     it('returns an elixir for a dice roll', async () => {
@@ -32,5 +33,12 @@ describe('/elixir', () => {
         expect(command.reply).toHaveBeenCalledWith(
             '**Healing**. The drinker regains a number of hit points equal to 2d4 + your Intelligence modifier.',
         );
+    });
+
+    it('throws an error if no elixir', async () => {
+        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        command.options.getInteger.mockReturnValue(10);
+
+        await expect(elixir.handle(command)).rejects.toMatchError(new FriendlyError('Unable to craft an elixir.'));
     });
 });

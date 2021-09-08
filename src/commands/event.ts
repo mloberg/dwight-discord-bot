@@ -33,7 +33,7 @@ export default {
         .addIntegerOption(rollOption('d20')),
     async handle(command: CommandInteraction): Promise<void> {
         const dice = command.options.getInteger('roll') || roll('d20');
-        const event = events[dice - 1];
+        const event = events[dice - 1] || 'Something happens';
 
         await command.reply(event);
     },
