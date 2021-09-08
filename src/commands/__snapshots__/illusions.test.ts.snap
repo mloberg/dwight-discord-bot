@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`/illusions is a slash command 1`] = `
+Object {
+  "config": Object {
+    "default_permission": undefined,
+    "description": "Manage a Deck of Illusions",
+    "name": "illusions",
+    "options": Array [
+      Object {
+        "description": "Create a new Deck of Illusions",
+        "name": "new",
+        "options": Array [
+          Object {
+            "choices": undefined,
+            "description": "Number of missing cards (usually d20-1)",
+            "name": "missing",
+            "required": false,
+            "type": 4,
+          },
+        ],
+        "type": 1,
+      },
+      Object {
+        "description": "Pull a card from the deck",
+        "name": "pull",
+        "options": Array [],
+        "type": 1,
+      },
+    ],
+  },
+  "handle": [Function],
+}
+`;

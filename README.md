@@ -7,6 +7,7 @@ Dwight is a Discord bot to help dungeon masters with their 5e games.
 * `/35` - Convert 3.5 skills to 5e
 * `/elixir` - Return a random experimental elixir for Artificers
 * `/event` - Return a random event
+* `/illusions` - Manage a Deck of Illusions
 * `/item` - Return a random magical item
 * `/madness` - Roll on the madness table and send it to a user
 * `/many` - The Deck of Many Things
