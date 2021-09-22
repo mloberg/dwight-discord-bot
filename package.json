@@ -38,7 +38,7 @@
     "@types/lodash": "^4.14.173",
     "@types/node": "16.6.1",
     "@types/pino": "^6.3.11",
-    "@typescript-eslint/eslint-plugin": "^4.31.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.1",
     "concurrently": "^6.2.1",
     "dotenv": "^10.0.0",
