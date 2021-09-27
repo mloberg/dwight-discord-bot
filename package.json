@@ -51,7 +51,7 @@
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "eslint-plugin-unicorn": "^36.0.0",
-    "jest": "^27.2.1",
+    "jest": "^27.2.2",
     "jest-matcher-specific-error": "^1.0.0",
     "nodemon": "^2.0.13",
     "pino-pretty": "^7.0.1",
