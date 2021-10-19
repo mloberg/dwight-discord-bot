@@ -9,11 +9,11 @@ export class Database {
 
     constructor(private readonly uri: string | undefined, private log: typeof logger) {}
 
-    async get<T extends unknown>(key: string, fallback?: T): Promise<T> {
+    async get<T>(key: string, fallback?: T): Promise<T> {
         return (await this.kv.get(key)) || fallback;
     }
 
-    async set<T extends unknown>(key: string, value: T, ttl?: number): Promise<void> {
+    async set<T>(key: string, value: T, ttl?: number): Promise<void> {
         await this.kv.set(key, value, ttl);
     }
 

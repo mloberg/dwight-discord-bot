@@ -7,7 +7,7 @@ describe('env.NODE_ENV', () => {
         const { error, value } = schema.validate(defaults);
 
         expect(error).toBeFalsy();
-        expect(value.NODE_ENV).toEqual('production');
+        expect(value.NODE_ENV).toBe('production');
     });
 
     it('allows valid values', () => {
@@ -18,7 +18,7 @@ describe('env.NODE_ENV', () => {
     });
 
     it('returns an error on invalid env', () => {
-        expect(schema.validate({ NODE_ENV: 'foo', ...defaults }).error?.message).toEqual(
+        expect(schema.validate({ NODE_ENV: 'foo', ...defaults }).error?.message).toBe(
             '"NODE_ENV" must be one of [development, test, production]',
         );
     });
@@ -29,7 +29,7 @@ describe('env.LOG_LEVEL', () => {
         const { error, value } = schema.validate(defaults);
 
         expect(error).toBeFalsy();
-        expect(value.LOG_LEVEL).toEqual('info');
+        expect(value.LOG_LEVEL).toBe('info');
     });
 
     it('allows valid values', () => {
@@ -40,7 +40,7 @@ describe('env.LOG_LEVEL', () => {
     });
 
     it('returns an error on invalid level', () => {
-        expect(schema.validate({ LOG_LEVEL: 'foo', ...defaults }).error?.message).toEqual(
+        expect(schema.validate({ LOG_LEVEL: 'foo', ...defaults }).error?.message).toBe(
             '"LOG_LEVEL" must be one of [fatal, error, warn, info, debug, silent]',
         );
     });
@@ -51,7 +51,7 @@ describe('env.DEBUG', () => {
         const { error, value } = schema.validate(defaults);
 
         expect(error).toBeFalsy();
-        expect(value.APP_DEBUG).toEqual(false);
+        expect(value.APP_DEBUG).toBe(false);
     });
 
     it('allows valid values', () => {
@@ -62,14 +62,12 @@ describe('env.DEBUG', () => {
     });
 
     it('returns an error on invalid level', () => {
-        expect(schema.validate({ APP_DEBUG: 'foo', ...defaults }).error?.message).toEqual(
-            '"APP_DEBUG" must be a boolean',
-        );
+        expect(schema.validate({ APP_DEBUG: 'foo', ...defaults }).error?.message).toBe('"APP_DEBUG" must be a boolean');
     });
 });
 
 describe('env.BOT_TOKEN', () => {
     it('is required', () => {
-        expect(schema.validate({}).error?.message).toEqual('"BOT_TOKEN" is required');
+        expect(schema.validate({}).error?.message).toBe('"BOT_TOKEN" is required');
     });
 });

@@ -11,7 +11,7 @@ describe('Cache', () => {
         expect(cache.get('test')).toBeUndefined();
 
         cache.set('foo', 'bar');
-        expect(cache.get('foo')).toEqual('bar');
+        expect(cache.get('foo')).toBe('bar');
     });
 
     it('does not return cached value if over ttl', () => {
