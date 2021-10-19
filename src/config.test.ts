@@ -46,26 +46,6 @@ describe('env.LOG_LEVEL', () => {
     });
 });
 
-describe('env.DEBUG', () => {
-    it('defaults to false', () => {
-        const { error, value } = schema.validate(defaults);
-
-        expect(error).toBeFalsy();
-        expect(value.APP_DEBUG).toBe(false);
-    });
-
-    it('allows valid values', () => {
-        expect(schema.validate({ APP_DEBUG: 'true', ...defaults }).error).toBeFalsy();
-        expect(schema.validate({ APP_DEBUG: 'false', ...defaults }).error).toBeFalsy();
-        expect(schema.validate({ APP_DEBUG: 'TRUE', ...defaults }).error).toBeFalsy();
-        expect(schema.validate({ APP_DEBUG: 'FALSE', ...defaults }).error).toBeFalsy();
-    });
-
-    it('returns an error on invalid level', () => {
-        expect(schema.validate({ APP_DEBUG: 'foo', ...defaults }).error?.message).toBe('"APP_DEBUG" must be a boolean');
-    });
-});
-
 describe('env.BOT_TOKEN', () => {
     it('is required', () => {
         expect(schema.validate({}).error?.message).toBe('"BOT_TOKEN" is required');
