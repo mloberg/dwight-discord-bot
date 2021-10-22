@@ -14,7 +14,7 @@ const cache = new Cache<Spell[]>(86400);
 
 export default async (): Promise<Spell[]> => {
     return await cache.remember('spells', async () => {
-        const response = await axios.get(`${config.apiUrl}/spells.json`);
+        const response = await axios.get<{ spells: Spell[] }>(`${config.apiUrl}/spells.json`);
 
         return response.data.spells;
     });

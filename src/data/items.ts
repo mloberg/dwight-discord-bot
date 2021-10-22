@@ -15,7 +15,7 @@ const cache = new Cache<Item[]>(86400);
 
 export default async (): Promise<Item[]> => {
     return await cache.remember('items', async () => {
-        const response = await axios.get(`${config.apiUrl}/items.json`);
+        const response = await axios.get<{ items: Item[] }>(`${config.apiUrl}/items.json`);
 
         return response.data.items;
     });
