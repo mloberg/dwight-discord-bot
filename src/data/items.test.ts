@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { mocked } from 'ts-jest/utils';
 
 import items from './items';
 
 jest.mock('axios');
 
 test('fetch and cache item list', async () => {
-    const axiosMock = mocked(axios, true);
+    const axiosMock = jest.mocked(axios, true);
     axiosMock.get.mockResolvedValue({ data: { items: ['foo', 'bar'] } });
 
     const result = await items();

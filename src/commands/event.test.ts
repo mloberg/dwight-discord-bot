@@ -1,5 +1,4 @@
 import { CommandInteraction } from 'discord.js';
-import { mocked } from 'ts-jest/utils';
 
 import event, { events } from './event';
 
@@ -18,14 +17,14 @@ describe('/event', () => {
     });
 
     it('returns a random event', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never));
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never));
 
         await event.handle(command);
         expect(events).toContainEqual(command.reply.mock.calls[0][0]);
     });
 
     it('returns an event for a dice roll', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(1);
 
         await event.handle(command);
@@ -33,7 +32,7 @@ describe('/event', () => {
     });
 
     it('returns a generic event on invalid roll', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(100);
 
         await event.handle(command);

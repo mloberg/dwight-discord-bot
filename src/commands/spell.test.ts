@@ -1,5 +1,4 @@
 import { CommandInteraction } from 'discord.js';
-import { mocked } from 'ts-jest/utils';
 
 import { FriendlyError } from '../error';
 import spell from './spell';
@@ -42,14 +41,14 @@ describe('/spell', () => {
     });
 
     it('returns a random spell', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never));
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never));
 
         await spell.handle(command);
         expect(['Debugger', 'Foo', 'Bar']).toContainEqual(command.reply.mock.calls[0][0]);
     });
 
     it('returns a spell by level', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(0);
 
         await spell.handle(command);
@@ -57,7 +56,7 @@ describe('/spell', () => {
     });
 
     it('returns a spell matching multiple parameters', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValueOnce('evocation');
         command.options.getString.mockReturnValueOnce('Wizard');
 
@@ -66,7 +65,7 @@ describe('/spell', () => {
     });
 
     it('throws an error if no spell matches', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValueOnce('necromancy');
         command.options.getString.mockReturnValueOnce('Ranger');
 

@@ -1,5 +1,4 @@
 import { CommandInteraction } from 'discord.js';
-import { mocked } from 'ts-jest/utils';
 
 import database from '../database';
 import { FriendlyError } from '../error';
@@ -23,7 +22,7 @@ jest.mock('discord.js', () => ({
 }));
 jest.mock('../database');
 
-const mockDatabase = mocked(database);
+const mockDatabase = jest.mocked(database);
 
 describe('/portent', () => {
     beforeEach(() => {
@@ -39,7 +38,7 @@ describe('/portent', () => {
         it('shows available portent dice', async () => {
             mockDatabase.get.mockResolvedValue([1, 20]);
 
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('show');
 
             await portent.handle(command);
@@ -50,7 +49,7 @@ describe('/portent', () => {
         it('shows no available dice', async () => {
             mockDatabase.get.mockResolvedValue([]);
 
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('show');
 
             await portent.handle(command);
@@ -60,7 +59,7 @@ describe('/portent', () => {
 
     describe('roll', () => {
         it('generates portent dice', async () => {
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('roll');
 
             await portent.handle(command);
@@ -69,7 +68,7 @@ describe('/portent', () => {
         });
 
         it('uses given portent dice', async () => {
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('roll');
             command.options.getInteger.mockReturnValueOnce(1);
             command.options.getInteger.mockReturnValueOnce(2);
@@ -82,7 +81,7 @@ describe('/portent', () => {
         });
 
         it('generates greater portent dice', async () => {
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('roll');
             command.options.getBoolean.mockReturnValue(true);
 
@@ -91,7 +90,7 @@ describe('/portent', () => {
         });
 
         it('uses given greater portent dice', async () => {
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('roll');
             command.options.getBoolean.mockReturnValue(true);
             command.options.getInteger.mockReturnValueOnce(1);
@@ -108,7 +107,7 @@ describe('/portent', () => {
         it('removes a portent die', async () => {
             mockDatabase.get.mockResolvedValue([1, 5, 20]);
 
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('use');
             command.options.getInteger.mockReturnValue(5);
 
@@ -120,7 +119,7 @@ describe('/portent', () => {
         it('removes one portent die if two match', async () => {
             mockDatabase.get.mockResolvedValue([20, 20]);
 
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('use');
             command.options.getInteger.mockReturnValue(20);
 
@@ -132,7 +131,7 @@ describe('/portent', () => {
         it('throws error if no portent die matches', async () => {
             mockDatabase.get.mockResolvedValue([1]);
 
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('use');
             command.options.getInteger.mockReturnValue(20);
 

@@ -1,5 +1,4 @@
 import { CommandInteraction, TextChannel } from 'discord.js';
-import { mocked } from 'ts-jest/utils';
 
 import { FriendlyError } from '../error';
 import prune from './prune';
@@ -23,7 +22,7 @@ describe('/prune', () => {
     });
 
     it('prunes messages', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(3);
 
         await prune.handle(command);

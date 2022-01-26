@@ -1,5 +1,4 @@
 import { CommandInteraction } from 'discord.js';
-import { mocked } from 'ts-jest/utils';
 
 import table from './table';
 
@@ -24,7 +23,7 @@ describe('/table', () => {
     });
 
     it('returns a random item from a table', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValue('a');
 
         await table.handle(command);
@@ -32,7 +31,7 @@ describe('/table', () => {
     });
 
     it('returns an item from a table for a dice roll', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValue('b');
         command.options.getInteger.mockReturnValue(99);
 
@@ -41,7 +40,7 @@ describe('/table', () => {
     });
 
     it('returns a resolved value', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValue('c');
 
         await table.handle(command);

@@ -1,5 +1,4 @@
 import { CommandInteraction } from 'discord.js';
-import { mocked } from 'ts-jest/utils';
 
 import { FriendlyError } from '../error';
 import elixir from './elixir';
@@ -19,14 +18,14 @@ describe('/elixir', () => {
     });
 
     it('returns a random elixir', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never));
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never));
 
         await elixir.handle(command);
         expect(command.reply).toHaveBeenCalledWith(expect.any(String));
     });
 
     it('returns an elixir for a dice roll', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(1);
 
         await elixir.handle(command);
@@ -36,7 +35,7 @@ describe('/elixir', () => {
     });
 
     it('throws an error if no elixir', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(10);
 
         await expect(elixir.handle(command)).rejects.toMatchError(new FriendlyError('Unable to craft an elixir.'));

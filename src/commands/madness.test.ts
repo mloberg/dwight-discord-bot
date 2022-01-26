@@ -1,5 +1,4 @@
 import { CommandInteraction, User } from 'discord.js';
-import { mocked } from 'ts-jest/utils';
 
 import madness from './madness';
 
@@ -24,7 +23,7 @@ describe('/madness', () => {
 
     it('returns a random madness', async () => {
         const user = new User({} as never, {} as never);
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValue('short');
         command.options.getUser.mockReturnValue(user);
 
@@ -36,7 +35,7 @@ describe('/madness', () => {
     });
 
     it('returns a madness based on a roll', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValue('flaw');
         command.options.getInteger.mockReturnValue(16);
 

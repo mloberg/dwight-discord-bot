@@ -1,5 +1,4 @@
 import { CommandInteraction } from 'discord.js';
-import { mocked } from 'ts-jest/utils';
 
 import wildMagic, { barbarianTable, sorcererTable } from './wild-magic';
 
@@ -19,14 +18,14 @@ describe('/wildMagic', () => {
     });
 
     it('returns a random wild magic effect', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never));
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never));
 
         await wildMagic.handle(command);
         expect(sorcererTable).toContainEqual(command.reply.mock.calls[0][0]);
     });
 
     it('returns a wild magic effect for a dice roll', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getInteger.mockReturnValue(7);
 
         await wildMagic.handle(command);
@@ -34,7 +33,7 @@ describe('/wildMagic', () => {
     });
 
     it('returns a random barbarian wild magic effect', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getBoolean.mockReturnValue(true);
 
         await wildMagic.handle(command);
@@ -42,7 +41,7 @@ describe('/wildMagic', () => {
     });
 
     it('returns a barbarian wild magic effect for a dice roll', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getBoolean.mockReturnValue(true);
         command.options.getInteger.mockReturnValue(7);
 

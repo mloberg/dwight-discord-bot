@@ -1,12 +1,11 @@
 import axios from 'axios';
-import { mocked } from 'ts-jest/utils';
 
 import spells from './spells';
 
 jest.mock('axios');
 
 test('fetch and cache spell list', async () => {
-    const axiosMock = mocked(axios, true);
+    const axiosMock = jest.mocked(axios, true);
     axiosMock.get.mockResolvedValue({ data: { spells: ['foo', 'bar'] } });
 
     const result = await spells();

@@ -1,5 +1,4 @@
 import { CommandInteraction } from 'discord.js';
-import { mocked } from 'ts-jest/utils';
 
 import { FriendlyError } from '../error';
 import item from './item';
@@ -42,7 +41,7 @@ describe('/item', () => {
     });
 
     it('returns a random item', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never));
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never));
 
         await item.handle(command);
         expect(['IDE of Lesser Bugs', 'Phone of Longer Life', 'Pants of Greater Comfort']).toContainEqual(
@@ -51,7 +50,7 @@ describe('/item', () => {
     });
 
     it('returns an item filtered by rarity', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValueOnce('uncommon');
 
         await item.handle(command);
@@ -59,7 +58,7 @@ describe('/item', () => {
     });
 
     it('returns an item filtered by type', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
         command.options.getString.mockReturnValueOnce('Wondrous');
 
@@ -68,7 +67,7 @@ describe('/item', () => {
     });
 
     it('returns an item filtered by subtype', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValueOnce(null); // eslint-disable-line unicorn/no-null
         command.options.getString.mockReturnValueOnce('Text Editor');
 
@@ -77,7 +76,7 @@ describe('/item', () => {
     });
 
     it('returns an item matching multiple filters', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValueOnce('common');
         command.options.getString.mockReturnValueOnce('armor');
 
@@ -86,7 +85,7 @@ describe('/item', () => {
     });
 
     it('throws an error if no item matches', async () => {
-        const command = mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
         command.options.getString.mockReturnValueOnce('very rare');
         command.options.getString.mockReturnValueOnce('weapon');
 

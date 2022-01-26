@@ -1,5 +1,4 @@
 import { CommandInteraction } from 'discord.js';
-import { mocked } from 'ts-jest/utils';
 
 import database from '../database';
 import { FriendlyError } from '../error';
@@ -22,7 +21,7 @@ jest.mock('discord.js', () => ({
 }));
 jest.mock('../database');
 
-const mockDatabase = mocked(database);
+const mockDatabase = jest.mocked(database);
 
 describe('/illusions', () => {
     beforeEach(() => {
@@ -37,7 +36,7 @@ describe('/illusions', () => {
 
     describe('new', () => {
         it('creates a deck of illusions', async () => {
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('new');
             command.options.getInteger.mockReturnValue(0);
 
@@ -49,7 +48,7 @@ describe('/illusions', () => {
         });
 
         it('creates a deck of illusions with missing cards', async () => {
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
             command.options.getSubcommand.mockReturnValue('new');
 
             await illusions.handle(command);
@@ -62,7 +61,7 @@ describe('/illusions', () => {
         it('pulls a card', async () => {
             mockDatabase.get.mockResolvedValue(['Goblin', 'Orc', 'You']);
 
-            const command = mocked(new CommandInteraction({} as never, {} as never));
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never));
 
             await illusions.handle(command);
             expect(command.reply).toHaveBeenCalledWith('You');
@@ -72,7 +71,7 @@ describe('/illusions', () => {
         it('throws error if no cards can be drawn', async () => {
             mockDatabase.get.mockResolvedValue([]);
 
-            const command = mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
 
             await expect(illusions.handle(command)).rejects.toMatchError(new FriendlyError('Unable to draw a card.'));
         });
