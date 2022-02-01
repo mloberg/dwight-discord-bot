@@ -10,7 +10,7 @@ export default {
         .setName('treasure')
         .setDescription('Give me the loot!')
         .addIntegerOption((option) => option.setName('cr').setDescription('Challenge rating').setRequired(true))
-        .addIntegerOption(rollOption('d100'))
+        .addIntegerOption(rollOption('d100').setMinValue(1).setMaxValue(100))
         .addBooleanOption((option) => option.setName('hoard').setDescription('Generate a treasure hoard')),
     async handle(command: CommandInteraction): Promise<void> {
         const cr = command.options.getInteger('cr', true);

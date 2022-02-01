@@ -1,15 +1,4 @@
-import { CommandInteraction } from 'discord.js';
-
 import event, { events } from './event';
-
-jest.mock('discord.js', () => ({
-    CommandInteraction: jest.fn().mockImplementation(() => ({
-        reply: jest.fn(),
-        options: {
-            getInteger: jest.fn(),
-        },
-    })),
-}));
 
 describe('/event', () => {
     it('is a slash command', () => {
@@ -17,14 +6,14 @@ describe('/event', () => {
     });
 
     it('returns a random event', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never));
+        const command = createMockCommand();
 
         await event.handle(command);
         expect(events).toContainEqual(command.reply.mock.calls[0][0]);
     });
 
     it('returns an event for a dice roll', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getInteger.mockReturnValue(1);
 
         await event.handle(command);
@@ -32,7 +21,7 @@ describe('/event', () => {
     });
 
     it('returns a generic event on invalid roll', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getInteger.mockReturnValue(100);
 
         await event.handle(command);

@@ -8,6 +8,7 @@ Object {
     "name": "spell",
     "options": Array [
       Object {
+        "autocomplete": undefined,
         "choices": Array [
           Object {
             "name": "Cantrip",
@@ -51,11 +52,14 @@ Object {
           },
         ],
         "description": "Spell level",
+        "max_value": undefined,
+        "min_value": undefined,
         "name": "level",
         "required": false,
         "type": 4,
       },
       Object {
+        "autocomplete": undefined,
         "choices": Array [
           Object {
             "name": "Abjuration",
@@ -96,6 +100,7 @@ Object {
         "type": 3,
       },
       Object {
+        "autocomplete": undefined,
         "choices": Array [
           Object {
             "name": "Bard",

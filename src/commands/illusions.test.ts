@@ -1,33 +1,14 @@
-import { CommandInteraction } from 'discord.js';
-
 import database from '../database';
 import { FriendlyError } from '../error';
 import illusions from './illusions';
 
-jest.mock('discord.js', () => ({
-    CommandInteraction: jest.fn().mockImplementation(() => ({
-        guild: {
-            id: '1234',
-        },
-        user: {
-            id: '6789',
-        },
-        reply: jest.fn(),
-        options: {
-            getSubcommand: jest.fn(),
-            getInteger: jest.fn(),
-        },
-    })),
-}));
 jest.mock('../database');
 
 const mockDatabase = jest.mocked(database);
 
 describe('/illusions', () => {
     beforeEach(() => {
-        mockDatabase.get.mockReset();
-        mockDatabase.set.mockReset();
-        mockDatabase.delete.mockReset();
+        jest.clearAllMocks();
     });
 
     it('is a slash command', () => {
@@ -36,7 +17,7 @@ describe('/illusions', () => {
 
     describe('new', () => {
         it('creates a deck of illusions', async () => {
-            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = createMockCommand({ guild: { id: '1234' }, user: { id: '6789' } });
             command.options.getSubcommand.mockReturnValue('new');
             command.options.getInteger.mockReturnValue(0);
 
@@ -48,7 +29,7 @@ describe('/illusions', () => {
         });
 
         it('creates a deck of illusions with missing cards', async () => {
-            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = createMockCommand({ guild: { id: '1234' }, user: { id: '6789' } });
             command.options.getSubcommand.mockReturnValue('new');
 
             await illusions.handle(command);
@@ -61,7 +42,7 @@ describe('/illusions', () => {
         it('pulls a card', async () => {
             mockDatabase.get.mockResolvedValue(['Goblin', 'Orc', 'You']);
 
-            const command = jest.mocked(new CommandInteraction({} as never, {} as never));
+            const command = createMockCommand({ guild: { id: '1234' }, user: { id: '6789' } });
 
             await illusions.handle(command);
             expect(command.reply).toHaveBeenCalledWith('You');
@@ -71,7 +52,7 @@ describe('/illusions', () => {
         it('throws error if no cards can be drawn', async () => {
             mockDatabase.get.mockResolvedValue([]);
 
-            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = createMockCommand({ guild: { id: '1234' }, user: { id: '6789' } });
 
             await expect(illusions.handle(command)).rejects.toMatchError(new FriendlyError('Unable to draw a card.'));
         });

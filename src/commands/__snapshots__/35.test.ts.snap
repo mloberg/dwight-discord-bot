@@ -8,6 +8,7 @@ Object {
     "name": "35",
     "options": Array [
       Object {
+        "autocomplete": undefined,
         "choices": undefined,
         "description": "3.5 skill",
         "name": "skill",

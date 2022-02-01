@@ -8,15 +8,21 @@ Object {
     "name": "treasure",
     "options": Array [
       Object {
+        "autocomplete": undefined,
         "choices": undefined,
         "description": "Challenge rating",
+        "max_value": undefined,
+        "min_value": undefined,
         "name": "cr",
         "required": true,
         "type": 4,
       },
       Object {
+        "autocomplete": undefined,
         "choices": undefined,
         "description": "Value of a d100 roll.",
+        "max_value": 100,
+        "min_value": 1,
         "name": "roll",
         "required": false,
         "type": 4,

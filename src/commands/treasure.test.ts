@@ -1,17 +1,5 @@
-import { CommandInteraction } from 'discord.js';
-
 import treasure from './treasure';
 
-jest.mock('discord.js', () => ({
-    CommandInteraction: jest.fn().mockImplementation(() => ({
-        reply: jest.fn(),
-        options: {
-            getString: jest.fn(),
-            getInteger: jest.fn(),
-            getBoolean: jest.fn(),
-        },
-    })),
-}));
 jest.mock('../data/spells', () => {
     return () => [
         {
@@ -83,7 +71,7 @@ describe('/treasure', () => {
     });
 
     it('returns random individual treasure', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getInteger.mockReturnValueOnce(1);
 
         await treasure.handle(command);
@@ -91,7 +79,7 @@ describe('/treasure', () => {
     });
 
     it('returns random individual treasure for a dice roll', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getInteger.mockReturnValueOnce(17);
         command.options.getInteger.mockReturnValue(99);
 
@@ -100,7 +88,7 @@ describe('/treasure', () => {
     });
 
     it('returns random treasure hoard', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getInteger.mockReturnValueOnce(1);
         command.options.getInteger.mockReturnValueOnce(99);
         command.options.getBoolean.mockReturnValue(true);

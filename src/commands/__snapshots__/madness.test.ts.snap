@@ -8,6 +8,7 @@ Object {
     "name": "madness",
     "options": Array [
       Object {
+        "autocomplete": undefined,
         "choices": Array [
           Object {
             "name": "Short (minutes)",
@@ -34,8 +35,11 @@ Object {
         "type": 6,
       },
       Object {
+        "autocomplete": undefined,
         "choices": undefined,
         "description": "Value of a d100 roll.",
+        "max_value": 100,
+        "min_value": 1,
         "name": "roll",
         "required": false,
         "type": 4,

@@ -17,7 +17,7 @@ export default {
     config: new SlashCommandBuilder()
         .setName('elixir')
         .setDescription('Craft an experimental elixir')
-        .addIntegerOption(rollOption('d6')),
+        .addIntegerOption(rollOption('d6').setMinValue(1).setMaxValue(6)),
     async handle(command: CommandInteraction): Promise<void> {
         const dice = command.options.getInteger('roll') || roll('d6');
         const result = elixirs[dice - 1];

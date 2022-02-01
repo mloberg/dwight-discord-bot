@@ -1,17 +1,5 @@
-import { CommandInteraction } from 'discord.js';
-
 import { FriendlyError } from '../error';
 import tricks from './tricks';
-
-jest.mock('discord.js', () => ({
-    CommandInteraction: jest.fn().mockImplementation(() => ({
-        reply: jest.fn(),
-        options: {
-            getString: jest.fn(),
-            getInteger: jest.fn(),
-        },
-    })),
-}));
 
 describe('/tricks', () => {
     it('is a slash command', () => {
@@ -19,7 +7,7 @@ describe('/tricks', () => {
     });
 
     it('returns a creature', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getString.mockReturnValue('rust');
 
         await tricks.handle(command);
@@ -27,7 +15,7 @@ describe('/tricks', () => {
     });
 
     it('returns a create for a dice roll', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getString.mockReturnValue('gray');
         command.options.getInteger.mockReturnValue(3);
 
@@ -36,7 +24,7 @@ describe('/tricks', () => {
     });
 
     it('throws an error if no creature is found', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getString.mockReturnValue('tan');
         command.options.getInteger.mockReturnValue(20);
 

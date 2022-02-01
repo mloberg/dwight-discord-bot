@@ -8,8 +8,11 @@ Object {
     "name": "prune",
     "options": Array [
       Object {
+        "autocomplete": undefined,
         "choices": undefined,
         "description": "Number of messages to delete",
+        "max_value": undefined,
+        "min_value": undefined,
         "name": "messages",
         "required": true,
         "type": 4,

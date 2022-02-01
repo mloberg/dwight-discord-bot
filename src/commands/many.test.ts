@@ -1,31 +1,14 @@
-import { CommandInteraction } from 'discord.js';
-
 import database from '../database';
 import { FriendlyError } from '../error';
 import many from './many';
 
-jest.mock('discord.js', () => ({
-    CommandInteraction: jest.fn().mockImplementation(() => ({
-        guild: {
-            id: '1234',
-        },
-        reply: jest.fn(),
-        options: {
-            getSubcommand: jest.fn(),
-            getInteger: jest.fn(),
-            getBoolean: jest.fn(),
-        },
-    })),
-}));
 jest.mock('../database');
 
 const mockDatabase = jest.mocked(database);
 
 describe('/many', () => {
     beforeEach(() => {
-        mockDatabase.get.mockReset();
-        mockDatabase.set.mockReset();
-        mockDatabase.delete.mockReset();
+        jest.clearAllMocks();
     });
 
     it('is a slash command', () => {
@@ -34,7 +17,7 @@ describe('/many', () => {
 
     describe('new', () => {
         it('creates a deck of many', async () => {
-            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = createMockCommand({ user: { id: '1234' } });
             command.options.getSubcommand.mockReturnValue('new');
 
             await many.handle(command);
@@ -44,7 +27,7 @@ describe('/many', () => {
         });
 
         it('creates a full deck of many', async () => {
-            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = createMockCommand({ user: { id: '1234' } });
             command.options.getSubcommand.mockReturnValue('new');
             command.options.getBoolean.mockReturnValueOnce(true);
 
@@ -55,7 +38,7 @@ describe('/many', () => {
         });
 
         it('generates a deck with missing cards', async () => {
-            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = createMockCommand({ user: { id: '1234' } });
             command.options.getSubcommand.mockReturnValue('new');
             command.options.getInteger.mockReturnValue(3);
 
@@ -69,7 +52,7 @@ describe('/many', () => {
         it('pulls a card', async () => {
             mockDatabase.get.mockResolvedValue(['Moon']);
 
-            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = createMockCommand({ user: { id: '1234' } });
 
             await many.handle(command);
             expect(command.reply).toHaveBeenCalledWith(
@@ -81,7 +64,7 @@ describe('/many', () => {
         it.each(['Fool', 'Jester'])('removes %s once drawn', async (card) => {
             mockDatabase.get.mockResolvedValue([card]);
 
-            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = createMockCommand({ user: { id: '1234' } });
 
             await many.handle(command);
             expect(command.reply).toHaveBeenCalledWith(expect.stringContaining('card'));
@@ -91,7 +74,7 @@ describe('/many', () => {
         it('throws error if no cards can be drawn', async () => {
             mockDatabase.get.mockResolvedValue([]);
 
-            const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+            const command = createMockCommand({ user: { id: '1234' } });
 
             await expect(many.handle(command)).rejects.toMatchError(new FriendlyError('Unable to draw a card.'));
         });
