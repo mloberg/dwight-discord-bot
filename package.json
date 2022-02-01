@@ -29,7 +29,7 @@
     "keyv": "^4.0.4",
     "keyv-file": "^0.2.0",
     "lodash": "^4.17.21",
-    "pino": "^7.6.4"
+    "pino": "^7.6.5"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
