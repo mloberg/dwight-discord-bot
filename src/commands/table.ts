@@ -16,7 +16,7 @@ export default {
                 .setRequired(true)
                 .addChoices(Object.keys(magicItemTable).map((key) => [key.toUpperCase(), key])),
         )
-        .addIntegerOption(rollOption('d100')),
+        .addIntegerOption(rollOption('d100').setMinValue(1).setMaxValue(100)),
     async handle(command: CommandInteraction): Promise<void> {
         const index = command.options.getString('table', true);
         const dice = command.options.getInteger('roll') || roll('d100');

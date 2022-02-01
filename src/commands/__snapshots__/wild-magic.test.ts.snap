@@ -14,8 +14,11 @@ Object {
         "type": 5,
       },
       Object {
+        "autocomplete": undefined,
         "choices": undefined,
         "description": "Value of a d100 (Sorcerer) or d8 (Barbarian) roll.",
+        "max_value": 100,
+        "min_value": 1,
         "name": "roll",
         "required": false,
         "type": 4,

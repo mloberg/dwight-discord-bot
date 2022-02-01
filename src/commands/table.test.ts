@@ -1,16 +1,5 @@
-import { CommandInteraction } from 'discord.js';
-
 import table from './table';
 
-jest.mock('discord.js', () => ({
-    CommandInteraction: jest.fn().mockImplementation(() => ({
-        reply: jest.fn(),
-        options: {
-            getString: jest.fn(),
-            getInteger: jest.fn(),
-        },
-    })),
-}));
 jest.mock('../data/table', () => ({
     a: new Array(100).fill('foo'),
     b: [...new Array(98).fill('bar'), 'test', 'foobar'],
@@ -23,7 +12,7 @@ describe('/table', () => {
     });
 
     it('returns a random item from a table', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getString.mockReturnValue('a');
 
         await table.handle(command);
@@ -31,7 +20,7 @@ describe('/table', () => {
     });
 
     it('returns an item from a table for a dice roll', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getString.mockReturnValue('b');
         command.options.getInteger.mockReturnValue(99);
 
@@ -40,7 +29,7 @@ describe('/table', () => {
     });
 
     it('returns a resolved value', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getString.mockReturnValue('c');
 
         await table.handle(command);

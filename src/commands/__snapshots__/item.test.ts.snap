@@ -8,6 +8,7 @@ Object {
     "name": "item",
     "options": Array [
       Object {
+        "autocomplete": undefined,
         "choices": Array [
           Object {
             "name": "Common",
@@ -40,6 +41,7 @@ Object {
         "type": 3,
       },
       Object {
+        "autocomplete": undefined,
         "choices": undefined,
         "description": "Item type or subtype",
         "name": "type",

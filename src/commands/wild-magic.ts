@@ -124,7 +124,7 @@ export default {
         .addBooleanOption((option) =>
             option.setName('barbarian').setDescription('Roll on the Barbarian Wild Magic table'),
         )
-        .addIntegerOption(rollOption('d100 (Sorcerer) or d8 (Barbarian)')),
+        .addIntegerOption(rollOption('d100 (Sorcerer) or d8 (Barbarian)').setMinValue(1).setMaxValue(100)),
     async handle(command: CommandInteraction): Promise<void> {
         const barbarian = command.options.getBoolean('barbarian') ?? false;
         const dice = command.options.getInteger('roll') || (barbarian ? roll('d8') : roll('d100'));

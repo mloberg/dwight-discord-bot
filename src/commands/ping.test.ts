@@ -1,5 +1,3 @@
-import { CommandInteraction } from 'discord.js';
-
 import ping from './ping';
 
 jest.mock('discord.js');
@@ -10,7 +8,7 @@ describe('/ping', () => {
     });
 
     it('replies', async () => {
-        const command = new CommandInteraction({} as never, {} as never);
+        const command = createMockCommand();
         await ping.handle(command);
         expect(command.reply).toHaveBeenCalledWith('🏓');
     });

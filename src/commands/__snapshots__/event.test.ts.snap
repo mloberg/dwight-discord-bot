@@ -8,8 +8,11 @@ Object {
     "name": "event",
     "options": Array [
       Object {
+        "autocomplete": undefined,
         "choices": undefined,
         "description": "Value of a d20 roll.",
+        "max_value": 20,
+        "min_value": 1,
         "name": "roll",
         "required": false,
         "type": 4,

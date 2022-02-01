@@ -18,8 +18,11 @@ Object {
             "type": 5,
           },
           Object {
+            "autocomplete": undefined,
             "choices": undefined,
             "description": "Generate a deck with some random missing cards",
+            "max_value": undefined,
+            "min_value": undefined,
             "name": "missing",
             "required": false,
             "type": 4,

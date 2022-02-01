@@ -30,7 +30,7 @@ export default {
     config: new SlashCommandBuilder()
         .setName('event')
         .setDescription('Trigger a random event')
-        .addIntegerOption(rollOption('d20')),
+        .addIntegerOption(rollOption('d20').setMinValue(1).setMaxValue(20)),
     async handle(command: CommandInteraction): Promise<void> {
         const dice = command.options.getInteger('roll') || roll('d20');
         const event = events[dice - 1] || 'Something happens';

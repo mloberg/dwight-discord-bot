@@ -23,7 +23,7 @@ export default {
                 .addChoice('Rust', 'rust')
                 .addChoice('Tan', 'tan'),
         )
-        .addIntegerOption(rollOption('d8')),
+        .addIntegerOption(rollOption('d8').setMinValue(1).setMaxValue(8)),
     async handle(command: CommandInteraction): Promise<void> {
         const color = command.options.getString('color', true) as keyof typeof bags;
         const dice = command.options.getInteger('roll') || roll('d8');

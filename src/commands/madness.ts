@@ -112,7 +112,7 @@ export default {
                 .addChoice('Flaw (permenant)', 'flaw'),
         )
         .addUserOption((option) => option.setName('user').setDescription('Player').setRequired(true))
-        .addIntegerOption(rollOption('d100')),
+        .addIntegerOption(rollOption('d100').setMinValue(1).setMaxValue(100)),
     async handle(command: CommandInteraction): Promise<void> {
         const type = command.options.getString('type', true);
         const user = command.options.getUser('user');

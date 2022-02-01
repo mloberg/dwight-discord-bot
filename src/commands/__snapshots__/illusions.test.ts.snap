@@ -12,8 +12,11 @@ Object {
         "name": "new",
         "options": Array [
           Object {
+            "autocomplete": undefined,
             "choices": undefined,
             "description": "Number of missing cards (usually d20-1)",
+            "max_value": undefined,
+            "min_value": undefined,
             "name": "missing",
             "required": false,
             "type": 4,

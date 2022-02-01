@@ -17,15 +17,15 @@ export default {
                 .addBooleanOption((option) =>
                     option.setName('greater').setDescription('Roll three dice instead of two'),
                 )
-                .addIntegerOption(rollOption('d20').setName('one'))
-                .addIntegerOption(rollOption('d20').setName('two'))
-                .addIntegerOption(rollOption('d20').setName('three')),
+                .addIntegerOption(rollOption('d20').setName('one').setMinValue(1).setMaxValue(20))
+                .addIntegerOption(rollOption('d20').setName('two').setMinValue(1).setMaxValue(20))
+                .addIntegerOption(rollOption('d20').setName('three').setMinValue(1).setMaxValue(20)),
         )
         .addSubcommand((option) =>
             option
                 .setName('use')
                 .setDescription('Use a portent die')
-                .addIntegerOption(rollOption('d20').setName('dice').setRequired(true)),
+                .addIntegerOption(rollOption('d20').setName('dice').setRequired(true).setMinValue(1).setMaxValue(20)),
         ),
     async handle(command: CommandInteraction): Promise<void> {
         const sub = command.options.getSubcommand();

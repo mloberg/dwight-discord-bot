@@ -8,6 +8,7 @@ Object {
     "name": "tricks",
     "options": Array [
       Object {
+        "autocomplete": undefined,
         "choices": Array [
           Object {
             "name": "Gray",
@@ -28,8 +29,11 @@ Object {
         "type": 3,
       },
       Object {
+        "autocomplete": undefined,
         "choices": undefined,
         "description": "Value of a d8 roll.",
+        "max_value": 8,
+        "min_value": 1,
         "name": "roll",
         "required": false,
         "type": 4,

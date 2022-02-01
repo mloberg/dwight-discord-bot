@@ -1,18 +1,11 @@
-import { CommandInteraction } from 'discord.js';
-
 import { FriendlyError } from '../error';
 import convert from './35';
 
-jest.mock('discord.js', () => ({
-    CommandInteraction: jest.fn().mockImplementation(() => ({
-        reply: jest.fn(),
-        options: {
-            getString: jest.fn(),
-        },
-    })),
-}));
-
 describe('/35', () => {
+    beforeEach(() => {
+        jest.clearAllMocks();
+    });
+
     it('is a slash command', () => {
         expect(convert).toMatchSnapshot();
     });
@@ -22,7 +15,7 @@ describe('/35', () => {
         ['Use Magic Device', 'INT (Arcana)'],
         ['Ride', 'WIS (Animal Handling) or DEX (Acrobatics)'],
     ])('returns a comprable 5e skill for %s', async (skill, result) => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getString.mockReturnValue(skill);
 
         await convert.handle(command);
@@ -30,7 +23,7 @@ describe('/35', () => {
     });
 
     it('throws errors on invalid skill', async () => {
-        const command = jest.mocked(new CommandInteraction({} as never, {} as never), true);
+        const command = createMockCommand();
         command.options.getString.mockReturnValue('foo');
 
         await expect(convert.handle(command)).rejects.toMatchError(new FriendlyError('I couldn\'t find skill "foo".'));
