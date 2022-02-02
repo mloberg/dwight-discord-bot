@@ -1,0 +1,13 @@
+version: '3'
+services:
+  bot:
+    image: ghcr.io/mloberg/dwight-bot
+    env_file: .env
+    environment:
+      DB_URL: redis://redis:6379
+  redis:
+    image: redis:alpine
+    volumes:
+      - persist:/data
+volumes:
+  persist:

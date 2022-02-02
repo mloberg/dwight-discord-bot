@@ -14,4 +14,5 @@ RUN mv src/tsconfig.json tsconfig.json && \
 COPY docker/entrypoint.sh /usr/local/bin/
 ENTRYPOINT [ "entrypoint.sh" ]
 
+ENV NODE_ENV production
 CMD [ "node", "dist/index.js" ]

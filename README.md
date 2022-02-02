@@ -35,11 +35,15 @@ The easiest way to run Dwight is via Docker. We host images on
 First you need to register the application commands. You can either do this globally,
 which can take a couple hours to propegate or for a single guild which is instant.
 
-    docker run -e BOT_TOKEN=your-bot-token -e CLIENT_ID=your-client-id ghcr.io/mloberg/dwight-bot [guild]
+    docker run --rm -e BOT_TOKEN=your-bot-token -e CLIENT_ID=your-client-id ghcr.io/mloberg/dwight-bot install [guild]
 
 Once installed, run the app.
 
     docker run -e BOT_TOKEN=your-bot-token ghcr.io/mloberg/dwight-bot
+
+You can also use Docker Compose. Grab [docker-compose.yml](docker-compose.yml),
+create a `.env` from [.env.dist](.env.dist), and run `docker-compose up -d`. To
+register the commands, run `docker-compose run --rm bot install`.
 
 ### Manually
 
@@ -62,7 +66,7 @@ can either save it to Redis or to disk as a JSON file. To save in redis, pass
 (or set) `DB_URL` to `redis://user:pass@localhost:6379`. To save to disk set
 `file:./path/to/file.json`.
 
-    docker run -e BOT_TOKEN=your-bot-token -e DB_URL=file:.data/store.json -v $PWD/.data:/app.data ghcr.io/mloberg/dwight-bot
+    docker run -e BOT_TOKEN=your-bot-token -e DB_URL=file:.data/store.json -v $PWD/.data:/app/.data ghcr.io/mloberg/dwight-bot
 
 ## Development
 
