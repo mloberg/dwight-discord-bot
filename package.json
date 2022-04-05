@@ -41,7 +41,7 @@
     "@typescript-eslint/parser": "^5.18.0",
     "concurrently": "^7.1.0",
     "dotenv": "^16.0.0",
-    "eslint": "^8.11.0",
+    "eslint": "^8.12.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jest": "^26.1.2",
@@ -54,7 +54,7 @@
     "jest-matcher-specific-error": "^1.0.0",
     "nodemon": "^2.0.15",
     "pino-pretty": "^7.6.0",
-    "prettier": "^2.6.0",
+    "prettier": "^2.6.2",
     "ts-jest": "^27.1.4",
     "typescript": "^4.6.3"
   },
