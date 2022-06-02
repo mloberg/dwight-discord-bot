@@ -37,7 +37,7 @@
     "@types/keyv": "^3.1.4",
     "@types/lodash": "^4.14.182",
     "@types/node": "16.11.36",
-    "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
     "@typescript-eslint/parser": "^5.26.0",
     "concurrently": "^7.2.1",
     "dotenv": "^16.0.1",
@@ -53,7 +53,7 @@
     "jest": "^27.5.1",
     "jest-matcher-specific-error": "^1.0.0",
     "nodemon": "^2.0.16",
-    "pino-pretty": "^7.6.1",
+    "pino-pretty": "^8.0.0",
     "prettier": "^2.6.2",
     "ts-jest": "^27.1.4",
     "typescript": "^4.7.2"
