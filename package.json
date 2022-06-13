@@ -32,7 +32,7 @@
     "pino": "^8.0.0"
   },
   "devDependencies": {
-    "@tsconfig/node16": "^1.0.2",
+    "@tsconfig/node16": "^1.0.3",
     "@types/jest": "^27.4.1",
     "@types/keyv": "^3.1.4",
     "@types/lodash": "^4.14.182",
