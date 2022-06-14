@@ -37,7 +37,7 @@
     "@types/keyv": "^3.1.4",
     "@types/lodash": "^4.14.182",
     "@types/node": "16.11.39",
-    "@typescript-eslint/eslint-plugin": "^5.27.1",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.27.1",
     "concurrently": "^7.2.1",
     "dotenv": "^16.0.1",
