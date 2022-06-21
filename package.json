@@ -26,7 +26,7 @@
     "discord-api-types": "^0.31.0",
     "discord.js": "^13.8.0",
     "joi": "^17.6.0",
-    "keyv": "^4.3.0",
+    "keyv": "^4.3.1",
     "keyv-file": "^0.2.0",
     "lodash": "^4.17.21",
     "pino": "^8.0.0"
@@ -37,7 +37,7 @@
     "@types/keyv": "^3.1.4",
     "@types/lodash": "^4.14.182",
     "@types/node": "16.11.41",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "concurrently": "^7.2.2",
     "dotenv": "^16.0.1",
