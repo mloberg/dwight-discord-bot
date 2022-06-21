@@ -37,7 +37,7 @@
     "@types/keyv": "^3.1.4",
     "@types/lodash": "^4.14.182",
     "@types/node": "16.11.41",
-    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/eslint-plugin": "^5.29.0",
     "@typescript-eslint/parser": "^5.29.0",
     "concurrently": "^7.2.2",
     "dotenv": "^16.0.1",
@@ -56,7 +56,7 @@
     "pino-pretty": "^8.0.0",
     "prettier": "^2.7.1",
     "ts-jest": "^27.1.4",
-    "typescript": "^4.7.3"
+    "typescript": "^4.7.4"
   },
   "nodemonConfig": {
     "delay": 2500,
