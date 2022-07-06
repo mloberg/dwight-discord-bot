@@ -52,7 +52,7 @@
     "eslint-plugin-unicorn": "^42.0.0",
     "jest": "^27.5.1",
     "jest-matcher-specific-error": "^1.0.0",
-    "nodemon": "^2.0.16",
+    "nodemon": "^2.0.19",
     "pino-pretty": "^8.1.0",
     "prettier": "^2.7.1",
     "ts-jest": "^27.1.4",
