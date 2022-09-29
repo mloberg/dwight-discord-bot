@@ -24,7 +24,7 @@
     "@keyv/redis": "^2.3.6",
     "axios": "^0.26.1",
     "discord-api-types": "^0.31.0",
-    "discord.js": "^13.8.0",
+    "discord.js": "^14.5.0",
     "joi": "^17.6.0",
     "keyv": "^4.3.1",
     "keyv-file": "^0.2.0",
@@ -56,7 +56,7 @@
     "pino-pretty": "^8.1.0",
     "prettier": "^2.7.1",
     "ts-jest": "^27.1.4",
-    "typescript": "^4.7.4"
+    "typescript": "^4.8.4"
   },
   "nodemonConfig": {
     "delay": 2500,
