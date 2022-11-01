@@ -23,7 +23,7 @@
     "@discordjs/rest": "^0.3.0",
     "@keyv/redis": "^2.3.6",
     "axios": "^0.26.1",
-    "discord-api-types": "^0.31.0",
+    "discord-api-types": "^0.37.16",
     "discord.js": "^13.8.0",
     "joi": "^17.6.0",
     "keyv": "^4.3.1",
